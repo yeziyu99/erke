@@ -1,15 +1,17 @@
 <template>
   <div class="big_wrap">
-    <sidebar class="left_silde_bar"></sidebar>
+    <!-- 头部 -->
+    1231231
+    <!-- <sidebar class="left_silde_bar"></sidebar> -->
     <div class="page">
       <router-view></router-view>
     </div>
+    <!-- 底部 -->
+    213123213
   </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
-import http from "@/http/service";
 
 export default {
   data() {

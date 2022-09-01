@@ -13,8 +13,7 @@ module.exports = {
 
     devServer: {
       host: 'localhost',
-    //   port: 8099,
-      port:8001,
+      port:6688,
       disableHostCheck: true,
       open: true,
       proxy: {// 配置多个代理(配置一个 proxy: 'http://localhost:4000' )
