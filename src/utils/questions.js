@@ -1,4 +1,4 @@
-[
+export default [
     {
         "title": "What products can I buy?",
         "children": [

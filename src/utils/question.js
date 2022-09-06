@@ -1,4 +1,4 @@
-[
+export default [
     {
         "title": "What leverage do you offer?",
         "content": "Tiger Brokers UK offers up to 30:1 leverage depending on the product being traded. Higher leverage is available for 'Professional' clients. Please contact ________________ to discuss upgrading your account to Professional status."

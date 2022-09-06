@@ -7,7 +7,7 @@
     <div class="page">
       <router-view></router-view>
     </div>
-    <question />
+    <!-- <question /> -->
     <publicFoot/>
     <publicFooter />
     <!-- 底部 -->
