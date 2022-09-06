@@ -4,9 +4,10 @@
     <publicHeader/>
     <!-- 1231231 -->
     <!-- <sidebar class="left_silde_bar"></sidebar> -->
-    <div class="page" style="height:500px">
+    <div class="page">
       <router-view></router-view>
     </div>
+    <question />
     <publicFoot/>
     <publicFooter />
     <!-- 底部 -->
@@ -18,13 +19,14 @@
  import publicHeader from "@/component/publicHeader";
  import publicFoot from "@/component/publicFoot";
  import publicFooter from "@/component/publicFooter";
+ import question from "@/component/question";
 export default {
   data() {
     return {
     };
   },
   components: {
-    publicHeader,publicFoot,publicFooter
+    publicHeader,publicFoot,publicFooter,question
   },
   methods: {
   },

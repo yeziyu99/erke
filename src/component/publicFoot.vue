@@ -58,6 +58,8 @@ ul li {
 .publicFoot {
   height: 354px;
   width: 100%;
+  min-width: 1000px;
+  overflow-x: auto;
   background: #000000;
   display: flex;
   // justify-content: center;
@@ -66,6 +68,7 @@ ul li {
   // align-items: center;
   .publicFoot_head {
     width: 60%;
+    //  min-width: 600px;
     height: 89px;
     display: flex;
     justify-content: space-between;

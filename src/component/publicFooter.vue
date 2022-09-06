@@ -55,12 +55,15 @@ ul li {
 }
 .publicFooter {
   width: 100%;
+  min-width: 1000px;
+  overflow-x: auto;
   height: 245.5 * 2px;
   background: #191919;
   display: flex;
   justify-content: center;
   .publicFooter_content {
     width: 60%;
+    //  min-width: 600px;
     ul {
       margin-top: 24.5 * 2px;
       .publicFooter_content_Li {
