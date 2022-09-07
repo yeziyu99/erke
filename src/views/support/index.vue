@@ -20,7 +20,7 @@
                 :src="item.icon"
                 alt=""
               />
-              <span style="font-size: 24px">What products can I buy?</span>
+              <span style="font-size: 24px">{{ item.title }}</span>
             </div>
             <div @click="itemFun(index)">
               <img v-if="!item.show" src="@/assets/image/upward.png" alt="" />
@@ -49,7 +49,7 @@
                   @click="childrenFun(index, i)"
                 />
                 <span style="font-size: 20px; padding: 20px 0"
-                  >Which markets can I trade in?</span
+                  >{{ val.title }}</span
                 >
               </div>
               <div v-if="val.show" class="children_answer">
