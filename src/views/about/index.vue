@@ -87,8 +87,9 @@ export default {
   .about_content {
     width: 60%;
     //  min-width: 600px;
-    height: 296.5*2px;
-  padding-top: 80px ;
+    // height: 296.5*2px;
+  padding: 80px 0 50px 0;
+
   
   p{
     font-size: 18;

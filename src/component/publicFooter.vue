@@ -57,12 +57,13 @@ ul li {
   width: 100%;
   min-width: 1000px;
   overflow-x: auto;
-  height: 245.5 * 2px;
+  // height: 245.5 * 2px;
   background: #191919;
   display: flex;
   justify-content: center;
   .publicFooter_content {
     width: 60%;
+    padding-bottom: 30px;
     //  min-width: 600px;
     ul {
       margin-top: 24.5 * 2px;
