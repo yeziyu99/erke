@@ -1,7 +1,7 @@
 <template>
   <div class="publicHeader">
     <div class="header_con">
-      <img src="@/assets/image/headerIcon.png" alt="" />
+      <img @click="jumpFun('home')" src="@/assets/image/headerIcon.png" alt="" />
       <ul>
         <li class="header_route" @click="jumpFun('market')">Markets</li>
         <li class="header_route" @click="jumpFun('support')">Support</li>

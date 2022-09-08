@@ -13,8 +13,8 @@
           >
             <div class="question_name">{{ item.title }}</div>
             <div @click="itemFun(index)">
-              <img v-if="!item.show" src="@/assets/image/down.png" alt="" />
-              <img v-else src="@/assets/image/upward.png" alt="" />
+              <img v-if="!item.show" src="@/assets/image/1.png" alt="" />
+              <img v-else src="@/assets/image/2.png" alt="" />
             </div>
           </div>
           <p v-if="item.show" class="question_answer">
@@ -64,17 +64,17 @@ export default {
     width: 60%;
     padding-top: 90px;
     .question_title {
-      font-size: 36px;
+      font-size: 24px;
     }
     .question_list {
       padding-bottom: 80px;
       .queation_item {
-        padding: 30px 0;
+        padding: 15px 0;
         border-bottom: 1px solid #000000;
-        font-size: 28px;
+        font-size: 16px;
         font-family: Gilroy, Gilroy-SemiBold;
         .question_answer {
-          font-size: 20px;
+          font-size: 14px;
           margin-top: 20px;
           font-family: Gilroy, Gilroy-SemiBold;
         }

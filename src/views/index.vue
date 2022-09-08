@@ -7,7 +7,7 @@
     <div class="page">
       <router-view></router-view>
     </div>
-    <!-- <question /> -->
+    <question v-if="isQuestion"/>
     <publicFoot/>
     <publicFooter />
     <!-- 底部 -->
@@ -23,6 +23,7 @@
 export default {
   data() {
     return {
+      isQuestion:false
     };
   },
   components: {
@@ -33,6 +34,11 @@ export default {
   created() {
   },
   mounted() {
+    if(this.$route.name=='home'||this.$route.name=='market'){
+      this.isQuestion=true
+    }else{
+      this.isQuestion=false
+    }
   },
 };
 </script>
