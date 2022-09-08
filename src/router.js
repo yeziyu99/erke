@@ -9,6 +9,7 @@ import about from "@/views/about/index.vue";
 import invest from "@/views/invest/index.vue";
 
 
+
 Vue.use(Router);
 
 const router = new Router({
