@@ -1,6 +1,8 @@
 <template>
     <div class="big_wrap">
-      market
+      <div class="">
+        
+      </div>
     </div>
   </template>
   
