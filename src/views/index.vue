@@ -44,4 +44,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.page{
+    min-width: 1000px;
+  }
 </style>
