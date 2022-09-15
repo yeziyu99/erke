@@ -126,14 +126,14 @@
         <div class="pounce_content">
           <div class="pounce_left">
             <ul>
-              <li :class="active==2-1||active==7?'on':''">Access to most popular markets<br>
+              <li :class="active==2-1||active==7?'on':''" >Access to most popular markets<br>
                 <a href="">See all markets</a>
               </li>
-              <li :class="active==3-1?'on':''">Suit yourself to manage profit<br> and risk</li>
-              <li :class="active==4-1?'on':''">30:1 leverage to gain more with<br> less</li>
-              <li :class="active==5-1?'on':''">Deposit and withdraw within 1 <br> minute</li>
-              <li :class="active==6-1?'on':''">No commission and hidden fees</li>
-              <li :class="active==7-1?'on':''">Get your local expert help on<br> what to buy and when to sell</li>
+              <li :class="active==3-1?'on':''" >Suit yourself to manage profit<br> and risk</li>
+              <li :class="active==4-1?'on':''" >30:1 leverage to gain more with<br> less</li>
+              <li :class="active==5-1?'on':''" >Deposit and withdraw within 1 <br> minute</li>
+              <li :class="active==6-1?'on':''" >No commission and hidden fees</li>
+              <li :class="active==7-1?'on':''" >Get your local expert help on<br> what to buy and when to sell</li>
             </ul>
           </div>
           <div class="pounce_right">
@@ -232,7 +232,7 @@ export default {
       }
     },
   },
-  created() { },
+  created() {},
   mounted() {
     
     new Swiper(".swiper-container", {
@@ -321,10 +321,10 @@ export default {
       },
     });
     let thiss = this
-    let num = new Swiper(".swiper-containerfour", {
+    let num = new Swiper(".swiper-containerfour", { 
       // direction: "vertical", // 垂直切换选项
       //mousewheel: true, //滚轮
-      initialSlide: 2,
+      initialSlide: thiss.active,
       width: 640,
       autoplay: {
         //自动开始
