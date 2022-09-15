@@ -141,14 +141,14 @@
         <div class="pounce_content">
           <div class="pounce_left">
             <ul>
-              <li :class="active==2-1||active==7?'on':''">Access to most popular markets<br>
+              <li :class="active==2-1||active==7?'on':''" @click="jumpFun(7)">Access to most popular markets<br>
                 <a href="">See all markets</a>
               </li>
-              <li :class="active==3-1?'on':''">Suit yourself to manage profit<br> and risk</li>
-              <li :class="active==4-1?'on':''">30:1 leverage to gain more with<br> less</li>
-              <li :class="active==5-1?'on':''">Deposit and withdraw within 1 <br> minute</li>
-              <li :class="active==6-1?'on':''">No commission and hidden fees</li>
-              <li :class="active==7-1?'on':''">Get your local expert help on<br> what to buy and when to sell</li>
+              <li :class="active==3-1?'on':''" @click="jumpFun(3-1)">Suit yourself to manage profit<br> and risk</li>
+              <li :class="active==4-1?'on':''" @click="jumpFun(4-1)">30:1 leverage to gain more with<br> less</li>
+              <li :class="active==5-1?'on':''" @click="jumpFun(5-1)">Deposit and withdraw within 1 <br> minute</li>
+              <li :class="active==6-1?'on':''" @click="jumpFun(6-1)">No commission and hidden fees</li>
+              <li :class="active==7-1?'on':''" @click="jumpFun(7-1)">Get your local expert help on<br> what to buy and when to sell</li>
             </ul>
           </div>
           <div class="pounce_right">
@@ -240,7 +240,11 @@ export default {
     };
   },
   components: {},
-  methods: {},
+  methods: {
+    jumpFun(val){
+      // this.active=val
+    }
+  },
   created() {},
   mounted() {
     new Swiper(".swiper-container", {
@@ -299,40 +303,11 @@ export default {
         el: ".swiper-scrollbar",
       },
     });
-    //
-    new Swiper(".swiper-containerThree", {
-      direction: "vertical", // 垂直切换选项
-      //mousewheel: true, //滚轮
-      // width: 254,
-      autoplay: {
-        //自动开始
-        delay: 2500, //时间间隔
-        disableOnInteraction: false, //*手动操作轮播图后不会暂停*
-      },
-      loop: true, // 循环模式选项
-
-      // 如果需要分页器
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true, // 分页器可以点击
-      },
-
-      // 如果需要前进后退按钮
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-
-      // 如果需要滚动条
-      scrollbar: {
-        el: ".swiper-scrollbar",
-      },
-    });
     let thiss=this
    let num= new Swiper(".swiper-containerfour", {
       // direction: "vertical", // 垂直切换选项
       //mousewheel: true, //滚轮
-      initialSlide: 2,
+      initialSlide: thiss.active,
       width: 640,
       autoplay: {
         //自动开始
