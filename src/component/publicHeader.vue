@@ -22,7 +22,7 @@ export default {
     return {};
   },
   mounted() {
-    console.log(3333);
+    // console.log(3333);
   },
   methods: {
     jumpFun(route) {

@@ -178,8 +178,8 @@
     </div>
   </div>
 </template>
-  
-  <script>
+<script>
+import http from "@/http/service";
 export default {
   data() {
     return {
@@ -290,7 +290,9 @@ export default {
       ],
     };
   },
-  components: {},
+  components: {
+   
+  },
   methods: {
     tabFn(val) {
       this.active = val;
@@ -336,8 +338,24 @@ export default {
     handleClick(tab, event) {
       console.log(tab, event);
     },
+    getSymbolClassify(){
+      http.getSymbolClassify({
+        })
+        .then(rs => {
+          if (rs.IsSucc) {
+            console.log(rs)
+          } else {
+            
+          }
+        }).catch((err) => {
+          console.log(err)
+          
+        })
+    }
   },
-  created() {},
+  created() {
+   this.getSymbolClassify()
+  },
   mounted() {},
 };
 </script>

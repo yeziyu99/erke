@@ -56,6 +56,11 @@ const router = new Router({
       name: "invest",
       component: invest
     },
+    {
+      path: "/home",
+      name: "home",
+      component: home
+    },
   ]
 });
 // router.beforeEach((to, from, next) => {

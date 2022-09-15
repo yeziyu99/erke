@@ -19,7 +19,7 @@ module.exports = {
       proxy: {// 配置多个代理(配置一个 proxy: 'http://localhost:4000' )
           '/api': {
             //   target: 'www.tigerbrokers.co.uk'  ,   // 线上接口地址
-              target: 'www.tigerbrokers-inc.com'  ,   // 测试接口地址
+              target: 'https://www.tigerbrokers-inc.com'  ,   // 测试接口地址
               ws: true,
               changeOrigin: true
           },
