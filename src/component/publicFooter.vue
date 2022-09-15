@@ -55,7 +55,7 @@ ul li {
 }
 .publicFooter {
   width: 100%;
-  min-width: 1000px;
+  min-width: 1200px;
   overflow-x: auto;
   // height: 245.5 * 2px;
   background: #191919;

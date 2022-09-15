@@ -66,7 +66,7 @@ ul li {
 .publicFoot {
   height: 354px;
   width: 100%;
-  min-width: 1000px;
+  min-width: 1200px;
   overflow-x: auto;
   background: #000000;
   display: flex;
