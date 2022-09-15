@@ -106,9 +106,9 @@ export const setCookie = ({ name, value, expires = 30, domain = getDomain(), pat
   }
   // 判断是否为线上环境
   export const isLive  = () => {
-    // 线上的地址为config.evotradesys.com，暂先根据域名判断。
+    // 线上的地址为https://www.tigerbrokers.co.uk，暂先根据域名判断。
     let url = window.location.host
-    if (url == 'config.evotradesys.com') {
+    if (url == 'www.tigerbrokers.co.uk') {
       return true
     } else {
       return false
