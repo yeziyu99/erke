@@ -4,12 +4,12 @@
       <img src="@/assets/image/yellowIcon.png" alt="" />
       <ul>
         <li class="publicFoot_tip">MOBILE APP</li>
-        <li class="publicFoot_btn" style="margin-right: 5px">
+        <li class="publicFoot_btn" style="margin-right: 5px" @click="jumpFun('invest')">
           <img src="@/assets/image/apple.png" alt="" />
           APP STORE
         </li>
-        <li class="publicFoot_btn">
-          <img src="@/assets/image/googleplay.png" alt="" />
+        <li class="publicFoot_btn"  @click="jumpFun('invest')">
+          <img src="@/assets/image/googleplay.png" alt=""  />
           GOOGLE PLAY
         </li>
       </ul>
@@ -48,7 +48,15 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    jumpFun(route) {
+      if (this.$route.name != route) {
+        this.$router.push(route);
+      }
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

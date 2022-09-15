@@ -15,12 +15,12 @@
                 platform in your pocket.
               </h2>
               <div class="banner_btn">
-                <div class="btn_one">Get started</div>
-                <a href="" class="ios">
-                  <img src="@/assets/image/apple_down.png" alt="" />
+                <div class="btn_one" @click="jumpFun('invest')">Get started</div>
+                <a href="" class="ios" @click="jumpFun('invest')">
+                  <img src="@/assets/image/apple_down.png" alt="" @click="jumpFun('invest')" />
                   APP STORE</a>
-                <a href="" class="android">
-                  <img src="@/assets/image/apple_down.png" alt="" />
+                <a href="" class="android" @click="jumpFun('invest')">
+                  <img src="@/assets/image/apple_down.png" alt="" @click="jumpFun('invest')"/>
                   GOOGLE PLAY</a>
               </div>
               <p>Images displayed are for illustrative purposes only</p>
@@ -56,7 +56,7 @@
               <p>{{value.name}}</p>
             </li>
           </ul>
-          <div class="trade_btn">Get started</div>
+          <div class="trade_btn" @click="jumpFun('invest')">Get started</div>
         </div>
         <div class="trade_rightO">
           <div class="trade_right">
@@ -113,7 +113,8 @@
         <el-tabs v-model="activeName" @tab-click="handleClick">
           <el-tab-pane :label="value.identifier_name" :name="value.identifier" v-for="(value,index) in tableDataS"
             :key="index">
-            <el-table :data="symbolBool?value.symbols:value.symbolOne" style="width: 100%; margin-top: 44px; margin-bottom: 60px">
+            <el-table :data="symbolBool?value.symbols:value.symbolOne"
+              style="width: 100%; margin-top: 44px; margin-bottom: 60px">
               <el-table-column prop="symbol" label="Product code" align="center"></el-table-column>
               <el-table-column prop="name" label="Product name" align="center"></el-table-column>
               <el-table-column prop="average_spread" label="Average spread (point)" align="center"></el-table-column>
@@ -137,23 +138,20 @@ export default {
     return {
       active: "1",
       tableData: [
-        { products: "Tesla", sell: "1.07334", buy: "1.07376" },
-        { products: "Tencent", sell: "1.07334", buy: "1.07376" },
-        { products: "OZ Minerals", sell: "1.07334", buy: "1.07376" },
-        { products: "Apple", sell: "1.07334", buy: "1.07376" },
-        { products: "Tesla", sell: "1.07334", buy: "1.07376" },
-        { products: "Tesla", sell: "1.07334", buy: "1.07376" },
-        { products: "Tencent", sell: "1.07334", buy: "1.07376" },
-        { products: "Apple", sell: "1.07334", buy: "1.07376" },
-        { products: "Tesla", sell: "1.07334", buy: "1.07376" },
-        { products: "Tesla", sell: "1.07334", buy: "1.07376" },
-        { products: "Tencent", sell: "1.07334", buy: "1.07376" },
-        { products: "OZ Minerals", sell: "1.07334", buy: "1.07376" },
-        { products: "OZ Minerals", sell: "1.07334", buy: "1.07376" },
+        { products: "AAPL", sell: "155.265", buy: "155.095" },
+        { products: "NFLX", sell: "237.160", buy: "236.460" },
+        { products: "DIS", sell: "114.390", buy: "114.150" },
+        { products: "AMD", sell: "77.460", buy: "77.330" },
+        { products: "VISA", sell: "200.210", buy: "199.780" },
+        { products: "GOOG", sell: "1110.72", buy: "100.70" },
+        { products: "TSLA", sell: "309.270", buy: "308.720" },
+        { products: "BABA", sell: "91.170", buy: "90.940" },
+        { products: "EBAY", sell: "43.820", buy: "43.710" },
+        { products: "AMZN", sell: "131.280", buy: "129.250" },
       ],
       tableDataS: [],
-      Title:'Stocks',
-      symbolBool:false,
+      Title: 'Stocks',
+      symbolBool: false,
       activeName: "stocks",
       list: [
         { name: "Track real-time market prices anytime and anywhere." },
@@ -170,8 +168,8 @@ export default {
     ...mapActions([
       "webSocketInit"
     ]),
-    ClickForMore(){
-      this.symbolBool=true;
+    ClickForMore() {
+      this.symbolBool = true;
       // for(let key in this.tableDataS){
       //   this.tableDataS[key]['symbolBool']=false
       //   if(this.tableDataS[key]['identifier']){
@@ -182,31 +180,28 @@ export default {
     tabFn(val) {
       this.active = val;
       if (val == "1") {
-        this.Title='Stocks'
+        this.Title = 'Stocks'
         this.list = [
           { name: "Track real-time market prices anytime and anywhere." },
           { name: "Gain more with less via 30:1 leverage" },
           { name: "Auto-manage your trading lots and leverage" },
           { name: "Get free demo account with £10,000" },
         ];
-        this.tableData= [
-          { products: "Tesla", sell: "1.07334", buy: "1.07376" },
-          { products: "Tencent", sell: "1.07334", buy: "1.07376" },
-          { products: "OZ Minerals", sell: "1.07334", buy: "1.07376" },
-          { products: "Apple", sell: "1.07334", buy: "1.07376" },
-          { products: "Tesla", sell: "1.07334", buy: "1.07376" },
-          { products: "Tesla", sell: "1.07334", buy: "1.07376" },
-          { products: "Tencent", sell: "1.07334", buy: "1.07376" },
-          { products: "Apple", sell: "1.07334", buy: "1.07376" },
-          { products: "Tesla", sell: "1.07334", buy: "1.07376" },
-          { products: "Tesla", sell: "1.07334", buy: "1.07376" },
-          { products: "Tencent", sell: "1.07334", buy: "1.07376" },
-          { products: "OZ Minerals", sell: "1.07334", buy: "1.07376" },
-          { products: "OZ Minerals", sell: "1.07334", buy: "1.07376" },
+        this.tableData = [
+          { products: "AAPL", sell: "155.265", buy: "155.095" },
+          { products: "NFLX", sell: "237.160", buy: "236.460" },
+          { products: "DIS", sell: "114.390", buy: "114.150" },
+          { products: "AMD", sell: "77.460", buy: "77.330" },
+          { products: "VISA", sell: "200.210", buy: "199.780" },
+          { products: "GOOG", sell: "1110.72", buy: "100.70" },
+          { products: "TSLA", sell: "309.270", buy: "308.720" },
+          { products: "BABA", sell: "91.170", buy: "90.940" },
+          { products: "EBAY", sell: "43.820", buy: "43.710" },
+          { products: "AMZN", sell: "131.280", buy: "129.250" },
         ]
       }
       if (val == "2") {
-        this.Title='Indicies'
+        this.Title = 'Indicies'
         this.list = [
           { name: "Diversify your assets on your wishlist" },
           {
@@ -216,23 +211,20 @@ export default {
           { name: "Benefit from the leverage of 30:1" },
           { name: "Practice trading skills with £10,000 free demo account" },
         ];
-        this.tableData= [
-          { products: "Tesla", sell: "1.07334", buy: "1.07376" },
-          { products: "Tencent", sell: "1.07334", buy: "1.07376" },
-          { products: "OZ Minerals", sell: "1.07334", buy: "1.07376" },
-          { products: "Apple", sell: "1.07334", buy: "1.07376" },
-          { products: "Tesla", sell: "1.07334", buy: "1.07376" },
-          { products: "Tesla", sell: "1.07334", buy: "1.07376" },
-          { products: "Tencent", sell: "1.07334", buy: "1.07376" },
-          { products: "Apple", sell: "1.07334", buy: "1.07376" },
-          { products: "Tesla", sell: "1.07334", buy: "1.07376" },
-          { products: "Tesla", sell: "1.07334", buy: "1.07376" },
-          { products: "Tencent", sell: "1.07334", buy: "1.07376" },
-          { products: "OZ Minerals", sell: "1.07334", buy: "1.07376" },
-          { products: "OZ Minerals", sell: "1.07334", buy: "1.07376" },
+        this.tableData = [
+          { products: "EUSTX50", sell: "3564.70", buy: "3562.70" },
+          { products: "GER30", sell: "13038.50", buy: "13037.40" },
+          { products: "HK50", sell: "18926.30", buy: "18918.70" },
+          { products: "JPN225", sell: "27910.05", buy: "27898.95" },
+          { products: "NAS100", sell: "12142.30", buy: "12140.60" },
+          { products: "US30", sell: "31257.20", buy: "31254.70" },
+          { products: "USA500", sell: "3956.12", buy: "3955.61" },
+          { products: "AUS200", sell: "6839.75", buy: "6837.85" },
+          { products: "SPA35", sell: "8091.05", buy: "8080.95" },
+          { products: "UK100", sell: "7306.55", buy: "7305.15" },
         ]
       } else if (val == "3") {
-        this.Title='Commodities'
+        this.Title = 'Commodities'
         this.list = [
           { name: "Access to the popular and stable trading markets" },
           {
@@ -242,23 +234,16 @@ export default {
           { name: "Trade asset with 1/30 of cost" },
           { name: "Practice trading skills with £10,000 free demo account" },
         ];
-        this.tableData= [
-          { products: "Tesla", sell: "1.07334", buy: "1.07376" },
-          { products: "Tencent", sell: "1.07334", buy: "1.07376" },
-          { products: "OZ Minerals", sell: "1.07334", buy: "1.07376" },
-          { products: "Apple", sell: "1.07334", buy: "1.07376" },
-          { products: "Tesla", sell: "1.07334", buy: "1.07376" },
-          { products: "Tesla", sell: "1.07334", buy: "1.07376" },
-          { products: "Tencent", sell: "1.07334", buy: "1.07376" },
-          { products: "Apple", sell: "1.07334", buy: "1.07376" },
-          { products: "Tesla", sell: "1.07334", buy: "1.07376" },
-          { products: "Tesla", sell: "1.07334", buy: "1.07376" },
-          { products: "Tencent", sell: "1.07334", buy: "1.07376" },
-          { products: "OZ Minerals", sell: "1.07334", buy: "1.07376" },
-          { products: "OZ Minerals", sell: "1.07334", buy: "1.07376" },
+        this.tableData = [
+          { products: "XAUUSD", sell: "1688.22", buy: "1687.78" },
+          { products: "XAGUSD", sell: "19.5970", buy: "19.5580" },
+          { products: "XNGUSD", sell: "8.4640", buy: "8.4510" },
+          { products: "XBRUSD", sell: "90.981", buy: "90.939" },
+          { products: "XTIUSD", sell: "85.732", buy: "85.691" },
+
         ]
       } else if (val == "4") {
-        this.Title='Currencies'
+        this.Title = 'Currencies'
         this.list = [
           { name: "24-hour trade with best liquidity" },
           {
@@ -267,44 +252,47 @@ export default {
           { name: "Set your risk appetite and expected profit by yourself" },
           { name: "Build your confidence by practicing trading skills with £10,000 free demo account" },
         ];
-        this.tableData= [
-          { products: "Tesla", sell: "1.07334", buy: "1.07376" },
-          { products: "Tencent", sell: "1.07334", buy: "1.07376" },
-          { products: "OZ Minerals", sell: "1.07334", buy: "1.07376" },
-          { products: "Apple", sell: "1.07334", buy: "1.07376" },
-          { products: "Tesla", sell: "1.07334", buy: "1.07376" },
-          { products: "Tesla", sell: "1.07334", buy: "1.07376" },
-          { products: "Tencent", sell: "1.07334", buy: "1.07376" },
-          { products: "Apple", sell: "1.07334", buy: "1.07376" },
-          { products: "Tesla", sell: "1.07334", buy: "1.07376" },
-          { products: "Tesla", sell: "1.07334", buy: "1.07376" },
-          { products: "Tencent", sell: "1.07334", buy: "1.07376" },
-          { products: "OZ Minerals", sell: "1.07334", buy: "1.07376" },
-          { products: "OZ Minerals", sell: "1.07334", buy: "1.07376" },
+        this.tableData = [
+          { products: "AUDUSD", sell: "0.67475", buy: "0.67461" },
+          { products: "EURUSD", sell: "1.00023", buy: "1.00012" },
+          { products: "GBPUSD", sell: "1.15101", buy: "1.15089" },
+          { products: "NZDUSD", sell: "0.60108", buy: "0.60085" },
+          { products: "AUDUSD", sell: "0.88884", buy: "0.88859" },
+          { products: "AUDJPY", sell: "96.695", buy: "96.671" },
+          { products: "USDJPY", sell: "143.307", buy: "143.291" },
+          { products: "USDCHF", sell: "0.95763", buy: "0.95750" },
+          { products: "USDCAD", sell: "1.31718", buy: "1.31700" },
+          { products: "NZDCAD", sell: "0.79175", buy: "0.79144" },
         ]
       }
     },
     handleClick(tab, event) {
       // console.log(tab, event);
     },
+    jumpFun(route) {
+      console.log(route)
+      if (this.$route.name != route) {
+        this.$router.push(route);
+      }
+    },
     getSymbolClassify() {
       http.getSymbolClassify()
         .then(rs => {
           if (rs.is_succ) {
             // this.symbolBool=false;
-            for(let key in rs.data){
+            for (let key in rs.data) {
               // rs.data[key]['symbolBool']=false;
-              let symbols=rs.data[key]['symbols'];
-              let symbolOne=[];
-              for(let i=0;i<=5;i++){
-                if(symbols[i]){
+              let symbols = rs.data[key]['symbols'];
+              let symbolOne = [];
+              for (let i = 0; i <= 5; i++) {
+                if (symbols[i]) {
                   symbolOne.push(symbols[i])
                 }
               }
-              rs.data[key]['symbolOne']=symbolOne;
+              rs.data[key]['symbolOne'] = symbolOne;
             }
             this.tableDataS = rs.data
-            this.activeName=rs.data[0].identifier
+            this.activeName = rs.data[0].identifier
           } else {
 
           }
