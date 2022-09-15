@@ -42,7 +42,7 @@ export default {
   <style lang="scss" scoped>
 .big_wrap {
   width: 100%;
-  min-width: 1000px;
+  min-width: 1200px;
   overflow-x: auto;
   display: flex;
   flex-direction: column;

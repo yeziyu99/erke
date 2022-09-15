@@ -41,7 +41,7 @@ ul li {
 .publicHeader {
   height: 75px;
   width: 100%;
-  min-width: 1000px;
+  min-width: 1200px;
   overflow-x: auto;
   background: #ffe100;
   display: flex;

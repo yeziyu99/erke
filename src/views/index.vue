@@ -45,6 +45,6 @@ export default {
 
 <style lang="scss" scoped>
 .page{
-    min-width: 1000px;
+    min-width: 1200px;
   }
 </style>
