@@ -352,7 +352,7 @@ export default {
       on: {
         slideChangeTransitionEnd: function () {
           thiss.active = this.activeIndex
-          console.log(thiss.active, 'ooooo')
+          // console.log(thiss.active, 'ooooo')
           // console.log(this,'this')
           // return this.activeIndex
           // alert(this.activeIndex);//切换结束时，告诉我现在是第几个slide

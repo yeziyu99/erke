@@ -270,7 +270,7 @@ export default {
       // console.log(tab, event);
     },
     jumpFun(route) {
-      console.log(route)
+      // console.log(route)
       if (this.$route.name != route) {
         this.$router.push(route);
       }

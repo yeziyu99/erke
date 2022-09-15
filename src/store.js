@@ -38,7 +38,7 @@ export default new Vuex.Store({
       };
       context.state.webSock.onmessage = (evt) => {
         let socketData = JSON.parse(evt.data);
-        console.log(socketData)
+        // console.log(socketData)
         if (!socketData) return;
         // console.log(JSON.parse(socketData.Body));
         if (!context.state.isLoginWebSocket) {   //检查返回的信息是报价or登陆状态
@@ -59,17 +59,17 @@ export default new Vuex.Store({
              *   ...
              * ]
              */
-            console.log(evt)
+            // console.log(evt)
             try{
 
               socketData instanceof Array && socketData.forEach(item => {
-                console.log(item)
+                // console.log(item)
                 context.state.quote = {
                   symbol: item[0],
                   buy: item[1],
                   sell: item[2]
                 };
-                console.log(socketData)
+                // console.log(socketData)
               })
             } catch(err){
               console.log(err)
