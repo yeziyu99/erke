@@ -20,7 +20,7 @@
                   <img src="@/assets/image/apple_down.png" alt="" @click="jumpFun('invest')" />
                   APP STORE</a>
                 <a href="" class="android" @click="jumpFun('invest')">
-                  <img src="@/assets/image/apple_down.png" alt="" @click="jumpFun('invest')"/>
+                  <img src="@/assets/image/apple_down.png" alt="" @click="jumpFun('invest')" />
                   GOOGLE PLAY</a>
               </div>
               <p>Images displayed are for illustrative purposes only</p>
@@ -378,7 +378,7 @@ export default {
     .head_con {
       //   //  position: relative;
       width: 60%;
-      // min-width: 1000px;
+      min-width: 1200px;
       // overflow: auto;
       display: flex;
       justify-content: space-between;
@@ -454,7 +454,7 @@ export default {
     .invest_tab {
       width: 60%;
       margin: 0 auto;
-      // min-width: 1000px;
+      min-width: 1200px;
       // overflow-x: auto;
       margin-top: 120px;
       display: flex;
@@ -579,6 +579,7 @@ export default {
 
   .invest_list {
     width: 60%;
+    min-width: 1200px;
     margin: 0 auto;
     margin-top: 80px;
     padding-bottom: 120px;

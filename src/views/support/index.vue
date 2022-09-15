@@ -143,6 +143,7 @@ export default {
   padding-right: 15px;
   width: 100%;
   max-width: 60%;
+  min-width: 1200px;
 }
 </style>
   

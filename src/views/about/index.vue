@@ -60,7 +60,7 @@ export default {
     background-position: bottom 0px right 23%;
     .about_head_title {
       width: 60%;
-      //  min-width: 600px;
+       min-width: 1200px;
       height: 100%;
       display: flex;
       align-items: center;
@@ -86,7 +86,7 @@ export default {
   }
   .about_content {
     width: 60%;
-    //  min-width: 600px;
+     min-width: 1200px;
     // height: 296.5*2px;
   padding: 80px 0 50px 0;
 

@@ -11,15 +11,13 @@
               choices of stocks, currencies, indices, gold and more.
             </h4>
             <div class="banner_btn">
-              <div class="btn_one">Get started</div>
-              <a href="" class="ios">
+              <div class="btn_one" @click="jumpFun('invest')">Get started</div>
+              <a href="" class="ios" @click="jumpFun('invest')">
                 <img src="@/assets/image/apple_down.png" alt="" />
-                APP STORE</a
-              >
-              <a href="" class="android">
+                APP STORE</a>
+              <a href="" class="android" @click="jumpFun('invest')">
                 <img src="@/assets/image/apple_down.png" alt="" />
-                GOOGLE PLAY</a
-              >
+                GOOGLE PLAY</a>
             </div>
             <p>Images displayed are for illustrative purposes only</p>
           </div>
@@ -28,14 +26,12 @@
           </div> -->
         </div>
         <div class="home_bg">
-          <div
-            style="
+          <div style="
               max-width: 230px;
               flex: 1 1;
               margin: 0 auto;
               position: relative;
-            "
-          >
+            ">
             <div style="padding-top: 204%; position: relative; width: 100%">
               <div class="inset_bg">
                 <div class="insetbg_annulus"></div>
@@ -45,24 +41,12 @@
                 <div class="bg_ball_solid"></div>
               </div>
               <div class="video_wrap">
-                <video
-                  class="inset_video enter-play"
-                  muted
-                  playsinline
-                  webkit-playsinline
-                  autoplay
-                  loop
-                  poster="https://c1.itigergrowth.com/portal5/static/media/banner-poster.7a77394e.jpg"
-                  preload="auto"
-                  data-status="playing"
-                >
+                <video class="inset_video enter-play" muted playsinline webkit-playsinline autoplay loop
+                  poster="https://c1.itigergrowth.com/portal5/static/media/banner-poster.7a77394e.jpg" preload="auto"
+                  data-status="playing">
                   <source src="@/assets/image/banner-inset-0215.mp4" />
                 </video>
-                <img
-                  class="inset_iphone"
-                  src="@/assets/image/iphone13promax.png"
-                  alt=""
-                />
+                <img class="inset_iphone" src="@/assets/image/iphone13promax.png" alt="" />
               </div>
             </div>
           </div>
@@ -113,10 +97,11 @@
         </div>
         <div class="swiper_right">
           <!-- <div style="width:100%;height:40px"></div> -->
-          <h3>
-            No commission & <br />
-            hidden fee
+          <h3 class="h3transform">
+            No commission & <br />hidden fee
           </h3>
+          <!-- <br />
+          Negative balance protection -->
           <div class="swiper-containerTwo">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
@@ -221,13 +206,13 @@
             </ul>
           </li>
         </ul>
-        <div class="foot-btn">Get started</div>
+        <div class="foot-btn" @click="jumpFun('invest')">Get started</div>
       </div>
     </div>
   </div>
 </template>
    
-  <script>
+<script>
 // import { Swiper, SwiperSlide } from 'swiper/vue';
 // import 'swiper/css';
 import "swiper/dist/js/swiper";
@@ -236,13 +221,20 @@ import Swiper from "swiper";
 export default {
   data() {
     return {
-      active:0
+      active: 0
     };
   },
   components: {},
-  methods: {},
-  created() {},
+  methods: {
+    jumpFun(route) {
+      if (this.$route.name != route) {
+        this.$router.push(route);
+      }
+    },
+  },
+  created() { },
   mounted() {
+    
     new Swiper(".swiper-container", {
       //direction: 'vertical', // 垂直切换选项
       //mousewheel: true, //滚轮
@@ -328,8 +320,8 @@ export default {
         el: ".swiper-scrollbar",
       },
     });
-    let thiss=this
-   let num= new Swiper(".swiper-containerfour", {
+    let thiss = this
+    let num = new Swiper(".swiper-containerfour", {
       // direction: "vertical", // 垂直切换选项
       //mousewheel: true, //滚轮
       initialSlide: 2,
@@ -357,15 +349,15 @@ export default {
       scrollbar: {
         el: ".swiper-scrollbar",
       },
-          on: {
-      slideChangeTransitionEnd: function(){
-        thiss.active=this.activeIndex
-        console.log(thiss.active,'ooooo')
-        // console.log(this,'this')
-        // return this.activeIndex
-        // alert(this.activeIndex);//切换结束时，告诉我现在是第几个slide
+      on: {
+        slideChangeTransitionEnd: function () {
+          thiss.active = this.activeIndex
+          console.log(thiss.active, 'ooooo')
+          // console.log(this,'this')
+          // return this.activeIndex
+          // alert(this.activeIndex);//切换结束时，告诉我现在是第几个slide
+        },
       },
-    },
     });
     // console.log(num.activeIndex,'0000000')
 
@@ -378,38 +370,56 @@ export default {
 };
 </script>
   
-  <style lang="scss" scoped>
+<style lang="scss" scoped>
+  // .h3transform{
+  //   height: 69px;
+  //   left: 40px;
+  //   overflow: hidden;
+  //   position: absolute;
+  //   width: 45%;
+  //   transform: translateY(0px);
+  //   transition: -webkit-transform .5s ease-in-out;
+  //   transition: transform .5s ease-in-out;
+  //   transition: transform .5s ease-in-out,-webkit-transform .5s ease-in-out;
+  // }
 @keyframes insetSlideUpTwo {
   0% {
     -webkit-transform: translateY(0);
     transform: translateY(0);
   }
+
   25% {
     -webkit-transform: translateY(8%);
     transform: translateY(8%);
   }
+
   50% {
     -webkit-transform: translateY(0);
     transform: translateY(0);
   }
+
   75% {
     -webkit-transform: translateY(-8%);
     transform: translateY(-8%);
   }
+
   to {
     -webkit-transform: translateY(0);
     transform: translateY(0);
   }
 }
+
 .big_wrap {
   width: 100%;
   height: 100%;
   background: #ffffff;
+
   .homepage_banner {
     width: 100%;
     height: 600px;
     background: #ffe100;
     padding-top: 100px;
+
     // position: relative;
     .home_header {
       width: 60%;
@@ -418,9 +428,11 @@ export default {
       margin: 0 auto;
       position: relative;
       display: flex;
+
       .home_bg {
         width: 50%;
         position: relative;
+
         // -webkit-keyframes phoneSlide {
         //   0% {
         //     -webkit-transform: translateY(-60px);
@@ -440,29 +452,35 @@ export default {
             -webkit-transform: translateY(-60px);
             transform: translateY(-60px);
           }
+
           50% {
             -webkit-transform: translateY(-100px);
             transform: translateY(-100px);
           }
+
           to {
             -webkit-transform: translateY(-60px);
             transform: translateY(-60px);
           }
         }
+
         @-webkit-keyframes medalSlide {
           0% {
             -webkit-transform: translateY(10px);
             transform: translateY(10px);
           }
+
           50% {
             -webkit-transform: translateY(0);
             transform: translateY(0);
           }
+
           to {
             -webkit-transform: translateY(10px);
             transform: translateY(10px);
           }
         }
+
         .video_wrap {
           -webkit-animation: phoneSlide 6s linear infinite forwards;
           animation: phoneSlide 6s linear infinite forwards;
@@ -475,6 +493,7 @@ export default {
           -webkit-transform: translateY(-60px);
           transform: translateY(-60px);
           width: 100%;
+
           .inset_video {
             border-radius: 16px;
             height: auto;
@@ -483,14 +502,13 @@ export default {
             pointer-events: none;
             position: absolute;
             top: 50%;
-            -webkit-transform: perspective(480px) scaleX(0.96) rotateY(-8deg)
-              skewY(4deg) translate(-58%, -50%);
-            transform: perspective(480px) scaleX(0.96) rotateY(-8deg)
-              skewY(4deg) translate(-58%, -50%);
+            -webkit-transform: perspective(480px) scaleX(0.96) rotateY(-8deg) skewY(4deg) translate(-58%, -50%);
+            transform: perspective(480px) scaleX(0.96) rotateY(-8deg) skewY(4deg) translate(-58%, -50%);
             -webkit-transform-style: preserve-3d;
             transform-style: preserve-3d;
             width: 93%;
           }
+
           .inset_iphone {
             height: auto;
             left: 0%;
@@ -499,6 +517,7 @@ export default {
             width: 100%;
           }
         }
+
         .inset_bg {
           height: 502px;
           left: 50%;
@@ -508,9 +527,9 @@ export default {
           transform: translateX(-50%) translateY(-60px);
           width: 502px;
         }
+
         .insetbg_annulus {
-          background: url(/img/banner-annulus.70676fe8.png) no-repeat 50% /
-            contain;
+          background: url(/img/banner-annulus.70676fe8.png) no-repeat 50% / contain;
           height: 100%;
           left: 0;
           position: absolute;
@@ -518,23 +537,26 @@ export default {
           width: 100%;
           z-index: 1;
         }
+
         @keyframes semicircleAnimation {
           0% {
             -webkit-transform: rotate(45deg);
             transform: rotate(45deg);
           }
+
           50% {
             -webkit-transform: rotate(-30deg);
             transform: rotate(-30deg);
           }
+
           to {
             -webkit-transform: rotate(45deg);
             transform: rotate(45deg);
           }
         }
+
         .inset_annulus_sm {
-          background: url("../../assets/image/banner-annulus-sm.png") no-repeat
-            50% / contain;
+          background: url("../../assets/image/banner-annulus-sm.png") no-repeat 50% / contain;
           height: 80.08%;
           left: 9.96%;
           position: absolute;
@@ -542,11 +564,11 @@ export default {
           width: 80.08%;
           z-index: 2;
         }
+
         .bg-semicircle {
           -webkit-animation: semicircleAnimation 6s linear infinite forwards;
           animation: semicircleAnimation 6s linear infinite forwards;
-          background: url(/img/banner-semicircle.0fa5aa84.png) no-repeat 50% /
-            contain;
+          background: url(/img/banner-semicircle.0fa5aa84.png) no-repeat 50% / contain;
           height: 88.84%;
           left: 9.96%;
           opacity: 0.6;
@@ -573,35 +595,40 @@ export default {
           //   forwards;
           // animation: semicircleAnimation-5954443c 6s linear infinite forwards;
         }
+
         @keyframes insetSlideUp {
           0% {
             -webkit-transform: translateY(0);
             transform: translateY(0);
           }
+
           25% {
             -webkit-transform: translateY(25%);
             transform: translateY(25%);
           }
+
           50% {
             -webkit-transform: translateY(0);
             transform: translateY(0);
           }
+
           75% {
             -webkit-transform: translateY(-25%);
             transform: translateY(-25%);
           }
+
           to {
             -webkit-transform: translateY(0);
             transform: translateY(0);
           }
         }
+
         .bg_ball {
           -webkit-animation: insetSlideUp 12s linear infinite forwards;
           animation: insetSlideUp 12s linear infinite forwards;
           -webkit-backdrop-filter: blur(3px);
           backdrop-filter: blur(3px);
-          background: url("../../assets/image/bg_ball.png") no-repeat 50% /
-            contain;
+          background: url("../../assets/image/bg_ball.png") no-repeat 50% / contain;
           height: 30.08%;
           left: 3.58%;
           opacity: 0.8;
@@ -610,11 +637,11 @@ export default {
           width: 30.08%;
           z-index: 4;
         }
+
         .bg_ball_solid {
           -webkit-animation: insetSlideUp 6s linear 1s infinite forwards;
           animation: insetSlideUp 6s linear 1s infinite forwards;
-          background: url("../../assets/image/sphere.png") no-repeat 50% /
-            contain;
+          background: url("../../assets/image/sphere.png") no-repeat 50% / contain;
           bottom: 22.5%;
           height: 7.17%;
           position: absolute;
@@ -623,21 +650,26 @@ export default {
           z-index: 5;
         }
       }
+
       .head_con {
         width: 50%;
+
         .banner_left {
           // position: absolute;
           // top: 100px;
           // width: 35%;
           min-width: 600px;
+
           h2 {
             font-size: 48px;
             font-weight: 700;
             line-height: 1;
             margin-bottom: 60px;
           }
+
           .banner_btn {
             display: flex;
+
             .btn_one {
               width: 89 * 2px;
               font-size: 16px;
@@ -646,6 +678,7 @@ export default {
               border-radius: 26px;
               color: #fff;
             }
+
             a {
               background: no-repeat 15px 50% / auto 15px #f4f4f4;
               // border: 1px solid #fff;
@@ -657,20 +690,24 @@ export default {
               display: flex;
               align-items: center;
               margin-left: 10px;
+
               img {
                 margin-right: 10px;
               }
             }
           }
+
           p {
             margin-top: 24px;
             font-weight: 700;
           }
         }
+
         .banner_img {
           position: absolute;
           top: 30px;
           left: 60%;
+
           // right: 10px;
           img {
             width: 220px;
@@ -679,20 +716,24 @@ export default {
       }
     }
   }
+
   .home_content {
     width: 60%;
     margin: 0 auto;
     min-width: 1200px;
     padding-top: 120px;
+
     .content_img {
       width: 100%;
     }
+
     .invest_title {
       font-size: 48px;
       text-align: center;
       font-weight: 700;
       margin-top: 200px;
     }
+
     .invest_bg {
       width: 100%;
       // height: 366 * 2px;
@@ -701,19 +742,23 @@ export default {
       margin-top: 60px;
       position: relative;
       padding: 50px;
+
       .invest_bg_title {
         font-size: 24px;
         font-weight: 700;
       }
+
       .invest_img {
         display: flex;
         position: relative;
         margin-top: 80px;
+
         .img_left {
           flex-shrink: 0;
           position: relative;
           width: 38.5%;
           z-index: 2;
+
           .left1 {
             -webkit-animation: insetSlideUpTwo 6s linear 1s infinite forwards;
             animation: insetSlideUpTwo 6s linear 1s infinite forwards;
@@ -722,6 +767,7 @@ export default {
             top: 8%;
             right: 7.3%;
           }
+
           .left2 {
             -webkit-animation: insetSlideUpTwo 6s linear 1s infinite forwards;
             animation: insetSlideUpTwo 6s linear 1s infinite forwards;
@@ -730,6 +776,7 @@ export default {
             top: 48%;
             right: 30.3%;
           }
+
           .left3 {
             -webkit-animation: insetSlideUpTwo 6s linear 1s infinite forwards;
             animation: insetSlideUpTwo 6s linear 1s infinite forwards;
@@ -739,6 +786,7 @@ export default {
             right: -2.7%;
           }
         }
+
         .img_phone {
           -webkit-animation: insetSlideUpTwo 6s linear 1s infinite forwards;
           animation: insetSlideUpTwo 6s linear 1s infinite forwards;
@@ -749,10 +797,12 @@ export default {
           transition: background-image 0.3s linear;
           width: 23%;
         }
+
         .img_right {
           flex-shrink: 0;
           position: relative;
           width: 38.5%;
+
           .right1 {
             -webkit-animation: insetSlideUpTwo 6s linear 1s infinite forwards;
             animation: insetSlideUpTwo 6s linear 1s infinite forwards;
@@ -761,6 +811,7 @@ export default {
             top: -15%;
             right: 4.3%;
           }
+
           .right2 {
             -webkit-animation: insetSlideUpTwo 6s linear 1s infinite forwards;
             animation: insetSlideUpTwo 6s linear 1s infinite forwards;
@@ -769,6 +820,7 @@ export default {
             top: 15%;
             left: 0;
           }
+
           .right3 {
             -webkit-animation: insetSlideUpTwo 6s linear 1s infinite forwards;
             animation: insetSlideUpTwo 6s linear 1s infinite forwards;
@@ -780,9 +832,11 @@ export default {
         }
       }
     }
+
     .mobile_intro_swiper {
       margin-top: 20px;
       display: flex;
+
       .swiper_left {
         background-color: #f2f3f5;
         border-radius: 20px;
@@ -791,14 +845,18 @@ export default {
         overflow: hidden;
         padding: 40px 0 0px 40px;
         width: 43%;
+
         h3 {
           font-size: 24px;
           font-weight: 700;
         }
+
         .swiper-container {
           margin-top: 64px;
+
           .swiper-wrapper {
             .swiper-slide {
+
               // width: 254px !important;
               img {
                 width: 300px;
@@ -807,6 +865,7 @@ export default {
           }
         }
       }
+
       .swiper_right {
         width: 55%;
         height: 100%;
@@ -816,11 +875,13 @@ export default {
         position: relative;
         display: flex;
         flex-direction: column;
+
         h3 {
           font-size: 24px;
           font-weight: 700;
           margin-top: 20px;
         }
+
         .swiper-containerTwo {
           .swiper-wrapper {
             .swiper-slide {
@@ -830,14 +891,17 @@ export default {
                 justify-content: flex-end;
                 margin-right: 20px;
               }
+
               img {
                 width: 254px;
               }
             }
           }
+
           .swiper-pagination {
             text-align: left;
             margin-left: 30px;
+
             ::v-deep .swiper-pagination-bullet-active {
               background: #000 !important;
               opacity: 1 !important;
@@ -846,8 +910,10 @@ export default {
         }
       }
     }
+
     .home_pounce {
       width: 100%;
+
       .pounce_title {
         font-size: 48px;
         text-align: left;
@@ -855,81 +921,95 @@ export default {
         margin-top: 160px;
         margin-bottom: 20px;
       }
+
       .pounce_content {
-          position: relative;
-          display: flex;
-          justify-content: space-around;
-          width: 100%;
-          height: 100%;
-          
-          .pounce_left {
-            width:31%;
-            ul{
-              li{
-                font-size: 20px;
-                padding: 16px 30px;
-                background: #F7F8FA;
-                margin-bottom: 24px;
-                border-radius: 10px;
-                a{
-                  font-weight: 700;
-                  color: #000;
-                  text-decoration: underline;
-                }
-                &.on{
-                  background: #ffe100;
-                  font-weight: 700;
-                }
+        position: relative;
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        height: 100%;
+
+        .pounce_left {
+          width: 31%;
+
+          ul {
+            li {
+              font-size: 20px;
+              padding: 16px 30px;
+              background: #F7F8FA;
+              margin-bottom: 24px;
+              border-radius: 10px;
+
+              a {
+                font-weight: 700;
+                color: #000;
+                text-decoration: underline;
+              }
+
+              &.on {
+                background: #ffe100;
+                font-weight: 700;
               }
             }
           }
-          .pounce_right {
-            width: 58%;
-            overflow: hidden;
-            .swiper-containerfour {
-              .swiper-wrapper {
-                .swiper-slide {
-                  .swiper-img {
-                    width: 100%;
-                    // height: 254px;
-                  }
+        }
+
+        .pounce_right {
+          width: 58%;
+          overflow: hidden;
+
+          .swiper-containerfour {
+            .swiper-wrapper {
+              .swiper-slide {
+                .swiper-img {
+                  width: 100%;
+                  // height: 254px;
                 }
               }
             }
           }
         }
+      }
     }
   }
+
   .home_foot {
     width: 100%;
     background: #f8f8fa;
     padding: 120px 0 116px 0;
+
     .foot_con {
       width: 60%;
       margin: 0 auto;
+      min-width: 1200px;
+
       .foot_title {
         width: 100%;
         font-size: 48px;
         font-weight: 700;
         text-align: center;
       }
+
       .foot_list {
         display: flex;
         margin-top: 60px;
         justify-content: space-between;
+
         .list_item {
           width: 29%;
+
           h2 {
             font-size: 24px;
             font-weight: 700;
             margin-top: 45px;
             margin-bottom: 12px;
           }
+
           .foot_list_item {
             li {
-              background: url("../../assets/image/icon-check.svg") no-repeat
-                left 5px/14px 12px;
+              background: url("../../assets/image/icon-check.svg") no-repeat left 5px/14px 12px;
               padding-left: 28px;
+
               a {
                 color: #000;
                 font-weight: 700;
@@ -939,6 +1019,7 @@ export default {
           }
         }
       }
+
       .foot-btn {
         margin: 66px auto 0;
         width: 89 * 2px;

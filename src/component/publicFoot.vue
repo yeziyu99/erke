@@ -76,7 +76,7 @@ ul li {
   // align-items: center;
   .publicFoot_head {
     width: 60%;
-    //  min-width: 600px;
+     min-width: 1200px;
     height: 89px;
     display: flex;
     justify-content: space-between;
@@ -112,6 +112,7 @@ ul li {
   .publicFoot_con {
     width: 60%;
     margin-top: 26.5 * 2px;
+    min-width: 1200px;
     color: #fff;
     display: flex;
     justify-content: space-between;

@@ -41,14 +41,15 @@ ul li {
 .publicHeader {
   height: 75px;
   width: 100%;
-  min-width: 1200px;
   overflow-x: auto;
   background: #ffe100;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 1200px;
   .header_con {
     width: 60%;
+  min-width:1200px;
     // min-width: 600px;
     display: flex;
     justify-content: space-between;
