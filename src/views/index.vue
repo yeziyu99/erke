@@ -44,7 +44,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@media screen and (min-width: 1000px) {
 .page{
     min-width: 1200px;
   }
+  
+}
+@media screen and (max-width: 1000px) {
+.page{
+    // min-width: 750px;
+  }
+  .publicHeader,.publicFoot,.publicFooter{
+    display: none;
+  }
+}
+
 </style>
