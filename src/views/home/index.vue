@@ -143,7 +143,7 @@
                   <img class="swiper-img" src="@/assets/image/tu1.png" alt="" />
                 </div>
                 <div class="swiper-slide">
-                  <img class="swiper-img" src="@/assets/image/tu1.png" alt="" />
+                  <img class="swiper-img" src="@/assets/image/tu2.png" alt="" />
                 </div>
                 <div class="swiper-slide">
                   <img class="swiper-img" src="@/assets/image/tu3.png" alt="" />
@@ -155,7 +155,7 @@
                   <img class="swiper-img" src="@/assets/image/tu5.png" alt="" />
                 </div>
                 <div class="swiper-slide">
-                  <img class="swiper-img" src="@/assets/image/tu1.png" alt="" />
+                  <img class="swiper-img" src="@/assets/image/tu6.png" alt="" />
                 </div>
               </div>
             </div>
@@ -955,7 +955,8 @@ export default {
         }
 
         .pounce_right {
-          width: 58%;
+          width: 43%;
+          min-width: 640px;
           overflow: hidden;
 
           .swiper-containerfour {
