@@ -9,6 +9,8 @@ import "@/assets/styles/reset.scss";
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
 Vue.prototype.$cookie = VueCookies;
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts
 Date.prototype.format = function(format) {
   var o = {
     "M+" : this.getMonth()+1, //month

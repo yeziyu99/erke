@@ -40,7 +40,7 @@
           Customer Service<br />
           Weekdays 09:30-05:00 (next day)
         </li>
-        <li class="con_right_con">400-000-8888</li>
+        <li class="con_right_con">40x-xxx-xx88</li>
         <li class="con_right_bottom">service@XXXXXXXXXXX.com</li>
       </ul>
     </div>
