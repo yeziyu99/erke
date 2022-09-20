@@ -7,6 +7,7 @@ import market from "@/views/market/index.vue";
 import support from "@/views/support/index.vue";
 import about from "@/views/about/index.vue";
 import invest from "@/views/invest/index.vue";
+import detail from "@/views/detail/index.vue";
 
 
 
@@ -47,7 +48,11 @@ const router = new Router({
             name: "about",
             component: about
           },
-          
+          {
+            path: "/detail",
+            name: "detail",
+            component: detail
+          },
         ]
       }]
     },

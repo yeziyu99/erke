@@ -3,6 +3,10 @@
     <div class="help_header">
       <div class="help_content">
         <h2 class="title">Hi! Let us help you.</h2>
+  <el-input  placeholder="请输入内容" v-model="input3" class="input-with-select">
+    
+    <el-button slot="append" icon="el-icon-search" style="background:#fff"></el-button>
+  </el-input>
       </div>
     </div>
     <div class="help_question">
@@ -82,6 +86,7 @@ export default {
   data() {
     return {
       questionData: questionData,
+      input3:''
     };
   },
   components: {},
@@ -124,6 +129,19 @@ export default {
         font-weight: 500;
         padding: 0;
         font-weight: 700;
+      }
+      .input-with-select{
+        width: 60%;
+        height: 56px;
+        ::v-deep .el-input__inner{
+          height: 56px;
+        }
+      }
+      .help-search{
+        height: 56px;
+    margin-top: 20px!important;
+    width: 704px;
+        position: relative;
       }
     }
     .help_question {
