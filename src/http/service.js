@@ -41,7 +41,7 @@ axios.interceptors.request.use(
             //   os: getCookie('curreryOs'),
             rnd: uuidv4(),
             ts: Date.parse(new Date()),
-            is_h5: 1
+            is_h5: 0
         }
         config.params = paramsInfo
         // 排序参数拼接字符串
@@ -102,10 +102,19 @@ const _http = {
     /** web端展示的产品分类列表
      * getSymbolClassify
      * params
-     *  //Token	string	yes	Token
+     *  //Token	string	no	Token
      */
     getSymbolClassify() {
         return http("/symbol/classify", "GET");
+    },
+     /** web端展示的产品分类列表
+     * getForyouTradeTop
+     * params
+     *  //Token	string	no	Token
+     *  identifier crypto（多个分类英文逗号拼接）crypto（虚拟货币）、energy（能源）、forex（外汇）、index（股指）、metal（贵金属）、stock（股票）
+     */
+      getForyouTradeTop(identifier) {
+        return http("/foryou/trade_top", "GET",{identifier:identifier});
     },
     /** Market
      * getForyouMarket

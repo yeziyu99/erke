@@ -79,24 +79,24 @@
             <div class="trade_table">
               <div class="table_title">{{Title}}</div>
               <el-table :data="tableData" height="447" style="width: 100%">
-                <el-table-column prop="products" label="Products" width="110">
+                <el-table-column prop="symbol" label="symbol" width="110">
                   <template slot-scope="scope">
                     <div style="color: #000; font-weight: 700">
-                      {{ scope.row.products }}
+                      {{ scope.row.symbol }}
                     </div>
                   </template>
                 </el-table-column>
-                <el-table-column prop="sell" label="Sell" width="110">
+                <el-table-column prop="ask" label="ask" width="110">
                   <template slot-scope="scope">
                     <div style="color: #fc4e50; font-weight: 700">
-                      {{ scope.row.sell }}
+                      {{ scope.row.ask }}
                     </div>
                   </template>
                 </el-table-column>
-                <el-table-column prop="buy" label="Buy">
+                <el-table-column prop="bid" label="bid">
                   <template slot-scope="scope">
                     <div style="color: #07b360; font-weight: 700">
-                      {{ scope.row.buy }}
+                      {{ scope.row.bid }}
                     </div>
                   </template>
                 </el-table-column>
@@ -187,21 +187,10 @@ export default {
           { name: "Auto-manage your trading lots and leverage" },
           { name: "Get free demo account with £10,000" },
         ];
-        this.tableData = [
-          { products: "AAPL", sell: "155.265", buy: "155.095" },
-          { products: "NFLX", sell: "237.160", buy: "236.460" },
-          { products: "DIS", sell: "114.390", buy: "114.150" },
-          { products: "AMD", sell: "77.460", buy: "77.330" },
-          { products: "VISA", sell: "200.210", buy: "199.780" },
-          { products: "GOOG", sell: "1110.72", buy: "100.70" },
-          { products: "TSLA", sell: "309.270", buy: "308.720" },
-          { products: "BABA", sell: "91.170", buy: "90.940" },
-          { products: "EBAY", sell: "43.820", buy: "43.710" },
-          { products: "AMZN", sell: "131.280", buy: "129.250" },
-        ]
+        this.getForyouTradeTop('stock')
       }
       if (val == "2") {
-        this.Title = 'Indicies'
+        this.Title = 'Indices'
         this.list = [
           { name: "Diversify your assets on your wishlist" },
           {
@@ -211,18 +200,8 @@ export default {
           { name: "Benefit from the leverage of 30:1" },
           { name: "Practice trading skills with £10,000 free demo account" },
         ];
-        this.tableData = [
-          { products: "EUSTX50", sell: "3564.70", buy: "3562.70" },
-          { products: "GER30", sell: "13038.50", buy: "13037.40" },
-          { products: "HK50", sell: "18926.30", buy: "18918.70" },
-          { products: "JPN225", sell: "27910.05", buy: "27898.95" },
-          { products: "NAS100", sell: "12142.30", buy: "12140.60" },
-          { products: "US30", sell: "31257.20", buy: "31254.70" },
-          { products: "USA500", sell: "3956.12", buy: "3955.61" },
-          { products: "AUS200", sell: "6839.75", buy: "6837.85" },
-          { products: "SPA35", sell: "8091.05", buy: "8080.95" },
-          { products: "UK100", sell: "7306.55", buy: "7305.15" },
-        ]
+        this.getForyouTradeTop('index')
+
       } else if (val == "3") {
         this.Title = 'Commodities'
         this.list = [
@@ -234,14 +213,8 @@ export default {
           { name: "Trade asset with 1/30 of cost" },
           { name: "Practice trading skills with £10,000 free demo account" },
         ];
-        this.tableData = [
-          { products: "XAUUSD", sell: "1688.22", buy: "1687.78" },
-          { products: "XAGUSD", sell: "19.5970", buy: "19.5580" },
-          { products: "XNGUSD", sell: "8.4640", buy: "8.4510" },
-          { products: "XBRUSD", sell: "90.981", buy: "90.939" },
-          { products: "XTIUSD", sell: "85.732", buy: "85.691" },
+        this.getForyouTradeTop('energy,metal')
 
-        ]
       } else if (val == "4") {
         this.Title = 'Currencies'
         this.list = [
@@ -252,18 +225,8 @@ export default {
           { name: "Set your risk appetite and expected profit by yourself" },
           { name: "Build your confidence by practicing trading skills with £10,000 free demo account" },
         ];
-        this.tableData = [
-          { products: "AUDUSD", sell: "0.67475", buy: "0.67461" },
-          { products: "EURUSD", sell: "1.00023", buy: "1.00012" },
-          { products: "GBPUSD", sell: "1.15101", buy: "1.15089" },
-          { products: "NZDUSD", sell: "0.60108", buy: "0.60085" },
-          { products: "AUDUSD", sell: "0.88884", buy: "0.88859" },
-          { products: "AUDJPY", sell: "96.695", buy: "96.671" },
-          { products: "USDJPY", sell: "143.307", buy: "143.291" },
-          { products: "USDCHF", sell: "0.95763", buy: "0.95750" },
-          { products: "USDCAD", sell: "1.31718", buy: "1.31700" },
-          { products: "NZDCAD", sell: "0.79175", buy: "0.79144" },
-        ]
+        this.getForyouTradeTop('crypto')
+        
       }
     },
     handleClick(tab, event) {
@@ -279,9 +242,7 @@ export default {
       http.getSymbolClassify()
         .then(rs => {
           if (rs.is_succ) {
-            // this.symbolBool=false;
             for (let key in rs.data) {
-              // rs.data[key]['symbolBool']=false;
               let symbols = rs.data[key]['symbols'];
               let symbolOne = [];
               for (let i = 0; i <= 5; i++) {
@@ -301,9 +262,25 @@ export default {
 
         })
     },
+    getForyouTradeTop(identifier) {
+      let identifiers=identifier||'stock';
+      http.getForyouTradeTop(identifiers)
+        .then(rs => {
+          if (rs.is_succ) {
+            this.tableData=rs.data
+          } else {
+            this.tableData=[];
+            console.error('rs')
+          }
+        }).catch((err) => {
+          console.log(err)
+
+        })
+    },
   },
   created() {
     this.getSymbolClassify()
+    this.getForyouTradeTop('stock')
     //  this.webSocketInit()
   },
   mounted() { },
