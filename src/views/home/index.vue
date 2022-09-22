@@ -81,7 +81,7 @@
       <div class="mobile_intro_swiper">
         <div class="swiper_left">
           <h3>30:1 leverage to apply</h3>
-          <div class="swiper-container">
+          <div class="swiper-container linear">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
                 <img src="@/assets/image/left4.png" alt="" />
@@ -125,7 +125,7 @@
         <div class="pounce_title">Pounce on Tiger CFD to leap ahead</div>
         <div class="pounce_content">
           <div class="pounce_left">
-            <ul>
+            <!-- <ul>
               <li :class="active==2-1||active==7?'on':''" >Access to most popular markets<br>
                 <a href="">See all markets</a>
               </li>
@@ -134,7 +134,19 @@
               <li :class="active==5-1?'on':''" >Deposit and withdraw within 1 <br> minute</li>
               <li :class="active==6-1?'on':''" >No commission and hidden fees</li>
               <li :class="active==7-1?'on':''" >Get your local expert help on<br> what to buy and when to sell</li>
-            </ul>
+            </ul> -->
+            <div class="swiper-containerfour2">
+              <ul class="swiper-wrapper">
+                <li class="swiper-slide" >Access to most popular markets<br>
+                  <a href="">See all markets</a>
+                </li>
+                <li class="swiper-slide" >Suit yourself to manage profit<br> and risk</li>
+                <li class="swiper-slide" >30:1 leverage to gain more with<br> less</li>
+                <li class="swiper-slide" >Deposit and withdraw within 1 <br> minute</li>
+                <li class="swiper-slide" >No commission and hidden fees</li>
+                <li class="swiper-slide" >Get your local expert help on<br> what to buy and when to sell</li>
+              </ul>
+            </div>
           </div>
           <div class="pounce_right">
             <div class="swiper-containerfour">
@@ -215,9 +227,10 @@
 <script>
 // import { Swiper, SwiperSlide } from 'swiper/vue';
 // import 'swiper/css';
-import "swiper/dist/js/swiper";
+// import "swiper/dist/js/swiper";
 import "swiper/dist/css/swiper.css";
 import Swiper from "swiper";
+// import 'swiper/css/swiper.min.css'
 export default {
   data() {
     return {
@@ -236,44 +249,30 @@ export default {
   mounted() {
     
     new Swiper(".swiper-container", {
-      //direction: 'vertical', // 垂直切换选项
-      //mousewheel: true, //滚轮
-      width: 254,
+      observer: true,  
+      observeSlideChildren: true,
+      // observeParents: true,  //这三个可以去文档看下介绍，主要就是异步情况会重新加载swiper。
+      loop: true, //开启环路
+      speed: 2000, //每个轮播图过渡的时间
+      spaceBetween: 1, //每个轮播图间隔
+      slidesPerView: 2, //当前页面显示几个，这里是auto
+      loopedSlides: 6, //比你页面显示的数量大于2就好
+      updateOnWindowResize: false,  //分辨率改变时，防止样式错乱加上！
       autoplay: {
-        //自动开始
-        delay: 2500, //时间间隔
-        disableOnInteraction: false, //*手动操作轮播图后不会暂停*
-      },
-      loop: true, // 循环模式选项
-
-      // 如果需要分页器
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true, // 分页器可以点击
-      },
-
-      // 如果需要前进后退按钮
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-
-      // 如果需要滚动条
-      scrollbar: {
-        el: ".swiper-scrollbar",
-      },
+        delay: 0,   //每循环一圈，间隔时间，无缝轮询，则为0
+        stopOnLastSlide: false,
+        disableOnInteraction: false,
+      }
     });
     new Swiper(".swiper-containerTwo", {
-      //direction: 'vertical', // 垂直切换选项
-      //mousewheel: true, //滚轮
-      // width: 254,
+      speed: 2000,
       autoplay: {
         //自动开始
-        delay: 2500, //时间间隔
+        delay: 2000, //时间间隔
         disableOnInteraction: false, //*手动操作轮播图后不会暂停*
       },
       loop: true, // 循环模式选项
-
+      effect: 'fade',
       // 如果需要分页器
       pagination: {
         el: ".swiper-pagination",
@@ -294,8 +293,6 @@ export default {
     //
     new Swiper(".swiper-containerThree", {
       direction: "vertical", // 垂直切换选项
-      //mousewheel: true, //滚轮
-      // width: 254,
       autoplay: {
         //自动开始
         delay: 2500, //时间间隔
@@ -322,54 +319,34 @@ export default {
     });
     let thiss = this
     let num = new Swiper(".swiper-containerfour", { 
-      // direction: "vertical", // 垂直切换选项
-      //mousewheel: true, //滚轮
-      initialSlide: thiss.active,
       width: 640,
-      autoplay: {
-        //自动开始
-        delay: 2500, //时间间隔
-        disableOnInteraction: false, //*手动操作轮播图后不会暂停*
-      },
-      loop: true, // 循环模式选项
-
-      // // 如果需要分页器
-      // pagination: {
-      //   el: ".swiper-pagination",
-      //   clickable: true, // 分页器可以点击
+      // autoplay: {
+      //   //自动开始
+      //   delay: 2500, //时间间隔
+      //   disableOnInteraction: false, // 手动操作轮播图后不会暂停
       // },
-
-      // 如果需要前进后退按钮
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-
-      // 如果需要滚动条
-      scrollbar: {
-        el: ".swiper-scrollbar",
-      },
-      on: {
-        slideChangeTransitionEnd: function () {
-          thiss.active = this.activeIndex
-          // console.log(thiss.active, 'ooooo')
-          // console.log(this,'this')
-          // return this.activeIndex
-          // alert(this.activeIndex);//切换结束时，告诉我现在是第几个slide
-        },
-      },
+      loop: true, // 循环模式选项
+      spaceBetween: 6,
+      thumbs: {
+        swiper: {
+          el: '.swiper-containerfour2',
+          spaceBetween: 6,
+          slidesPerView: 6,
+          watchSlidesVisibility: true,
+          direction: 'vertical',
+          touchRatio: 0.2,
+          on: {
+            slideChangeTransitionStart() {
+                $(".swiper-containerfour2").css("background", "#ffe100")
+            }
+          }
+        }
+      }
     });
-    // console.log(num.activeIndex,'0000000')
-
-    //     on: {
-    //   slideChangeTransitionEnd: function(){
-    //     alert(this.activeIndex);//切换结束时，告诉我现在是第几个slide
-    //   },
-    // },
   },
 };
 </script>
-  
+
 <style lang="scss" scoped>
   // .h3transform{
   //   height: 69px;
@@ -382,6 +359,29 @@ export default {
   //   transition: transform .5s ease-in-out;
   //   transition: transform .5s ease-in-out,-webkit-transform .5s ease-in-out;
   // }
+::v-deep .linear.swiper-container>.swiper-wrapper {
+	    -webkit-transition-timing-function: linear; /*之前是ease-out*/
+	    -moz-transition-timing-function: linear;
+	    -ms-transition-timing-function: linear;
+	    -o-transition-timing-function: linear;
+	    transition-timing-function: linear;
+	    margin: 0 auto;
+	}
+::v-deep {
+  #thumbs .swiper-slide {
+    opacity: 0.6;
+    width: 25%;
+    height: 40px;
+    margin: auto 30px;
+    cursor: pointer;
+    filter: grayscale(100%);
+  }
+
+  #thumbs .swiper-slide-thumb-active {
+      opacity: 1;
+      filter: grayscale(0);
+  }
+}
 @keyframes insetSlideUpTwo {
   0% {
     -webkit-transform: translateY(0);
@@ -925,37 +925,40 @@ export default {
       .pounce_content {
         position: relative;
         display: flex;
-        justify-content: space-around;
+        // justify-content: space-around;
         width: 100%;
         height: 100%;
 
         .pounce_left {
           width: 31%;
+          overflow: hidden;
+          .swiper-containerfour2 {
+            ul {
+              display: flex;
+              direction: column;
+              li {
+                font-size: 20px;
+                padding: 16px 30px;
+                background: #F7F8FA;
+                margin-bottom: 24px;
+                border-radius: 10px;
+                a {
+                  font-weight: 700;
+                  color: #000;
+                  text-decoration: underline;
+                }
 
-          ul {
-            li {
-              font-size: 20px;
-              padding: 16px 30px;
-              background: #F7F8FA;
-              margin-bottom: 24px;
-              border-radius: 10px;
-
-              a {
-                font-weight: 700;
-                color: #000;
-                text-decoration: underline;
-              }
-
-              &.on {
-                background: #ffe100;
-                font-weight: 700;
+                &.on {
+                  background: #ffe100;
+                  font-weight: 700;
+                }
               }
             }
           }
         }
 
         .pounce_right {
-          width: 43%;
+          width: 45%;
           min-width: 640px;
           overflow: hidden;
 
