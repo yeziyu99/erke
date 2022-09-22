@@ -11,9 +11,9 @@
           </span>
         </div>
         <p class="box_tip">
-          <span> Hign <span class="s_high">0.892</span> </span>
+          <span> Hign <span class="s_high">{{chartPrice.today_high}}</span> </span>
           <span style="margin-left: 20px">
-            Low <span class="s_high">0.892</span>
+            Low <span class="s_high">{{chartPrice.today_low}}</span>
           </span>
         </p>
         <ul class="price">
@@ -73,9 +73,12 @@
         <div class="market">
           <h5>market</h5>
           <ul class="market_list">
-            <li v-for="(item, index) in list" :key="index">
-              <div class="list_l">{{ item.time }}</div>
-              <div class="list_r">{{ item.content }}</div>
+            <li v-for="(item, index) in foryouMarket" :key="index">
+              <div class="list_l">{{ utilTime(item.time) }}</div>
+              <div class="list_r">{{ item.desc }}</div>
+            </li>
+            <li v-if="foryouMarket.length==0">
+              NO DATA
             </li>
           </ul>
         </div>
@@ -110,37 +113,12 @@
 </template>
 
 <script>
+import http from "@/http/service";
+import {utilTime,getQueryString} from "@/utils/util";
 export default {
   data() {
     return {
       active: "1",
-      list: [
-        {
-          time: "2022-09-19 14:11:36",
-          content:
-            "XAUUSD dropped to 4.01 in 10080 the current price is 1665.33",
-        },
-        {
-          time: "2022-09-19 14:11:36",
-          content:
-            "XAUUSD dropped to 4.01 in 10080 the current price is 1665.33",
-        },
-        {
-          time: "2022-09-19 14:11:36",
-          content:
-            "XAUUSD dropped to 4.01 in 10080 the current price is 1665.33",
-        },
-        {
-          time: "2022-09-19 14:11:36",
-          content:
-            "XAUUSD dropped to 4.01 in 10080 the current price is 1665.33",
-        },
-        {
-          time: "2022-09-19 14:11:36",
-          content:
-            "XAUUSD dropped to 4.01 in 10080 the current price is 1665.33",
-        },
-      ],
       data: [
         ["2013/1/24", 2320.26, 2320.26, 2287.3, 2362.94],
         ["2013/1/25", 2300, 2291.3, 2288.26, 2308.38],
@@ -231,6 +209,11 @@ export default {
         ["2013/6/7", 2242.26, 2210.9, 2205.07, 2250.63],
         ["2013/6/13", 2190.1, 2148.35, 2126.22, 2190.1],
       ],
+      chartPrice: {},
+      foryouMarket:[],
+      symbolPercent:{},
+      symbol:getQueryString('symbol'),
+      utilTime:utilTime,
     };
   },
   methods: {
@@ -239,162 +222,162 @@ export default {
     },
     getEchartData() {
       this.$nextTick(() => {
-const myCharts = this.$echarts.init(this.$refs.chart);
-      // const upColor = "#ec0000";
-      // const upBorderColor = "#8A0000";
-      // const downColor = "#00da3c";
-      // const downBorderColor = "#008F28";
-     myCharts.setOption({
-        title: {
-          text: "上证指数",
-          left: 0,
-        },
-        tooltip: {
-          trigger: "axis",
-          axisPointer: {
-            type: "cross",
+        const myCharts = this.$echarts.init(this.$refs.chart);
+        // const upColor = "#ec0000";
+        // const upBorderColor = "#8A0000";
+        // const downColor = "#00da3c";
+        // const downBorderColor = "#008F28";
+        myCharts.setOption({
+          title: {
+            text: "上证指数",
+            left: 0,
           },
-        },
-        legend: {
-          data: ["日K", "MA5", "MA10", "MA20", "MA30"],
-        },
-        grid: {
-          left: "10%",
-          right: "10%",
-          bottom: "15%",
-        },
-        xAxis: {
-          type: "category",
-          data: data0.categoryData,
-          boundaryGap: false,
-          axisLine: { onZero: false },
-          splitLine: { show: false },
-          min: "dataMin",
-          max: "dataMax",
-        },
-        yAxis: {
-          scale: true,
-          splitArea: {
-            show: true,
-          },
-        },
-        dataZoom: [
-          {
-            type: "inside",
-            start: 50,
-            end: 100,
-          },
-          {
-            show: true,
-            type: "slider",
-            top: "90%",
-            start: 50,
-            end: 100,
-          },
-        ],
-        series: [
-          {
-            name: "日K",
-            type: "candlestick",
-            data: data0.values,
-            itemStyle: {
-              color: "#ec0000",
-              color0: "#00da3c",
-              borderColor: "#8A0000",
-              borderColor0: "#008F28",
+          tooltip: {
+            trigger: "axis",
+            axisPointer: {
+              type: "cross",
             },
-            markPoint: {
-              label: {
-                formatter: function (param) {
-                  return param != null ? Math.round(param.value) + "" : "";
-                },
+          },
+          legend: {
+            data: ["日K", "MA5", "MA10", "MA20", "MA30"],
+          },
+          grid: {
+            left: "10%",
+            right: "10%",
+            bottom: "15%",
+          },
+          xAxis: {
+            type: "category",
+            data: data0.categoryData,
+            boundaryGap: false,
+            axisLine: { onZero: false },
+            splitLine: { show: false },
+            min: "dataMin",
+            max: "dataMax",
+          },
+          yAxis: {
+            scale: true,
+            splitArea: {
+              show: true,
+            },
+          },
+          dataZoom: [
+            {
+              type: "inside",
+              start: 50,
+              end: 100,
+            },
+            {
+              show: true,
+              type: "slider",
+              top: "90%",
+              start: 50,
+              end: 100,
+            },
+          ],
+          series: [
+            {
+              name: "日K",
+              type: "candlestick",
+              data: data0.values,
+              itemStyle: {
+                color: "#ec0000",
+                color0: "#00da3c",
+                borderColor: "#8A0000",
+                borderColor0: "#008F28",
               },
-              data: [
-                {
-                  name: "Mark",
-                  coord: ["2013/5/31", 2300],
-                  value: 2300,
-                  itemStyle: {
-                    color: "rgb(41,60,85)",
+              markPoint: {
+                label: {
+                  formatter: function (param) {
+                    return param != null ? Math.round(param.value) + "" : "";
                   },
                 },
-                {
-                  name: "highest value",
-                  type: "max",
-                  valueDim: "highest",
-                },
-                {
-                  name: "lowest value",
-                  type: "min",
-                  valueDim: "lowest",
-                },
-                {
-                  name: "average value on close",
-                  type: "average",
-                  valueDim: "close",
-                },
-              ],
-              tooltip: {
-                formatter: function (param) {
-                  return param.name + "<br>" + (param.data.coord || "");
-                },
-              },
-            },
-            markLine: {
-              symbol: ["none", "none"],
-              data: [
-                [
+                data: [
                   {
-                    name: "from lowest to highest",
-                    type: "min",
-                    valueDim: "lowest",
-                    symbol: "circle",
-                    symbolSize: 10,
-                    label: {
-                      show: false,
-                    },
-                    emphasis: {
-                      label: {
-                        show: false,
-                      },
+                    name: "Mark",
+                    coord: ["2013/5/31", 2300],
+                    value: 2300,
+                    itemStyle: {
+                      color: "rgb(41,60,85)",
                     },
                   },
                   {
+                    name: "highest value",
                     type: "max",
                     valueDim: "highest",
-                    symbol: "circle",
-                    symbolSize: 10,
-                    label: {
-                      show: false,
-                    },
-                    emphasis: {
+                  },
+                  {
+                    name: "lowest value",
+                    type: "min",
+                    valueDim: "lowest",
+                  },
+                  {
+                    name: "average value on close",
+                    type: "average",
+                    valueDim: "close",
+                  },
+                ],
+                tooltip: {
+                  formatter: function (param) {
+                    return param.name + "<br>" + (param.data.coord || "");
+                  },
+                },
+              },
+              markLine: {
+                symbol: ["none", "none"],
+                data: [
+                  [
+                    {
+                      name: "from lowest to highest",
+                      type: "min",
+                      valueDim: "lowest",
+                      symbol: "circle",
+                      symbolSize: 10,
                       label: {
                         show: false,
                       },
+                      emphasis: {
+                        label: {
+                          show: false,
+                        },
+                      },
                     },
+                    {
+                      type: "max",
+                      valueDim: "highest",
+                      symbol: "circle",
+                      symbolSize: 10,
+                      label: {
+                        show: false,
+                      },
+                      emphasis: {
+                        label: {
+                          show: false,
+                        },
+                      },
+                    },
+                  ],
+                  {
+                    name: "min line on close",
+                    type: "min",
+                    valueDim: "close",
+                  },
+                  {
+                    name: "max line on close",
+                    type: "max",
+                    valueDim: "close",
                   },
                 ],
-                {
-                  name: "min line on close",
-                  type: "min",
-                  valueDim: "close",
-                },
-                {
-                  name: "max line on close",
-                  type: "max",
-                  valueDim: "close",
-                },
-              ],
+              },
             },
-          },
-        ],
-      });
-      // myCharts.setOption(option);
-      window.addEventListener("resize", function () {
-        myCharts.resize();
-      });
+          ],
+        });
+        // myCharts.setOption(option);
+        window.addEventListener("resize", function () {
+          myCharts.resize();
+        });
       })
-      
+
     },
     splitData(rawData) {
       const categoryData = [];
@@ -423,9 +406,36 @@ const myCharts = this.$echarts.init(this.$refs.chart);
       }
       return result;
     },
+    getChartPrice() {
+      http.getChartPrice({ symbol:this.symbol }).then(rs => {
+        if (rs.is_succ) {
+          this.chartPrice = rs.data
+        }
+      })
+    },
+    getForyouMarket() {
+      http.getForyouMarket({ symbol:this.symbol,offset_id:0,limit:100 }).then(rs => {
+        if (rs.is_succ) {
+          this.foryouMarket = rs.data.records;
+        }
+      })
+    },
+    getSymbolPercent() {
+      http.getSymbolPercent({ symbol:this.symbol }).then(rs => {
+        if (rs.is_succ) {
+          this.symbolPercent = rs.data.records;
+        }
+        console.log(rs)
+      })
+    },
   },
   mounted() {
-    this.getEchartData();
+    if(getQueryString('symbol')){
+      this.getEchartData();
+      this.getChartPrice()
+      this.getForyouMarket()
+      this.getSymbolPercent()
+    }
   },
 };
 </script>
@@ -435,24 +445,29 @@ const myCharts = this.$echarts.init(this.$refs.chart);
   width: 100%;
   height: 100%;
   background: #fff;
+
   .box {
     width: 60%;
     margin: 100px auto 0;
     padding: 30px 0;
     display: flex;
+
     .box_left {
       width: 50%;
       padding: 0 20px;
       box-sizing: border-box;
+
       .box_switch {
         font-weight: 500;
         font-size: 18px;
       }
+
       .box_positive_exponent {
         margin: 20px 0 10px;
         width: 100%;
         font-size: 33px;
         display: flex;
+
         .exponent {
           margin: 0 20px;
           display: flex;
@@ -460,17 +475,20 @@ const myCharts = this.$echarts.init(this.$refs.chart);
           font-size: 14px;
         }
       }
+
       .box_tip {
         padding: 6px 10px;
         background: #fafafa;
         border-radius: 14px;
         display: inline-block;
       }
+
       .price {
         margin-top: 20px;
         width: 100%;
         justify-content: space-between;
         display: flex;
+
         li {
           font-weight: 500;
           width: 48%;
@@ -482,10 +500,12 @@ const myCharts = this.$echarts.init(this.$refs.chart);
           justify-content: center;
           align-items: center;
           cursor: pointer;
+
           span {
             font-size: 14px;
           }
         }
+
         .k-green-border {
           border: 1px solid #11a169;
         }
@@ -493,6 +513,7 @@ const myCharts = this.$echarts.init(this.$refs.chart);
         .k-green {
           color: #11a169;
         }
+
         .k-red-border {
           border: 1px solid #ce3e17;
         }
@@ -501,15 +522,18 @@ const myCharts = this.$echarts.init(this.$refs.chart);
           color: #ce3e17;
         }
       }
+
       .time_type {
         margin-top: 20px;
         width: 100%;
         height: 28px;
+
         ul {
           width: 100%;
           height: 100%;
           line-height: 28px;
           display: flex;
+
           li {
             text-align: center;
             width: 60px;
@@ -517,6 +541,7 @@ const myCharts = this.$echarts.init(this.$refs.chart);
             margin: 0 10px;
             cursor: pointer;
           }
+
           .active {
             border-radius: 4px;
             background: #ffd521;
@@ -524,16 +549,19 @@ const myCharts = this.$echarts.init(this.$refs.chart);
           }
         }
       }
+
       .box_line {
         margin-top: 10px;
         width: 100%;
         height: 280px;
       }
     }
+
     .box_right {
       width: 50%;
       padding: 0 20px;
       box-sizing: border-box;
+
       .trends {
         h5 {
           font-size: 16px;
@@ -541,29 +569,34 @@ const myCharts = this.$echarts.init(this.$refs.chart);
           margin-bottom: 10px;
           font-weight: 500;
         }
+
         .trends_prp {
           width: 100%;
           height: 6px;
           margin-bottom: 10px;
           justify-content: space-between;
           display: flex;
+
           .trends_L {
             width: 60%;
             height: 100%;
             background: #11a169;
           }
+
           .trends_R {
             width: 40%;
             height: 100%;
             background: #ce3e17;
           }
         }
+
         .trends_tips {
           font-size: 12px;
           display: flex;
           justify-content: space-between;
         }
       }
+
       .market {
         h5 {
           font-size: 16px;
@@ -571,6 +604,7 @@ const myCharts = this.$echarts.init(this.$refs.chart);
           margin-bottom: 10px;
           font-weight: 500;
         }
+
         .market_list {
           width: 100%;
           height: 340px;
@@ -580,22 +614,25 @@ const myCharts = this.$echarts.init(this.$refs.chart);
           overflow-y: auto;
           box-sizing: border-box;
           color: #9c9ea2;
+
           li {
             display: flex;
             width: 100%;
             padding: 10px;
             box-sizing: border-box;
-            align-items: center;
             justify-content: center;
+
             .list_l {
               width: 150px;
             }
+
             .list_r {
               width: calc(100% - 150px);
             }
           }
         }
       }
+
       .btn {
         font-weight: 500;
         width: 140px;

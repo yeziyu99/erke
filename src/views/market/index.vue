@@ -81,7 +81,8 @@
               <el-table :data="tableData" height="447" style="width: 100%">
                 <el-table-column prop="symbol" label="symbol" width="110">
                   <template slot-scope="scope">
-                    <div style="color: #000; font-weight: 700">
+                    <!-- @click="jumpFun('detail?symbol='+scope.row.symbol)" -->
+                    <div style="color: #000; font-weight: 700"  >
                       {{ scope.row.symbol }}
                     </div>
                   </template>
@@ -103,15 +104,19 @@
               </el-table>
             </div>
           </div>
-          <div class="table_foot">View price of our product</div>
+          <div class="table_foot">
+            <a href="#list_title">
+              View price of our product
+            </a>
+          </div>
         </div>
       </div>
     </div>
     <div class="invest_list">
-      <div class="list_title">Trading instruments</div>
+      <div class="list_title" id="list_title">Trading instruments</div>
       <div class="tab">
-        <el-tabs v-model="activeName" @tab-click="handleClick">
-          <el-tab-pane :label="value.identifier_name" :name="value.identifier" v-for="(value,index) in tableDataS"
+        <el-tabs v-model="activeName">
+          <el-tab-pane :label="value.identifier_names" :name="value.identifier_names" v-for="(value,index) in tableDataS"
             :key="index">
             <el-table :data="symbolBool?value.symbols:value.symbolOne"
               style="width: 100%; margin-top: 44px; margin-bottom: 60px">
@@ -152,7 +157,7 @@ export default {
       tableDataS: [],
       Title: 'Stocks',
       symbolBool: false,
-      activeName: "stocks",
+      activeName: "Stocks",
       list: [
         { name: "Track real-time market prices anytime and anywhere." },
         { name: "Gain more with less via 30:1 leverage" },
@@ -170,12 +175,9 @@ export default {
     ]),
     ClickForMore() {
       this.symbolBool = true;
-      // for(let key in this.tableDataS){
-      //   this.tableDataS[key]['symbolBool']=false
-      //   if(this.tableDataS[key]['identifier']){
-
-      //   }
-      // }
+    },
+    symbolFn(symbol){
+      console.log(symbol)
     },
     tabFn(val) {
       this.active = val;
@@ -225,51 +227,73 @@ export default {
           { name: "Set your risk appetite and expected profit by yourself" },
           { name: "Build your confidence by practicing trading skills with £10,000 free demo account" },
         ];
-        this.getForyouTradeTop('crypto')
-        
+        this.getForyouTradeTop('forex')
+
       }
     },
-    handleClick(tab, event) {
-      // console.log(tab, event);
-    },
     jumpFun(route) {
-      // console.log(route)
       if (this.$route.name != route) {
         this.$router.push(route);
       }
+    },
+    getCommodities(data){
+      let datas = []
+      var commodities = {
+        symbols: [],
+        identifier: 'Commodities',
+        identifier_name: 'Commodities',
+        identifier_names: 'Commodities'
+      };
+      for (let key in data) {
+        if (data[key]['identifier'] == 'metal' || data[key]['identifier'] == 'energy') {
+          commodities['symbols'] = [...data[key]['symbols'], ...commodities['symbols']]
+        }
+        else {
+          if (data[key]['identifier'] == 'stock') {
+            data[key]['identifier_names'] = 'Stocks'
+          } else if (data[key]['identifier'] == 'forex') {
+            data[key]['identifier_names'] = 'Currencies'
+          } else if (data[key]['identifier'] == 'index') {
+            data[key]['identifier_names'] = 'Indices'
+          }
+          datas.push(data[key])
+        }
+      }
+      datas.push(commodities)
+      return datas
     },
     getSymbolClassify() {
       http.getSymbolClassify()
         .then(rs => {
           if (rs.is_succ) {
-            for (let key in rs.data) {
-              let symbols = rs.data[key]['symbols'];
+            let datas = this.getCommodities(rs.data)
+            for (let key in datas) {
+              let symbols = datas[key]['symbols'];
               let symbolOne = [];
               for (let i = 0; i <= 5; i++) {
                 if (symbols[i]) {
                   symbolOne.push(symbols[i])
                 }
               }
-              rs.data[key]['symbolOne'] = symbolOne;
+              datas[key]['symbolOne'] = symbolOne;
             }
-            this.tableDataS = rs.data
-            this.activeName = rs.data[0].identifier
+            this.tableDataS = datas
+            this.activeName = datas[0].identifier_names
           } else {
 
           }
         }).catch((err) => {
           console.log(err)
-
         })
     },
     getForyouTradeTop(identifier) {
-      let identifiers=identifier||'stock';
+      let identifiers = identifier || 'stock';
       http.getForyouTradeTop(identifiers)
         .then(rs => {
           if (rs.is_succ) {
-            this.tableData=rs.data
+            this.tableData = rs.data
           } else {
-            this.tableData=[];
+            this.tableData = [];
             console.error('rs')
           }
         }).catch((err) => {
@@ -284,15 +308,6 @@ export default {
     //  this.webSocketInit()
   },
   mounted() { },
-  // watch:{
-  //   'activeName'(newValue,oldValue){
-
-  //     console.log(newValue,oldValue)
-  //   }
-  //   // {
-  //   //   handler:function(){}
-  //   // }
-  // }
 };
 </script>
   
@@ -505,6 +520,9 @@ export default {
           font-weight: 700;
           text-align: right;
           text-decoration: underline;
+          a{
+            color: #000;
+          }
         }
       }
 

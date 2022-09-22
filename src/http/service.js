@@ -38,10 +38,10 @@ axios.interceptors.request.use(
         paramsInfo = {
             ...paramsInfo,
             version: getCookie('version') || '1.0.0',
-            //   os: getCookie('curreryOs'),
+            os: getCookie('curreryOs')|| 'web',
             rnd: uuidv4(),
             ts: Date.parse(new Date()),
-            is_h5: 0
+            // is_h5: 0
         }
         config.params = paramsInfo
         // 排序参数拼接字符串
@@ -95,11 +95,11 @@ function objKeySort(arys) {
             sign += `${newkey[i]}=${arys[newkey[i]]}&`
         }
     }
-    sign += '8wN5G9t8'
+    sign += 'SxP22scZq'
     return sign // 返回排好序的新字符串
 }
 const _http = {
-    /** web端展示的产品分类列表
+    /**  Market页面web端展示的产品分类列表
      * getSymbolClassify
      * params
      *  //Token	string	no	Token
@@ -107,7 +107,7 @@ const _http = {
     getSymbolClassify() {
         return http("/symbol/classify", "GET");
     },
-     /** web端展示的产品分类列表
+     /**  Market页面图表数据
      * getForyouTradeTop
      * params
      *  //Token	string	no	Token
@@ -116,7 +116,7 @@ const _http = {
       getForyouTradeTop(identifier) {
         return http("/foryou/trade_top", "GET",{identifier:identifier});
     },
-    /** Market
+    /** 详情页面的Market
      * getForyouMarket
      * params
      * symbol	交易品种名称
@@ -126,15 +126,7 @@ const _http = {
     getForyouMarket(params) {
         return http("/foryou/market", "GET", params);
     },
-    /** 图表
-     * getChart
-     * params
-     *  //Token	string	yes	Token
-     */
-    getChart() {
-        return http("/chart", "GET");
-    },
-    /** 图表
+    /** 详情页面图表
      * getChart
      * params
      * symbol	
@@ -147,7 +139,7 @@ const _http = {
     getChart(params) {
         return http("/chart", "GET", params);
     },
-    /** 今开昨收价格
+    /** 详情页面今开昨收价格
      * getChartPrice
      * params
      *  symbol
@@ -155,14 +147,14 @@ const _http = {
     getChartPrice(params) {
         return http("/chart/price", "GET", params);
     },
-    // /** 品种分类-可交易品种
-    //  * getSymbolAllow
-    //  * params
-    //  *  //identifier  分类标识
-    //  */
-    // getSymbolAllow(params) {
-    //     return http("/symbol/allow", "GET", params);
-    // },
+    /** 详情页面-多空占比
+     * getSymbolPercent
+     * params
+     *  //symbol  分类标识
+     */
+    getSymbolPercent(params) {
+        return http("/symbol/percent", "GET", params);
+    },
 };
 
 

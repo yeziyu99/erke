@@ -16,19 +16,19 @@
     </div>
     <div class="publicFoot_con">
       <ul class="publicFoot_con_left">
-        <li class="list_router">Market</li>
-        <li class="list_routerLi">Stocks</li>
-        <li class="list_routerLi">Currencies</li>
-        <li class="list_routerLi">Indicies</li>
-        <li class="list_routerLi">Commodities</li>
+        <li class="list_router" @click="jumpFun('market')">Market</li>
+        <li class="list_routerLi" @click="jumpFun('market')">Stocks</li>
+        <li class="list_routerLi" @click="jumpFun('market')">Currencies</li>
+        <li class="list_routerLi" @click="jumpFun('market')">Indicies</li>
+        <li class="list_routerLi" @click="jumpFun('market')">Commodities</li>
       </ul>
       <ul class="publicFoot_con_left">
-        <li class="list_router">Support</li>
-        <li class="list_routerLi">Help Centre</li>
+        <li class="list_router" @click="jumpFun('support')">Support</li>
+        <li class="list_routerLi" @click="jumpFun('support')">Help Centre</li>
       </ul>
       <ul class="publicFoot_con_left">
-        <li class="list_router">About</li>
-        <li class="list_routerLi">Our Story</li>
+        <li class="list_router" @click="jumpFun('about')">About</li>
+        <li class="list_routerLi" @click="jumpFun('about')">Our Story</li>
       </ul>
       <ul class="publicFoot_con_left">
         <li class="list_router">Agreements and Disclosures</li>
@@ -40,8 +40,8 @@
           Customer Service<br />
           Weekdays 09:30-05:00 (next day)
         </li>
-        <li class="con_right_con">40x-xxx-xx88</li>
-        <li class="con_right_bottom">service@XXXXXXXXXXX.com</li>
+        <!-- <li class="con_right_con">40x-xxx-xx88</li>
+        <li class="con_right_bottom">service@XXXXXXXXXXX.com</li> -->
       </ul>
     </div>
   </div>
