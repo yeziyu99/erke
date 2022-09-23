@@ -2,28 +2,37 @@
   <div class="big_wrap">
     <div class="box">
       <div class="box_left">
-        <div class="box_switch">{{symbol}}</div>
+        <div class="box_switch">{{ symbol }}</div>
         <div class="box_positive_exponent">
-          <span class="s_exponent">{{eliObj.sexponent|| '0.00'}}</span>
+          <span class="s_exponent">{{ eliObj.sexponent || "0.00" }}</span>
           <span class="exponent">
-            <span class="s_Aexponent" :style="{color:eliObj.AexponentColor}">{{eliObj.Aexponent || '0.00'}}</span>
-            <span class="s_Jexponent" :style="{color:eliObj.JexponentColor}">{{eliObj.Jexponent || '0.00'}}%</span>
+            <span
+              class="s_Aexponent"
+              :style="{ color: eliObj.AexponentColor }"
+              >{{ eliObj.Aexponent || "0.00" }}</span
+            >
+            <span class="s_Jexponent" :style="{ color: eliObj.JexponentColor }"
+              >{{ eliObj.Jexponent || "0.00" }}%</span
+            >
           </span>
         </div>
         <p class="box_tip">
-          <span> Hign <span class="s_high">{{chartPrice.today_high|| '0.00'}}</span> </span>
+          <span>
+            Hign
+            <span class="s_high">{{ chartPrice.today_high || "0.00" }}</span>
+          </span>
           <span style="margin-left: 20px">
-            Low <span class="s_high">{{chartPrice.today_low|| '0.00'}}</span>
+            Low <span class="s_high">{{ chartPrice.today_low || "0.00" }}</span>
           </span>
         </p>
         <ul class="price">
           <li class="k-red k-red-border">
             <span>Buy</span>
-            <span>{{eliObj.buy|| '0.00'}}</span>
+            <span>{{ eliObj.buy || "0.00" }}</span>
           </li>
           <li class="k-green k-green-border">
             <span>Sell</span>
-            <span>{{eliObj.sell|| '0.00'}}</span>
+            <span>{{ eliObj.sell || "0.00" }}</span>
           </li>
         </ul>
         <div class="time_type">
@@ -56,16 +65,22 @@
         <div class="trends">
           <h5>Investment trends</h5>
           <div class="trends_prp">
-            <div class="trends_L" :style="{width:symbolPercent['sell_percent']*100+'%'}"></div>
-            <div class="trends_R" :style="{width:symbolPercent['buy_percent']*100+'%'}"></div>
+            <div
+              class="trends_L"
+              :style="{ width: symbolPercent['sell_percent'] * 100 + '%' }"
+            ></div>
+            <div
+              class="trends_R"
+              :style="{ width: symbolPercent['buy_percent'] * 100 + '%' }"
+            ></div>
           </div>
           <div class="trends_tips">
             <span>
-              <span>{{symbolPercent['sell_percent']*100}}%</span>
+              <span>{{ symbolPercent["sell_percent"] * 100 }}%</span>
               clients Sell
             </span>
             <span>
-              <span>{{symbolPercent['buy_percent']*100}}%</span>
+              <span>{{ symbolPercent["buy_percent"] * 100 }}%</span>
               clients Buy
             </span>
           </div>
@@ -77,12 +92,10 @@
               <div class="list_l">{{ utilTime(item.time) }}</div>
               <div class="list_r">{{ item.desc }}</div>
             </li>
-            <li v-if="foryouMarket.length==0">
-              NO DATA
-            </li>
+            <li v-if="foryouMarket.length == 0">NO DATA</li>
           </ul>
         </div>
-        <div class="btn">Invest now</div>
+        <div class="btn" @click="jumpFun('invest')">Invest now</div>
         <!-- <ul class="experience">
           <li>
             <img src="@/assets/image/market1.png" alt="" />
@@ -114,184 +127,119 @@
 
 <script>
 import http from "@/http/service";
-import {utilTime,getQueryString} from "@/utils/util";
+import { utilTime, getQueryString } from "@/utils/util";
 export default {
   data() {
     return {
-      active: "1",
+      active: "4",
       data: [],
-      eliObj:{
-        sexponent:'0.00',
-        buy:'0.00',
-        sell:'0.00',
-        Aexponent:'0.00',
-        AexponentColor:'red',
-        JexponentColor:'green',
-        Jexponent:'0.00'
+      eliObj: {
+        sexponent: "0.00",
+        buy: "0.00",
+        sell: "0.00",
+        Aexponent: "0.00",
+        AexponentColor: "red",
+        JexponentColor: "green",
+        Jexponent: "0.00",
       },
       chartPrice: {},
       foryouMarket: [],
       symbolPercent: {
         sell_percent: 0.5,
-        buy_percent: 0.5
+        buy_percent: 0.5,
       },
-      chartData:{},
-      symbol: getQueryString('symbol'),
+      chartData: {},
+      symbol: getQueryString("symbol"),
       utilTime: utilTime,
     };
   },
   methods: {
     jumpFn(val) {
       this.active = val;
+      if(val=='1'){
+        this.getChartData(30);
+      }else if(val=='2'){
+        this.getChartData(60);
+      }else if(val=='3'){
+        this.getChartData(240);
+      }else if(val=='4'){
+        this.getChartData(1440);
+      }else if(val=='5'){
+        this.getChartData(10080);
+      }else if(val=='6'){
+        this.getChartData(43200);
+      }
+    },
+     jumpFun(route) {
+      if (this.$route.name != route) {
+        this.$router.push(route);
+      }
     },
     getEchartData() {
       this.$nextTick(() => {
         const myCharts = this.$echarts.init(this.$refs.chart);
-        // const upColor = "#ec0000";
-        // const upBorderColor = "#8A0000";
-        // const downColor = "#00da3c";
-        // const downBorderColor = "#008F28";
         myCharts.setOption({
-          // title: {
-          //   text: "上证指数",
-          //   left: 0,
+          // legend: {
+          //   data: ["日K", "MA5", "MA10", "MA20", "MA30"],
+          //   inactiveColor: "#777",
           // },
           tooltip: {
             trigger: "axis",
             axisPointer: {
+              animation: false,
               type: "cross",
+              lineStyle: {
+                color: "#376df4",
+                width: 2,
+                opacity: 1,
+              },
             },
-          },
-          // legend: {
-          //   data: ["日K", "MA5", "MA10", "MA20", "MA30"],
-          // },
-          grid: {
-            left: "10%",
-            right: "10%",
-            bottom: "15%",
           },
           xAxis: {
             type: "category",
-            data: this.data.categoryData,
-            boundaryGap: false,
-            axisLine: { onZero: false },
-            splitLine: { show: false },
-            min: "dataMin",
-            max: "dataMax",
+            data: this.chartData.categoryData,
+            axisLine: { lineStyle: { color: "#8392A5" } },
           },
           yAxis: {
             scale: true,
-            splitArea: {
-              show: true,
-            },
+            axisLine: { lineStyle: { color: "#8392A5" } },
+            splitLine: { show: false },
           },
-          // dataZoom: [
-          //   {
-          //     type: "inside",
-          //     start: 50,
-          //     end: 100,
-          //   },
-          //   {
-          //     show: true,
-          //     type: "slider",
-          //     top: "90%",
-          //     start: 50,
-          //     end: 100,
-          //   },
-          // ],
+          grid: {
+            bottom: 80,
+          },
+          dataZoom: [
+            {
+              textStyle: {
+                color: "#8392A5",
+              },
+              handleIcon:
+                "path://M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z",
+              dataBackground: {
+                areaStyle: {
+                  color: "#8392A5",
+                },
+                lineStyle: {
+                  opacity: 0.8,
+                  color: "#8392A5",
+                },
+              },
+              brushSelect: true,
+            },
+            {
+              type: "inside",
+            },
+          ],
           series: [
             {
-              name: "日K",
               type: "candlestick",
-              data: this.data.values,
+              // name: "Day",
+              data: this.chartData.values,
               itemStyle: {
-                color: "#ec0000",
-                color0: "#00da3c",
-                borderColor: "#8A0000",
-                borderColor0: "#008F28",
-              },
-              markPoint: {
-                label: {
-                  formatter: function (param) {
-                    return param != null ? Math.round(param.value) + "" : "";
-                  },
-                },
-                data: [
-                  {
-                    name: "Mark",
-                    coord: ["2013/5/31", 2300],
-                    value: 2300,
-                    itemStyle: {
-                      color: "rgb(41,60,85)",
-                    },
-                  },
-                  {
-                    name: "highest value",
-                    type: "max",
-                    valueDim: "highest",
-                  },
-                  {
-                    name: "lowest value",
-                    type: "min",
-                    valueDim: "lowest",
-                  },
-                  {
-                    name: "average value on close",
-                    type: "average",
-                    valueDim: "close",
-                  },
-                ],
-                tooltip: {
-                  formatter: function (param) {
-                    return param.name + "<br>" + (param.data.coord || "");
-                  },
-                },
-              },
-              markLine: {
-                symbol: ["none", "none"],
-                data: [
-                  [
-                    {
-                      name: "from lowest to highest",
-                      type: "min",
-                      valueDim: "lowest",
-                      symbol: "circle",
-                      symbolSize: 10,
-                      label: {
-                        show: false,
-                      },
-                      emphasis: {
-                        label: {
-                          show: false,
-                        },
-                      },
-                    },
-                    {
-                      type: "max",
-                      valueDim: "highest",
-                      symbol: "circle",
-                      symbolSize: 10,
-                      label: {
-                        show: false,
-                      },
-                      emphasis: {
-                        label: {
-                          show: false,
-                        },
-                      },
-                    },
-                  ],
-                  {
-                    name: "min line on close",
-                    type: "min",
-                    valueDim: "close",
-                  },
-                  {
-                    name: "max line on close",
-                    type: "max",
-                    valueDim: "close",
-                  },
-                ],
+                color: "#FD1050",
+                color0: "#0CF49B",
+                borderColor: "#FD1050",
+                borderColor0: "#0CF49B",
               },
             },
           ],
@@ -300,24 +248,31 @@ export default {
         window.addEventListener("resize", function () {
           myCharts.resize();
         });
-      })
-
+      });
     },
 
-filterTime(time) {
-  const date = new Date(time)
-  const Y = date.getFullYear()
-  const M = date.getMonth() + 1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1 
-  const D = date.getDate()
-  return `${Y}-${M}-${D}`
-},
+    filterTime(time) {
+      const date = new Date(time);
+      const Y = date.getFullYear();
+      const M =
+        date.getMonth() + 1 < 10
+          ? "0" + (date.getMonth() + 1)
+          : date.getMonth() + 1;
+      const D = date.getDate();
+      return `${Y}-${M}-${D}`;
+    },
     splitData() {
       const categoryData = [];
       const values = [];
       for (var i = 0; i < this.data.length; i++) {
-        console.log(this.filterTime(this.data[i].ctm),'图表时间')
-        // categoryData.push(rawData[i].splice(0, 1)[0]);
-        // values.push(rawData[i]);
+        // console.log(this.filterTime(this.data[i].ctm*1000),'图表时间')
+        categoryData.push(this.filterTime(this.data[i].ctm * 1000));
+        let arr = [];
+        arr.push(Number(this.data[i].open));
+        arr.push(Number(this.data[i].close));
+        arr.push(Number(this.data[i].low));
+        arr.push(Number(this.data[i].high));
+        values.push(arr);
       }
       return {
         categoryData: categoryData,
@@ -340,78 +295,98 @@ filterTime(time) {
     //   return result;
     // },
     getChartPrice() {
-      http.getChartPrice({ symbol: this.symbol }).then(rs => {
+      http.getChartPrice({ symbol: this.symbol }).then((rs) => {
         if (rs.is_succ) {
-          this.chartPrice = rs.data
+          this.chartPrice = rs.data;
         }
-        console.log(rs.data,'0000')
-      })
+        console.log(rs.data, "0000");
+      });
     },
     getForyouMarket() {
-      http.getForyouMarket({ symbol: this.symbol, offset_id: 0, limit: 100 }).then(rs => {
-        if (rs.is_succ) {
-          this.foryouMarket = rs.data.records;
-        }
-      })
+      http
+        .getForyouMarket({ symbol: this.symbol, offset_id: 0, limit: 100 })
+        .then((rs) => {
+          if (rs.is_succ) {
+            this.foryouMarket = rs.data.records;
+          }
+        });
     },
     getSymbolPercent() {
-      http.getSymbolPercent({ symbol: this.symbol }).then(rs => {
+      http.getSymbolPercent({ symbol: this.symbol }).then((rs) => {
         if (rs.is_succ) {
           this.symbolPercent = rs.data;
         }
-      })
+      });
     },
-     getChartData(type){
-      http.getChart({symbol:this.symbol,type:type,limit: 50,end: new Date().getTime(),offset:0}).then(rs=>{
-        console.log(rs,'图表')
-        if(rs.is_succ){
-          this.data=rs.data.records
-          this.splitData()
-        }
-      })
+    getChartData(type) {
+      http
+        .getChart({
+          symbol: this.symbol,
+          type: type,
+          limit: 50,
+          end: new Date().getTime(),
+          offset: 0,
+        })
+        .then((rs) => {
+          console.log(rs, "图表");
+          if (rs.is_succ) {
+            this.data = rs.data.records;
+            this.chartData = this.splitData();
+            console.log(this.chartData);
+            this.getEchartData();
+          }
+        });
     },
     socketLin() {
-      let then=this;
+      let then = this;
       // let url=(location.host.indexOf('localhost')!=-1||location.host.indexOf('-inc')!=-1)?'wss://ws-et6.tigerbrokers-inc.com:7779':'wss://ws-et6.tigerbrokers.co.uk:7779'
-      let url='wss://ws-et6.tigerbrokers.co.uk:7779'
+      let url = "wss://ws-et6.tigerbrokers.co.uk:7779";
       // 测试
       // var ws = new WebSocket("wss://ws-et6.tigerbrokers-inc.com:7779")
       // 线上
-      var ws = new WebSocket(url)
+      var ws = new WebSocket(url);
       ws.onclose = function (e) {
         ws.close(); //关闭TCP连接
       };
       ws.onopen = function () {
-        let symbol = getQueryString('symbol')
+        let symbol = getQueryString("symbol");
         setInterval(function () {
           var message = {
             type: 3,
-            content: symbol
-          }
+            content: symbol,
+          };
           ws.send(JSON.stringify(message));
-        }, 1000)
+        }, 1000);
         ws.onmessage = function (e) {
           // e.data [["AUDCAD","0.92488","0.9246","0.92474","1631780516"]]
-          var eLi = JSON.parse(e.data)
+          var eLi = JSON.parse(e.data);
           if (eLi[0]) {
-            then.eliObj['sexponent']=eLi[0][3]
-            then.eliObj['buy']=eLi[0][1]
-            then.eliObj['sell']=eLi[0][2]
-            var Jexponent = ((eLi[0][3] - then.chartPrice.yesterday_close_price) / then.chartPrice.yesterday_close_price * 100).toFixed(2)
-            var Aexponent = ((eLi[0][3] - then.chartPrice.yesterday_close_price) / then.chartPrice.yesterday_close_price * 1).toFixed(5)
+            then.eliObj["sexponent"] = eLi[0][3];
+            then.eliObj["buy"] = eLi[0][1];
+            then.eliObj["sell"] = eLi[0][2];
+            var Jexponent = (
+              ((eLi[0][3] - then.chartPrice.yesterday_close_price) /
+                then.chartPrice.yesterday_close_price) *
+              100
+            ).toFixed(2);
+            var Aexponent = (
+              ((eLi[0][3] - then.chartPrice.yesterday_close_price) /
+                then.chartPrice.yesterday_close_price) *
+              1
+            ).toFixed(5);
             if (Aexponent > 0) {
-              then.eliObj.Aexponent = Aexponent
-              then.eliObj.AexponentColor = 'green'
+              then.eliObj.Aexponent = Aexponent;
+              then.eliObj.AexponentColor = "green";
             } else {
-              then.eliObj.AexponentColor = 'red'
+              then.eliObj.AexponentColor = "red";
             }
-            then.eliObj.Aexponent = Aexponent
+            then.eliObj.Aexponent = Aexponent;
             if (Jexponent > 0) {
-              then.eliObj.JexponentColor = 'green'
+              then.eliObj.JexponentColor = "green";
             } else {
-              then.eliObj.JexponentColor = 'red'
+              then.eliObj.JexponentColor = "red";
             }
-            then.eliObj.Jexponent = Jexponent
+            then.eliObj.Jexponent = Jexponent;
 
             // if (eLi[0][3] > today_high) {
             //   today_high = eLi[0][3]
@@ -459,22 +434,21 @@ filterTime(time) {
           //     data: k_data
           //   }]
           // })
-
-        }
-      }
-    }
+        };
+      };
+    },
   },
   mounted() {
-    let then=this;
-    if (getQueryString('symbol')) {
+    let then = this;
+    if (getQueryString("symbol")) {
+      then.getChartData(1440);
       then.getEchartData();
-      then.getChartPrice()
-      then.getForyouMarket()
-      then.getChartData(1440)
+      then.getChartPrice();
+      then.getForyouMarket();
       setTimeout(function () {
-        then.socketLin()//实时报价
-      }, 2000)
-      then.getSymbolPercent()
+        then.socketLin(); //实时报价
+      }, 2000);
+      then.getSymbolPercent();
     }
   },
 };
