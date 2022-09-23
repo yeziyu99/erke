@@ -114,7 +114,7 @@
 
 <script>
 import http from "@/http/service";
-import {utilTime,getQueryString} from "@/utils/util";
+import {utilTime,getQueryString,getChart} from "@/utils/util";
 export default {
   data() {
     return {
@@ -228,19 +228,19 @@ export default {
         // const downColor = "#00da3c";
         // const downBorderColor = "#008F28";
         myCharts.setOption({
-          title: {
-            text: "上证指数",
-            left: 0,
-          },
+          // title: {
+          //   text: "上证指数",
+          //   left: 0,
+          // },
           tooltip: {
             trigger: "axis",
             axisPointer: {
               type: "cross",
             },
           },
-          legend: {
-            data: ["日K", "MA5", "MA10", "MA20", "MA30"],
-          },
+          // legend: {
+          //   data: ["日K", "MA5", "MA10", "MA20", "MA30"],
+          // },
           grid: {
             left: "10%",
             right: "10%",
@@ -248,7 +248,7 @@ export default {
           },
           xAxis: {
             type: "category",
-            data: data0.categoryData,
+            data: this.data.categoryData,
             boundaryGap: false,
             axisLine: { onZero: false },
             splitLine: { show: false },
@@ -279,7 +279,7 @@ export default {
             {
               name: "日K",
               type: "candlestick",
-              data: data0.values,
+              data: this.data.values,
               itemStyle: {
                 color: "#ec0000",
                 color0: "#00da3c",
@@ -411,6 +411,7 @@ export default {
         if (rs.is_succ) {
           this.chartPrice = rs.data
         }
+        console.log(rs.data,'0000')
       })
     },
     getForyouMarket() {
@@ -428,6 +429,11 @@ export default {
         console.log(rs)
       })
     },
+    getChartData(){
+      http.getChart({symbol:this.symbol}).then(rs=>{
+        console.log(rs,'图表')
+      })
+    }
   },
   mounted() {
     if(getQueryString('symbol')){
@@ -435,6 +441,7 @@ export default {
       this.getChartPrice()
       this.getForyouMarket()
       this.getSymbolPercent()
+      this.getChartData()
     }
   },
 };
