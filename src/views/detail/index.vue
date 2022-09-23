@@ -2,28 +2,28 @@
   <div class="big_wrap">
     <div class="box">
       <div class="box_left">
-        <div class="box_switch">Tesla</div>
+        <div class="box_switch">{{symbol}}</div>
         <div class="box_positive_exponent">
-          <span class="s_exponent">0.00</span>
+          <span class="s_exponent">{{eliObj.sexponent|| '0.00'}}</span>
           <span class="exponent">
-            <span class="s_Aexponent">0.00</span>
-            <span class="s_Jexponent">0.00%</span>
+            <span class="s_Aexponent" :style="{color:eliObj.AexponentColor}">{{eliObj.Aexponent || '0.00'}}</span>
+            <span class="s_Jexponent" :style="{color:eliObj.JexponentColor}">{{eliObj.Jexponent || '0.00'}}%</span>
           </span>
         </div>
         <p class="box_tip">
-          <span> Hign <span class="s_high">{{chartPrice.today_high}}</span> </span>
+          <span> Hign <span class="s_high">{{chartPrice.today_high|| '0.00'}}</span> </span>
           <span style="margin-left: 20px">
-            Low <span class="s_high">{{chartPrice.today_low}}</span>
+            Low <span class="s_high">{{chartPrice.today_low|| '0.00'}}</span>
           </span>
         </p>
         <ul class="price">
           <li class="k-red k-red-border">
             <span>Buy</span>
-            <span>0.00</span>
+            <span>{{eliObj.buy|| '0.00'}}</span>
           </li>
           <li class="k-green k-green-border">
             <span>Sell</span>
-            <span>0.00</span>
+            <span>{{eliObj.sell|| '0.00'}}</span>
           </li>
         </ul>
         <div class="time_type">
@@ -56,16 +56,16 @@
         <div class="trends">
           <h5>Investment trends</h5>
           <div class="trends_prp">
-            <div class="trends_L"></div>
-            <div class="trends_R"></div>
+            <div class="trends_L" :style="{width:symbolPercent['sell_percent']*100+'%'}"></div>
+            <div class="trends_R" :style="{width:symbolPercent['buy_percent']*100+'%'}"></div>
           </div>
           <div class="trends_tips">
             <span>
-              <span>60.00%</span>
+              <span>{{symbolPercent['sell_percent']*100}}%</span>
               clients Sell
             </span>
             <span>
-              <span>40.00%</span>
+              <span>{{symbolPercent['buy_percent']*100}}%</span>
               clients Buy
             </span>
           </div>
@@ -114,7 +114,7 @@
 
 <script>
 import http from "@/http/service";
-import {utilTime,getQueryString} from "@/utils/util";
+import { utilTime, getQueryString } from "@/utils/util";
 export default {
   data() {
     return {
@@ -209,11 +209,23 @@ export default {
         ["2013/6/7", 2242.26, 2210.9, 2205.07, 2250.63],
         ["2013/6/13", 2190.1, 2148.35, 2126.22, 2190.1],
       ],
+      eliObj:{
+        sexponent:'0.00',
+        buy:'0.00',
+        sell:'0.00',
+        Aexponent:'0.00',
+        AexponentColor:'red',
+        JexponentColor:'green',
+        Jexponent:'0.00'
+      },
       chartPrice: {},
-      foryouMarket:[],
-      symbolPercent:{},
-      symbol:getQueryString('symbol'),
-      utilTime:utilTime,
+      foryouMarket: [],
+      symbolPercent: {
+        sell_percent: 0.5,
+        buy_percent: 0.5
+      },
+      symbol: getQueryString('symbol'),
+      utilTime: utilTime,
     };
   },
   methods: {
@@ -407,34 +419,130 @@ export default {
       return result;
     },
     getChartPrice() {
-      http.getChartPrice({ symbol:this.symbol }).then(rs => {
+      http.getChartPrice({ symbol: this.symbol }).then(rs => {
         if (rs.is_succ) {
           this.chartPrice = rs.data
         }
       })
     },
     getForyouMarket() {
-      http.getForyouMarket({ symbol:this.symbol,offset_id:0,limit:100 }).then(rs => {
+      http.getForyouMarket({ symbol: this.symbol, offset_id: 0, limit: 100 }).then(rs => {
         if (rs.is_succ) {
           this.foryouMarket = rs.data.records;
         }
       })
     },
     getSymbolPercent() {
-      http.getSymbolPercent({ symbol:this.symbol }).then(rs => {
+      http.getSymbolPercent({ symbol: this.symbol }).then(rs => {
         if (rs.is_succ) {
-          this.symbolPercent = rs.data.records;
+          this.symbolPercent = rs.data;
         }
-        console.log(rs)
       })
     },
+    socketLin() {
+      let then=this;
+      // let url=(location.host.indexOf('localhost')!=-1||location.host.indexOf('-inc')!=-1)?'wss://ws-et6.tigerbrokers-inc.com:7779':'wss://ws-et6.tigerbrokers.co.uk:7779'
+      let url='wss://ws-et6.tigerbrokers.co.uk:7779'
+      // 测试
+      // var ws = new WebSocket("wss://ws-et6.tigerbrokers-inc.com:7779")
+      // 线上
+      var ws = new WebSocket(url)
+      ws.onclose = function (e) {
+        ws.close(); //关闭TCP连接
+      };
+      ws.onopen = function () {
+        let symbol = getQueryString('symbol')
+        setInterval(function () {
+          var message = {
+            type: 3,
+            content: symbol
+          }
+          ws.send(JSON.stringify(message));
+        }, 1000)
+        ws.onmessage = function (e) {
+          // e.data [["AUDCAD","0.92488","0.9246","0.92474","1631780516"]]
+          var eLi = JSON.parse(e.data)
+          if (eLi[0]) {
+            then.eliObj['sexponent']=eLi[0][3]
+            then.eliObj['buy']=eLi[0][1]
+            then.eliObj['sell']=eLi[0][2]
+            var Jexponent = ((eLi[0][3] - then.chartPrice.yesterday_close_price) / then.chartPrice.yesterday_close_price * 100).toFixed(2)
+            var Aexponent = ((eLi[0][3] - then.chartPrice.yesterday_close_price) / then.chartPrice.yesterday_close_price * 1).toFixed(5)
+            if (Aexponent > 0) {
+              then.eliObj.Aexponent = Aexponent
+              then.eliObj.AexponentColor = 'green'
+            } else {
+              then.eliObj.AexponentColor = 'red'
+            }
+            then.eliObj.Aexponent = Aexponent
+            if (Jexponent > 0) {
+              then.eliObj.JexponentColor = 'green'
+            } else {
+              then.eliObj.JexponentColor = 'red'
+            }
+            then.eliObj.Jexponent = Jexponent
+
+            // if (eLi[0][3] > today_high) {
+            //   today_high = eLi[0][3]
+            // }
+            // if (eLi[0][3] < today_low) {
+            //   today_low = eLi[0][3]
+            // }
+            // if (historyDate.indexOf(formatDate(eLi[0][4] * 1000)) == -1) {
+            //   historyDate.push(formatDate(eLi[0][4] * 1000))
+            //   var obj = {
+            //     time: eLi[0][4],
+            //     low: parseFloat(eLi[0][2]),
+            //     q1: parseFloat(eLi[0][3]),
+            //     median: null,//中位数
+            //     q3: parseFloat(eLi[0][3]),
+            //     high: parseFloat(eLi[0][2]),
+            //     name: formatDate(eLi[0][4] * 1000),
+            //     RiseAndFall: 0,
+            //     // color: RiseAndFall>0?"#ff0000":RiseAndFall<0?"#00ff00":"#bbbbbb"
+            //   }
+            //   k_data.push(obj)
+            // } else if (historyDate.indexOf(formatDate(eLi[0][4] * 1000)) > -1) {
+            //   var obj = {
+            //     time: eLi[0][4],
+            //     low: parseFloat(eLi[0][2]) < k_data[k_data.length - 1].low ? parseFloat(eLi[0][2]) : k_data[k_data.length - 1].low,
+            //     q1: parseFloat(eLi[0][3]),
+            //     median: null,//中位数
+            //     q3: parseFloat(eLi[0][3]),
+            //     high: parseFloat(eLi[0][3]) > k_data[k_data.length - 1].high ? parseFloat(eLi[0][3]) : k_data[k_data.length - 1].high,
+            //     name: formatDate(eLi[0][4] * 1000),
+            //     RiseAndFall: (parseFloat(eLi[0][2]) - parseFloat(k_data[k_data.length - 1].open_price)) / parseFloat(k_data[k_data.length - 1].open_price) * 1,
+            //     // color: RiseAndFall>0?"#ff0000":RiseAndFall<0?"#00ff00":"#bbbbbb"
+            //   }
+
+            //   // k_data = historyList
+
+            //   k_data[k_data.length - 1] = obj
+            // }
+          }
+          // var chart = $('#container').highcharts()
+          // chart.update({
+          //   series: [{
+          //     type: 'boxplot',
+          //     // fillColor:null,//关键:填充色，不做设置，填充色为白色，设置为null,undefined,''等，填充色为data的color
+          //     data: k_data
+          //   }]
+          // })
+
+        }
+      }
+    }
   },
   mounted() {
-    if(getQueryString('symbol')){
-      this.getEchartData();
-      this.getChartPrice()
-      this.getForyouMarket()
-      this.getSymbolPercent()
+    let then=this;
+    if (getQueryString('symbol')) {
+      then.getEchartData();
+      then.getChartPrice()
+      then.getForyouMarket()
+      setTimeout(function () {
+        then.socketLin()//实时报价
+      }, 2000)
+      then.getSymbolPercent()
     }
   },
 };
@@ -578,13 +686,11 @@ export default {
           display: flex;
 
           .trends_L {
-            width: 60%;
             height: 100%;
             background: #11a169;
           }
 
           .trends_R {
-            width: 40%;
             height: 100%;
             background: #ce3e17;
           }

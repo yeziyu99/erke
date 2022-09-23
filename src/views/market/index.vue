@@ -81,8 +81,8 @@
               <el-table :data="tableData" height="447" style="width: 100%">
                 <el-table-column prop="symbol" label="symbol" width="110">
                   <template slot-scope="scope">
-                    <!-- @click="jumpFun('detail?symbol='+scope.row.symbol)" -->
-                    <div style="color: #000; font-weight: 700"  >
+                    <!--  -->
+                    <div style="color: #000; font-weight: 700"  @click="jumpFun('detail?symbol='+scope.row.symbol)">
                       {{ scope.row.symbol }}
                     </div>
                   </template>
