@@ -3,9 +3,9 @@
     <div class="header_con">
       <img @click="jumpFun('home')" src="@/assets/image/headerIcon.png" alt="" />
       <ul>
-        <li class="header_route" @click="jumpFun('market')">Markets</li>
-        <li class="header_route" @click="jumpFun('support')">Support</li>
-        <li class="header_route" @click="jumpFun('about')">About</li>
+        <li :class="{'header_route':true,'fontW700':className==='market'}"  @click="jumpFun('market')">Markets</li>
+        <li :class="{'header_route':true,'fontW700':className==='support'}" @click="jumpFun('support')">Support</li>
+        <li :class="{'header_route':true,'fontW700':className==='about'}" @click="jumpFun('about')">About</li>
         <li class="header_btn" style="background: #fff; margin-right: 8px" @click="jumpFun('invest')">
           LOGIN
         </li>
@@ -19,10 +19,18 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      className:this.$route.name
+    };
   },
   mounted() {
-    // console.log(3333);
+  },
+  watch:{
+    $route(to,form){
+      if(to.name!=form.name||!form){
+        this.className=to.name
+      }
+    }
   },
   methods: {
     jumpFun(route) {
@@ -38,6 +46,7 @@ export default {
 ul li {
   list-style: none;
 }
+
 .publicHeader {
   height: 75px;
   width: 100%;
@@ -47,19 +56,34 @@ ul li {
   justify-content: center;
   align-items: center;
   min-width: 1200px;
+
   .header_con {
     width: 60%;
-  min-width:1200px;
+    min-width: 1200px;
     // min-width: 600px;
+    cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     ul {
       display: flex;
       align-items: center;
+
       .header_route {
         font-size: 18px;
-        margin-right: 35px;
+        padding: 5px;
+        margin-right: 30px;
+        cursor: pointer;
+      }
+      .header_route:hover{
+        border-bottom: 2px solid;
+        font-weight: 600;
+        transform: scaleX(1);
+        transition: 0.4s cubic-bezie÷r(0.165, 0.84, 0.44, 1);
+      }
+      .fontW700{
+        font-weight: 700;
       }
       .header_btn {
         width: 110px;
@@ -67,6 +91,7 @@ ul li {
         text-align: center;
         line-height: 36px;
         border-radius: 8px;
+        cursor: pointer;
       }
     }
   }
