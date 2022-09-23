@@ -334,11 +334,11 @@ export default {
     });
     let thiss = this
     let num = new Swiper(".swiper-containerfour", {
-      // autoplay: {
-      //   //自动开始
-      //   delay: 2500, //时间间隔
-      //   disableOnInteraction: false, // 手动操作轮播图后不会暂停
-      // },
+      autoplay: {
+        //自动开始
+        delay: 2500, //时间间隔
+        disableOnInteraction: false, // 手动操作轮播图后不会暂停
+      },
       // slidesPerView: 'auto',
       loop: true, // 循环模式选项
       slidesPerView: 1,
