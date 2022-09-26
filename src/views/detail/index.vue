@@ -264,6 +264,9 @@ export default {
     splitData() {
       const categoryData = [];
       const values = [];
+      this.data.sort(function(a,b){
+        return a.ctm*1000-b.ctm*1000
+      })
       for (var i = 0; i < this.data.length; i++) {
         // console.log(this.filterTime(this.data[i].ctm*1000),'图表时间')
         categoryData.push(this.filterTime(this.data[i].ctm * 1000));
