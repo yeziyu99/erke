@@ -14,10 +14,12 @@
               <div class="btn_one" @click="jumpFun('invest')">Get started</div>
               <a href="" class="ios" @click="jumpFun('invest')">
                 <img src="@/assets/image/apple_down.png" alt="" />
-                APP STORE</a>
+                APP STORE</a
+              >
               <a href="" class="android" @click="jumpFun('invest')">
                 <img src="@/assets/image/apple_down.png" alt="" />
-                GOOGLE PLAY</a>
+                GOOGLE PLAY</a
+              >
             </div>
             <p>Images displayed are for illustrative purposes only</p>
           </div>
@@ -26,12 +28,14 @@
           </div> -->
         </div>
         <div class="home_bg">
-          <div style="
+          <div
+            style="
               max-width: 230px;
               flex: 1 1;
               margin: 0 auto;
               position: relative;
-            ">
+            "
+          >
             <div style="padding-top: 204%; position: relative; width: 100%">
               <div class="inset_bg">
                 <div class="insetbg_annulus"></div>
@@ -41,12 +45,24 @@
                 <div class="bg_ball_solid"></div>
               </div>
               <div class="video_wrap">
-                <video class="inset_video enter-play" muted playsinline webkit-playsinline autoplay loop
-                  poster="https://c1.itigergrowth.com/portal5/static/media/banner-poster.7a77394e.jpg" preload="auto"
-                  data-status="playing">
+                <video
+                  class="inset_video enter-play"
+                  muted
+                  playsinline
+                  webkit-playsinline
+                  autoplay
+                  loop
+                  poster="https://c1.itigergrowth.com/portal5/static/media/banner-poster.7a77394e.jpg"
+                  preload="auto"
+                  data-status="playing"
+                >
                   <source src="@/assets/image/banner-inset-0215.mp4" />
                 </video>
-                <img class="inset_iphone" src="@/assets/image/iphone13promax.png" alt="" />
+                <img
+                  class="inset_iphone"
+                  src="@/assets/image/iphone13promax.png"
+                  alt=""
+                />
               </div>
             </div>
           </div>
@@ -80,7 +96,15 @@
       </div>
       <div class="mobile_intro_swiper">
         <div class="swiper_left">
-          <h3>30:1 leverage to apply</h3>
+          <div class="swiper-left-text">
+            <div class="swiper-wrapper">
+              <h3 class="swiper-slide">30:1 leverage to apply</h3>
+              <h3 class="swiper-slide">
+                Tight price gap between buying & selling
+              </h3>
+            </div>
+          </div>
+
           <div class="swiper-container linear">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
@@ -96,28 +120,26 @@
           </div>
         </div>
         <div class="swiper_right">
-          <!-- <div style="width:100%;height:40px"></div> -->
-          <h3 class="h3transform">
-            No commission & <br />hidden fee
-          </h3>
-          <!-- <br />
-          Negative balance protection -->
-          <div class="swiper-containerTwo">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div class="img">
+          <div :class="{ active: rightIndex === 1 }">
+            <div class="swiper-right-text">
+              <div class="swiper-wrapper">
+                <h3 class="swiper-slide">No commission & hidden fee</h3>
+                <h3 class="swiper-slide">Negative balance protection</h3>
+              </div>
+            </div>
+            <div class="swiper-containerTwo">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
                   <img src="@/assets/image/right5.png" alt="" />
                   <img src="@/assets/image/right6.png" alt="" />
                 </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="img">
+                <div class="swiper-slide">
                   <img src="@/assets/image/right8.png" alt="" />
                   <img src="@/assets/image/right7.png" alt="" />
                 </div>
               </div>
+              <div class="swiper-pagination"></div>
             </div>
-            <div class="swiper-pagination"></div>
           </div>
         </div>
       </div>
@@ -127,8 +149,14 @@
           <div class="pounce_left">
             <div>
               <ul>
-                <li v-for="(item, index) in textContainerfour" :key="index" :class="{active: index == activeIndex}" @click="changeActiveSwiper(index)" >{{item.title}}
-                  <a v-if="item.hrefText" href="">{{item.hrefText}}</a>
+                <li
+                  v-for="(item, index) in textContainerfour"
+                  :key="index"
+                  :class="{ active: index == activeIndex }"
+                  @click="changeActiveSwiper(index)"
+                >
+                  {{ item.title }}
+                  <a v-if="item.hrefText" href="">{{ item.hrefText }}</a>
                 </li>
               </ul>
             </div>
@@ -136,27 +164,13 @@
           <div class="pounce_right">
             <div class="swiper-containerfour">
               <div class="swiper-wrapper">
-                <div class="swiper-slide" v-for="(item, index) in imageContainerfour" :key="index">
+                <div
+                  class="swiper-slide"
+                  v-for="(item, index) in imageContainerfour"
+                  :key="index"
+                >
                   <img class="swiper-img" :src="item" alt="" />
                 </div>
-                <!-- <div class="swiper-slide">
-                  <img class="swiper-img" src="@/assets/image/tu1.png" alt="" />
-                </div>
-                <div class="swiper-slide">
-                  <img class="swiper-img" src="@/assets/image/tu2.png" alt="" />
-                </div>
-                <div class="swiper-slide">
-                  <img class="swiper-img" src="@/assets/image/tu3.png" alt="" />
-                </div>
-                <div class="swiper-slide">
-                  <img class="swiper-img" src="@/assets/image/tu4.png" alt="" />
-                </div>
-                <div class="swiper-slide">
-                  <img class="swiper-img" src="@/assets/image/tu5.png" alt="" />
-                </div>
-                <div class="swiper-slide">
-                  <img class="swiper-img" src="@/assets/image/tu6.png" alt="" />
-                </div> -->
               </div>
             </div>
           </div>
@@ -214,52 +228,54 @@
 </template>
    
 <script>
-import tu1 from '@/assets/image/tu1.png'
-import tu2 from '@/assets/image/tu2.png'
-import tu3 from '@/assets/image/tu3.png'
-import tu4 from '@/assets/image/tu4.png'
-import tu5 from '@/assets/image/tu5.png'
-import tu6 from '@/assets/image/tu6.png'
-import 'swiper/css/swiper.min.css';
+import tu1 from "@/assets/image/tu1.png";
+import tu2 from "@/assets/image/tu2.png";
+import tu3 from "@/assets/image/tu5.png";
+import tu4 from "@/assets/image/tu3.png";
+import tu5 from "@/assets/image/tu4.png";
+import tu6 from "@/assets/image/tu6.png";
+import "swiper/css/swiper.min.css";
 import Swiper from "swiper";
 export default {
   data() {
     return {
-      imageContainerfour: [
-        tu1,
-        tu2,
-        tu3,
-        tu4,
-        tu5,
-        tu6,
-      ],
+      imageContainerfour: [tu1, tu2, tu3, tu4, tu5, tu6],
       textContainerfour: [
         {
-          title: 'Access to most popular markets',
-          hrefText: 'See all markets',
-          active: true
+          title: "Access to most popular markets",
+          hrefText: "See all markets",
+          active: true,
         },
         {
-          title: 'Suit yourself to manage profit and risk',
-          active: false
+          title: "Suit yourself to manage profit and risk",
+          active: false,
         },
         {
-          title: '30:1 leverage to gain more with less',
-          active: false
+          title: "30:1 leverage to gain more with less",
+          active: false,
         },
         {
-          title: 'Deposit and withdraw within 1 minute',
-          active: false
+          title: "Deposit and withdraw within 1 minute",
+          active: false,
         },
         {
-          title: 'No commission and hidden fees',
-          active: false
+          title: "No commission and hidden fees",
+          active: false,
         },
         {
-          title: 'Get your local expert help on what to buy and when to sell',
-          active: false
-        }
+          title: "Get your local expert help on what to buy and when to sell",
+          active: false,
+        },
       ],
+      leftTopTexts: [
+        "30:1 leverage to apply",
+        "Tight price gap between buying & selling",
+      ],
+      rightTopTexts: [
+        "No commission & hidden fee",
+        "Negative balance protection",
+      ],
+      rightIndex: 0,
       activeIndex: 1,
     };
   },
@@ -271,18 +287,18 @@ export default {
       }
     },
     // 点击切换轮播增加样式
-    changeActiveSwiper (index) {
+    changeActiveSwiper(index) {
       // 保存下标
-      this.activeIndex = index
+      this.activeIndex = index;
       // 切换轮播图
-      this.mySwiper.slideTo(this.activeIndex + 1); 
-    }
+      this.mySwiper.slideTo(this.activeIndex + 1);
+    },
   },
   created() {},
-  mounted() {   
-    let _this = this
+  mounted() {
+    let _this = this;
     new Swiper(".swiper-container", {
-      observer: true,  
+      observer: true,
       observeSlideChildren: true,
       // observeParents: true,  //这三个可以去文档看下介绍，主要就是异步情况会重新加载swiper。
       loop: true, //开启环路
@@ -290,12 +306,24 @@ export default {
       spaceBetween: 1, //每个轮播图间隔
       slidesPerView: 2, //当前页面显示几个，这里是auto
       loopedSlides: 6, //比你页面显示的数量大于2就好
-      updateOnWindowResize: false,  //分辨率改变时，防止样式错乱加上！
+      updateOnWindowResize: false, //分辨率改变时，防止样式错乱加上！
       autoplay: {
-        delay: 0,   //每循环一圈，间隔时间，无缝轮询，则为0
+        delay: 0, //每循环一圈，间隔时间，无缝轮询，则为0
         stopOnLastSlide: false,
         disableOnInteraction: false,
-      }
+      },
+    });
+    new Swiper(".swiper-left-text", {
+      direction: "vertical", // 垂直切换选项
+      slidesPerView: 1, //当前页面显示几个，这里是auto
+      autoplay: {
+        delay: 2000,
+      },
+    });
+    this.swiper_right_text = new Swiper(".swiper-right-text", {
+      direction: "vertical", // 垂直切换选项
+      slidesPerView: 1, //当前页面显示几个，这里是auto
+      loop: true,
     });
     new Swiper(".swiper-containerTwo", {
       speed: 2000,
@@ -305,56 +333,27 @@ export default {
         disableOnInteraction: false, //*手动操作轮播图后不会暂停*
       },
       loop: true, // 循环模式选项
-      effect: 'fade',
       // 如果需要分页器
       pagination: {
         el: ".swiper-pagination",
         clickable: true, // 分页器可以点击
       },
-
-      // 如果需要前进后退按钮
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-
-      // 如果需要滚动条
-      scrollbar: {
-        el: ".swiper-scrollbar",
-      },
-    });
-    //
-    new Swiper(".swiper-containerThree", {
-      direction: "vertical", // 垂直切换选项
-      autoplay: {
-        //自动开始
-        delay: 2500, //时间间隔
-        disableOnInteraction: false, //*手动操作轮播图后不会暂停*
-      },
-      loop: true, // 循环模式选项
-
-      // 如果需要分页器
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true, // 分页器可以点击
-      },
-
-      // 如果需要前进后退按钮
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-
-      // 如果需要滚动条
-      scrollbar: {
-        el: ".swiper-scrollbar",
+      on: {
+        slideChange: function () {
+          // 获得下标
+          _this.rightIndex = this.activeIndex - 1;
+          if (_this.rightIndex === 2) {
+            _this.rightIndex = 0;
+          }
+          _this.swiper_right_text.slideTo(_this.rightIndex + 1);
+        },
       },
     });
-    let thiss = this
     this.mySwiper = new Swiper(".swiper-containerfour", {
+      speed: 2000,
       autoplay: {
         //自动开始
-        delay: 2500, //时间间隔
+        delay: 2000, //时间间隔
         disableOnInteraction: false, // 手动操作轮播图后不会暂停
       },
       // slidesPerView: 'auto',
@@ -362,39 +361,28 @@ export default {
       slidesPerView: 1,
       spaceBetween: 6,
       on: {
-        slideChange: function(){
+        slideChange: function () {
           // 获得下标
-          _this.activeIndex = this.activeIndex - 1
+          _this.activeIndex = this.activeIndex - 1;
           if (_this.activeIndex === 6) {
-            _this.activeIndex = 0
+            _this.activeIndex = 0;
           }
         },
-      }
+      },
     });
   },
 };
 </script>
 
 <style lang="scss" scoped>
-  // .h3transform{
-  //   height: 69px;
-  //   left: 40px;
-  //   overflow: hidden;
-  //   position: absolute;
-  //   width: 45%;
-  //   transform: translateY(0px);
-  //   transition: -webkit-transform .5s ease-in-out;
-  //   transition: transform .5s ease-in-out;
-  //   transition: transform .5s ease-in-out,-webkit-transform .5s ease-in-out;
-  // }
-::v-deep .linear.swiper-container>.swiper-wrapper {
-	    -webkit-transition-timing-function: linear; /*之前是ease-out*/
-	    -moz-transition-timing-function: linear;
-	    -ms-transition-timing-function: linear;
-	    -o-transition-timing-function: linear;
-	    transition-timing-function: linear;
-	    margin: 0 auto;
-	}
+::v-deep .linear.swiper-container > .swiper-wrapper {
+  -webkit-transition-timing-function: linear; /*之前是ease-out*/
+  -moz-transition-timing-function: linear;
+  -ms-transition-timing-function: linear;
+  -o-transition-timing-function: linear;
+  transition-timing-function: linear;
+  margin: 0 auto;
+}
 ::v-deep {
   #thumbs .swiper-slide {
     opacity: 0.6;
@@ -406,8 +394,8 @@ export default {
   }
 
   #thumbs .swiper-slide-thumb-active {
-      opacity: 1;
-      filter: grayscale(0);
+    opacity: 1;
+    filter: grayscale(0);
   }
 }
 @keyframes insetSlideUpTwo {
@@ -530,8 +518,10 @@ export default {
             pointer-events: none;
             position: absolute;
             top: 50%;
-            -webkit-transform: perspective(480px) scaleX(0.96) rotateY(-8deg) skewY(4deg) translate(-58%, -50%);
-            transform: perspective(480px) scaleX(0.96) rotateY(-8deg) skewY(4deg) translate(-58%, -50%);
+            -webkit-transform: perspective(480px) scaleX(0.96) rotateY(-8deg)
+              skewY(4deg) translate(-58%, -50%);
+            transform: perspective(480px) scaleX(0.96) rotateY(-8deg)
+              skewY(4deg) translate(-58%, -50%);
             -webkit-transform-style: preserve-3d;
             transform-style: preserve-3d;
             width: 93%;
@@ -557,7 +547,8 @@ export default {
         }
 
         .insetbg_annulus {
-          background: url(/img/banner-annulus.70676fe8.png) no-repeat 50% / contain;
+          background: url(/img/banner-annulus.70676fe8.png) no-repeat 50% /
+            contain;
           height: 100%;
           left: 0;
           position: absolute;
@@ -584,7 +575,8 @@ export default {
         }
 
         .inset_annulus_sm {
-          background: url("../../assets/image/banner-annulus-sm.png") no-repeat 50% / contain;
+          background: url("../../assets/image/banner-annulus-sm.png") no-repeat
+            50% / contain;
           height: 80.08%;
           left: 9.96%;
           position: absolute;
@@ -596,7 +588,8 @@ export default {
         .bg-semicircle {
           -webkit-animation: semicircleAnimation 6s linear infinite forwards;
           animation: semicircleAnimation 6s linear infinite forwards;
-          background: url(/img/banner-semicircle.0fa5aa84.png) no-repeat 50% / contain;
+          background: url(/img/banner-semicircle.0fa5aa84.png) no-repeat 50% /
+            contain;
           height: 88.84%;
           left: 9.96%;
           opacity: 0.6;
@@ -656,7 +649,8 @@ export default {
           animation: insetSlideUp 12s linear infinite forwards;
           -webkit-backdrop-filter: blur(3px);
           backdrop-filter: blur(3px);
-          background: url("../../assets/image/bg_ball.png") no-repeat 50% / contain;
+          background: url("../../assets/image/bg_ball.png") no-repeat 50% /
+            contain;
           height: 30.08%;
           left: 3.58%;
           opacity: 0.8;
@@ -669,7 +663,8 @@ export default {
         .bg_ball_solid {
           -webkit-animation: insetSlideUp 6s linear 1s infinite forwards;
           animation: insetSlideUp 6s linear 1s infinite forwards;
-          background: url("../../assets/image/sphere.png") no-repeat 50% / contain;
+          background: url("../../assets/image/sphere.png") no-repeat 50% /
+            contain;
           bottom: 22.5%;
           height: 7.17%;
           position: absolute;
@@ -873,18 +868,23 @@ export default {
         overflow: hidden;
         padding: 40px 0 0px 40px;
         width: 43%;
-
-        h3 {
-          font-size: 24px;
-          font-weight: 700;
-        }
-
-        .swiper-container {
-          margin-top: 64px;
-
+        position: relative;
+        .swiper-left-text {
+          position: absolute;
+          height: 80px;
+          overflow: hidden;
+          width: 350px;
           .swiper-wrapper {
             .swiper-slide {
-
+              font-size: 24px;
+              font-weight: 700;
+            }
+          }
+        }
+        .swiper-container {
+          margin-top: 65px;
+          .swiper-wrapper {
+            .swiper-slide {
               // width: 254px !important;
               img {
                 width: 300px;
@@ -898,41 +898,51 @@ export default {
         width: 55%;
         height: 100%;
         background: url("../../assets/image/right4.png") no-repeat 100%/100%;
-        padding: 0px 0 0px 40px;
         overflow: hidden;
         position: relative;
         display: flex;
         flex-direction: column;
-
-        h3 {
-          font-size: 24px;
-          font-weight: 700;
-          margin-top: 20px;
-        }
-
-        .swiper-containerTwo {
-          .swiper-wrapper {
-            .swiper-slide {
-              .img {
-                display: flex;
-                align-items: flex-end;
-                justify-content: flex-end;
-                margin-right: 20px;
-              }
-
-              img {
-                width: 254px;
+        border-radius: 20px;
+        >div {
+          padding-left: 155px;
+          &.active {
+            background: rgba(255,255,255,.5);
+          }
+          .swiper-right-text {
+            position: absolute;
+            left: 40px;
+            top: 40px;
+            height: 80px;
+            overflow: hidden;
+            width: 350px;
+            .swiper-wrapper {
+              .swiper-slide {
+                font-size: 24px;
+                font-weight: 700;
               }
             }
           }
+          .swiper-containerTwo {
+            margin-top: 65px;
+            overflow: hidden;
+            white-space: nowrap;
+            .swiper-wrapper {
+              .swiper-slide {
+                img {
+                  width: 254px;
+                  vertical-align: bottom;
+                }
+              }
+            }
 
-          .swiper-pagination {
-            text-align: left;
-            margin-left: 30px;
+            .swiper-pagination {
+              text-align: left;
+              margin-left: 30px;
 
-            ::v-deep .swiper-pagination-bullet-active {
-              background: #000 !important;
-              opacity: 1 !important;
+              ::v-deep .swiper-pagination-bullet-active {
+                background: #000 !important;
+                opacity: 1 !important;
+              }
             }
           }
         }
@@ -962,7 +972,7 @@ export default {
                 box-sizing: border-box;
                 font-size: 20px;
                 padding: 12px 30px;
-                background: #F7F8FA;
+                background: #f7f8fa;
                 margin-bottom: 20px;
                 border-radius: 10px;
                 a {
@@ -993,16 +1003,16 @@ export default {
               }
             }
           }
-        }       
+        }
       }
       .foot_btn {
-          margin: 20px auto 66px;
-          width: 89 * 2px;
-          background: #ffe100;
-          padding: 14px 20px;
-          border-radius: 26px;
-          text-align: center;
-        }
+        margin: 20px auto 66px;
+        width: 89 * 2px;
+        background: #ffe100;
+        padding: 14px 20px;
+        border-radius: 26px;
+        text-align: center;
+      }
     }
   }
 
@@ -1040,7 +1050,8 @@ export default {
 
           .foot_list_item {
             li {
-              background: url("../../assets/image/icon-check.svg") no-repeat left 5px/14px 12px;
+              background: url("../../assets/image/icon-check.svg") no-repeat
+                left 5px/14px 12px;
               padding-left: 28px;
 
               a {
