@@ -20,7 +20,7 @@
                   <img src="@/assets/image/apple_down.png" alt="" @click="jumpFun('invest')" />
                   APP STORE</a>
                 <a href="" class="android" @click="jumpFun('invest')">
-                  <img src="@/assets/image/apple_down.png" alt="" @click="jumpFun('invest')" />
+                  <img src="@/assets/image/googleplay_down.png" alt="" @click="jumpFun('invest')" />
                   GOOGLE PLAY</a>
               </div>
               <p>Images displayed are for illustrative purposes only</p>

@@ -28,7 +28,7 @@
           APP STORE</a
         >
         <a href="" class="android">
-          <img src="@/assets/image/apple_down.png" alt="" />
+          <img src="@/assets/image/googleplay_down.png" alt="" />
           GOOGLE PLAY</a
         >
       </div>
