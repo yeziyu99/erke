@@ -125,54 +125,25 @@
         <div class="pounce_title">Pounce on Tiger CFD to leap ahead</div>
         <div class="pounce_content">
           <div class="pounce_left">
-            <!-- <ul>
-              <li :class="active==2-1||active==7?'on':''" >Access to most popular markets<br>
-                <a href="">See all markets</a>
-              </li>
-              <li :class="active==3-1?'on':''" >Suit yourself to manage profit<br> and risk</li>
-              <li :class="active==4-1?'on':''" >30:1 leverage to gain more with<br> less</li>
-              <li :class="active==5-1?'on':''" >Deposit and withdraw within 1 <br> minute</li>
-              <li :class="active==6-1?'on':''" >No commission and hidden fees</li>
-              <li :class="active==7-1?'on':''" >Get your local expert help on<br> what to buy and when to sell</li>
-            </ul> -->
-            <div class="swiper-containerfour2">
-              <ul class="swiper-wrapper">
-                <li class="swiper-slide" >Access to most popular markets<br>
-                  <a href="">See all markets</a>
+            <div>
+              <ul>
+                <li v-for="(item, index) in textContainerfour" :key="index" :class="{active: item.active}" @click="addActiveStyle(index)" >{{item.title}}
+                  <a v-if="item.hrefText" href="">{{item.hrefText}}</a>
                 </li>
-                <li class="swiper-slide" >Suit yourself to manage profit<br> and risk</li>
-                <li class="swiper-slide" >30:1 leverage to gain more with<br> less</li>
-                <li class="swiper-slide" >Deposit and withdraw within 1 <br> minute</li>
-                <li class="swiper-slide" >No commission and hidden fees</li>
-                <li class="swiper-slide" >Get your local expert help on<br> what to buy and when to sell</li>
               </ul>
             </div>
           </div>
           <div class="pounce_right">
             <div class="swiper-containerfour">
               <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <img class="swiper-img" src="@/assets/image/tu1.png" alt="" />
-                </div>
-                <div class="swiper-slide">
-                  <img class="swiper-img" src="@/assets/image/tu2.png" alt="" />
-                </div>
-                <div class="swiper-slide">
-                  <img class="swiper-img" src="@/assets/image/tu3.png" alt="" />
-                </div>
-                <div class="swiper-slide">
-                  <img class="swiper-img" src="@/assets/image/tu4.png" alt="" />
-                </div>
-                <div class="swiper-slide">
-                  <img class="swiper-img" src="@/assets/image/tu5.png" alt="" />
-                </div>
-                <div class="swiper-slide">
-                  <img class="swiper-img" src="@/assets/image/tu6.png" alt="" />
+                <div class="swiper-slide" v-for="(item, index) in imageContainerfour" :key="index" :swiperIndex="index">
+                  <img class="swiper-img" :src="item" alt="" />
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <div class="foot_btn" @click="jumpFun('invest')">Get started</div>
       </div>
     </div>
     <div class="home_foot">
@@ -218,23 +189,59 @@
             </ul>
           </li>
         </ul>
-        <div class="foot-btn" @click="jumpFun('invest')">Get started</div>
+        <div class="foot_btn" @click="jumpFun('invest')">Get started</div>
       </div>
     </div>
   </div>
 </template>
    
 <script>
-// import { Swiper, SwiperSlide } from 'swiper/vue';
-// import 'swiper/css';
-// import "swiper/dist/js/swiper";
-import "swiper/dist/css/swiper.css";
+import tu1 from '@/assets/image/tu1.png'
+import tu2 from '@/assets/image/tu2.png'
+import tu3 from '@/assets/image/tu3.png'
+import tu4 from '@/assets/image/tu4.png'
+import tu5 from '@/assets/image/tu5.png'
+import tu6 from '@/assets/image/tu6.png'
+import 'swiper/css/swiper.min.css';
 import Swiper from "swiper";
-// import 'swiper/css/swiper.min.css'
 export default {
   data() {
     return {
-      active: 0
+      imageContainerfour: [
+        tu1,
+        tu2,
+        tu3,
+        tu4,
+        tu5,
+        tu6,
+      ],
+      textContainerfour: [
+        {
+          title: 'Access to most popular markets',
+          hrefText: 'See all markets',
+          active: true
+        },
+        {
+          title: 'Suit yourself to manage profit and risk',
+          active: false
+        },
+        {
+          title: '30:1 leverage to gain more with less',
+          active: false
+        },
+        {
+          title: 'Deposit and withdraw within 1 minute',
+          active: false
+        },
+        {
+          title: 'No commission and hidden fees',
+          active: false
+        },
+        {
+          title: 'Get your local expert help on what to buy and when to sell',
+          active: false
+        }
+      ]
     };
   },
   components: {},
@@ -244,10 +251,18 @@ export default {
         this.$router.push(route);
       }
     },
+    // 点击切换轮播增加样式
+    addActiveStyle (index) {
+      this.textContainerfour = this.textContainerfour.map(item => {
+        item.active = false
+        return item
+      })
+      this.textContainerfour[index].active = true
+      // 切换轮播图
+    }
   },
   created() {},
-  mounted() {
-    
+  mounted() {   
     new Swiper(".swiper-container", {
       observer: true,  
       observeSlideChildren: true,
@@ -318,28 +333,23 @@ export default {
       },
     });
     let thiss = this
-    let num = new Swiper(".swiper-containerfour", { 
-      width: 640,
-      // autoplay: {
-      //   //自动开始
-      //   delay: 2500, //时间间隔
-      //   disableOnInteraction: false, // 手动操作轮播图后不会暂停
-      // },
+    let num = new Swiper(".swiper-containerfour", {
+      autoplay: {
+        //自动开始
+        delay: 2500, //时间间隔
+        disableOnInteraction: false, // 手动操作轮播图后不会暂停
+      },
+      // slidesPerView: 'auto',
       loop: true, // 循环模式选项
+      slidesPerView: 1,
       spaceBetween: 6,
-      thumbs: {
-        swiper: {
-          el: '.swiper-containerfour2',
-          spaceBetween: 6,
-          slidesPerView: 6,
-          watchSlidesVisibility: true,
-          direction: 'vertical',
-          touchRatio: 0.2,
-          on: {
-            slideChangeTransitionStart() {
-                $(".swiper-containerfour2").css("background", "#ffe100")
-            }
-          }
+      on: {
+        beforeLoopFix:() => {
+          let tuDom = document.querySelector(".swiper-slide-active")
+          console.log(tuDom)
+          console.log(tuDom.getAttribute('.swiperIndex'));
+          // console.log(this)
+          console.log('before');
         }
       }
     });
@@ -913,7 +923,6 @@ export default {
 
     .home_pounce {
       width: 100%;
-
       .pounce_title {
         font-size: 48px;
         text-align: left;
@@ -921,34 +930,29 @@ export default {
         margin-top: 160px;
         margin-bottom: 20px;
       }
-
       .pounce_content {
         position: relative;
         display: flex;
-        // justify-content: space-around;
         width: 100%;
         height: 100%;
-
         .pounce_left {
           width: 31%;
-          overflow: hidden;
-          .swiper-containerfour2 {
+          div {
             ul {
-              display: flex;
-              direction: column;
               li {
+                height: 80px;
+                box-sizing: border-box;
                 font-size: 20px;
-                padding: 16px 30px;
+                padding: 12px 30px;
                 background: #F7F8FA;
-                margin-bottom: 24px;
+                margin-bottom: 20px;
                 border-radius: 10px;
                 a {
                   font-weight: 700;
                   color: #000;
                   text-decoration: underline;
                 }
-
-                &.on {
+                &.active {
                   background: #ffe100;
                   font-weight: 700;
                 }
@@ -956,12 +960,11 @@ export default {
             }
           }
         }
-
         .pounce_right {
           width: 45%;
           min-width: 640px;
           overflow: hidden;
-
+          margin-left: 60px;
           .swiper-containerfour {
             .swiper-wrapper {
               .swiper-slide {
@@ -972,8 +975,16 @@ export default {
               }
             }
           }
-        }
+        }       
       }
+      .foot_btn {
+          margin: 20px auto 66px;
+          width: 89 * 2px;
+          background: #ffe100;
+          padding: 14px 20px;
+          border-radius: 26px;
+          text-align: center;
+        }
     }
   }
 
@@ -1024,7 +1035,7 @@ export default {
         }
       }
 
-      .foot-btn {
+      .foot_btn {
         margin: 66px auto 0;
         width: 89 * 2px;
         background: #ffe100;
