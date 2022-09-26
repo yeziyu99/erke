@@ -127,7 +127,7 @@
           <div class="pounce_left">
             <div>
               <ul>
-                <li v-for="(item, index) in textContainerfour" :key="index" :class="{active: item.active}" @click="addActiveStyle(index)" >{{item.title}}
+                <li v-for="(item, index) in textContainerfour" :key="index" :class="{active: index == activeIndex}" @click="changeActiveSwiper(index)" >{{item.title}}
                   <a v-if="item.hrefText" href="">{{item.hrefText}}</a>
                 </li>
               </ul>
@@ -136,9 +136,27 @@
           <div class="pounce_right">
             <div class="swiper-containerfour">
               <div class="swiper-wrapper">
-                <div class="swiper-slide" v-for="(item, index) in imageContainerfour" :key="index" :swiperIndex="index">
+                <div class="swiper-slide" v-for="(item, index) in imageContainerfour" :key="index">
                   <img class="swiper-img" :src="item" alt="" />
                 </div>
+                <!-- <div class="swiper-slide">
+                  <img class="swiper-img" src="@/assets/image/tu1.png" alt="" />
+                </div>
+                <div class="swiper-slide">
+                  <img class="swiper-img" src="@/assets/image/tu2.png" alt="" />
+                </div>
+                <div class="swiper-slide">
+                  <img class="swiper-img" src="@/assets/image/tu3.png" alt="" />
+                </div>
+                <div class="swiper-slide">
+                  <img class="swiper-img" src="@/assets/image/tu4.png" alt="" />
+                </div>
+                <div class="swiper-slide">
+                  <img class="swiper-img" src="@/assets/image/tu5.png" alt="" />
+                </div>
+                <div class="swiper-slide">
+                  <img class="swiper-img" src="@/assets/image/tu6.png" alt="" />
+                </div> -->
               </div>
             </div>
           </div>
@@ -241,7 +259,8 @@ export default {
           title: 'Get your local expert help on what to buy and when to sell',
           active: false
         }
-      ]
+      ],
+      activeIndex: 1,
     };
   },
   components: {},
@@ -252,17 +271,16 @@ export default {
       }
     },
     // 点击切换轮播增加样式
-    addActiveStyle (index) {
-      this.textContainerfour = this.textContainerfour.map(item => {
-        item.active = false
-        return item
-      })
-      this.textContainerfour[index].active = true
+    changeActiveSwiper (index) {
+      // 保存下标
+      this.activeIndex = index
       // 切换轮播图
+      this.mySwiper.slideTo(this.activeIndex + 1); 
     }
   },
   created() {},
   mounted() {   
+    let _this = this
     new Swiper(".swiper-container", {
       observer: true,  
       observeSlideChildren: true,
@@ -333,7 +351,7 @@ export default {
       },
     });
     let thiss = this
-    let num = new Swiper(".swiper-containerfour", {
+    this.mySwiper = new Swiper(".swiper-containerfour", {
       autoplay: {
         //自动开始
         delay: 2500, //时间间隔
@@ -344,13 +362,13 @@ export default {
       slidesPerView: 1,
       spaceBetween: 6,
       on: {
-        beforeLoopFix:() => {
-          let tuDom = document.querySelector(".swiper-slide-active")
-          console.log(tuDom)
-          console.log(tuDom.getAttribute('.swiperIndex'));
-          // console.log(this)
-          console.log('before');
-        }
+        slideChange: function(){
+          // 获得下标
+          _this.activeIndex = this.activeIndex - 1
+          if (_this.activeIndex === 6) {
+            _this.activeIndex = 0
+          }
+        },
       }
     });
   },
