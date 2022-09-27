@@ -1,5 +1,5 @@
 <template>
-  <div class="big_wrap">
+  <div class="big_wraps">
     <div class="help_header">
       <div class="help_content">
         <h2 class="title">Hi! Let us help you.</h2>
@@ -116,7 +116,7 @@ export default {
     }
   }
 @media screen and (min-width: 1000px) {
-  .big_wrap {
+  .big_wraps {
     width: 100%;
 
     .help_content {
@@ -210,7 +210,7 @@ export default {
     @return $px / $ratio +rem;
   }
 
-  .big_wrap {
+  .big_wraps {
     width: 100%;
     height: 100vh;
     background: #fff;
