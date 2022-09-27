@@ -55,6 +55,8 @@ export default {
   width: 100%;
   height: 100%;
   min-height:1100px;
+  min-width: 800px;
+  overflow: auto;
   background: #ffe500;
   display: flex;
   justify-content: center;
