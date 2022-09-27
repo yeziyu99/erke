@@ -78,7 +78,6 @@ export default {
           this.newQuestionData.push(this.questionData[key])
         }
       }
-      console.log(this.supportVal)
     },
     itemFun(val) {
       this.newQuestionData[val].show = !this.newQuestionData[val].show;

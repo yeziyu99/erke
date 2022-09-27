@@ -177,7 +177,7 @@ export default {
       this.symbolBool = true;
     },
     symbolFn(symbol){
-      console.log(symbol)
+      // console.log(symbol)
     },
     tabFn(val) {
       this.active = val;

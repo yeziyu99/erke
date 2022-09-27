@@ -54,6 +54,7 @@ export default {
 .big_wrap {
   width: 100%;
   height: 100%;
+  min-height:1100px;
   background: #ffe500;
   display: flex;
   justify-content: center;

@@ -346,10 +346,10 @@ export default {
       on: {
         beforeLoopFix:() => {
           let tuDom = document.querySelector(".swiper-slide-active")
-          console.log(tuDom)
-          console.log(tuDom.getAttribute('.swiperIndex'));
-          // console.log(this)
-          console.log('before');
+          // console.log(tuDom)
+          // console.log(tuDom.getAttribute('.swiperIndex'));
+          // // console.log(this)
+          // console.log('before');
         }
       }
     });
