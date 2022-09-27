@@ -9,10 +9,11 @@
           :key="index"
         >
           <div
+            @click="itemFun(index)"
             style="width: 100%; display: flex; justify-content: space-between"
           >
             <div class="question_name">{{ item.title }}</div>
-            <div @click="itemFun(index)">
+            <div>
               <img v-if="!item.show" src="@/assets/image/1.png" alt="" />
               <img v-else src="@/assets/image/2.png" alt="" />
             </div>
