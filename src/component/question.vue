@@ -66,14 +66,14 @@ export default {
     min-width: 1200px;
     padding-top: 90px;
     .question_title {
-      font-size: 24px;
+      font-size: 36px;
     }
     .question_list {
       padding-bottom: 80px;
       .queation_item {
-        padding: 15px 0;
+        padding: 30px 0;
         border-bottom: 1px solid #000000;
-        font-size: 16px;
+        font-size: 24px;
         font-family: Gilroy, Gilroy-SemiBold;
         .question_answer {
           font-size: 14px;
