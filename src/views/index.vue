@@ -1,5 +1,5 @@
 <template>
-  <div class="big_wrap">
+  <div>
     <!-- 头部 -->
     <publicHeader/>
     <!-- 1231231 -->
