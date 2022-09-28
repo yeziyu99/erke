@@ -32,8 +32,7 @@
           <div>
             TigerBroker Limited is a company registered in England, company
             registration number 00000000. TigerBrokers is authorised and
-            regulated by the Financial Conduct Authority (FRN
-            0000001).Registered address: xxxxxxxxxxx
+            regulated by the Financial Conduct Authority (FRN：470325).Registered address: xxxxxxxxxxx
             <!-- ,London, EC2N 2HA, UnitedKingdom. -->
           </div>
         </li>
