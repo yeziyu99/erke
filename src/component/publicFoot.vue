@@ -1,7 +1,7 @@
 <template>
   <div class="publicFoot">
     <div class="publicFoot_head">
-      <img src="@/assets/image/yellowIcon.png" alt="" />
+      <img class="logo" src="@/assets/image/yellowIcon.png" alt="" />
       <ul>
         <li class="publicFoot_tip">MOBILE APP</li>
         <li class="publicFoot_btn" style="margin-right: 5px" @click="jumpFun('invest')">
@@ -83,6 +83,9 @@ ul li {
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    .logo{
+      width: 100px;
+    }
     ul {
       display: flex;
       justify-content: space-between;

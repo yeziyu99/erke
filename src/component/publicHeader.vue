@@ -65,7 +65,9 @@ ul li {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    img{
+      width: 230px;
+    }
     ul {
       display: flex;
       align-items: center;
