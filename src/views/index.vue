@@ -30,16 +30,26 @@ export default {
     publicHeader,publicFoot,publicFooter,question
   },
   methods: {
+    isQuestionData(){
+      if(this.$route.name=='home'||this.$route.name=='market'){
+        this.isQuestion=true
+      }else{
+        this.isQuestion=false
+      }
+    }
   },
   created() {
   },
   mounted() {
-    if(this.$route.name=='home'||this.$route.name=='market'){
-      this.isQuestion=true
-    }else{
-      this.isQuestion=false
-    }
+    this.isQuestionData()
   },
+  watch: {
+    $route (oldValue, value) {
+      if(oldValue.name !== value.name) {
+        this.isQuestionData()
+      }
+    }
+  }
 };
 </script>
 

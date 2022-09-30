@@ -56,7 +56,7 @@
               <p>{{value.name}}</p>
             </li>
           </ul>
-          <div class="trade_btn" @click="jumpFun('invest')">Get started</div>
+          <div class="trade_btn foot_btn" @click="jumpFun('invest')">Get started</div>
         </div>
         <div class="trade_rightO">
           <div class="trade_right">
@@ -129,7 +129,7 @@
           </el-tab-pane>
         </el-tabs>
 
-        <div class="tab_btn" @click="symbolBool=!symbolBool;">{{symbolBool?'Hide':'Click for more'}}</div>
+        <div class="tab_btn foot_btn" @click="symbolBool=!symbolBool;">{{symbolBool?'Hide':'Click for more'}}</div>
       </div>
     </div>
   </div>
@@ -610,6 +610,7 @@ export default {
         text-align: center;
         line-height: 44px;
         margin: 0 auto;
+        padding: 0;
         border-radius: 26px;
       }
     }

@@ -4,7 +4,7 @@
       <div class="home_header">
         <div class="head_con">
           <div class="banner_left">
-            <h2>Hey!Your CFD trading journey starts today</h2>
+            <h2>Hey! Your CFD trading journey starts today</h2>
             <h4 style="margin-bottom: 90px; font-size: 20px">
               Explore benefits from Tiger CFD platform.Enjoy your multiple
               <br />
@@ -131,11 +131,9 @@
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
                   <img src="@/assets/image/right5.png" alt="" />
-                  <img src="@/assets/image/right6.png" alt="" />
                 </div>
                 <div class="swiper-slide">
-                  <img src="@/assets/image/right8.png" alt="" />
-                  <img src="@/assets/image/right7.png" alt="" />
+                  <img src="@/assets/image/right6.png" alt="" />
                 </div>
               </div>
               <div class="swiper-pagination"></div>
@@ -303,15 +301,15 @@ export default {
       // observeParents: true,  //这三个可以去文档看下介绍，主要就是异步情况会重新加载swiper。
       loop: true, //开启环路
       speed: 2000, //每个轮播图过渡的时间
-      spaceBetween: 1, //每个轮播图间隔
-      slidesPerView: 2, //当前页面显示几个，这里是auto
+      spaceBetween: -15, //每个轮播图间隔
+      slidesPerView: 2.2, //当前页面显示几个，这里是auto
       loopedSlides: 6, //比你页面显示的数量大于2就好
       updateOnWindowResize: false, //分辨率改变时，防止样式错乱加上！
       autoplay: {
         delay: 0, //每循环一圈，间隔时间，无缝轮询，则为0
         stopOnLastSlide: false,
         disableOnInteraction: false,
-      },
+      }
     });
     new Swiper(".swiper-left-text", {
       direction: "vertical", // 垂直切换选项
@@ -692,7 +690,6 @@ export default {
 
           .banner_btn {
             display: flex;
-
             .btn_one {
               width: 89 * 2px;
               font-size: 16px;
@@ -700,6 +697,10 @@ export default {
               background: #000000;
               border-radius: 26px;
               color: #fff;
+              &:hover{
+                color: #FFE100;
+                cursor: pointer;
+              }
             }
 
             a {
@@ -866,10 +867,10 @@ export default {
         flex-shrink: 0;
         margin-right: 23px;
         overflow: hidden;
-        padding: 40px 0 0px 40px;
         width: 43%;
         position: relative;
         .swiper-left-text {
+          margin: 40px 0 0px 40px;
           position: absolute;
           height: 80px;
           overflow: hidden;
@@ -882,12 +883,18 @@ export default {
           }
         }
         .swiper-container {
-          margin-top: 65px;
-          .swiper-wrapper {
+          margin-top: 135px;
+          width: 100%;
+          .swiper-wrapper { 
             .swiper-slide {
-              // width: 254px !important;
+              width: 230px;
+              box-sizing: border-box;
+              padding: 20px 15px;
               img {
-                width: 300px;
+                width: 200px;
+                background: #ffffff;
+                border-radius: 5px;
+                box-shadow: 0px 10px 20px 0px #e3e4e6, 0px 5px 8px 0px #d2d2d6; 
               }
             }
           }
@@ -896,7 +903,7 @@ export default {
 
       .swiper_right {
         width: 55%;
-        height: 100%;
+        height: 454.261px;
         background: url("../../assets/image/right4.png") no-repeat 100%/100%;
         overflow: hidden;
         position: relative;
@@ -926,10 +933,12 @@ export default {
             margin-top: 65px;
             overflow: hidden;
             white-space: nowrap;
+            width: 100%;
             .swiper-wrapper {
               .swiper-slide {
                 img {
-                  width: 254px;
+                  width: 100%;
+                  z-index: 9999;
                   vertical-align: bottom;
                 }
               }
@@ -981,7 +990,7 @@ export default {
                   text-decoration: underline;
                 }
                 &.active {
-                  background: #ffe100;
+                  background: #fff652;
                   font-weight: 700;
                 }
               }
@@ -1004,14 +1013,6 @@ export default {
             }
           }
         }
-      }
-      .foot_btn {
-        margin: 20px auto 66px;
-        width: 89 * 2px;
-        background: #ffe100;
-        padding: 14px 20px;
-        border-radius: 26px;
-        text-align: center;
       }
     }
   }
@@ -1062,15 +1063,6 @@ export default {
             }
           }
         }
-      }
-
-      .foot_btn {
-        margin: 66px auto 0;
-        width: 89 * 2px;
-        background: #ffe100;
-        padding: 14px 20px;
-        border-radius: 26px;
-        text-align: center;
       }
     }
   }

@@ -74,11 +74,11 @@ export default {
         padding: 15px 0;
         border-bottom: 1px solid #000000;
         font-size: 16px;
-        font-family: Gilroy, Gilroy-SemiBold;
+        font-family: Gilroy,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
         .question_answer {
           font-size: 14px;
           margin-top: 20px;
-          font-family: Gilroy, Gilroy-SemiBold;
+          font-family: Gilroy,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
         }
       }
     }
