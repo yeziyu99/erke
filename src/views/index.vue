@@ -12,7 +12,7 @@
     <publicFooter />
     <!-- 一箭到顶 -->
     <div class="site-scrolltop" :style="{display:scrollTop>=100?'block':'none'}">
-      <a title="to top" class="toTop" href="#toTop" ></a>
+      <a title="to top" class="toTop" @click="toTop"></a>
     </div>
   </div>
 </template>
@@ -39,6 +39,18 @@ export default {
       }else{
         this.isQuestion=false
       }
+    },
+    toTop(){
+      let then=this;
+      let timer = setInterval(function(){
+        then.scrollTop =then.scrollTop-50;
+        if(then.scrollTop>0){
+          window.scrollTo(0,then.scrollTop)
+        }if(then.scrollTop<0){
+          window.scrollTo(0,0)
+          clearInterval(timer)
+        }
+      },10)
     },
     handleScrollx(){
       this.scrollTop=window.pageYoffset || document.documentElement.scrollTop || document.body.scrollTop;
