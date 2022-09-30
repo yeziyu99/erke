@@ -28,7 +28,7 @@
           APP STORE</a
         >
         <a href="" class="android">
-          <img src="@/assets/image/apple_down.png" alt="" />
+          <img src="@/assets/image/googleplay_down.png" alt="" />
           GOOGLE PLAY</a
         >
       </div>
@@ -54,6 +54,9 @@ export default {
 .big_wrap {
   width: 100%;
   height: 100%;
+  min-height:1100px;
+  min-width: 800px;
+  overflow: auto;
   background: #ffe500;
   display: flex;
   justify-content: center;

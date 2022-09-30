@@ -17,7 +17,7 @@
                 APP STORE</a
               >
               <a href="" class="android" @click="jumpFun('invest')">
-                <img src="@/assets/image/apple_down.png" alt="" />
+                <img src="@/assets/image/googleplay_down.png" alt="" />
                 GOOGLE PLAY</a
               >
             </div>
@@ -154,7 +154,7 @@
                   @click="changeActiveSwiper(index)"
                 >
                   {{ item.title }}
-                  <a v-if="item.hrefText" href="">{{ item.hrefText }}</a>
+                  <a v-if="item.hrefText" href=""  @click="jumpFun('market')">{{ item.hrefText }}</a>
                 </li>
               </ul>
             </div>

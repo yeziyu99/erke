@@ -156,21 +156,21 @@ export default {
   methods: {
     jumpFn(val) {
       this.active = val;
-      if(val=='1'){
+      if (val == "1") {
         this.getChartData(30);
-      }else if(val=='2'){
+      } else if (val == "2") {
         this.getChartData(60);
-      }else if(val=='3'){
+      } else if (val == "3") {
         this.getChartData(240);
-      }else if(val=='4'){
+      } else if (val == "4") {
         this.getChartData(1440);
-      }else if(val=='5'){
+      } else if (val == "5") {
         this.getChartData(10080);
-      }else if(val=='6'){
+      } else if (val == "6") {
         this.getChartData(43200);
       }
     },
-     jumpFun(route) {
+    jumpFun(route) {
       if (this.$route.name != route) {
         this.$router.push(route);
       }
@@ -264,9 +264,9 @@ export default {
     splitData() {
       const categoryData = [];
       const values = [];
-      this.data.sort(function(a,b){
-        return a.ctm*1000-b.ctm*1000
-      })
+      this.data.sort(function (a, b) {
+        return a.ctm * 1000 - b.ctm * 1000;
+      });
       for (var i = 0; i < this.data.length; i++) {
         // console.log(this.filterTime(this.data[i].ctm*1000),'图表时间')
         categoryData.push(this.filterTime(this.data[i].ctm * 1000));
@@ -302,7 +302,6 @@ export default {
         if (rs.is_succ) {
           this.chartPrice = rs.data;
         }
-        console.log(rs.data, "0000");
       });
     },
     getForyouMarket() {
@@ -331,11 +330,9 @@ export default {
           offset: 0,
         })
         .then((rs) => {
-          console.log(rs, "图表");
           if (rs.is_succ) {
             this.data = rs.data.records;
             this.chartData = this.splitData();
-            console.log(this.chartData);
             this.getEchartData();
           }
         });

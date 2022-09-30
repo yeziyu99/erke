@@ -8,7 +8,10 @@
             <div class="bg_img"></div>
             <div class="bg_img"></div>
           </div>
-          <div class="head_con">
+          
+        </div>
+      </div>
+      <div class="head_con">
             <div class="banner_left">
               <h2>
                 Invest in top performing assets with one-stop CFD trading
@@ -20,7 +23,7 @@
                   <img src="@/assets/image/apple_down.png" alt="" @click="jumpFun('invest')" />
                   APP STORE</a>
                 <a href="" class="android" @click="jumpFun('invest')">
-                  <img src="@/assets/image/apple_down.png" alt="" @click="jumpFun('invest')" />
+                  <img src="@/assets/image/googleplay_down.png" alt="" @click="jumpFun('invest')" />
                   GOOGLE PLAY</a>
               </div>
               <p>Images displayed are for illustrative purposes only</p>
@@ -29,8 +32,6 @@
               <img src="@/assets/image/phone.png" alt="" />
             </div>
           </div>
-        </div>
-      </div>
     </div>
     <div class="invest_big">
       <div class="invest_tab">
@@ -177,7 +178,7 @@ export default {
       this.symbolBool = true;
     },
     symbolFn(symbol){
-      console.log(symbol)
+      // console.log(symbol)
     },
     tabFn(val) {
       this.active = val;
@@ -392,7 +393,7 @@ export default {
 
         .banner_btn {
           display: flex;
-
+          cursor: pointer;
           .btn_one {
             width: 89 * 2px;
             font-size: 16px;

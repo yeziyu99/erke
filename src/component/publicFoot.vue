@@ -40,8 +40,9 @@
           Customer Service<br />
           Weekdays 09:30-05:00 (next day)
         </li>
-        <!-- <li class="con_right_con">40x-xxx-xx88</li>
-        <li class="con_right_bottom">service@XXXXXXXXXXX.com</li> -->
+        <li class="con_right_bottom">clientservice@tigerbrokers.co.uk </li>
+        <!-- <li class="con_right_con">40x-xxx-xx88</li> -->
+        <!-- <li class="con_right_bottom">service@XXXXXXXXXXX.com</li> -->
       </ul>
     </div>
   </div>
