@@ -778,7 +778,7 @@ export default {
           height: 359px;
           background: #ffffff;
           border-radius: 8px;
-          box-shadow: 4px 5px 15px 0px rgba(233,236,253,0.50);
+          box-shadow: 8px 10px 30px 0px rgba(233,236,253,0.50);
           transition: 1s;
           p {
             width: 270px;

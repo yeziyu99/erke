@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 头部 -->
-    <publicHeader  id="toTop"/>
+    <publicHeader  id="toTop" :class="{topNav}"/>
     <!-- 1231231 -->
     <div class="page">
       <router-view></router-view>
@@ -26,7 +26,8 @@ export default {
   data() {
     return {
       isQuestion: false,
-      scrollTop:'none'
+      scrollTop:'none',
+      topNav: false
     };
   },
   components: {
@@ -42,15 +43,28 @@ export default {
     },
     toTop(){
       let then=this;
+      // 路程/时间 = 速度
+      let speed = then.scrollTop / 50;
+      // 时间不变
       let timer = setInterval(function(){
-        then.scrollTop =then.scrollTop-50;
-        if(then.scrollTop>0){
-          window.scrollTo(0,then.scrollTop)
-        }if(then.scrollTop<0){
+        then.scrollTop =then.scrollTop - speed;
+        if(then.scrollTop > 0){
+          window.scrollTo(0, then.scrollTop)
+        }if(then.scrollTop < 0){
           window.scrollTo(0,0)
           clearInterval(timer)
         }
       },10)
+      // 速度不变
+      // let timer = setInterval(function(){
+      //   then.scrollTop =then.scrollTop-50;
+      //   if(then.scrollTop>0){
+      //     window.scrollTo(0,then.scrollTop)
+      //   }if(then.scrollTop<0){
+      //     window.scrollTo(0,0)
+      //     clearInterval(timer)
+      //   }
+      // },10)
     },
     handleScrollx(){
       this.scrollTop=window.pageYoffset || document.documentElement.scrollTop || document.body.scrollTop;
@@ -68,6 +82,14 @@ export default {
       if(oldValue.name !== value.name) {
         this.isQuestionData()
       }
+    },
+    scrollTop (oldValue, value) {
+      console.log(value)
+      if (value >= 75) {
+        this.topNav = true
+      } else {
+        this.topNav = false
+      }
     }
   }
 };
@@ -76,6 +98,7 @@ export default {
 <style lang="scss" scoped>
   @media screen and (min-width: 1000px) {
     .page {
+      // padding-top: 75px;
       min-width: 1200px;
     }
     .site-scrolltop {
@@ -113,5 +136,10 @@ export default {
   .site-scrolltop,.toTop{
     display: none !important;
   }
+}
+.topNav {
+  position: fixed;
+  top: 0;
+  z-index: 999;
 }
 </style>

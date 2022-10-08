@@ -401,6 +401,10 @@ export default {
             background: #000000;
             border-radius: 26px;
             color: #fff;
+            &:hover{
+              color: #FFE100;
+              cursor: pointer;
+            }
           }
 
           a {

@@ -56,7 +56,6 @@ ul li {
   justify-content: center;
   align-items: center;
   min-width: 1200px;
-
   .header_con {
     width: 60%;
     min-width: 1200px;
