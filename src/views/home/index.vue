@@ -71,7 +71,29 @@
     </div>
 
     <div class="home_content">
-      <img class="content_img" src="@/assets/image/home_con.png" alt="" />
+      <div class="content_img">
+        <h2>Why CFDs Trading?</h2>
+        <div class="three_img">
+          <div class="content_item">
+            <div>
+              <img src="@/assets/image/contentImg1.png" alt="">
+            </div>
+            <p>Go long and short with leverage</p>
+          </div>
+          <div class="content_item">
+            <div>
+              <img src="@/assets/image/contentImg2.png" alt="">
+            </div>
+            <p>Trade global markets in one account</p>
+          </div>
+          <div class="content_item">
+            <div>
+              <img src="@/assets/image/contentImg3.png" alt="">
+            </div>
+            <p>Gain equivalent value with less investment</p>
+          </div>
+        </div>
+      </div>
       <div class="invest_title">
         Invest globally with next-generation app <br />
         at your fingertips
@@ -599,20 +621,6 @@ export default {
           transform-origin: 206px center;
           width: 88.84%;
           z-index: 3;
-          // height: 66%;
-          // right: 0;
-          // opacity: 0.6;
-          // position: absolute;
-          // top: 102px;
-          // -webkit-transform: rotate(45deg);
-          // transform: rotate(45deg);
-          // -webkit-transform-origin: 520px center;
-          // transform-origin: 520px center;
-          // width: 57%;
-          // z-index: 3;
-          // -webkit-animation: semicircleAnimation-5954443c 6s linear infinite
-          //   forwards;
-          // animation: semicircleAnimation-5954443c 6s linear infinite forwards;
         }
 
         @keyframes insetSlideUp {
@@ -676,9 +684,6 @@ export default {
         width: 50%;
 
         .banner_left {
-          // position: absolute;
-          // top: 100px;
-          // width: 35%;
           min-width: 600px;
 
           h2 {
@@ -687,7 +692,9 @@ export default {
             line-height: 1;
             margin-bottom: 60px;
           }
-
+          p{
+            font-size: 14px;
+          }
           .banner_btn {
             display: flex;
             .btn_one {
@@ -749,6 +756,56 @@ export default {
 
     .content_img {
       width: 100%;
+      height: 463px;
+      h2 {
+        height: 29px;
+        font-size: 48px;
+        font-family: Gilroy, Gilroy-Bold;
+        font-weight: 700;
+        text-align: center;
+        color: #000000;
+        height: 58px;
+        line-height: 58px;
+      }
+      .three_img {
+        margin-top: 60px;
+        display: flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+        padding: 0 30px;
+        .content_item {
+          width: 310px;
+          height: 359px;
+          background: #ffffff;
+          border-radius: 8px;
+          box-shadow: 4px 5px 15px 0px rgba(233,236,253,0.50);
+          transition: 1s;
+          p {
+            width: 270px;
+            height: 58px;
+            font-size: 24px;
+            font-family: Gilroy, Gilroy-Bold;
+            font-weight: 700;
+            text-align: center;
+            color: #000000;
+            line-height: 29px;
+            margin-left: 20px;
+          }
+          div {
+            width: 100%;
+            height: 210px;
+            padding-top: 88px;
+            text-align: center;
+            img {
+              width: 80px;
+              height: 80px;
+            }
+          }
+          &:hover {
+            transform: scale(1.2, 1.2);
+          }
+        }
+      }
     }
 
     .invest_title {
@@ -977,6 +1034,7 @@ export default {
           div {
             ul {
               li {
+                cursor: pointer;
                 height: 80px;
                 box-sizing: border-box;
                 font-size: 20px;
