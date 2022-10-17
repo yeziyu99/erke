@@ -422,6 +422,32 @@ export default {
     transform: translateY(0);
   }
 }
+@keyframes insetSlideUpThree {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  25% {
+    -webkit-transform: translateY(4%);
+    transform: translateY(4%);
+  }
+
+  50% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  75% {
+    -webkit-transform: translateY(-4%);
+    transform: translateY(-4%);
+  }
+
+  to {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
 
 .big_wrap {
   width: 100%;
@@ -812,8 +838,8 @@ export default {
         }
 
         .img_phone {
-          -webkit-animation: insetSlideUpTwo 6s linear 1s infinite forwards;
-          animation: insetSlideUpTwo 6s linear 1s infinite forwards;
+          -webkit-animation: insetSlideUpThree 4s linear 1s infinite forwards;
+          animation: insetSlideUpThree 4s linear 1s infinite forwards;
           background: url("../../assets/image/phone1.png") no-repeat 50%/100%;
           flex-shrink: 0;
           padding-top: 46.65%;
