@@ -96,30 +96,6 @@
           </ul>
         </div>
         <div class="btn" @click="jumpFun('invest')">Invest now</div>
-        <!-- <ul class="experience">
-          <li>
-            <img src="@/assets/image/market1.png" alt="" />
-            <div>
-              <h5>0 cost investment experience!</h5>
-              <p>
-                Join us, receive $10000 free experience gold, no threshold
-                investment and financial management.
-              </p>
-            </div>
-            <button>Experience now</button>
-          </li>
-          <li>
-            <img src="@/assets/image/market2.png" alt="" />
-            <div>
-              <h5>0 cost investment experience!</h5>
-              <p>
-                Join us, receive $10000 free experience gold, no threshold
-                investment and financial management.
-              </p>
-            </div>
-            <button>Experience now</button>
-          </li>
-        </ul> -->
       </div>
     </div>
   </div>
@@ -179,10 +155,6 @@ export default {
       this.$nextTick(() => {
         const myCharts = this.$echarts.init(this.$refs.chart);
         myCharts.setOption({
-          // legend: {
-          //   data: ["日K", "MA5", "MA10", "MA20", "MA30"],
-          //   inactiveColor: "#777",
-          // },
           tooltip: {
             trigger: "axis",
             axisPointer: {
@@ -268,7 +240,6 @@ export default {
         return a.ctm * 1000 - b.ctm * 1000;
       });
       for (var i = 0; i < this.data.length; i++) {
-        // console.log(this.filterTime(this.data[i].ctm*1000),'图表时间')
         categoryData.push(this.filterTime(this.data[i].ctm * 1000));
         let arr = [];
         arr.push(Number(this.data[i].open));
@@ -282,21 +253,6 @@ export default {
         values: values,
       };
     },
-    // calculateMA(dayCount) {
-    //   var result = [];
-    //   for (var i = 0, len = this.data.values.length; i < len; i++) {
-    //     if (i < dayCount) {
-    //       result.push("-");
-    //       continue;
-    //     }
-    //     var sum = 0;
-    //     for (var j = 0; j < dayCount; j++) {
-    //       sum += +data.values[i - j][1];
-    //     }
-    //     result.push(sum / dayCount);
-    //   }
-    //   return result;
-    // },
     getChartPrice() {
       http.getChartPrice({ symbol: this.symbol }).then((rs) => {
         if (rs.is_succ) {
@@ -341,9 +297,6 @@ export default {
       let then = this;
       // let url=(location.host.indexOf('localhost')!=-1||location.host.indexOf('-inc')!=-1)?'wss://ws-et6.tigerbrokers-inc.com:7779':'wss://ws-et6.tigerbrokers.co.uk:7779'
       let url = "wss://ws-et6.tigerbrokers.co.uk:7779";
-      // 测试
-      // var ws = new WebSocket("wss://ws-et6.tigerbrokers-inc.com:7779")
-      // 线上
       var ws = new WebSocket(url);
       ws.onclose = function (e) {
         ws.close(); //关闭TCP连接
@@ -387,53 +340,7 @@ export default {
               then.eliObj.JexponentColor = "red";
             }
             then.eliObj.Jexponent = Jexponent;
-
-            // if (eLi[0][3] > today_high) {
-            //   today_high = eLi[0][3]
-            // }
-            // if (eLi[0][3] < today_low) {
-            //   today_low = eLi[0][3]
-            // }
-            // if (historyDate.indexOf(formatDate(eLi[0][4] * 1000)) == -1) {
-            //   historyDate.push(formatDate(eLi[0][4] * 1000))
-            //   var obj = {
-            //     time: eLi[0][4],
-            //     low: parseFloat(eLi[0][2]),
-            //     q1: parseFloat(eLi[0][3]),
-            //     median: null,//中位数
-            //     q3: parseFloat(eLi[0][3]),
-            //     high: parseFloat(eLi[0][2]),
-            //     name: formatDate(eLi[0][4] * 1000),
-            //     RiseAndFall: 0,
-            //     // color: RiseAndFall>0?"#ff0000":RiseAndFall<0?"#00ff00":"#bbbbbb"
-            //   }
-            //   k_data.push(obj)
-            // } else if (historyDate.indexOf(formatDate(eLi[0][4] * 1000)) > -1) {
-            //   var obj = {
-            //     time: eLi[0][4],
-            //     low: parseFloat(eLi[0][2]) < k_data[k_data.length - 1].low ? parseFloat(eLi[0][2]) : k_data[k_data.length - 1].low,
-            //     q1: parseFloat(eLi[0][3]),
-            //     median: null,//中位数
-            //     q3: parseFloat(eLi[0][3]),
-            //     high: parseFloat(eLi[0][3]) > k_data[k_data.length - 1].high ? parseFloat(eLi[0][3]) : k_data[k_data.length - 1].high,
-            //     name: formatDate(eLi[0][4] * 1000),
-            //     RiseAndFall: (parseFloat(eLi[0][2]) - parseFloat(k_data[k_data.length - 1].open_price)) / parseFloat(k_data[k_data.length - 1].open_price) * 1,
-            //     // color: RiseAndFall>0?"#ff0000":RiseAndFall<0?"#00ff00":"#bbbbbb"
-            //   }
-
-            //   // k_data = historyList
-
-            //   k_data[k_data.length - 1] = obj
-            // }
           }
-          // var chart = $('#container').highcharts()
-          // chart.update({
-          //   series: [{
-          //     type: 'boxplot',
-          //     // fillColor:null,//关键:填充色，不做设置，填充色为白色，设置为null,undefined,''等，填充色为data的color
-          //     data: k_data
-          //   }]
-          // })
         };
       };
     },

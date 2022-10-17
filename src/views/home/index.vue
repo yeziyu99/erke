@@ -14,28 +14,21 @@
               <div class="btn_one" @click="jumpFun('invest')">Get started</div>
               <a href="" class="ios" @click="jumpFun('invest')">
                 <img src="@/assets/image/apple_down.png" alt="" />
-                APP STORE</a
-              >
+                APP STORE</a>
               <a href="" class="android" @click="jumpFun('invest')">
                 <img src="@/assets/image/googleplay_down.png" alt="" />
-                GOOGLE PLAY</a
-              >
+                GOOGLE PLAY</a>
             </div>
             <p>Images displayed are for illustrative purposes only</p>
           </div>
-          <!-- <div class="banner_img">
-            <img src="@/assets/image/phone.png" alt="" />
-          </div> -->
         </div>
         <div class="home_bg">
-          <div
-            style="
+          <div style="
               max-width: 230px;
               flex: 1 1;
               margin: 0 auto;
               position: relative;
-            "
-          >
+            ">
             <div style="padding-top: 204%; position: relative; width: 100%">
               <div class="inset_bg">
                 <div class="insetbg_annulus"></div>
@@ -45,24 +38,12 @@
                 <div class="bg_ball_solid"></div>
               </div>
               <div class="video_wrap">
-                <video
-                  class="inset_video enter-play"
-                  muted
-                  playsinline
-                  webkit-playsinline
-                  autoplay
-                  loop
-                  poster="https://c1.itigergrowth.com/portal5/static/media/banner-poster.7a77394e.jpg"
-                  preload="auto"
-                  data-status="playing"
-                >
+                <video class="inset_video enter-play" muted playsinline webkit-playsinline autoplay loop
+                  poster="https://c1.itigergrowth.com/portal5/static/media/banner-poster.7a77394e.jpg" preload="auto"
+                  data-status="playing">
                   <source src="@/assets/image/banner-inset-0215.mp4" />
                 </video>
-                <img
-                  class="inset_iphone"
-                  src="@/assets/image/iphone13promax.png"
-                  alt=""
-                />
+                <img class="inset_iphone" src="@/assets/image/iphone13promax.png" alt="" />
               </div>
             </div>
           </div>
@@ -169,14 +150,10 @@
           <div class="pounce_left">
             <div>
               <ul>
-                <li
-                  v-for="(item, index) in textContainerfour"
-                  :key="index"
-                  :class="{ active: index == activeIndex }"
-                  @click="changeActiveSwiper(index)"
-                >
+                <li v-for="(item, index) in textContainerfour" :key="index" :class="{ active: index == activeIndex }"
+                  @click="changeActiveSwiper(index)">
                   {{ item.title }}
-                  <a v-if="item.hrefText" href=""  @click="jumpFun('market')">{{ item.hrefText }}</a>
+                  <a v-if="item.hrefText" href="" @click="jumpFun('market')">{{ item.hrefText }}</a>
                 </li>
               </ul>
             </div>
@@ -184,11 +161,7 @@
           <div class="pounce_right">
             <div class="swiper-containerfour">
               <div class="swiper-wrapper">
-                <div
-                  class="swiper-slide"
-                  v-for="(item, index) in imageContainerfour"
-                  :key="index"
-                >
+                <div class="swiper-slide" v-for="(item, index) in imageContainerfour" :key="index">
                   <img class="swiper-img" :src="item" alt="" />
                 </div>
               </div>
@@ -306,17 +279,18 @@ export default {
         this.$router.push(route);
       }
     },
-    // 点击切换轮播增加样式
+    // 点击切换轮播增加样式/Click Toggle Cast to add style
     changeActiveSwiper(index) {
-      // 保存下标
+      // 保存下标/Save the index
       this.activeIndex = index;
-      // 切换轮播图
+      // 切换轮播图/Swiper
       this.mySwiper.slideTo(this.activeIndex + 1);
     },
   },
-  created() {},
+  created() { },
   mounted() {
     let _this = this;
+    //  有问题可以看swiper文档/swiper documents
     new Swiper(".swiper-container", {
       observer: true,
       observeSlideChildren: true,
@@ -395,14 +369,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-::v-deep .linear.swiper-container > .swiper-wrapper {
-  -webkit-transition-timing-function: linear; /*之前是ease-out*/
+::v-deep .linear.swiper-container>.swiper-wrapper {
+  -webkit-transition-timing-function: linear;
+  /*之前是ease-out*/
   -moz-transition-timing-function: linear;
   -ms-transition-timing-function: linear;
   -o-transition-timing-function: linear;
   transition-timing-function: linear;
   margin: 0 auto;
 }
+
 ::v-deep {
   #thumbs .swiper-slide {
     opacity: 0.6;
@@ -418,6 +394,7 @@ export default {
     filter: grayscale(0);
   }
 }
+
 @keyframes insetSlideUpTwo {
   0% {
     -webkit-transform: translateY(0);
@@ -444,6 +421,7 @@ export default {
     transform: translateY(0);
   }
 }
+
 @keyframes insetSlideUpThree {
   0% {
     -webkit-transform: translateY(0);
@@ -495,20 +473,6 @@ export default {
         width: 50%;
         position: relative;
 
-        // -webkit-keyframes phoneSlide {
-        //   0% {
-        //     -webkit-transform: translateY(-60px);
-        //     transform: translateY(-60px);
-        //   }
-        //   50% {
-        //     -webkit-transform: translateY(-100px);
-        //     transform: translateY(-100px);
-        //   }
-        //   to {
-        //     -webkit-transform: translateY(-60px);
-        //     transform: translateY(-60px);
-        //   }
-        // }
         @keyframes phoneSlide {
           0% {
             -webkit-transform: translateY(-60px);
@@ -564,10 +528,8 @@ export default {
             pointer-events: none;
             position: absolute;
             top: 50%;
-            -webkit-transform: perspective(480px) scaleX(0.96) rotateY(-8deg)
-              skewY(4deg) translate(-58%, -50%);
-            transform: perspective(480px) scaleX(0.96) rotateY(-8deg)
-              skewY(4deg) translate(-58%, -50%);
+            -webkit-transform: perspective(480px) scaleX(0.96) rotateY(-8deg) skewY(4deg) translate(-58%, -50%);
+            transform: perspective(480px) scaleX(0.96) rotateY(-8deg) skewY(4deg) translate(-58%, -50%);
             -webkit-transform-style: preserve-3d;
             transform-style: preserve-3d;
             width: 93%;
@@ -593,8 +555,7 @@ export default {
         }
 
         .insetbg_annulus {
-          background: url(/img/banner-annulus.70676fe8.png) no-repeat 50% /
-            contain;
+          background: url(/img/banner-annulus.70676fe8.png) no-repeat 50% / contain;
           height: 100%;
           left: 0;
           position: absolute;
@@ -621,8 +582,7 @@ export default {
         }
 
         .inset_annulus_sm {
-          background: url("../../assets/image/banner-annulus-sm.png") no-repeat
-            50% / contain;
+          background: url("../../assets/image/banner-annulus-sm.png") no-repeat 50% / contain;
           height: 80.08%;
           left: 9.96%;
           position: absolute;
@@ -634,8 +594,7 @@ export default {
         .bg-semicircle {
           -webkit-animation: semicircleAnimation 6s linear infinite forwards;
           animation: semicircleAnimation 6s linear infinite forwards;
-          background: url(/img/banner-semicircle.0fa5aa84.png) no-repeat 50% /
-            contain;
+          background: url(/img/banner-semicircle.0fa5aa84.png) no-repeat 50% / contain;
           height: 88.84%;
           left: 9.96%;
           opacity: 0.6;
@@ -681,8 +640,7 @@ export default {
           animation: insetSlideUp 12s linear infinite forwards;
           -webkit-backdrop-filter: blur(3px);
           backdrop-filter: blur(3px);
-          background: url("../../assets/image/bg_ball.png") no-repeat 50% /
-            contain;
+          background: url("../../assets/image/bg_ball.png") no-repeat 50% / contain;
           height: 30.08%;
           left: 3.58%;
           opacity: 0.8;
@@ -695,8 +653,7 @@ export default {
         .bg_ball_solid {
           -webkit-animation: insetSlideUp 6s linear 1s infinite forwards;
           animation: insetSlideUp 6s linear 1s infinite forwards;
-          background: url("../../assets/image/sphere.png") no-repeat 50% /
-            contain;
+          background: url("../../assets/image/sphere.png") no-repeat 50% / contain;
           bottom: 22.5%;
           height: 7.17%;
           position: absolute;
@@ -718,11 +675,14 @@ export default {
             line-height: 1;
             margin-bottom: 60px;
           }
-          p{
+
+          p {
             font-size: 14px;
           }
+
           .banner_btn {
             display: flex;
+
             .btn_one {
               width: 89 * 2px;
               font-size: 16px;
@@ -730,7 +690,8 @@ export default {
               background: #000000;
               border-radius: 26px;
               color: #fff;
-              &:hover{
+
+              &:hover {
                 color: #FFE100;
                 cursor: pointer;
               }
@@ -738,7 +699,6 @@ export default {
 
             a {
               background: no-repeat 15px 50% / auto 15px #f4f4f4;
-              // border: 1px solid #fff;
               border-radius: 7px;
               color: #000;
               font-size: 15px;
@@ -765,7 +725,6 @@ export default {
           top: 30px;
           left: 60%;
 
-          // right: 10px;
           img {
             width: 220px;
           }
@@ -783,6 +742,7 @@ export default {
     .content_img {
       width: 100%;
       height: 463px;
+
       h2 {
         height: 29px;
         font-size: 48px;
@@ -793,19 +753,22 @@ export default {
         height: 58px;
         line-height: 58px;
       }
+
       .three_img {
         margin-top: 60px;
         display: flex;
         justify-content: space-between;
         box-sizing: border-box;
         padding: 0 30px;
+
         .content_item {
           width: 310px;
           height: 359px;
           background: #ffffff;
           border-radius: 8px;
-          box-shadow: 8px 10px 30px 0px rgba(233,236,253,0.50);
+          box-shadow: 8px 10px 30px 0px rgba(233, 236, 253, 0.50);
           transition: 1s;
+
           p {
             width: 270px;
             height: 58px;
@@ -817,16 +780,19 @@ export default {
             line-height: 29px;
             margin-left: 20px;
           }
+
           div {
             width: 100%;
             height: 210px;
             padding-top: 88px;
             text-align: center;
+
             img {
               width: 80px;
               height: 80px;
             }
           }
+
           &:hover {
             transform: scale(1.2, 1.2);
           }
@@ -843,7 +809,6 @@ export default {
 
     .invest_bg {
       width: 100%;
-      // height: 366 * 2px;
       background: url("../../assets/image/content.png") no-repeat 100%/100%;
       border-radius: 10px;
       margin-top: 60px;
@@ -952,12 +917,14 @@ export default {
         overflow: hidden;
         width: 43%;
         position: relative;
+
         .swiper-left-text {
           margin: 40px 0 0px 40px;
           position: absolute;
           height: 80px;
           overflow: hidden;
           width: 350px;
+
           .swiper-wrapper {
             .swiper-slide {
               font-size: 24px;
@@ -965,19 +932,22 @@ export default {
             }
           }
         }
+
         .swiper-container {
           margin-top: 135px;
           width: 100%;
-          .swiper-wrapper { 
+
+          .swiper-wrapper {
             .swiper-slide {
               width: 230px;
               box-sizing: border-box;
               padding: 20px 15px;
+
               img {
                 width: 200px;
                 background: #ffffff;
                 border-radius: 5px;
-                box-shadow: 0px 10px 20px 0px #e3e4e6, 0px 5px 8px 0px #d2d2d6; 
+                box-shadow: 0px 10px 20px 0px #e3e4e6, 0px 5px 8px 0px #d2d2d6;
               }
             }
           }
@@ -993,11 +963,14 @@ export default {
         display: flex;
         flex-direction: column;
         border-radius: 20px;
+
         >div {
           padding-left: 155px;
+
           &.active {
-            background: rgba(255,255,255,.5);
+            background: rgba(255, 255, 255, .5);
           }
+
           .swiper-right-text {
             position: absolute;
             left: 40px;
@@ -1005,6 +978,7 @@ export default {
             height: 80px;
             overflow: hidden;
             width: 350px;
+
             .swiper-wrapper {
               .swiper-slide {
                 font-size: 24px;
@@ -1012,11 +986,13 @@ export default {
               }
             }
           }
+
           .swiper-containerTwo {
             margin-top: 65px;
             overflow: hidden;
             white-space: nowrap;
             width: 100%;
+
             .swiper-wrapper {
               .swiper-slide {
                 img {
@@ -1043,6 +1019,7 @@ export default {
 
     .home_pounce {
       width: 100%;
+
       .pounce_title {
         font-size: 48px;
         text-align: left;
@@ -1050,13 +1027,16 @@ export default {
         margin-top: 160px;
         margin-bottom: 20px;
       }
+
       .pounce_content {
         position: relative;
         display: flex;
         width: 100%;
         height: 100%;
+
         .pounce_left {
           width: 31%;
+
           div {
             ul {
               li {
@@ -1068,11 +1048,13 @@ export default {
                 background: #f7f8fa;
                 margin-bottom: 20px;
                 border-radius: 10px;
+
                 a {
                   font-weight: 700;
                   color: #000;
                   text-decoration: underline;
                 }
+
                 &.active {
                   background: #fff652;
                   font-weight: 700;
@@ -1081,11 +1063,13 @@ export default {
             }
           }
         }
+
         .pounce_right {
           width: 45%;
           min-width: 640px;
           overflow: hidden;
           margin-left: 60px;
+
           .swiper-containerfour {
             .swiper-wrapper {
               .swiper-slide {
@@ -1135,8 +1119,7 @@ export default {
 
           .foot_list_item {
             li {
-              background: url("../../assets/image/icon-check.svg") no-repeat
-                left 5px/14px 12px;
+              background: url("../../assets/image/icon-check.svg") no-repeat left 5px/14px 12px;
               padding-left: 28px;
 
               a {

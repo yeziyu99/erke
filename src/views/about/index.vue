@@ -10,9 +10,6 @@
           </div>
         </div>
 
-        <!-- <div class="title_right">
-          <img src="@/assets/image/about.png" alt="" />
-        </div> -->
       </div>
     </div>
     <div class="about_content">

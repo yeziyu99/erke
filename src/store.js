@@ -38,9 +38,7 @@ export default new Vuex.Store({
       };
       context.state.webSock.onmessage = (evt) => {
         let socketData = JSON.parse(evt.data);
-        // console.log(socketData)
         if (!socketData) return;
-        // console.log(JSON.parse(socketData.Body));
         if (!context.state.isLoginWebSocket) {   //检查返回的信息是报价or登陆状态
             if (JSON.parse(socketData.Body) && JSON.parse(socketData.Body).Code === 'success') {
                 context.state.isLoginWebSocket = true;
@@ -59,17 +57,14 @@ export default new Vuex.Store({
              *   ...
              * ]
              */
-            // console.log(evt)
             try{
 
               socketData instanceof Array && socketData.forEach(item => {
-                // console.log(item)
                 context.state.quote = {
                   symbol: item[0],
                   buy: item[1],
                   sell: item[2]
                 };
-                // console.log(socketData)
               })
             } catch(err){
               console.log(err)
@@ -81,12 +76,10 @@ export default new Vuex.Store({
           content: 'The quote has been closed',
           closable: true
         });
-          console.log(e);
       };
     },
     /* WebSocket发送信息 */
     websocketSend(context, data) {
-      //console.log(data);
       if (data.type === 'login') {
           context.state.webSock.send(JSON.stringify({
               type: 2,
@@ -97,7 +90,6 @@ export default new Vuex.Store({
       if (data.type === 'msg' && context.state.isLoginWebSocket) {
           if (!data.symbols || !data.symbols.length) return;
           let symbolsArr = Array.from(new Set(data.symbols));
-          //console.log(data.symbols )
           let initSymbols = {
               type: 3,
               content: symbolsArr.join(',')

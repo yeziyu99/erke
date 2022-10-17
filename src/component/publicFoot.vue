@@ -123,9 +123,11 @@ ul li {
     .publicFoot_con_left {
       .list_router {
         margin-bottom: 17 * 2px;
+        cursor: pointer;
       }
       .list_routerLi {
         margin-bottom: 7 * 2px;
+        cursor: pointer;
       }
     }
     .publicFoot_con_right {

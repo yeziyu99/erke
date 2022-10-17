@@ -2,7 +2,6 @@
   <div>
     <!-- 头部 -->
     <publicHeader  id="toTop" :class="{topNav}"/>
-    <!-- 1231231 -->
     <div class="page">
       <router-view></router-view>
     </div>
@@ -66,16 +65,21 @@ export default {
       //   }
       // },10)
     },
-    handleScrollx(){
-      this.scrollTop=window.pageYoffset || document.documentElement.scrollTop || document.body.scrollTop;
-    }
+    handleScroll () {
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+    if (scrollTop >= 1) {
+        this.topNav = true
+      } else {
+        this.topNav = false
+      }
+},
   },
   created() {
-    this.handleScrollx()
+    this.handleScroll()
   },
   mounted() {
     this.isQuestionData()
-    window.addEventListener('scroll',this.handleScrollx,true)
+    window.addEventListener('scroll', this.handleScroll)
   },
   watch: {
     $route (oldValue, value) {
@@ -83,14 +87,6 @@ export default {
         this.isQuestionData()
       }
     },
-    scrollTop (oldValue, value) {
-      console.log(value)
-      if (value >= 75) {
-        this.topNav = true
-      } else {
-        this.topNav = false
-      }
-    }
   }
 };
 </script>
@@ -98,7 +94,6 @@ export default {
 <style lang="scss" scoped>
   @media screen and (min-width: 1000px) {
     .page {
-      // padding-top: 75px;
       min-width: 1200px;
     }
     .site-scrolltop {
@@ -124,10 +119,6 @@ export default {
 }
 
 @media screen and (max-width: 1000px) {
-  .page {
-    // min-width: 750px;
-  }
-
   .publicHeader,
   .publicFoot,
   .publicFooter {
@@ -141,5 +132,6 @@ export default {
   position: fixed;
   top: 0;
   z-index: 999;
+  box-shadow: 0 10px 10px rgb(0 0 0 / 10%);
 }
 </style>

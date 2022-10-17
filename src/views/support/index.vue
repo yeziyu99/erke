@@ -221,15 +221,12 @@ export default {
       padding-left: px2rem(15 * 2);
       padding-right: px2rem(15 * 2);
       width: 100%;
-      // max-width: 60%;
-      // min-width: 1200px;
     }
 
     .help_header {
       width: 100%;
       background: url("../../assets/image/help.png") no-repeat 100% / cover;
       height: px2rem(340 * 2);
-      // height: auto;
       display: flex;
       align-items: center;
 
@@ -279,7 +276,6 @@ export default {
           .item_children {
             margin-left: px2rem(60 * 2);
 
-            // width: 100%;
             .item_children_title {
               display: flex;
               align-items: center;

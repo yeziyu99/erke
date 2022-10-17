@@ -1,5 +1,5 @@
 <template>
-  <div class="big_wraps">
+  <div class="big_wrap">
     <div class="invest_banner">
       <div class="container lazyload">
         <div class="banner_bg_wrap">
@@ -59,77 +59,76 @@
             </ul>
             <div class="trade_btn foot_btn" @click="jumpFun('invest')">Get started</div>
           </div>
-          <div class="trade_rightO">
-            <div class="trade_right">
-              <div class="trade_tab">
-                <ul>
-                  <li style="z-index:4" :class="active == '1' ? 'active' : ''" @click="tabFn('1')">
-                    <img src="@/assets/image/icon6.png" alt="" />
-                  </li>
-                  <li style="z-index:3" :class="active == '2' ? 'active' : ''" @click="tabFn('2')">
-                    <img src="@/assets/image/icon7.png" alt="" />
-                  </li>
-                  <li style="z-index:2" :class="active == '3' ? 'active' : ''" @click="tabFn('3')">
-                    <img src="@/assets/image/icon8.png" alt="" />
-                  </li>
-                  <li style="z-index:1" :class="active == '4' ? 'active' : ''" @click="tabFn('4')">
-                    <img src="@/assets/image/icon9.png" alt="" />
-                  </li>
-                </ul>
-              </div>
-              <div class="trade_table">
-                <div class="table_title">{{ Title }}</div>
-                <el-table :data="tableData" height="447" :border="false" style="width: 100%">
-                  <el-table-column prop="symbol" label="symbol" width="110">
-                    <template slot-scope="scope">
-                      <!-- @click="jumpFun('detail?symbol='+scope.row.symbol)" -->
-                      <div style="color: #000; font-weight: 700" @click="jumpFun('detail?symbol=' + scope.row.symbol)">
-                        {{ scope.row.symbol }}
-                      </div>
-                    </template>
-                  </el-table-column>
-                  <el-table-column prop="ask" label="ask" width="110">
-                    <template slot-scope="scope">
-                      <div style="color: #fc4e50; font-weight: 700">
-                        {{ scope.row.ask }}
-                      </div>
-                    </template>
-                  </el-table-column>
-                  <el-table-column prop="bid" label="bid">
-                    <template slot-scope="scope">
-                      <div style="color: #07b360; font-weight: 700">
-                        {{ scope.row.bid }}
-                      </div>
-                    </template>
-                  </el-table-column>
-                </el-table>
-              </div>
+        </div>
+        <div class="trade_rightO">
+          <div class="trade_right">
+            <div class="trade_tab">
+              <ul>
+                <li style="z-index:4" :class="active == '1' ? 'active' : ''" @click="tabFn('1')">
+                  <img src="@/assets/image/icon6.png" alt="" />
+                </li>
+                <li style="z-index:3" :class="active == '2' ? 'active' : ''" @click="tabFn('2')">
+                  <img src="@/assets/image/icon7.png" alt="" />
+                </li>
+                <li style="z-index:2" :class="active == '3' ? 'active' : ''" @click="tabFn('3')">
+                  <img src="@/assets/image/icon8.png" alt="" />
+                </li>
+                <li style="z-index:1" :class="active == '4' ? 'active' : ''" @click="tabFn('4')">
+                  <img src="@/assets/image/icon9.png" alt="" />
+                </li>
+              </ul>
             </div>
-            <div class="table_foot">
-              <a href="#list_title"> View price of our product </a>
+            <div class="trade_table">
+              <div class="table_title">{{ Title }}</div>
+              <el-table :data="tableData" height="447" :border="false" style="width: 100%">
+                <el-table-column prop="symbol" label="symbol" width="110">
+                  <template slot-scope="scope">
+                    <div style="color: #000; font-weight: 700" @click="jumpFun('detail?symbol=' + scope.row.symbol)">
+                      {{ scope.row.symbol }}
+                    </div>
+                  </template>
+                </el-table-column>
+                <el-table-column prop="ask" label="ask" width="110">
+                  <template slot-scope="scope">
+                    <div style="color: #fc4e50; font-weight: 700">
+                      {{ scope.row.ask }}
+                    </div>
+                  </template>
+                </el-table-column>
+                <el-table-column prop="bid" label="bid">
+                  <template slot-scope="scope">
+                    <div style="color: #07b360; font-weight: 700">
+                      {{ scope.row.bid }}
+                    </div>
+                  </template>
+                </el-table-column>
+              </el-table>
             </div>
+          </div>
+          <div class="table_foot">
+            <a href="#list_title"> View price of our product </a>
           </div>
         </div>
       </div>
-      <div class="invest_list">
-        <div class="list_title" id="list_title">Trading instruments</div>
-        <div class="tab">
-          <el-tabs v-model="activeName">
-            <el-tab-pane :label="value.identifier_names" :name="value.identifier_names"
-              v-for="(value, index) in tableDataS" :key="index">
-              <el-table stripe :data="symbolBool ? value.symbols : value.symbolOne"
-                style="width: 100%; margin-top: 44px; margin-bottom: 60px">
-                <el-table-column prop="symbol" label="Product code" align="center"></el-table-column>
-                <el-table-column prop="name" label="Product name" align="center"></el-table-column>
-                <el-table-column prop="average_spread" label="Average spread (point)" align="center"></el-table-column>
-                <el-table-column prop="leverage" label="Leverage" align="center"></el-table-column>
-                <el-table-column prop="trade_session" label="Trading time" align="center"></el-table-column>
-              </el-table>
-            </el-tab-pane>
-          </el-tabs>
+    </div>
+    <div class="invest_list">
+      <div class="list_title" id="list_title">Trading instruments</div>
+      <div class="tab">
+        <el-tabs v-model="activeName">
+          <el-tab-pane :label="value.identifier_names" :name="value.identifier_names"
+            v-for="(value, index) in tableDataS" :key="index">
+            <el-table stripe :data="symbolBool ? value.symbols : value.symbolOne"
+              style="width: 100%; margin-top: 44px; margin-bottom: 60px">
+              <el-table-column prop="symbol" label="Product code" align="center"></el-table-column>
+              <el-table-column prop="name" label="Product name" align="center"></el-table-column>
+              <el-table-column prop="average_spread" label="Average spread (point)" align="center"></el-table-column>
+              <el-table-column prop="leverage" label="Leverage" align="center"></el-table-column>
+              <el-table-column prop="trade_session" label="Trading time" align="center"></el-table-column>
+            </el-table>
+          </el-tab-pane>
+        </el-tabs>
 
-          <div class="tab_btn foot_btn" @click="symbolBool=!symbolBool;">{{symbolBool?'Hide':'Click for more'}}</div>
-        </div>
+        <div class="tab_btn foot_btn" @click="symbolBool=!symbolBool;">{{symbolBool?'Hide':'Click for more'}}</div>
       </div>
     </div>
   </div>
@@ -171,9 +170,6 @@ export default {
     ...mapActions(["webSocketInit"]),
     ClickForMore() {
       this.symbolBool = true;
-    },
-    symbolFn(symbol) {
-      // console.log(symbol)
     },
     tabFn(val) {
       this.active = val;
@@ -296,7 +292,6 @@ export default {
             this.tableData = rs.data;
           } else {
             this.tableData = [];
-            console.error("rs");
           }
         })
         .catch((err) => {
@@ -307,7 +302,6 @@ export default {
   created() {
     this.getSymbolClassify();
     this.getForyouTradeTop("stock");
-    //  this.webSocketInit()
   },
   mounted() { },
 };
@@ -320,7 +314,6 @@ export default {
     color: #000;
     overflow: hidden;
     padding: 110px 0 50px;
-    // height:300px;
     position: relative;
 
     .container {
@@ -370,10 +363,8 @@ export default {
     }
 
     .head_con {
-      //   //  position: relative;
       width: 60%;
       min-width: 1200px;
-      // overflow: auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -412,7 +403,6 @@ export default {
 
           a {
             background: no-repeat 15px 50% / auto 15px #f4f4f4;
-            // border: 1px solid #fff;
             border-radius: 7px;
             color: #000;
             font-size: 15px;
@@ -439,7 +429,6 @@ export default {
         top: 30px;
         left: 60%;
 
-        // right: 10px;
         img {
           width: 220px;
         }
@@ -455,11 +444,9 @@ export default {
       width: 60%;
       margin: 0 auto;
       min-width: 1200px;
-      // overflow-x: auto;
       margin-top: 120px;
       display: flex;
       justify-content: space-between;
-      // background: #FAFAFA;
 
       .trade_left {
         margin-top: 30px;
@@ -520,14 +507,11 @@ export default {
           border-radius: 26px;
           display: inline-block;
           margin-bottom: 10px;
-          // width: 89 * 2px;
-          // margin-top: 160px;
         }
       }
 
       .trade_rightO {
 
-        // width: 40%;
         .table_foot {
           width: 100%;
           margin-top: 30px;
@@ -574,7 +558,6 @@ export default {
         }
 
         .trade_table {
-          // width: 446px;
           height: 279.5 * 2px;
           background: #fff;
           border-radius: 0px 9px 9px 9px;
@@ -670,7 +653,5 @@ export default {
     }
   }
 }
-
-// #F2F3F5
 </style>
   

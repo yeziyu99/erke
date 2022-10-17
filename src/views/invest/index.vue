@@ -3,7 +3,6 @@
     <div class="inset_content">
       <div class="inset_bg">
         <div class="insetbg_annulus"></div>
-        <!-- <div class="inset_annulus_sm"></div> -->
         <div class="bg-semicircle"></div>
         <div class="bg_ball"></div>
         <div class="bg_ball_solid"></div>
@@ -63,9 +62,6 @@ export default {
   align-items: center;
   position: relative;
   .inset_content {
-    // height: 940px;
-    // width: 80%;
-    // position: relative;
     height: 940px;
     position: absolute;
     right: 29%;
@@ -110,11 +106,6 @@ export default {
       .bg-semicircle {
         background: url("../../assets/image/banner-semicircle.png") no-repeat
           50% / contain;
-        // height: 60%;
-        // left: 22.1%;
-        // opacity: 0.6;
-        // position: absolute;
-        // top: 18.51%;
         height: 84%;
         left: 21.1%;
         opacity: 0.6;
@@ -209,7 +200,6 @@ export default {
     flex-direction: column;
     margin: 0 auto 20px;
     max-width: 1050px;
-    // padding-top: calc(50vh - 250px);
     position: relative;
     z-index: 1;
     .logo {
@@ -246,9 +236,6 @@ export default {
           margin-right: 10px;
         }
       }
-      // .ios{
-
-      // }
       .android {
         margin-left: 10px;
       }
