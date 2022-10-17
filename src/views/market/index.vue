@@ -8,35 +8,45 @@
             <div class="bg_img"></div>
             <div class="bg_img"></div>
           </div>
-          
         </div>
       </div>
       <div class="head_con">
-            <div class="banner_left">
-              <h2>
-                Invest in top performing assets with one-stop CFD trading
-                platform in your pocket.
-              </h2>
-              <div class="banner_btn">
-                <div class="btn_one" @click="jumpFun('invest')">Get started</div>
-                <a href="" class="ios" @click="jumpFun('invest')">
-                  <img src="@/assets/image/apple_down.png" alt="" @click="jumpFun('invest')" />
-                  APP STORE</a>
-                <a href="" class="android" @click="jumpFun('invest')">
-                  <img src="@/assets/image/googleplay_down.png" alt="" @click="jumpFun('invest')" />
-                  GOOGLE PLAY</a>
-              </div>
-              <p>Images displayed are for illustrative purposes only</p>
-            </div>
-            <div class="banner_img">
-              <img src="@/assets/image/phone.png" alt="" />
-            </div>
+        <div class="banner_left">
+          <h2>
+            Invest in top performing assets with one-stop CFD trading platform
+            in your pocket.
+          </h2>
+          <div class="banner_btn">
+            <div class="btn_one" @click="jumpFun('invest')">Get started</div>
+            <a href="" class="ios" @click="jumpFun('invest')">
+              <img
+                src="@/assets/image/apple_down.png"
+                alt=""
+                @click="jumpFun('invest')"
+              />
+              APP STORE</a
+            >
+            <a href="" class="android" @click="jumpFun('invest')">
+              <img
+                src="@/assets/image/googleplay_down.png"
+                alt=""
+                @click="jumpFun('invest')"
+              />
+              GOOGLE PLAY</a
+            >
           </div>
+          <p>Images displayed are for illustrative purposes only</p>
+        </div>
+        <div class="banner_img">
+          <img src="@/assets/image/phone.png" alt="" />
+        </div>
+      </div>
     </div>
     <div class="invest_big">
       <div class="invest_tab">
         <div class="trade_left">
-          <h2 v-if="active == '1'" class="trade_title">
+          <div>
+            <h2 v-if="active == '1'" class="trade_title">
             Trade top stocks with less cost
           </h2>
           <h2 v-if="active == '2'" class="trade_title">
@@ -50,11 +60,11 @@
             Buy or sell on 5*24 non-stopable currencies market
           </h2>
           <ul class="trade_list">
-            <li v-for="(value,index) in list" :key="index">
+            <li v-for="(value, index) in list" :key="index">
               <div>
                 <span></span>
               </div>
-              <p>{{value.name}}</p>
+              <p>{{ value.name }}</p>
             </li>
           </ul>
           <div class="trade_btn foot_btn" @click="jumpFun('invest')">Get started</div>
@@ -63,27 +73,35 @@
           <div class="trade_right">
             <div class="trade_tab">
               <ul>
-                <li :class="active == '1' ? 'active' : ''" @click="tabFn('1')">
+                <li style="z-index:4" :class="active == '1' ? 'active' : ''" @click="tabFn('1')">
                   <img src="@/assets/image/icon6.png" alt="" />
                 </li>
-                <li :class="active == '2' ? 'active' : ''" @click="tabFn('2')">
+                <li style="z-index:3"  :class="active == '2' ? 'active' : ''" @click="tabFn('2')">
                   <img src="@/assets/image/icon7.png" alt="" />
                 </li>
-                <li :class="active == '3' ? 'active' : ''" @click="tabFn('3')">
+                <li style="z-index:2"  :class="active == '3' ? 'active' : ''" @click="tabFn('3')">
                   <img src="@/assets/image/icon8.png" alt="" />
                 </li>
-                <li :class="active == '4' ? 'active' : ''" @click="tabFn('4')">
+                <li style="z-index:1"  :class="active == '4' ? 'active' : ''" @click="tabFn('4')">
                   <img src="@/assets/image/icon9.png" alt="" />
                 </li>
               </ul>
             </div>
             <div class="trade_table">
-              <div class="table_title">{{Title}}</div>
-              <el-table :data="tableData" height="447" style="width: 100%">
+              <div class="table_title">{{ Title }}</div>
+              <el-table
+                :data="tableData"
+                height="447"
+                :border="false"
+                style="width: 100%"
+              >
                 <el-table-column prop="symbol" label="symbol" width="110">
                   <template slot-scope="scope">
                     <!-- @click="jumpFun('detail?symbol='+scope.row.symbol)" -->
-                    <div style="color: #000; font-weight: 700"  @click="jumpFun('detail?symbol='+scope.row.symbol)" >
+                    <div
+                      style="color: #000; font-weight: 700"
+                      @click="jumpFun('detail?symbol=' + scope.row.symbol)"
+                    >
                       {{ scope.row.symbol }}
                     </div>
                   </template>
@@ -106,9 +124,7 @@
             </div>
           </div>
           <div class="table_foot">
-            <a href="#list_title">
-              View price of our product
-            </a>
+            <a href="#list_title"> View price of our product </a>
           </div>
         </div>
       </div>
@@ -117,15 +133,42 @@
       <div class="list_title" id="list_title">Trading instruments</div>
       <div class="tab">
         <el-tabs v-model="activeName">
-          <el-tab-pane :label="value.identifier_names" :name="value.identifier_names" v-for="(value,index) in tableDataS"
-            :key="index">
-            <el-table :data="symbolBool?value.symbols:value.symbolOne"
-              style="width: 100%; margin-top: 44px; margin-bottom: 60px">
-              <el-table-column prop="symbol" label="Product code" align="center"></el-table-column>
-              <el-table-column prop="name" label="Product name" align="center"></el-table-column>
-              <el-table-column prop="average_spread" label="Average spread (point)" align="center"></el-table-column>
-              <el-table-column prop="leverage" label="Leverage" align="center"></el-table-column>
-              <el-table-column prop="trade_session" label="Trading time" align="center"></el-table-column>
+          <el-tab-pane
+            :label="value.identifier_names"
+            :name="value.identifier_names"
+            v-for="(value, index) in tableDataS"
+            :key="index"
+          >
+            <el-table
+              stripe
+              :data="symbolBool ? value.symbols : value.symbolOne"
+              style="width: 100%; margin-top: 44px; margin-bottom: 60px"
+            >
+              <el-table-column
+                prop="symbol"
+                label="Product code"
+                align="center"
+              ></el-table-column>
+              <el-table-column
+                prop="name"
+                label="Product name"
+                align="center"
+              ></el-table-column>
+              <el-table-column
+                prop="average_spread"
+                label="Average spread (point)"
+                align="center"
+              ></el-table-column>
+              <el-table-column
+                prop="leverage"
+                label="Leverage"
+                align="center"
+              ></el-table-column>
+              <el-table-column
+                prop="trade_session"
+                label="Trading time"
+                align="center"
+              ></el-table-column>
             </el-table>
           </el-tab-pane>
         </el-tabs>
@@ -156,7 +199,7 @@ export default {
         { products: "AMZN", sell: "131.280", buy: "129.250" },
       ],
       tableDataS: [],
-      Title: 'Stocks',
+      Title: "Stocks",
       symbolBool: false,
       activeName: "Stocks",
       list: [
@@ -167,33 +210,29 @@ export default {
       ],
     };
   },
-  components: {
-
-  },
+  components: {},
   methods: {
-    ...mapActions([
-      "webSocketInit"
-    ]),
+    ...mapActions(["webSocketInit"]),
     ClickForMore() {
       this.symbolBool = true;
     },
-    symbolFn(symbol){
+    symbolFn(symbol) {
       // console.log(symbol)
     },
     tabFn(val) {
       this.active = val;
       if (val == "1") {
-        this.Title = 'Stocks'
+        this.Title = "Stocks";
         this.list = [
           { name: "Track real-time market prices anytime and anywhere." },
           { name: "Gain more with less via 30:1 leverage" },
           { name: "Auto-manage your trading lots and leverage" },
           { name: "Get free demo account with £10,000" },
         ];
-        this.getForyouTradeTop('stock')
+        this.getForyouTradeTop("stock");
       }
       if (val == "2") {
-        this.Title = 'Indices'
+        this.Title = "Indices";
         this.list = [
           { name: "Diversify your assets on your wishlist" },
           {
@@ -203,10 +242,9 @@ export default {
           { name: "Benefit from the leverage of 30:1" },
           { name: "Practice trading skills with £10,000 free demo account" },
         ];
-        this.getForyouTradeTop('index')
-
+        this.getForyouTradeTop("index");
       } else if (val == "3") {
-        this.Title = 'Commodities'
+        this.Title = "Commodities";
         this.list = [
           { name: "Access to the popular and stable trading markets" },
           {
@@ -216,20 +254,20 @@ export default {
           { name: "Trade asset with 1/30 of cost" },
           { name: "Practice trading skills with £10,000 free demo account" },
         ];
-        this.getForyouTradeTop('energy,metal')
-
+        this.getForyouTradeTop("energy,metal");
       } else if (val == "4") {
-        this.Title = 'Currencies'
+        this.Title = "Currencies";
         this.list = [
           { name: "24-hour trade with best liquidity" },
           {
             name: "Trade with 30:1 leverage in your favourite currency pairs",
           },
           { name: "Set your risk appetite and expected profit by yourself" },
-          { name: "Build your confidence by practicing trading skills with £10,000 free demo account" },
+          {
+            name: "Build your confidence by practicing trading skills with £10,000 free demo account",
+          },
         ];
-        this.getForyouTradeTop('forex')
-
+        this.getForyouTradeTop("forex");
       }
     },
     jumpFun(route) {
@@ -237,78 +275,85 @@ export default {
         this.$router.push(route);
       }
     },
-    getCommodities(data){
-      let datas = []
+    getCommodities(data) {
+      let datas = [];
       var commodities = {
         symbols: [],
-        identifier: 'Commodities',
-        identifier_name: 'Commodities',
-        identifier_names: 'Commodities'
+        identifier: "Commodities",
+        identifier_name: "Commodities",
+        identifier_names: "Commodities",
       };
       for (let key in data) {
-        if (data[key]['identifier'] == 'metal' || data[key]['identifier'] == 'energy') {
-          commodities['symbols'] = [...data[key]['symbols'], ...commodities['symbols']]
-        }
-        else {
-          if (data[key]['identifier'] == 'stock') {
-            data[key]['identifier_names'] = 'Stocks'
-          } else if (data[key]['identifier'] == 'forex') {
-            data[key]['identifier_names'] = 'Currencies'
-          } else if (data[key]['identifier'] == 'index') {
-            data[key]['identifier_names'] = 'Indices'
+        if (
+          data[key]["identifier"] == "metal" ||
+          data[key]["identifier"] == "energy"
+        ) {
+          commodities["symbols"] = [
+            ...data[key]["symbols"],
+            ...commodities["symbols"],
+          ];
+        } else {
+          if (data[key]["identifier"] == "stock") {
+            data[key]["identifier_names"] = "Stocks";
+          } else if (data[key]["identifier"] == "forex") {
+            data[key]["identifier_names"] = "Currencies";
+          } else if (data[key]["identifier"] == "index") {
+            data[key]["identifier_names"] = "Indices";
           }
-          datas.push(data[key])
+          datas.push(data[key]);
         }
       }
-      datas.push(commodities)
-      return datas
+      datas.push(commodities);
+      return datas;
     },
     getSymbolClassify() {
-      http.getSymbolClassify()
-        .then(rs => {
+      http
+        .getSymbolClassify()
+        .then((rs) => {
           if (rs.is_succ) {
-            let datas = this.getCommodities(rs.data)
+            let datas = this.getCommodities(rs.data);
             for (let key in datas) {
-              let symbols = datas[key]['symbols'];
+              let symbols = datas[key]["symbols"];
               let symbolOne = [];
               for (let i = 0; i <= 5; i++) {
                 if (symbols[i]) {
-                  symbolOne.push(symbols[i])
+                  symbolOne.push(symbols[i]);
                 }
               }
-              datas[key]['symbolOne'] = symbolOne;
+              datas[key]["symbolOne"] = symbolOne;
             }
-            this.tableDataS = datas
-            this.activeName = datas[0].identifier_names
+            this.tableDataS = datas;
+            this.activeName = datas[0].identifier_names;
           } else {
-
           }
-        }).catch((err) => {
-          console.log(err)
         })
+        .catch((err) => {
+          console.log(err);
+        });
     },
     getForyouTradeTop(identifier) {
-      let identifiers = identifier || 'stock';
-      http.getForyouTradeTop(identifiers)
-        .then(rs => {
+      let identifiers = identifier || "stock";
+      http
+        .getForyouTradeTop(identifiers)
+        .then((rs) => {
           if (rs.is_succ) {
-            this.tableData = rs.data
+            this.tableData = rs.data;
           } else {
             this.tableData = [];
-            console.error('rs')
+            console.error("rs");
           }
-        }).catch((err) => {
-          console.log(err)
-
         })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
   created() {
-    this.getSymbolClassify()
-    this.getForyouTradeTop('stock')
+    this.getSymbolClassify();
+    this.getForyouTradeTop("stock");
     //  this.webSocketInit()
   },
-  mounted() { },
+  mounted() {},
 };
 </script>
   
@@ -462,7 +507,10 @@ export default {
         margin-top: 30px;
         margin-bottom: 120px;
         width: 45%;
-
+        height: 279.5 * 2px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         .trade_title {
           font-size: 36px;
           font-weight: 700;
@@ -507,17 +555,18 @@ export default {
         }
 
         .trade_btn {
+          width: 134px;
           padding: 14px 30px;
           background: #ffe100;
           border-radius: 26px;
           display: inline-block;
+          margin-bottom: 10px;
           // width: 89 * 2px;
-          margin-top: 160px;
+          // margin-top: 160px;
         }
       }
 
       .trade_rightO {
-
         // width: 40%;
         .table_foot {
           width: 100%;
@@ -525,7 +574,7 @@ export default {
           font-weight: 700;
           text-align: right;
           text-decoration: underline;
-          a{
+          a {
             color: #000;
           }
         }
@@ -549,11 +598,15 @@ export default {
               display: flex;
               justify-content: center;
               align-items: center;
+              border-radius: 6px 0px 0px 6px;
+              box-shadow: -7px 6px 14px 14px rgba(233, 236, 253, 0.5);
 
               &.active {
                 width: 88px;
                 height: 70px;
                 background: #ffe100;
+                box-shadow: -7px 6px 14px 14px rgba(233, 236, 253, 0.5);
+                z-index: 9 !important;
               }
             }
           }
@@ -567,7 +620,16 @@ export default {
           box-shadow: 4px 5px 15px 0px rgba(233, 236, 253, 0.5);
           padding: 30px;
           box-sizing: border-box;
-
+          ::v-deep .el-table td.el-table__cell,
+          .el-table th.el-table__cell.is-leaf {
+            border-bottom: none;
+          }
+          ::v-deep .el-table th.el-table__cell.is-leaf {
+            border-bottom: none;
+          }
+          ::v-deep .el-table::before {
+            height: 0px;
+          }
           .table_title {
             font-size: 24px;
             margin-bottom: 12px;
@@ -598,7 +660,23 @@ export default {
       ::v-deep .el-tabs__active-bar {
         background-color: #000000;
       }
-
+      ::v-deep .el-tabs__nav-wrap::after {
+        height: 1px;
+      }
+      ::v-deep .el-tabs__active-bar {
+        height: 3px;
+        border-radius: 3px;
+      }
+      ::v-deep .el-table td.el-table__cell,
+      .el-table th.el-table__cell.is-leaf {
+        border-bottom: none;
+      }
+      ::v-deep .el-table th.el-table__cell.is-leaf {
+        border-bottom: none;
+      }
+      ::v-deep .el-table::before {
+        height: 0px;
+      }
       ::v-deep .el-tabs__item:hover {
         color: #000000;
         cursor: pointer;

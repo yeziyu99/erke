@@ -174,7 +174,7 @@ export default {
 
         .question_item {
           border-bottom: 1px solid #000;
-          padding: 20px 0 20px 0;
+          padding: 40px 0 40px 0;
 
           .item_big {
             display: flex;

@@ -66,12 +66,12 @@ export default {
     min-width: 1200px;
     padding-top: 90px;
     .question_title {
-      font-size: 24px;
+      font-size: 36px;
     }
     .question_list {
       padding-bottom: 80px;
       .queation_item {
-        padding: 15px 0;
+        padding: 30px 0;
         border-bottom: 1px solid #000000;
         font-size: 16px;
         font-family: Gilroy,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
