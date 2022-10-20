@@ -76,8 +76,13 @@
         </div>
       </div>
       <div class="invest_title">
-        Invest globally with next-generation app <br />
-        at your fingertips
+        <!-- <div> -->
+          <p class="title_wrapper">TIGER TRADE APP</p>
+          <h2>
+            Invest globally with next-generation app <br />
+            at your fingertips
+          </h2>
+        <!-- </div> -->
       </div>
       <div class="invest_bg">
         <div class="invest_bg_title">
@@ -145,7 +150,14 @@
         </div>
       </div>
       <div class="home_pounce">
-        <div class="pounce_title">Pounce on Tiger CFD to leap ahead</div>
+        <div class="pounce_title">
+          <p class="title_wrapper">
+            INVEST GLOBALLY
+          </p>
+          <h2>
+            Pounce on Tiger CFD to leap ahead
+          </h2>
+        </div>
         <div class="pounce_content">
           <div class="pounce_left">
             <div>
@@ -801,10 +813,23 @@ export default {
     }
 
     .invest_title {
-      font-size: 48px;
-      text-align: center;
-      font-weight: 700;
       margin-top: 200px;
+      h2{
+        font-size: 48px;
+        text-align: center;
+        font-weight: 700;
+      }
+    }
+    .title_wrapper{
+      -webkit-background-clip: text;
+      background-clip: text;
+      background-image: linear-gradient(180deg,hsla(0,0%,84%,.6),hsla(0,0%,84%,0));
+      color: transparent;
+      font-size: 99px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: -45px;
+      text-align: center;
     }
 
     .invest_bg {
@@ -1021,11 +1046,16 @@ export default {
       width: 100%;
 
       .pounce_title {
-        font-size: 48px;
         text-align: left;
-        font-weight: 700;
         margin-top: 160px;
         margin-bottom: 20px;
+        h2{
+          font-size: 48px;
+          font-weight: 700;
+        }
+        p{
+          text-align: left;
+        }
       }
 
       .pounce_content {

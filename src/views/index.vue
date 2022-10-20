@@ -67,6 +67,7 @@ export default {
     },
     handleScroll () {
     var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+    this.scrollTop=scrollTop;
     if (scrollTop >= 1) {
         this.topNav = true
       } else {
