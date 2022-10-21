@@ -137,12 +137,12 @@
             </div>
             <div class="swiper-containerTwo">
               <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <img src="@/assets/image/right5.png" alt="" />
+                <div class="swiper-slide" v-for="(item, index) in imageSrcs" :key="index">
+                  <img :src="item" alt="" />
                 </div>
-                <div class="swiper-slide">
-                  <img src="@/assets/image/right6.png" alt="" />
-                </div>
+                <!-- <div class="swiper-slide">
+                  <img :src="@/assets/image/right6.png" alt="" />
+                </div> -->
               </div>
               <div class="swiper-pagination"></div>
             </div>
@@ -239,6 +239,8 @@ import tu3 from "@/assets/image/tu5.png";
 import tu4 from "@/assets/image/tu3.png";
 import tu5 from "@/assets/image/tu4.png";
 import tu6 from "@/assets/image/tu6.png";
+import right1 from "@/assets/image/right5.png";
+import right2 from "@/assets/image/right6.png";
 import "swiper/css/swiper.min.css";
 import Swiper from "swiper";
 export default {
@@ -282,6 +284,8 @@ export default {
       ],
       rightIndex: 0,
       activeIndex: 1,
+      imageSrcs: [right1,right2],
+      images: [right1,right2],
     };
   },
   components: {},
@@ -345,13 +349,23 @@ export default {
         clickable: true, // 分页器可以点击
       },
       on: {
-        slideChange: function () {
+        slideChangeTransitionStart: function () {
           // 获得下标
           _this.rightIndex = this.activeIndex - 1;
+          let img_right = document.querySelector('.swiper-containerTwo .swiper-slide-prev img')
+          if (img_right) {
+            img_right.className = 'active_img'
+          }
           if (_this.rightIndex === 2) {
             _this.rightIndex = 0;
           }
           _this.swiper_right_text.slideTo(_this.rightIndex + 1);
+        },
+        slideChangeTransitionEnd: function(){
+          let img_right = document.querySelector('.swiper-containerTwo .swiper-slide-prev img')
+          if (img_right) {
+            img_right.className = '';
+          }
         },
       },
     });
@@ -480,7 +494,6 @@ export default {
       margin: 0 auto;
       position: relative;
       display: flex;
-
       .home_bg {
         width: 50%;
         position: relative;
@@ -1024,6 +1037,9 @@ export default {
                   width: 100%;
                   z-index: 9999;
                   vertical-align: bottom;
+                  &.active_img {
+                    display: none;
+                  }
                 }
               }
             }
