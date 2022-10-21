@@ -314,7 +314,7 @@ export default {
       loop: true, //开启环路
       speed: 2000, //每个轮播图过渡的时间
       spaceBetween: -15, //每个轮播图间隔
-      slidesPerView: 2.2, //当前页面显示几个，这里是auto
+      slidesPerView: 2.4, //当前页面显示几个，这里是auto
       loopedSlides: 6, //比你页面显示的数量大于2就好
       updateOnWindowResize: false, //分辨率改变时，防止样式错乱加上！
       autoplay: {
