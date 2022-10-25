@@ -771,7 +771,6 @@ export default {
       h2 {
         height: 29px;
         font-size: 48px;
-        font-family: Gilroy, Gilroy-Bold;
         font-weight: 700;
         text-align: center;
         color: #000000;

@@ -83,22 +83,22 @@ export default {
   }
   .about_content {
     width: 60%;
-     min-width: 1200px;
+    min-width: 1200px;
     // height: 296.5*2px;
-  padding: 80px 0 50px 0;
+    padding: 80px 0 50px 0;
 
-  
-  p{
-    font-size: 18;
-    font-weight: 900;
-  }
-  h1{
-    font-size: 36px;
-    margin-top: 60px;
-  }
-  div{
-    margin-top: 15px;
-  }
+    p{
+      font-size: 18px;
+      font-weight: 700;
+    }
+    h1{
+      font-size: 36px;
+      margin-top: 60px;
+    }
+    div{
+      margin-top: 15px;
+      line-height: 1.5;
+    }
   }
 }
 </style>
