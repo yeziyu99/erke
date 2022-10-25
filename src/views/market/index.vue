@@ -19,16 +19,38 @@
           <div class="banner_btn">
             <div class="btn_one" @click="jumpFun('invest')">Get started</div>
             <a href="" class="ios" @click="jumpFun('invest')">
-              <img src="@/assets/image/apple_down.png" alt="" @click="jumpFun('invest')" />
-              APP STORE</a>
+              <img
+                src="@/assets/image/apple_down.png"
+                alt=""
+                @click="jumpFun('invest')"
+              />
+              APP STORE</a
+            >
             <a href="" class="android" @click="jumpFun('invest')">
-              <img src="@/assets/image/googleplay_down.png" alt="" @click="jumpFun('invest')" />
-              GOOGLE PLAY</a>
+              <img
+                src="@/assets/image/googleplay_down.png"
+                alt=""
+                @click="jumpFun('invest')"
+              />
+              GOOGLE PLAY</a
+            >
           </div>
           <p>Images displayed are for illustrative purposes only</p>
         </div>
         <div class="banner_img">
           <img src="@/assets/image/phone.png" alt="" />
+          <video
+            class="inset_video"
+            muted
+            playsinline
+            webkit-playsinline
+            autoplay
+            loop
+            preload="auto"
+            data-status="playing"
+          >
+            <source src="@/assets/video/markets_video.mp4" />
+          </video>
         </div>
       </div>
     </div>
@@ -44,7 +66,8 @@
               cost
             </h2>
             <h2 v-if="active == '3'" class="trade_title">
-              Trade gold, sliver, oil or gas with less cost in days of turbulence
+              Trade gold, sliver, oil or gas with less cost in days of
+              turbulence
             </h2>
             <h2 v-if="active == '4'" class="trade_title">
               Buy or sell on 5*24 non-stopable currencies market
@@ -57,33 +80,59 @@
                 <p>{{ value.name }}</p>
               </li>
             </ul>
-            <div class="trade_btn foot_btn" @click="jumpFun('invest')">Get started</div>
+            <div class="trade_btn foot_btn" @click="jumpFun('invest')">
+              Get started
+            </div>
           </div>
         </div>
         <div class="trade_rightO">
           <div class="trade_right">
             <div class="trade_tab">
               <ul>
-                <li style="z-index:4" :class="active == '1' ? 'active' : ''" @click="tabFn('1')">
+                <li
+                  style="z-index: 4"
+                  :class="active == '1' ? 'active' : ''"
+                  @click="tabFn('1')"
+                >
                   <img src="@/assets/image/icon6.png" alt="" />
                 </li>
-                <li style="z-index:3" :class="active == '2' ? 'active' : ''" @click="tabFn('2')">
+                <li
+                  style="z-index: 3"
+                  :class="active == '2' ? 'active' : ''"
+                  @click="tabFn('2')"
+                >
                   <img src="@/assets/image/icon7.png" alt="" />
                 </li>
-                <li style="z-index:2" :class="active == '3' ? 'active' : ''" @click="tabFn('3')">
+                <li
+                  style="z-index: 2"
+                  :class="active == '3' ? 'active' : ''"
+                  @click="tabFn('3')"
+                >
                   <img src="@/assets/image/icon8.png" alt="" />
                 </li>
-                <li style="z-index:1" :class="active == '4' ? 'active' : ''" @click="tabFn('4')">
+                <li
+                  style="z-index: 1"
+                  :class="active == '4' ? 'active' : ''"
+                  @click="tabFn('4')"
+                >
                   <img src="@/assets/image/icon9.png" alt="" />
                 </li>
               </ul>
             </div>
             <div class="trade_table">
               <div class="table_title">{{ Title }}</div>
-              <el-table :data="tableData" height="447" :border="false" style="width: 100%">
+              <el-table
+                :data="tableData"
+                height="447"
+                :border="false"
+                style="width: 100%"
+              >
                 <el-table-column prop="symbol" label="symbol" width="110">
                   <template slot-scope="scope">
-                    <div style="color: #000; font-weight: 700" @click="jumpFun('detail?symbol=' + scope.row.symbol)">
+                    <div
+                      style="color: #000; font-weight: 700"
+                      @click="jumpFun('detail?symbol=' + scope.row.symbol)"
+                    >
                       {{ scope.row.symbol }}
                     </div>
                   </template>
@@ -115,20 +164,49 @@
       <div class="list_title" id="list_title">Trading instruments</div>
       <div class="tab">
         <el-tabs v-model="activeName">
-          <el-tab-pane :label="value.identifier_names" :name="value.identifier_names"
-            v-for="(value, index) in tableDataS" :key="index">
-            <el-table stripe :data="symbolBool ? value.symbols : value.symbolOne"
-              style="width: 100%; margin-top: 44px; margin-bottom: 60px">
-              <el-table-column prop="symbol" label="Product code" align="center"></el-table-column>
-              <el-table-column prop="name" label="Product name" align="center"></el-table-column>
-              <el-table-column prop="average_spread" label="Average spread (point)" align="center"></el-table-column>
-              <el-table-column prop="leverage" label="Leverage" align="center"></el-table-column>
-              <el-table-column prop="trade_session" label="Trading time" align="center"></el-table-column>
+          <el-tab-pane
+            :label="value.identifier_names"
+            :name="value.identifier_names"
+            v-for="(value, index) in tableDataS"
+            :key="index"
+          >
+            <el-table
+              stripe
+              :data="symbolBool ? value.symbols : value.symbolOne"
+              style="width: 100%; margin-top: 44px; margin-bottom: 60px"
+            >
+              <el-table-column
+                prop="symbol"
+                label="Product code"
+                align="center"
+              ></el-table-column>
+              <el-table-column
+                prop="name"
+                label="Product name"
+                align="center"
+              ></el-table-column>
+              <el-table-column
+                prop="average_spread"
+                label="Average spread (point)"
+                align="center"
+              ></el-table-column>
+              <el-table-column
+                prop="leverage"
+                label="Leverage"
+                align="center"
+              ></el-table-column>
+              <el-table-column
+                prop="trade_session"
+                label="Trading time"
+                align="center"
+              ></el-table-column>
             </el-table>
           </el-tab-pane>
         </el-tabs>
 
-        <div class="tab_btn foot_btn" @click="symbolBool=!symbolBool;">{{symbolBool?'Hide':'Click for more'}}</div>
+        <div class="tab_btn foot_btn" @click="symbolBool = !symbolBool">
+          {{ symbolBool ? "Hide" : "Click for more" }}
+        </div>
       </div>
     </div>
   </div>
@@ -303,7 +381,10 @@ export default {
     this.getSymbolClassify();
     this.getForyouTradeTop("stock");
   },
-  mounted() { },
+  mounted() {
+    // console.log(this.$refs.video.play);
+    // this.$refs.video.play();
+  },
 };
 </script>
   
@@ -396,7 +477,7 @@ export default {
             color: #fff;
 
             &:hover {
-              color: #FFE100;
+              color: #ffe100;
               cursor: pointer;
             }
           }
@@ -429,9 +510,24 @@ export default {
         top: 30px;
         left: 60%;
 
+        .inset_video {
+          width: 208px;
+          position: absolute;
+          top: 13px;
+          left: 7px;
+          border-radius: 30px;
+        }
         img {
           width: 220px;
         }
+
+        // video {
+        //   width: 208px;
+        //   position: absolute;
+        //   top: 13px;
+        //   left: 7px;
+        //   border-radius: 20px;
+        // }
       }
     }
   }
@@ -511,7 +607,6 @@ export default {
       }
 
       .trade_rightO {
-
         .table_foot {
           width: 100%;
           margin-top: 30px;

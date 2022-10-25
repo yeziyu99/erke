@@ -60,12 +60,13 @@ ul li {
     width: 60%;
     min-width: 1200px;
     // min-width: 600px;
-    cursor: pointer;
+    // cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
     img{
       width: 230px;
+      cursor: pointer;
     }
     ul {
       display: flex;

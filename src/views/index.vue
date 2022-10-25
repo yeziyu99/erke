@@ -93,6 +93,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  #toTop {
+    position: sticky;
+    top: 0;
+    z-index: 99;
+  }
   @media screen and (min-width: 1000px) {
     .page {
       min-width: 1200px;
@@ -130,9 +135,6 @@ export default {
   }
 }
 .topNav {
-  position: fixed;
-  top: 0;
-  z-index: 999;
   box-shadow: 0 10px 10px rgb(0 0 0 / 10%);
 }
 </style>
