@@ -461,6 +461,7 @@ export default {
           font-size: 48px;
           font-weight: 700;
           line-height: 1;
+          font-family: Gilroy-Bold;
           margin-bottom: 60px;
         }
 
