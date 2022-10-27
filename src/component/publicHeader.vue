@@ -86,6 +86,7 @@ ul li {
       }
       .fontW700{
         font-weight: 700;
+        font-family: Gilroy-Bold;
       }
       .header_btn {
         width: 110px;

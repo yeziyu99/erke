@@ -1,7 +1,7 @@
 <template>
   <div class="question">
     <div class="question_content">
-      <div class="question_title">FAQs</div>
+      <div class="question_title font_Bold">FAQs</div>
       <div class="question_list">
         <div
           class="queation_item"

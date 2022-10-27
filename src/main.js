@@ -6,6 +6,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import VueCookies from 'vue-cookies'
 import "@/assets/styles/reset.scss";
+import "@/assets/font/font.css";
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
 Vue.prototype.$cookie = VueCookies;

@@ -4,7 +4,7 @@
       <div class="home_header">
         <div class="head_con">
           <div class="banner_left">
-            <h2>Hey! Your CFD trading journey starts today</h2>
+            <h2 class="font_Bold">Hey! Your CFD trading journey starts today</h2>
             <h4 style="margin-bottom: 90px; font-size: 20px">
               Explore benefits from Tiger CFD platform.Enjoy your multiple
               <br />
@@ -53,7 +53,7 @@
 
     <div class="home_content">
       <div class="content_img">
-        <h2>Why CFDs Trading?</h2>
+        <h2 class="font_Bold">Why CFDs Trading?</h2>
         <div class="three_img">
           <div class="content_item">
             <div>
@@ -78,14 +78,14 @@
       <div class="invest_title">
         <!-- <div> -->
           <p class="title_wrapper">TIGER TRADE APP</p>
-          <h2>
+          <h2 class="font_Bold">
             Invest globally with next-generation app <br />
             at your fingertips
           </h2>
         <!-- </div> -->
       </div>
       <div class="invest_bg">
-        <div class="invest_bg_title">
+        <div class="invest_bg_title font_Bold">
           Diversify your portfolio with little limits
         </div>
         <div class="invest_img">
@@ -106,8 +106,8 @@
         <div class="swiper_left">
           <div class="swiper-left-text">
             <div class="swiper-wrapper">
-              <h3 class="swiper-slide">30:1 leverage to apply</h3>
-              <h3 class="swiper-slide">
+              <h3 class="swiper-slide font_Bold">30:1 leverage to apply</h3>
+              <h3 class="swiper-slide font_Bold">
                 Tight price gap between buying & selling
               </h3>
             </div>
@@ -131,8 +131,8 @@
           <div :class="{ active: rightIndex === 1 }">
             <div class="swiper-right-text">
               <div class="swiper-wrapper">
-                <h3 class="swiper-slide">No commission & hidden fee</h3>
-                <h3 class="swiper-slide">Negative balance protection</h3>
+                <h3 class="swiper-slide font_Bold">No commission & hidden fee</h3>
+                <h3 class="swiper-slide font_Bold">Negative balance protection</h3>
               </div>
             </div>
             <div class="swiper-containerTwo">
@@ -154,7 +154,7 @@
           <p class="title_wrapper">
             INVEST GLOBALLY
           </p>
-          <h2>
+          <h2 class="font_Bold">
             Pounce on Tiger CFD to leap ahead
           </h2>
         </div>
@@ -165,7 +165,7 @@
                 <li v-for="(item, index) in textContainerfour" :key="index" :class="{ active: index == activeIndex }"
                   @click="changeActiveSwiper(index)">
                   {{ item.title }}
-                  <a v-if="item.hrefText" href="" @click="jumpFun('market')">{{ item.hrefText }}</a>
+                  <a v-if="item.hrefText" href="" class="font_Bold" @click="jumpFun('market')">{{ item.hrefText }}</a>
                 </li>
               </ul>
             </div>
@@ -185,7 +185,7 @@
     </div>
     <div class="home_foot">
       <div class="foot_con">
-        <div class="foot_title">Invest wise, invest well</div>
+        <div class="foot_title font_Bold">Invest wise, invest well</div>
         <ul class="foot_list">
           <li class="list_item">
             <img src="@/assets/image/home1.png" alt="" />
@@ -797,7 +797,7 @@ export default {
             width: 270px;
             height: 58px;
             font-size: 24px;
-            font-family: Gilroy, Gilroy-Bold;
+            font-family: Gilroy-Bold;
             font-weight: 700;
             text-align: center;
             color: #000000;
@@ -1102,6 +1102,7 @@ export default {
 
                 &.active {
                   background: #fff652;
+                  font-family: Gilroy-Bold;
                   font-weight: 700;
                 }
               }

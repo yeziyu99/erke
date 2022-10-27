@@ -3,7 +3,7 @@
     <div class="aboutUs_head">
       <div class="about_head_title">
         <div class="title_left">
-          <div class="about_title_title">About us</div>
+          <div class="about_font_Bold font_Bold">About us</div>
           <div class="about_ready">Ready! Pounce!</div>
           <div class="about_ready">
             Be the independent investor you were born to be.
@@ -65,9 +65,10 @@ export default {
 
       .title_left {
         white-space: nowrap;
-        .about_title_title {
+        .about_font_Bold {
           font-size: 60px;
           margin-bottom: 12px;
+          font-weight: 700;
         }
         .about_ready {
           font-size: 24px;
@@ -90,10 +91,12 @@ export default {
     p{
       font-size: 18px;
       font-weight: 700;
+      font-family: Gilroy-Bold;
     }
     h1{
       font-size: 36px;
       margin-top: 60px;
+      font-family: Gilroy-Bold;
     }
     div{
       margin-top: 15px;

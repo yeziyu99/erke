@@ -12,7 +12,7 @@ body {
     height: 100%;
     font-size: 14px;
     background-color: #FBFBFB;
-    font-family: Gilroy,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+    font-family: Gilroy-Medium,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
 }
 
 body,
@@ -159,4 +159,10 @@ img {
 }
 p {
     line-height: 1.5;
+}
+.font_Bold {
+   font-family: Gilroy-Bold;
+}
+.font_Medium {
+    font-family: Gilroy-Medium;
 }

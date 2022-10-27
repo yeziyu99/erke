@@ -124,10 +124,16 @@ ul li {
       .list_router {
         margin-bottom: 17 * 2px;
         cursor: pointer;
+        &:hover {
+          opacity: .5;
+        }
       }
       .list_routerLi {
         margin-bottom: 7 * 2px;
         cursor: pointer;
+        &:hover {
+          opacity: .5;
+        }
       }
     }
     .publicFoot_con_right {

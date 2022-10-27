@@ -58,7 +58,7 @@
       <div class="invest_tab">
         <div class="trade_left">
           <div>
-            <h2 v-if="active == '1'" class="trade_title">
+            <h2 v-if="active == '1'" class="trade_title font_Bold">
               Trade top stocks with less cost
             </h2>
             <h2 v-if="active == '2'" class="trade_title">
@@ -161,7 +161,7 @@
       </div>
     </div>
     <div class="invest_list">
-      <div class="list_title" id="list_title">Trading instruments</div>
+      <div class="list_title font_Bold" id="list_title">Trading instruments</div>
       <div class="tab">
         <el-tabs v-model="activeName">
           <el-tab-pane
@@ -597,7 +597,7 @@ export default {
         }
 
         .trade_btn {
-          width: 134px;
+          width: 135px;
           padding: 14px 30px;
           background: #ffe100;
           border-radius: 26px;
@@ -698,6 +698,7 @@ export default {
     .tab {
       ::v-deep .el-tabs__item.is-active {
         color: #000000;
+        font-weight: bold;
       }
 
       ::v-deep .el-tabs__active-bar {
