@@ -396,7 +396,6 @@ export default {
     overflow: hidden;
     padding: 110px 0 50px;
     position: relative;
-
     .container {
       align-items: center;
       display: flex;
@@ -445,7 +444,8 @@ export default {
 
     .head_con {
       width: 60%;
-      min-width: 1200px;
+      min-width: 1000px;
+      max-width: 1170px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -540,7 +540,8 @@ export default {
     .invest_tab {
       width: 60%;
       margin: 0 auto;
-      min-width: 1200px;
+      min-width: 1000px;
+      max-width: 1170px;
       margin-top: 120px;
       display: flex;
       justify-content: space-between;
@@ -685,7 +686,8 @@ export default {
 
   .invest_list {
     width: 60%;
-    min-width: 1200px;
+    min-width: 1000px;
+    max-width: 1170px;
     margin: 0 auto;
     margin-top: 80px;
     padding-bottom: 120px;

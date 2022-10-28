@@ -37,8 +37,8 @@ axios.interceptors.request.use(
         let Sign = ''
         paramsInfo = {
             ...paramsInfo,
-            version: getCookie('version') || '1.0.0',
-            os: getCookie('curreryOs')|| 'web',
+            version: '1.0.0',
+            os: 'web',
             rnd: uuidv4(),
             ts: Date.parse(new Date()),
             // is_h5: 0
@@ -46,6 +46,7 @@ axios.interceptors.request.use(
         config.params = paramsInfo
         // 排序参数拼接字符串
         Sign = objKeySort(paramsInfo)
+        console.log(Sign, 'Sign');
         // md5加密Sign
         Sign = md5(Sign)
         config.headers = {

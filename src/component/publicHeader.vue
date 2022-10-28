@@ -55,12 +55,11 @@ ul li {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 1200px;
+  min-width: 1000px;
   .header_con {
     width: 60%;
-    min-width: 1200px;
-    // min-width: 600px;
-    // cursor: pointer;
+    min-width: 1000px;
+    max-width: 1170px;
     display: flex;
     justify-content: space-between;
     align-items: center;

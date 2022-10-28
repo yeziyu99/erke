@@ -100,7 +100,7 @@ export default {
   }
   @media screen and (min-width: 1000px) {
     .page {
-      min-width: 1200px;
+      min-width: 1000px;
     }
     .site-scrolltop {
       display: bl;

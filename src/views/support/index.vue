@@ -125,8 +125,8 @@ export default {
       padding-left: 15px;
       padding-right: 15px;
       width: 100%;
-      max-width: 60%;
-      min-width: 1200px;
+      max-width: 1170px;
+      min-width: 1000px;
     }
 
     .help_header {

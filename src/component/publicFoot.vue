@@ -71,13 +71,12 @@ ul li {
   overflow-x: auto;
   background: #000000;
   display: flex;
-  // justify-content: center;
   align-items: center;
   flex-direction: column;
-  // align-items: center;
   .publicFoot_head {
     width: 60%;
-     min-width: 1200px;
+    min-width: 1000px;
+    max-width: 1170px;
     height: 89px;
     display: flex;
     justify-content: space-between;
@@ -116,7 +115,8 @@ ul li {
   .publicFoot_con {
     width: 60%;
     margin-top: 26.5 * 2px;
-    min-width: 1200px;
+    min-width: 1000px;
+    max-width: 1170px;
     color: #fff;
     display: flex;
     justify-content: space-between;

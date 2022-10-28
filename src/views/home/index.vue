@@ -489,7 +489,8 @@ export default {
     // position: relative;
     .home_header {
       width: 60%;
-      min-width: 1200px;
+      min-width: 1000px;
+      max-width: 1170px;
       height: 100%;
       margin: 0 auto;
       position: relative;
@@ -761,7 +762,8 @@ export default {
   .home_content {
     width: 60%;
     margin: 0 auto;
-    min-width: 1200px;
+    min-width: 1000px;
+    max-width: 1170px;
     padding-top: 120px;
 
     .content_img {
@@ -1140,7 +1142,8 @@ export default {
     .foot_con {
       width: 60%;
       margin: 0 auto;
-      min-width: 1200px;
+      min-width: 1000px;
+      max-width: 1170px;
 
       .foot_title {
         width: 100%;
