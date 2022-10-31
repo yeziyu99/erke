@@ -455,6 +455,7 @@ export default {
         position: absolute;
         top: 100px;
         width: 35%;
+        max-width: 814px;
         min-width: 600px;
         p {
           font-size: 12px;
