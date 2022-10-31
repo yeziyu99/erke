@@ -456,6 +456,10 @@ export default {
         top: 100px;
         width: 35%;
         min-width: 600px;
+        p {
+          font-size: 12px;
+          color: #62657A;
+        }
 
         h2 {
           font-size: 48px;

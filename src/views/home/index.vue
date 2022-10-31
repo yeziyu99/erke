@@ -149,6 +149,7 @@
           </div>
         </div>
       </div>
+      <p>Images displayed are for illustrative purposes only</p>
       <div class="home_pounce">
         <div class="pounce_title">
           <p class="title_wrapper">
@@ -703,7 +704,8 @@ export default {
           }
 
           p {
-            font-size: 14px;
+            font-size: 12px;
+            color: #62657A;
           }
 
           .banner_btn {
@@ -947,7 +949,7 @@ export default {
     .mobile_intro_swiper {
       margin-top: 20px;
       display: flex;
-
+      
       .swiper_left {
         background-color: #f2f3f5;
         border-radius: 20px;
@@ -955,7 +957,8 @@ export default {
         margin-right: 23px;
         overflow: hidden;
         width: 43%;
-        min-width: 520px;
+        min-width: 430px;
+        max-width: 516px;
         position: relative;
 
         .swiper-left-text {
@@ -995,8 +998,9 @@ export default {
       }
 
       .swiper_right {
-        width: 55%;
-        height: 454.261px;
+        min-width: 550px;
+        max-width: 660px;
+        height: 100%;
         background: url("../../assets/image/right4.png") no-repeat 100%/100%;
         overflow: hidden;
         position: relative;
@@ -1058,6 +1062,11 @@ export default {
           }
         }
       }
+    }
+    >p {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #62657A;
     }
 
     .home_pounce {
