@@ -39,7 +39,7 @@ export default {
   <style lang="scss" scoped>
 .big_wrap {
   width: 100%;
-  min-width: 1000px;
+  min-width: 1170px;
   overflow-x: auto;
   display: flex;
   flex-direction: column;
@@ -57,7 +57,7 @@ export default {
     background-position: bottom 0px right 23%;
     .about_head_title {
       width: 60%;
-      min-width: 1000px;
+      min-width: 1170px;
       max-width: 1170px;
       height: 100%;
       display: flex;
@@ -85,7 +85,7 @@ export default {
   }
   .about_content {
     width: 60%;
-    min-width: 1000px;
+    min-width: 1170px;
     max-width: 1170px;
     // height: 296.5*2px;
     padding: 80px 0 50px 0;

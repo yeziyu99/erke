@@ -115,7 +115,7 @@ export default {
       color: red;
     }
   }
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1170px) {
   .big_wraps {
     width: 100%;
 
@@ -126,7 +126,7 @@ export default {
       padding-right: 15px;
       width: 100%;
       max-width: 1170px;
-      min-width: 1000px;
+      min-width: 1170px;
     }
 
     .help_header {

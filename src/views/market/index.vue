@@ -444,7 +444,7 @@ export default {
 
     .head_con {
       width: 60%;
-      min-width: 1000px;
+      min-width: 1170px;
       max-width: 1170px;
       display: flex;
       justify-content: space-between;
@@ -544,7 +544,7 @@ export default {
     .invest_tab {
       width: 60%;
       margin: 0 auto;
-      min-width: 1000px;
+      min-width: 1170px;
       max-width: 1170px;
       margin-top: 120px;
       display: flex;
@@ -690,7 +690,7 @@ export default {
 
   .invest_list {
     width: 60%;
-    min-width: 1000px;
+    min-width: 1170px;
     max-width: 1170px;
     margin: 0 auto;
     margin-top: 80px;

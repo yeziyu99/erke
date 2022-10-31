@@ -63,7 +63,7 @@ export default {
   justify-content: center;
   .question_content {
     width: 60%;
-    min-width: 1000px;
+    min-width: 1170px;
     max-width: 1170px;
     padding-top: 90px;
     .question_title {

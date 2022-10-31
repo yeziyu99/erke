@@ -98,9 +98,9 @@ export default {
     top: 0;
     z-index: 99;
   }
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: 1170px) {
     .page {
-      min-width: 1000px;
+      min-width: 1170px;
     }
     .site-scrolltop {
       display: bl;

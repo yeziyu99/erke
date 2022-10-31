@@ -315,7 +315,7 @@ export default {
       loop: true, //开启环路
       speed: 2000, //每个轮播图过渡的时间
       spaceBetween: -15, //每个轮播图间隔
-      slidesPerView: 2.2, //当前页面显示几个，这里是auto
+      slidesPerView: 2, //当前页面显示几个，这里是auto
       loopedSlides: 6, //比你页面显示的数量大于2就好
       updateOnWindowResize: false, //分辨率改变时，防止样式错乱加上！
       autoplay: {
@@ -490,7 +490,7 @@ export default {
     // position: relative;
     .home_header {
       width: 60%;
-      min-width: 1000px;
+      min-width: 1170px;
       max-width: 1170px;
       height: 100%;
       margin: 0 auto;
@@ -764,7 +764,7 @@ export default {
   .home_content {
     width: 60%;
     margin: 0 auto;
-    min-width: 1000px;
+    min-width: 1170px;
     max-width: 1170px;
     padding-top: 120px;
 
@@ -958,7 +958,7 @@ export default {
         overflow: hidden;
         width: 43%;
         min-width: 430px;
-        max-width: 516px;
+        max-width: 503px;
         position: relative;
 
         .swiper-left-text {
@@ -977,7 +977,7 @@ export default {
         }
 
         .swiper-container {
-          margin-top: 135px;
+          margin-top: 120px;
           width: 100%;
 
           .swiper-wrapper {
@@ -998,9 +998,10 @@ export default {
       }
 
       .swiper_right {
+        width: 55%;
         min-width: 550px;
-        max-width: 660px;
-        height: 100%;
+        max-width: 643px;
+        // height: 100%;
         background: url("../../assets/image/right4.png") no-repeat 100%/100%;
         overflow: hidden;
         position: relative;
@@ -1032,7 +1033,7 @@ export default {
           }
 
           .swiper-containerTwo {
-            margin-top: 65px;
+            margin-top: 51px;
             overflow: hidden;
             white-space: nowrap;
             width: 100%;
@@ -1151,7 +1152,7 @@ export default {
     .foot_con {
       width: 60%;
       margin: 0 auto;
-      min-width: 1000px;
+      min-width: 1170px;
       max-width: 1170px;
 
       .foot_title {

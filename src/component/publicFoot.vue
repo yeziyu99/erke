@@ -75,7 +75,7 @@ ul li {
   flex-direction: column;
   .publicFoot_head {
     width: 60%;
-    min-width: 1000px;
+    min-width: 1170px;
     max-width: 1170px;
     height: 89px;
     display: flex;
@@ -115,7 +115,7 @@ ul li {
   .publicFoot_con {
     width: 60%;
     margin-top: 26.5 * 2px;
-    min-width: 1000px;
+    min-width: 1170px;
     max-width: 1170px;
     color: #fff;
     display: flex;

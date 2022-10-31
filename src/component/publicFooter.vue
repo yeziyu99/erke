@@ -63,7 +63,7 @@ ul li {
   .publicFooter_content {
     width: 60%;
     padding-bottom: 30px;
-    min-width: 1000px;
+    min-width: 1170px;
     max-width: 1170px;
     ul {
       margin-top: 24.5 * 2px;

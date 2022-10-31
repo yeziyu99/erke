@@ -55,10 +55,10 @@ ul li {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 1000px;
+  min-width: 1170px;
   .header_con {
     width: 60%;
-    min-width: 1000px;
+    min-width: 1170px;
     max-width: 1170px;
     display: flex;
     justify-content: space-between;
