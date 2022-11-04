@@ -4,22 +4,22 @@
       <div class="home_header">
         <div class="head_con">
           <div class="banner_left">
-            <h2 class="font_Bold">Hey! Your CFD trading journey starts today</h2>
+            <h2 class="font_Bold">嗨！欢迎来到本站点！</h2>
             <h4 style="margin-bottom: 90px; font-size: 20px">
-              Explore benefits from Tiger CFD platform.Enjoy your multiple
+              探索本站的信息，为您带来便捷体验
               <br />
-              choices of stocks, currencies, indices, gold and more.
+              展现直播间、视频、音乐、电台等
             </h4>
             <div class="banner_btn">
-              <div class="btn_one" @click="jumpFun('invest')">Get started</div>
-              <a href="" class="ios" @click="jumpFun('invest')">
-                <img src="@/assets/image/apple_down.png" alt="" />
-                APP STORE</a>
-              <a href="" class="android" @click="jumpFun('invest')">
-                <img src="@/assets/image/googleplay_down.png" alt="" />
-                GOOGLE PLAY</a>
+              <div class="btn_one">开始</div>
+              <a href="" class="ios">
+                <img src="@/assets/images/douyu.png" alt="" />
+               斗鱼</a>
+              <a href="" class="android">
+                <img src="@/assets/images/weibo.png" alt="" />
+                微博</a>
             </div>
-            <p>Images displayed are for illustrative purposes only</p>
+            <p>显示的图像仅用于展示作用</p>
           </div>
         </div>
         <div class="home_bg">
@@ -53,52 +53,54 @@
 
     <div class="home_content">
       <div class="content_img">
-        <h2 class="font_Bold">Why CFDs Trading?</h2>
+        <h2 class="font_Bold">选择直达平台</h2>
         <div class="three_img">
-          <div class="content_item">
+          <div class="content_item" @click="tiaozhuan('https://www.douyu.com/78622')">
             <div>
-              <img src="@/assets/image/contentImg1.png" alt="">
+              <img src="https://apic.douyucdn.cn/upload/avatar_v3/201807/dca3c7ece148ee546d611ed0815fbbd0_big.jpg" alt="https://www.douyu.com/78622">
             </div>
-            <p>Go long and short with leverage</p>
+            <p>二珂78622@斗鱼</p>
           </div>
-          <div class="content_item">
+          <div class="content_item" @click="tiaozhuan('https://weibo.com/u/1910672761?topnav=1&wvr=6&topsug=1')">
             <div>
-              <img src="@/assets/image/contentImg2.png" alt="">
+              <img src="https://tvax2.sinaimg.cn/crop.0.0.1080.1080.180/0025iZgBly8gmmp57xqh3j60u00u0di902.jpg?KID=imgbed,tva&Expires=1667558820&ssig=Bx5ptFoRPv" alt="https://weibo.com/u/1910672761?topnav=1&wvr=6&topsug=1">
             </div>
-            <p>Trade global markets in one account</p>
+            <p>二珂Chloe@微博</p>
           </div>
-          <div class="content_item">
+          <div class="content_item" @click="tiaozhuan('https://www.xiaohongshu.com/user/profile/5ad78361e8ac2b1fca15ff66?xhsshare=CopyLink&appuid=609b9c340000000001004f33&apptime=1667552951')">
             <div>
-              <img src="@/assets/image/contentImg3.png" alt="">
+              <img src="https://sns-avatar-qc.xhscdn.com/avatar/6344e5b0a72440a1d6f84aa0.jpg?imageView2/1/w/540/format/jpg" alt="https://www.xiaohongshu.com/user/profile/5ad78361e8ac2b1fca15ff66?xhsshare=CopyLink&appuid=609b9c340000000001004f33&apptime=1667552951">
             </div>
-            <p>Gain equivalent value with less investment</p>
+            <p>二珂@小红书</p>
           </div>
         </div>
       </div>
       <div class="invest_title">
         <!-- <div> -->
-          <p class="title_wrapper">TIGER TRADE APP</p>
+          <p class="title_wrapper">部分图片展示</p>
           <h2 class="font_Bold">
-            Invest globally with next-generation app <br />
-            at your fingertips
+            二珂微博发布的个别图片展示 <br />
+            好看耶
           </h2>
         <!-- </div> -->
       </div>
       <div class="invest_bg">
         <div class="invest_bg_title font_Bold">
-          Diversify your portfolio with little limits
+          珂珂真好看～
         </div>
         <div class="invest_img">
           <div class="img_left">
-            <img class="left1" src="@/assets/image/left1.png" alt="" />
-            <img class="left2" src="@/assets/image/left2.png" alt="" />
-            <img class="left3" src="@/assets/image/left3.png" alt="" />
+            <img class="left1" src="https://wx3.sinaimg.cn/mw2000/0025iZgBly1gop49qkl1mj62241jkkjm02.jpg" alt="" />
+            <img class="left2" src="https://wx1.sinaimg.cn/mw2000/0025iZgBgy1gvbhdvy1vmj62961i4hdw02.jpg" alt="" />
+            <img class="left3" src="https://wx4.sinaimg.cn/mw2000/0025iZgBgy1gvbhdyo5duj629u1ilb2a02.jpg" alt="" />
           </div>
-          <div class="img_phone"></div>
+          <div class="img_phone">
+            <img style="" src="https://wx2.sinaimg.cn/mw2000/0025iZgBgy1gwb961ksyqj622o340kjl02.jpg" alt="">
+          </div>
           <div class="img_right">
-            <img class="right1" src="@/assets/image/right1.png" alt="" />
-            <img class="right2" src="@/assets/image/right2.png" alt="" />
-            <img class="right3" src="@/assets/image/right3.png" alt="" />
+            <img class="right1" src="https://wx4.sinaimg.cn/mw2000/0025iZgBly1go2vxnyfsoj62dc1kw1kx02.jpg" alt="" />
+            <img class="right2" src="https://wx4.sinaimg.cn/mw2000/0025iZgBly1h5j0cdybv4j62p2211u1002.jpg" alt="" />
+            <img class="right3" src="https://wx2.sinaimg.cn/mw2000/0025iZgBly1h5j0c7abv2j62re22s1kz02.jpg" alt="" />
           </div>
         </div>
       </div>
@@ -106,9 +108,9 @@
         <div class="swiper_left">
           <div class="swiper-left-text">
             <div class="swiper-wrapper">
-              <h3 class="swiper-slide font_Bold">30:1 leverage to apply</h3>
+              <h3 class="swiper-slide font_Bold">2021.12</h3>
               <h3 class="swiper-slide font_Bold">
-                Tight price gap between buying & selling
+                滑雪装
               </h3>
             </div>
           </div>
@@ -116,13 +118,16 @@
           <div class="swiper-container linear">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-                <img src="@/assets/image/left4.png" alt="" />
+                 <img src="https://wx2.sinaimg.cn/orj360/0025iZgBly1gx1rclbizzj61jk224e8102.jpg" alt="" />
+                 <!-- <img src="https://wx2.sinaimg.cn/mw2000/0025iZgBly1gx1rclbizzj61jk224e8102.jpg" alt="" /> -->
               </div>
               <div class="swiper-slide">
-                <img src="@/assets/image/left5.png" alt="" />
+                <img src="https://wx1.sinaimg.cn/orj360/0025iZgBly1gx1rcs8uqxj61jk224b2902.jpg" alt="" />
+                <!-- <img src="https://wx1.sinaimg.cn/mw2000/0025iZgBly1gx1rcs8uqxj61jk224b2902.jpg" alt="" /> -->
               </div>
               <div class="swiper-slide">
-                <img src="@/assets/image/left6.png" alt="" />
+                <img src="https://wx2.sinaimg.cn/mw2000/0025iZgBly1gx1rct2x76j61jk2241i002.jpg" alt="" />
+                <!-- <img src="https://wx2.sinaimg.cn/mw2000/0025iZgBly1gx1rct2x76j61jk2241i002.jpg" alt="" /> -->
               </div>
             </div>
           </div>
@@ -131,25 +136,22 @@
           <div :class="{ active: rightIndex === 1 }">
             <div class="swiper-right-text">
               <div class="swiper-wrapper">
-                <h3 class="swiper-slide font_Bold">No commission & hidden fee</h3>
-                <h3 class="swiper-slide font_Bold">Negative balance protection</h3>
+                <h3 class="swiper-slide font_Bold">2021年四月</h3>
+                <h3 class="swiper-slide font_Bold">图片展示（图片待修改）</h3>
               </div>
             </div>
             <div class="swiper-containerTwo">
               <div class="swiper-wrapper">
                 <div class="swiper-slide" v-for="(item, index) in imageSrcs" :key="index">
-                  <img :src="item" alt="" />
+                  <img  :src="item" alt="" />
                 </div>
-                <!-- <div class="swiper-slide">
-                  <img :src="@/assets/image/right6.png" alt="" />
-                </div> -->
               </div>
               <div class="swiper-pagination"></div>
             </div>
           </div>
         </div>
       </div>
-      <p>Images displayed are for illustrative purposes only</p>
+      <p>显示的图像仅用于展示作用</p>
       <div class="home_pounce">
         <div class="pounce_title">
           <p class="title_wrapper">
@@ -285,12 +287,15 @@ export default {
       ],
       rightIndex: 0,
       activeIndex: 1,
-      imageSrcs: [right1,right2],
-      images: [right1,right2],
+      imageSrcs: [  'https://wx1.sinaimg.cn/orj360/0025iZgBgy1gpp6cxzw7ij62c0340qv602.jpg','https://wx1.sinaimg.cn/orj360/0025iZgBly1gpeo23a9f1j61jk1jkhdu02.jpg'],
+      images: ['https://wx4.sinaimg.cn/orj360/0025iZgBgy1gvbhdyo5duj629u1ilb2a02.jpg','https://wx4.sinaimg.cn/orj360/0025iZgBgy1gvbhdyo5duj629u1ilb2a02.jpg'],
     };
   },
   components: {},
   methods: {
+    tiaozhuan(lianjie){
+      window.open(lianjie)
+    },
     jumpFun(route) {
       if (this.$route.name != route) {
         this.$router.push(route);
@@ -718,26 +723,27 @@ export default {
               background: #000000;
               border-radius: 26px;
               color: #fff;
-
+              text-align: center;
               &:hover {
                 color: #FFE100;
                 cursor: pointer;
               }
             }
-
             a {
               background: no-repeat 15px 50% / auto 15px #f4f4f4;
               border-radius: 7px;
               color: #000;
               font-size: 15px;
               line-height: 45px;
-              padding: 0 15px 0 15px;
+              padding: 0 50px 0 50px;
               display: flex;
               align-items: center;
               margin-left: 10px;
-
+              
               img {
                 margin-right: 10px;
+                width: 15px;
+                height: 15px;
               }
             }
           }
@@ -796,7 +802,7 @@ export default {
           border-radius: 8px;
           box-shadow: 8px 10px 30px 0px rgba(233, 236, 253, 0.50);
           transition: 1s;
-
+          cursor: pointer;
           p {
             width: 270px;
             height: 58px;
@@ -818,6 +824,7 @@ export default {
             img {
               width: 80px;
               height: 80px;
+              border-radius: 16px;
             }
           }
 
@@ -864,8 +871,11 @@ export default {
       .invest_img {
         display: flex;
         position: relative;
-        margin-top: 80px;
-
+        // margin-top: 80px;
+        img{
+          border-radius: 16px;
+          border: 4px solid;
+        }
         .img_left {
           flex-shrink: 0;
           position: relative;
@@ -882,33 +892,40 @@ export default {
           }
 
           .left2 {
-            -webkit-animation: insetSlideUpTwo 6s linear 1s infinite forwards;
-            animation: insetSlideUpTwo 6s linear 1s infinite forwards;
+            -webkit-animation: insetSlideUpTwo 5s linear 1s infinite forwards;
+            animation: insetSlideUpTwo 5s linear 1s infinite forwards;
             width: 55%;
             position: absolute;
-            top: 48%;
+            top: 43%;
             right: 30.3%;
           }
 
           .left3 {
-            -webkit-animation: insetSlideUpTwo 6s linear 1s infinite forwards;
-            animation: insetSlideUpTwo 6s linear 1s infinite forwards;
+            -webkit-animation: insetSlideUpTwo 4s linear 1s infinite forwards;
+            animation: insetSlideUpTwo 4s linear 1s infinite forwards;
             width: 55%;
             position: absolute;
-            top: 70%;
-            right: -2.7%;
+            top: 74%;
+            right: 2.7%;
           }
         }
 
         .img_phone {
-          -webkit-animation: insetSlideUpThree 4s linear 1s infinite forwards;
-          animation: insetSlideUpThree 4s linear 1s infinite forwards;
-          background: url("../../assets/image/phone1.png") no-repeat 50%/100%;
+          -webkit-animation: insetSlideUpThree 8s linear 1s infinite forwards;
+          animation: insetSlideUpThree 8s linear 1s infinite forwards;
+          // background: url("https://wx2.sinaimg.cn/mw2000/0025iZgBgy1gwb961ksyqj622o340kjl02.jpg") no-repeat 50%/100%;
           flex-shrink: 0;
-          padding-top: 46.65%;
+          padding-top: 30px;
           position: relative;
           transition: background-image 0.3s linear;
           width: 23%;
+          border-radius: 16px;
+          overflow: hidden;
+          height: 600px;
+          img{
+            width: 100%;
+            height: 100%;
+          }
         }
 
         .img_right {
@@ -917,29 +934,29 @@ export default {
           width: 38.5%;
 
           .right1 {
-            -webkit-animation: insetSlideUpTwo 6s linear 1s infinite forwards;
-            animation: insetSlideUpTwo 6s linear 1s infinite forwards;
+            -webkit-animation: insetSlideUpTwo 3s linear 1s infinite forwards;
+            animation: insetSlideUpTwo 3s linear 1s infinite forwards;
             width: 52%;
             position: absolute;
-            top: -15%;
+            top: -5%;
             right: 4.3%;
           }
 
           .right2 {
-            -webkit-animation: insetSlideUpTwo 6s linear 1s infinite forwards;
-            animation: insetSlideUpTwo 6s linear 1s infinite forwards;
+            -webkit-animation: insetSlideUpTwo 7s linear 1s infinite forwards;
+            animation: insetSlideUpTwo 7s linear 1s infinite forwards;
             width: 52%;
             position: absolute;
-            top: 15%;
-            left: 0;
+            top: 28%;
+            left: 20px;
           }
 
           .right3 {
-            -webkit-animation: insetSlideUpTwo 6s linear 1s infinite forwards;
-            animation: insetSlideUpTwo 6s linear 1s infinite forwards;
+            -webkit-animation: insetSlideUpTwo 5s linear 1s infinite forwards;
+            animation: insetSlideUpTwo 5s linear 1s infinite forwards;
             width: 52%;
             position: absolute;
-            bottom: 7%;
+            bottom: 11%;
             left: 27%;
           }
         }
@@ -1044,13 +1061,16 @@ export default {
                   width: 100%;
                   z-index: 9999;
                   vertical-align: bottom;
+                  width: 488px;
+                  height: 389px;
+                  border-radius: 16px;
                   &.active_img {
                     display: none;
                   }
                 }
               }
             }
-
+            
             .swiper-pagination {
               text-align: left;
               margin-left: 30px;
