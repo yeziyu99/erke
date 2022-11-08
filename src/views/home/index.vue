@@ -4,20 +4,21 @@
       <div class="home_header">
         <div class="head_con">
           <div class="banner_left">
-            <h2 class="font_Bold">嗨！欢迎来到本站点！</h2>
+            <h2 class="font_Bold">周二珂</h2>
             <h4 style="margin-bottom: 90px; font-size: 20px">
               探索本站的信息，为您带来便捷体验
               <br />
-              展现直播间、视频、音乐、电台等
+              展现直播间、视频、音乐、电台等综合跳转
             </h4>
             <div class="banner_btn">
-              <div class="btn_one">开始</div>
-              <a href="" class="ios">
+              <div class="btn_one">房间未开播</div>
+              <!-- <div class="btn_one">开播中...</div> -->
+              <a href="" >
                 <img src="@/assets/images/douyu.png" alt="" />
-               斗鱼</a>
-              <a href="" class="android">
+               开播中...</a>
+              <!-- <a href="" class="android">
                 <img src="@/assets/images/weibo.png" alt="" />
-                微博</a>
+                微博</a> -->
             </div>
             <p>显示的图像仅用于展示作用</p>
           </div>
@@ -29,7 +30,7 @@
               margin: 0 auto;
               position: relative;
             ">
-            <div style="padding-top: 204%; position: relative; width: 100%">
+            <div>
               <div class="inset_bg">
                 <div class="insetbg_annulus"></div>
                 <div class="inset_annulus_sm"></div>
@@ -37,13 +38,20 @@
                 <div class="bg_ball"></div>
                 <div class="bg_ball_solid"></div>
               </div>
-              <div class="video_wrap">
-                <video class="inset_video enter-play" muted playsinline webkit-playsinline autoplay loop
+              <div class="video_wrap" @click="tiaozhuan('https://www.douyu.com/78622')">
+                <div class="animate-wave">
+                  <img class="logo"  src="@/assets/images/erke.png" alt="">
+                  <div class="w2"></div>
+                  <div class="w3"></div>
+                  <div class="w4"></div>
+                </div>
+                <!-- <p>未开播，期待...</p> -->
+                <!-- <video class="inset_video enter-play" muted playsinline webkit-playsinline autoplay loop
                   poster="https://c1.itigergrowth.com/portal5/static/media/banner-poster.7a77394e.jpg" preload="auto"
                   data-status="playing">
                   <source src="@/assets/image/banner-inset-0215.mp4" />
                 </video>
-                <img class="inset_iphone" src="@/assets/image/iphone13promax.png" alt="" />
+                <img class="inset_iphone" src="@/assets/image/iphone13promax.png" alt="" /> -->
               </div>
             </div>
           </div>
@@ -79,15 +87,16 @@
         <!-- <div> -->
           <p class="title_wrapper">部分图片展示</p>
           <h2 class="font_Bold">
-            二珂微博发布的个别图片展示 <br />
-            好看耶
+            二珂微博发布的个别图片展示 
+            <!-- <br /> -->
+            <!-- 好看耶 -->
           </h2>
         <!-- </div> -->
       </div>
       <div class="invest_bg">
-        <div class="invest_bg_title font_Bold">
+        <!-- <div class="invest_bg_title font_Bold">
           珂珂真好看～
-        </div>
+        </div> -->
         <div class="invest_img">
           <div class="img_left">
             <img class="left1" src="https://wx3.sinaimg.cn/mw2000/0025iZgBly1gop49qkl1mj62241jkkjm02.jpg" alt="" />
@@ -155,10 +164,10 @@
       <div class="home_pounce">
         <div class="pounce_title">
           <p class="title_wrapper">
-            INVEST GLOBALLY
+            写真 && 生活照部分展示
           </p>
           <h2 class="font_Bold">
-            Pounce on Tiger CFD to leap ahead
+            取图 微博 二珂&&三岛
           </h2>
         </div>
         <div class="pounce_content">
@@ -168,7 +177,7 @@
                 <li v-for="(item, index) in textContainerfour" :key="index" :class="{ active: index == activeIndex }"
                   @click="changeActiveSwiper(index)">
                   {{ item.title }}
-                  <a v-if="item.hrefText" href="" class="font_Bold" @click="jumpFun('market')">{{ item.hrefText }}</a>
+                  <a v-if="item.href" :href="item.href" class="font_Bold">直达</a>
                 </li>
               </ul>
             </div>
@@ -176,106 +185,139 @@
           <div class="pounce_right">
             <div class="swiper-containerfour">
               <div class="swiper-wrapper">
-                <div class="swiper-slide" v-for="(item, index) in imageContainerfour" :key="index">
-                  <img class="swiper-img" :src="item" alt="" />
-                </div>
+                <div class="swiper-slide" v-for="(item, index) in textContainerfour" :key="index">
+                  <el-image
+                    v-if="index!=0"
+                    class="swiper-img"
+                      :src="item.img"
+                      :preview-src-list="srcList"
+                      fit="cover"></el-image>
+                      <img
+                        v-if="index==0" 
+                        class="swiper-img"
+                        :src="item.img" alt=""
+                      >
+                </div> 
               </div>
             </div>
           </div>
         </div>
-        <div class="foot_btn" @click="jumpFun('invest')">Get started</div>
+        <div class="foot_btn" >查看更多</div>
       </div>
     </div>
     <div class="home_foot">
       <div class="foot_con">
-        <div class="foot_title font_Bold">Invest wise, invest well</div>
+        <div class="foot_title font_Bold">优质UP主推荐</div>
         <ul class="foot_list">
           <li class="list_item">
-            <img src="@/assets/image/home1.png" alt="" />
-            <h2>NASDAQ-listed parent company</h2>
+            <img src="data:image/webp;base64,UklGRhYDAABXRUJQVlA4IAoDAABQEACdASo2ADYAPo00lkelIqIhLhkvGKARiUAYoYXYLTXo3W3I56pTP6oh6c5QVkDzffFTAFMbACwii486CUe5OFZqvNFkPbLmpekVoYmC1OsNpkJZtBd84o6Sk8FvXGfKWfDKzHB9aU/ja4wul9B6+GDoxxO78BiwtxJ8rQ6vok7qEQO8mBUuT2YQAP7+wp70PxrPTIuyr5pSJfiM+h+AlV55nrToGilL/N9to68hKAGlKhuwwgWdMwGbBzYTjo3/bfDUMi+h8Sc9koWcKRYVH/TQqjXx11vil56mJoxq0kadqZlBPnubrDpvxsQD7qnXf+78qW/sT28i+kfLy6EFH/1dZVQeKJxj2lzEZlmPB63s+7QlPIvTKPi1xeCcidy3cMgHPVzFanHOp23t24jgNDFV5Q0tozqhWUJQ62znlRmfYWmGTaJFCBJmzi3Gn6yQ3QBaJe1Eax7bnDxK4bJ/h8Vh/suJIc6oIYGj1FPnZxB+Yu8v7ZJBExDT7KSv/Vnwq/k02mQpJfaUE578CwiIfUQ7zzhVyu27xxQOTVCxPA+OlvdLgtsqkxX135RIDiqanF00wCzNRPfqMnaK89CiWitVRYYRZn+Ftj+rPp32bnDYOTqD/ZNIuKstRK4meDRZswZfG1I0EujSkasbveIizq+fBVI3mE3mpIeszTe87hC2gO79IrF6BSWB8aWz04IE3XMSP3LzkGuwfZ7sUmx7wQnhz4hZkiTcWHocSTH6RL3PQH4fVClLC0yYDXzi2wd1gCMibelR2Ew76T4Z/LmaqPocWb6dIqA1cGUriA3sZ0TBCK0XP3vArWRXyp/C6kBhF6B4ZfxWPkFd+B2/uGAP8q+3HRXAYPDvNNZbopP5crjGhyggxjXESaT7tZXX1LOBQfPNkUQwg/uxIxiUYeS4oJYx5keMJQvwuQC9s6GxVqfipMVGtr1GPNXjmALPtbsj4T79IZcWvfgEKCwtsdx2L5ajcZ4r4kmt/70HV3JpHmHD5QM/YXdc2m4wWYyv57ZkE9qI9QTcAAAA" alt="二珂的迷猴桃小站" />
+            <h2 @click="tiaozhuan('https://space.bilibili.com/315661291/?spm_id_from=333.999.0.0')">二珂的迷猴桃小站</h2>
             <ul class="foot_list_item">
-              <li>Nearly 2 million account holders</li>
-              <li>219+ billion trading volume</li>
-              <li>Inclusion in the MSCI small-cap index</li>
               <li>
-                Subsidiaries hold 52 licenses and qualifications in AU, US, HK,
-                SG and NZ
+                这里是二珂的迷猴桃小站，会更新一些关于二珂的视频哦~
+                <!-- <a href="https://space.bilibili.com/315661291/?spm_id_from=333.999.0.0" title="二珂的迷猴桃小站">查看</a> -->
+              </li>
+              <li>
+                <a href="https://space.bilibili.com/315661291/?spm_id_from=333.999.0.0" title="二珂的迷猴桃小站">官方账号</a>
               </li>
             </ul>
           </li>
           <li class="list_item">
-            <img src="@/assets/image/home2.png" alt="" />
-            <h2>Tiger Brokers in UK</h2>
+            <img src="data:image/webp;base64,UklGRsYCAABXRUJQVlA4ILoCAACwDQCdASo2ADYAPpE8mUkloyIhKhZtELASCWMAy4lBpuykhwq2XMQI6YcLqnW5J8AeZByPJbPjfumjNafMdGS4oi8IOg2lKpxlFZ2f3cPPhtamaw3RYtDfaFoodqRLfLkM+/n/VxozEqxS3slpBIYRB46Q00AAAP7+k6ilvR8dduKDqXxkCpUv71EsD/m//rBbMVd7aP4h3DJfRepq5ZMDjOeK+LPxywBkDJ8A7lXCYkUEAlRjQGVDxtQV5HqD7EucouV1eQ7ALJevtO2Vkyh4rmq8ufsyi34nKJk1LzZIb2lPWF7NIiPeoLGCgiKdfGIOgv1VoU1ABzZfSNX4BR43LsTmIdkizgrKV03oOsIn/A1crO1DeYbdG96Tyqx7T8nf76uujJHFzj6ooQ2eJWvgRBL0yFz65GJWCSCQifKy2XXr7Fr/Jk1R+MnFLXacWUMluUTaYUWiBab+j/i9DG/jrd6yiLP2oLWwABQ83LQFumjlDRu4vmOojqTGyLNRVMc0yjckQwmqwU5WuYSNi7ZoaXKiG0bLJPCpl1rETolK0c7YhB+rRk+KoCA30TbETTYycoNfLeiIUpQ8ICIIGJ2nKzD0hYurpSDOvLIhOrdSZFAvyvxVyiP+OM4JWvmaznmnJW173O6v5J/YfhI8wAEfIKPrfFFgE9HmyV9hlm8+/Kj02Y9Wdm9KxmjlzAn3zF5j3skNK+4Xf5q32ps1R31A9otbE2vdVRAZBWGI/dVI4YA2phO5nv9aHbwxpp14x30YEI1jVCCFPyS9jKnkNKw3HIeEC+tDtcjNfQBkvazs1xrVtqAhqbvRHgOmZvZlzIEMu7UjWyFqw/f27eHDhrVpEWu9RcEfdZ/i5xsxoaClZ1Pif+v8rpRDy8AivpO/TfQIVKZvurg2TIZPlylNTMaCNxWGUUekDugAAA==" alt="云淡峰輕" />
+            <h2 @click="tiaozhuan('https://space.bilibili.com/338485759/?spm_id_from=333.999.0.0')">云淡峰輕</h2>
             <ul class="foot_list_item">
-              <li>
-                Tiger Brokers (UK) Limited is an England & Wales registered
-                company, authorized and regulated by the Financial Conduct
-                Authority, FCA (Register number 470325), and dedicated to UK
-                investors.
+              <li>用最好的我赴你的约
+                <!-- <a href="https://space.bilibili.com/338485759/?spm_id_from=333.999.0.0" title="云淡峰輕">查看</a> -->
               </li>
-              <li>FCA Regulated, FSCS protected</li>
+              <li>
+                <a href="https://space.bilibili.com/338485759/channel/seriesdetail?sid=266668" title="二珂单曲视频剪辑">二珂单曲视频剪辑</a>
+              </li>
+              <li>
+                <a href="https://space.bilibili.com/338485759/channel/seriesdetail?sid=266651" title="二珂直播录像">二珂直播录像</a>
+              </li>
+              <li>
+                <a href="https://space.bilibili.com/338485759/channel/seriesdetail?sid=266684" title="二珂特别剪辑">二珂特别剪辑</a>
+              </li>
+              <li>
+                <a href="https://space.bilibili.com/338485759/channel/seriesdetail?sid=266639" title="二珂20190106演唱会">二珂20190106演唱会</a>
+              </li>
+
+              
             </ul>
           </li>
           <li class="list_item">
-            <img src="@/assets/image/home3.png" alt="" />
-            <h2>Client funds and assets</h2>
+            <img src="data:image/webp;base64,UklGRgoEAABXRUJQVlA4IP4DAADQEACdASo2ADYAPpE6lkkloyGhLBgMALASCWUAxQxOggDR3eC/lS9xSiaXuAmVnwm0ss1TyTvsgoYvW+xHWPRH/1c6jfbvIZzjY7hQemNsxYSF5+suhQoMa9wcYhdJULXeuhSZZY0LDj6bMBTvWnXL13pSxrflwbQBSsNjCu39YaA0mcg1fhnZ6GVduGqiAAD+8VERozp1nnwDz4bE9LV38STqWwvRLPm4b6wwkmqo8FsQETazXUpf00gnQq8zaAQ0VaVeeWhPXErtCPeVIBefYiAOx+jWqzCsxZEIOjHgE4uiEn53SexEzu/L/fU4REwyPzhIzfigi7l3U7TWbfJTEfl7f8+1IxN8deyzGTUprOtsPLg1Zz3m+a7eDTyiJn8Eb/8WEa4tuLz/YSS1WGy9rs86kP6PJhR/J/pUUtWc1LFJ8MTFAn2fM/KvUQEnnuGfwL3hzX8N9dixV9UfxoBtKXSvPZn0MQDg3xnJov4/SuaM3/PYWZA6MzDsjNxQcRpD1/HaBp3XImhwrg1qYyTnBcPpT2JaxeM9rYZpYbYCM41t0NDjTlwafjrefX8HJJ06YFNEM4nOdvaoeH597pHr0fsBt1nQucayWpvne4+URnrpVsZOYDi8LMv5Pc4+xvAjJSR4RouavE43nL3gKmE8GZPX4PEA5W3ywJuQJPqTf2Sjp2TUhYfLTY3txqqZSKpT1DjlYIQr5t/RAc8Q2Tkjjje/CPzJqyCT+kAFFYNRjYr6We37q29s6JEf7z4W/rDZXbD8CKIdhgr75WQjkaTIxBMt95NGD3nKPKInmHZEFygeRl7PNhv+NcnDssRQ7Cr55vn/ONi+VG5KUksxMtNG9sHf79Isgt7X4Efllp1a6BLjmwnS/3lLEyD3bWr1lRim5doEJJK249e2jw8aPyScuWCGRlMB9r/fqnsRHRx+tpO/MvdY64B5Vd1FoHJG1PqVmS0zl1ntXFQe2zTG3gpENz3mfIOmBwAx5Imh+7/oW5O53Im3SrCpz91KjfP/B98SY+IaeIcqbecvqyBoay0h4FHrbHFDIQ/dkrqmM1DHA/axI1bjDkZaHgMOxCdb638LbjcFK8OMmK2Cf+SYzKm94Wm9dgCWaJFdLfF56yvRN6n1lzBr0QP8A5LysTt3iuZxUNcykgCLDYv/dnIO2fmZ8rBLkgt74Ca/jsMLG5IJT7Z74rgaXw7cFbNiq8QatZoYpqFkJ+8uEWW/jTYDNYldLc1ReiS9hHRSXrmz4Awjb7KgyQC8mPT2ilTI5jxUNYsNMiWiWAwnQeQZoUoRAd0LHyWCgTRGhWTgKY2MHKiuowGft71Obrhf9Xi0jASMpIk0E1KzJ5JuBA+yqAAAAA==" alt="VKwick" />
+            <h2 @click="tiaozhuan('https://space.bilibili.com/276886844/?spm_id_from=333.999.0.0')">VKwick</h2>
             <ul class="foot_list_item">
               <li>
-                Client monies are held in segregated client funds accounts and
-                are covered by thy the provisions of the Financial Services
-                Compensation Scheme (FSCS). More about FSCS
-                <a href="">here</a>
+                求关注，求点赞，求投币，求收藏，求转发，求一切。
+                <!-- <a href="https://space.bilibili.com/276886844/?spm_id_from=333.999.0.0" title="VKwick">查看</a> -->
+              </li>
+              <li>
+                <a href="https://space.bilibili.com/276886844/article" title="VKwick">专栏-封面图</a>
               </li>
             </ul>
           </li>
         </ul>
-        <div class="foot_btn" @click="jumpFun('invest')">Get started</div>
+        <div class="foot_btn">查看更多</div>
       </div>
     </div>
   </div>
 </template>
    
 <script>
-import tu1 from "@/assets/image/tu1.png";
-import tu2 from "@/assets/image/tu2.png";
-import tu3 from "@/assets/image/tu5.png";
-import tu4 from "@/assets/image/tu3.png";
-import tu5 from "@/assets/image/tu4.png";
-import tu6 from "@/assets/image/tu6.png";
-import right1 from "@/assets/image/right5.png";
-import right2 from "@/assets/image/right6.png";
 import "swiper/css/swiper.min.css";
 import Swiper from "swiper";
 export default {
   data() {
     return {
-      imageContainerfour: [tu1, tu2, tu3, tu4, tu5, tu6],
       textContainerfour: [
         {
-          title: "Access to most popular markets",
-          hrefText: "See all markets",
+          title: "几张‘书不离手‘的胶片照片",
+          img:'https://wx2.sinaimg.cn/mw2000/0025iZgBly1h5j0c7abv2j62re22s1kz02.jpg',
+          href:'https://weibo.com/1910672761/M2FxPqk6t?pagetype=profilefeed',
           active: true,
         },
         {
-          title: "Suit yourself to manage profit and risk",
+          title: "你们用随身听的那年，听的谁的歌。",
+          img:'https://wx1.sinaimg.cn/mw2000/0025iZgBly1h3i13xu2e8j60yi1a0wi002.jpg',
+          // img:'https://wx1.sinaimg.cn/mw2000/0025iZgBly1h3i13xu2e8j60yi1a0wi002.jpg',
+          href:'https://weibo.com/1910672761/Lz1UeuyD2?pagetype=profilefeed',
           active: false,
         },
         {
-          title: "30:1 leverage to gain more with less",
+          title: "消失的画",
+          img:'https://wx1.sinaimg.cn/mw2000/0025iZgBly1h3etbzx7kyj61jk2247wh02.jpg',
+          href:'https://weibo.com/1910672761/LyBGwnVqK?pagetype=profilefeed',
           active: false,
         },
         {
-          title: "Deposit and withdraw within 1 minute",
+          title: "某天的夜里",
+          img:'https://wx4.sinaimg.cn/mw2000/0025iZgBly1gy7dkwa283j62241jknpd02.jpg',
+          href:'https://weibo.com/1910672761/L9XejCC1m?pagetype=profilefeed',
           active: false,
         },
         {
-          title: "No commission and hidden fees",
+          title: "滑满五天，开心！-滑雪照",
+          img:'https://wx2.sinaimg.cn/mw2000/0025iZgBly1gx1rct2x76j61jk2241i002.jpg',
+          href:'https://weibo.com/1910672761/L4tRIyz0y?pagetype=profilefeed',
           active: false,
         },
         {
-          title: "Get your local expert help on what to buy and when to sell",
+          title: "存图… 想去看雪❄️ ​​​",
+          img:'https://wx2.sinaimg.cn/mw2000/0025iZgBgy1gwb961ksyqj622o340kjl02.jpg',
+          href:'https://weibo.com/1910672761/L0ZJbjYu5?pagetype=profilefeed',
           active: false,
         },
+      ],
+      //放大地址
+      srcList:[
+        'https://wx2.sinaimg.cn/mw2000/0025iZgBly1h5j0c7abv2j62re22s1kz02.jpg',
+        'https://wx1.sinaimg.cn/mw2000/0025iZgBly1h3i13xu2e8j60yi1a0wi002.jpg',
+        'https://wx1.sinaimg.cn/mw2000/0025iZgBly1h3etbzx7kyj61jk2247wh02.jpg',
+        'https://wx4.sinaimg.cn/mw2000/0025iZgBly1gy7dkwa283j62241jknpd02.jpg',
+        'https://wx2.sinaimg.cn/mw2000/0025iZgBly1gx1rct2x76j61jk2241i002.jpg',
+        'https://wx2.sinaimg.cn/mw2000/0025iZgBgy1gwb961ksyqj622o340kjl02.jpg'
       ],
       leftTopTexts: [
         "30:1 leverage to apply",
@@ -385,11 +427,14 @@ export default {
       // slidesPerView: 'auto',
       loop: true, // 循环模式选项
       slidesPerView: 1,
-      spaceBetween: 6,
+      spaceBetween: 5,
       on: {
         slideChange: function () {
+          console.log(_this.activeIndex)
           // 获得下标
           _this.activeIndex = this.activeIndex - 1;
+          console.log(_this.activeIndex)
+
           if (_this.activeIndex === 6) {
             _this.activeIndex = 0;
           }
@@ -543,15 +588,80 @@ export default {
           -webkit-animation: phoneSlide 6s linear infinite forwards;
           animation: phoneSlide 6s linear infinite forwards;
           display: block;
-          // display: none;
-          height: 100%;
-          left: 0;
+          cursor: pointer;
+          // height: 100%;
+          left: -72px;
           position: absolute;
-          top: 0;
+          top: 72px;
           -webkit-transform: translateY(-60px);
           transform: translateY(-60px);
-          width: 100%;
-
+          // width: 100%;
+          .animate-wave {
+            width: 350px;
+            height: 350px;
+            position: absolute;
+            top: 30px;
+            left: 15px;
+            right: 0;
+            margin: 0 auto;
+            // background: rgba(255,255,255,0.4);
+            border-radius: 50%;
+            .logo{
+              background: rgba(255,255,255,0.6);
+              color: #fff;
+              text-align: center;
+              border-radius: 50%;
+              position: absolute;
+              left: 0;
+              right: 0;
+              z-index: 9;
+              opacity: 0.6;
+              width: 50%;
+              height: 50%;
+              top:25%;
+              left:25%;
+            }
+        }
+          @-webkit-keyframes opac {
+            from {
+                opacity: 1;
+                width: 10px;
+                height: 10px;
+                top: 50%;
+                left: 50%;
+            }
+        
+            to {
+                opacity: 0;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+            }
+        }
+ 
+        .animate-wave .w2,.animate-wave .w3,.animate-wave .w4 {
+            background: rgba(255,255,255,0.7);
+            position: absolute;
+            border-radius: 50%;
+            animation: opac 4s infinite;
+        }
+        
+        .animate-wave .w2 {
+            animation-delay: 1s;
+        }
+        
+        .animate-wave .w3 {
+            animation-delay: 2s;
+        }
+        
+        .animate-wave .w4 {
+            animation-delay: 3s;
+        }
+          p{
+            font-size: 20px;
+            text-align: end;
+          }
           .inset_video {
             border-radius: 16px;
             height: auto;
@@ -731,7 +841,7 @@ export default {
             }
             a {
               background: no-repeat 15px 50% / auto 15px #f4f4f4;
-              border-radius: 7px;
+              border-radius: 26px;
               color: #000;
               font-size: 15px;
               line-height: 45px;
@@ -739,7 +849,10 @@ export default {
               display: flex;
               align-items: center;
               margin-left: 10px;
-              
+              &:hover {
+                color: orange;
+                cursor: pointer;
+              }
               img {
                 margin-right: 10px;
                 width: 15px;
@@ -1144,17 +1257,25 @@ export default {
         }
 
         .pounce_right {
-          width: 45%;
-          min-width: 640px;
+          // width: 100%;
+          width: 754px;
+          max-height: 580px;
+          line-height: 580px;
           overflow: hidden;
           margin-left: 60px;
-
+          background: #000;
+          .swiper-containerfour{
+            width: 100%;
+            height: 100%;
+          }
           .swiper-containerfour {
             .swiper-wrapper {
               .swiper-slide {
                 .swiper-img {
                   width: 100%;
-                  // height: 254px;
+                  height: 100%;
+                  line-height: 588px;
+                  object-fit: cover;
                 }
               }
             }
@@ -1189,7 +1310,9 @@ export default {
 
         .list_item {
           width: 29%;
-
+          img{
+            border-radius: 50%;
+          }
           h2 {
             font-size: 24px;
             font-weight: 700;

@@ -1,0 +1,9 @@
+.el-slider>.el-slider__runway,
+.el-slider__runway>.el-slider__bar {
+    height: 4px;
+}
+
+.el-slider__runway .el-slider__button {
+    width: 12px;
+    height: 12px;
+}

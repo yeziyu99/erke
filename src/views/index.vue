@@ -6,9 +6,9 @@
       <router-view></router-view>
     </div>
     <!-- 底部 -->
-    <question v-if="isQuestion" />
+    <!-- <question v-if="isQuestion" /> -->
     <publicFoot />
-    <publicFooter />
+    <!-- <publicFooter /> -->
     <!-- 一箭到顶 -->
     <div class="site-scrolltop" :style="{display:scrollTop>=100?'block':'none'}">
       <a title="to top" class="toTop" @click="toTop"></a>

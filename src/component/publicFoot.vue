@@ -1,22 +1,23 @@
 <template>
   <div class="publicFoot">
+    <div class="publicFoot_back">
     <div class="publicFoot_head">
-      <img class="logo" src="@/assets/image/yellowIcon.png" alt="" />
+      <img class="logo" src="@/assets/images/5.png" alt="" />
       <ul>
-        <li class="publicFoot_tip">MOBILE APP</li>
-        <li class="publicFoot_btn" style="margin-right: 5px" @click="jumpFun('invest')">
-          <img src="@/assets/image/apple.png" alt="" />
-          APP STORE
+        <li class="publicFoot_tip">App账号</li>
+        <li class="publicFoot_btn" style="margin-right: 5px" @click="tiaozhuan('https://weibo.com/u/1910672761?topnav=1&wvr=6&topsug=1')">
+          <img src="@/assets/images/douyu.png" alt="" />
+          斗鱼
         </li>
-        <li class="publicFoot_btn"  @click="jumpFun('invest')">
-          <img src="@/assets/image/googleplay.png" alt=""  />
-          GOOGLE PLAY
+        <li class="publicFoot_btn"  @click="tiaozhuan('https://www.xiaohongshu.com/user/profile/5ad78361e8ac2b1fca15ff66?xhsshare=CopyLink&appuid=609b9c340000000001004f33&apptime=1667552951')">
+          <img src="@/assets/images/weibo.png" alt=""  />
+          微博
         </li>
       </ul>
     </div>
     <div class="publicFoot_con">
       <ul class="publicFoot_con_left">
-        <li class="list_router" @click="jumpFun('market')">Market</li>
+        <li class="list_router" @click="jumpFun('market')">音乐专辑</li>
         <li class="list_routerLi" @click="jumpFun('market')">Stocks</li>
         <li class="list_routerLi" @click="jumpFun('market')">Currencies</li>
         <li class="list_routerLi" @click="jumpFun('market')">Indicies</li>
@@ -46,6 +47,7 @@
       </ul>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
@@ -56,6 +58,9 @@ export default {
         this.$router.push(route);
       }
     },
+    tiaozhuan(lianjie){
+      window.open(lianjie)
+    },
   },
 };
 </script>
@@ -65,7 +70,6 @@ ul li {
   list-style: none;
 }
 .publicFoot {
-  height: 354px;
   width: 100%;
   min-width: 1200px;
   overflow-x: auto;
@@ -73,17 +77,22 @@ ul li {
   display: flex;
   align-items: center;
   flex-direction: column;
-  .publicFoot_head {
+  .publicFoot_back{
+    height: 354px;
+    // background: url('../assets/images/erkexihaun.png') no-repeat;
+    // background-size: 100% 100%;
     width: 60%;
     min-width: 1170px;
     max-width: 1170px;
+  }
+  .publicFoot_head {
     height: 89px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     .logo{
-      width: 100px;
+      width: 150px;
     }
     ul {
       display: flex;
@@ -108,15 +117,16 @@ ul li {
         color: #fff;
         img {
           margin-right: 5px;
+          width: 15px;
+          height: 15px;
+          border-radius: 5px;
         }
       }
     }
   }
   .publicFoot_con {
-    width: 60%;
+    // padding: 0 10px;
     margin-top: 26.5 * 2px;
-    min-width: 1170px;
-    max-width: 1170px;
     color: #fff;
     display: flex;
     justify-content: space-between;

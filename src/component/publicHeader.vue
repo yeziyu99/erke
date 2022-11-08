@@ -1,17 +1,17 @@
 <template>
   <div class="publicHeader">
     <div class="header_con">
-      <img @click="jumpFun('home')" src="@/assets/image/headerIcon.png" alt="" />
+      <img  src="@/assets/images/4.png"  @click="jumpFun('home')" alt="" />
       <ul>
-        <li :class="{'header_route':true,'fontW700':className==='market'}"  @click="jumpFun('market')">Markets</li>
+        <li :class="{'header_route':true,'fontW700':className==='market'}"  @click="jumpFun('market')">音乐专辑</li>
         <li :class="{'header_route':true,'fontW700':className==='support'}" @click="jumpFun('support')">Support</li>
         <li :class="{'header_route':true,'fontW700':className==='about'}" @click="jumpFun('about')">About</li>
-        <li class="header_btn" style="background: #fff; margin-right: 8px" @click="jumpFun('invest')">
+        <!-- <li class="header_btn" style="background: #fff; margin-right: 8px" @click="jumpFun('invest')">
           LOGIN
         </li>
         <li class="header_btn" style="background: #000000; color: #fff" @click="jumpFun('invest')">
           SIGN UP
-        </li>
+        </li> -->
       </ul>
     </div>
   </div>
@@ -64,9 +64,10 @@ ul li {
     justify-content: space-between;
     align-items: center;
     img{
-      width: 230px;
+      width: 200px;
       cursor: pointer;
     }
+    
     ul {
       display: flex;
       align-items: center;

@@ -7,10 +7,14 @@ import 'element-ui/lib/theme-chalk/index.css';
 import VueCookies from 'vue-cookies'
 import "@/assets/styles/reset.scss";
 import "@/assets/font/font.css";
+import axios from 'axios'
+
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
 Vue.prototype.$cookie = VueCookies;
 import echarts from 'echarts'
+Vue.prototype.$http = axios
+
 Vue.prototype.$echarts = echarts
 Date.prototype.format = function(format) {
   var o = {
