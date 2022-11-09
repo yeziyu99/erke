@@ -1,22 +1,14 @@
 import axios from "axios";
 import Vue from "vue";
-import { getCookie } from "@/common/utils";
-import md5 from 'js-md5'
-import { v4 as uuidv4 } from 'uuid';
+// import { getCookie } from "@/common/utils";
+// import md5 from 'js-md5'
+// import { v4 as uuidv4 } from 'uuid';
 
 import router from "../router";
 
-axios.defaults.baseURL = "/api"
+axios.defaults.baseURL = "https://autumnfish.cn"
 //请求
 function http(url, method, params = {}) {
-    //params.Token = getCookie("token");
-    if (method === 'EXPORT') {
-        let _arr = [];
-        for (var k in params) {
-            _arr.push(k + "=" + params[k]);
-        }
-        return "/api" + url + "?" + _arr.join("&");
-    }
     if (method === "GET") {
         return axios({
             method,
@@ -33,27 +25,6 @@ function http(url, method, params = {}) {
 
 axios.interceptors.request.use(
     config => {
-        let paramsInfo = config.params
-        let Sign = ''
-        paramsInfo = {
-            ...paramsInfo,
-            version: '1.0.0',
-            os: 'web',
-            rnd: uuidv4(),
-            ts: Date.parse(new Date()),
-            // is_h5: 0
-        }
-        config.params = paramsInfo
-        // 排序参数拼接字符串
-        Sign = objKeySort(paramsInfo)
-        console.log(Sign, 'Sign');
-        // md5加密Sign
-        Sign = md5(Sign)
-        config.headers = {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            //   'Authorization': 'Bearer ' + t,
-            'Sign': Sign
-        }
         return config;
     },
     err => {
@@ -62,6 +33,7 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
     response => {
+        // console.log(response)
         if (response.data.is_succ) {
             return response.data;
         } else if (response.data.code == '100100') {
@@ -71,13 +43,14 @@ axios.interceptors.response.use(
             window.location.reload()
 
         }
-        Vue.prototype.$Message.error({
-            content: response.data.Message,
-            closable: true
-        });
+        // Vue.prototype.$Message.error({
+        //     content: response.data.Message,
+        //     closable: true
+        // });
         return response.data;
     },
     error => {
+        // console.log(error)
         if (error.response) {
             switch (error.response.status) {
                 case 401: // 返回 401
@@ -86,75 +59,30 @@ axios.interceptors.response.use(
         return Promise.reject(error.response.data) // 返回接口返回的错误信息
     }
 );
-function objKeySort(arys) {
-    // 先用Object内置类的keys方法获取要排序对象的属性名，再利用Array原型上的sort方法对获取的属性名进行排序，newkey是一个数组
-    let newkey = Object.keys(arys).sort()
-    let sign = ''
-    for (let i = 0; i < newkey.length; i++) {
-        // 向新创建的对象中按照排好的顺序依次增加键值对
-        if (!(arys[newkey[i]] instanceof Array)) {
-            sign += `${newkey[i]}=${arys[newkey[i]]}&`
-        }
-    }
-    sign += 'SxP22scZq'
-    return sign // 返回排好序的新字符串
-}
 const _http = {
-    /**  Market页面web端展示的产品分类列表
-     * getSymbolClassify
+    /**  获取歌曲列表
+     * getPlaylistDetail
      * params
      *  //Token	string	no	Token
      */
-    getSymbolClassify() {
-        return http("/symbol/classify", "GET");
+    getPlaylistDetail(params) {
+        return http("/playlist/detail", "GET",params);
     },
-     /**  Market页面图表数据
-     * getForyouTradeTop
+    /**  获取歌曲信息
+     * getSongUrl
      * params
      *  //Token	string	no	Token
-     *  identifier crypto（多个分类英文逗号拼接）crypto（虚拟货币）、energy（能源）、forex（外汇）、index（股指）、metal（贵金属）、stock（股票）
      */
-      getForyouTradeTop(identifier) {
-        return http("/foryou/trade_top", "GET",{identifier:identifier});
+    getSongUrl(params) {
+        return http("/song/url", "GET",params);
     },
-    /** 详情页面的Market
-     * getForyouMarket
+    /**  获取歌词
+     * getLyric
      * params
-     * symbol	交易品种名称
-     * offset_id	分页 ID，避免数据重复
-     * limit	每页条数
+     *  //Token	string	no	Token
      */
-    getForyouMarket(params) {
-        return http("/foryou/market", "GET", params);
-    },
-    /** 详情页面图表
-     * getChart
-     * params
-     * symbol	
-     * type		in:1,5,15,30,60,240,1440,10080,43200
-     * start	时间戳
-     * end		时间戳
-     * offset	是	
-     * limit	是
-     */
-    getChart(params) {
-        return http("/chart", "GET", params);
-    },
-    /** 详情页面今开昨收价格
-     * getChartPrice
-     * params
-     *  symbol
-     */
-    getChartPrice(params) {
-        return http("/chart/price", "GET", params);
-    },
-    /** 详情页面-多空占比
-     * getSymbolPercent
-     * params
-     *  //symbol  分类标识
-     */
-    getSymbolPercent(params) {
-        return http("/symbol/percent", "GET", params);
+     getLyric(params) {
+        return http("/lyric", "GET",params);
     },
 };
 

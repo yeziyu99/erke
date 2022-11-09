@@ -173,8 +173,7 @@
           <el-tab-pane
             :label="value.identifier_names"
             :name="value.identifier_names"
-            v-for="(value, index) in tableDataS"
-            :key="index"
+            v-for="(value, index) in tableDataS" :key="index"
           >
             <el-table
               stripe

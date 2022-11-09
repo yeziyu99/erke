@@ -144,6 +144,8 @@
 
 
 <script>
+import http from "@/http/service";
+
 import "./css/global.css";
 import iconBase from "./iconBase";
 import iconLoop from "./icons/iconLoop";
@@ -173,7 +175,7 @@ export default {
     },
     playlistid: {
       type: Number,
-      default: 3778678,
+      default: 916072119,
     },
     playlistheight: {
       type: Number,
@@ -243,12 +245,10 @@ export default {
   methods: {
     // 获取热歌榜单
     getHot() {
-      this.$http
-        .get(this.baseurl + "playlist/detail?id=" + this.playlistid + "&s=0")
-        .then(
-          (data) => {
-            let ids = data.data.playlist.trackIds;
-            let hotList = data.data.playlist.tracks;
+      http.getPlaylistDetail({id:this.playlistid,s:0}).then((rs) => {
+          if (rs.code==200) {
+            let ids = rs.playlist.trackIds;
+            let hotList = rs.playlist.tracks;
             hotList.forEach((item, key) => {
               this.playlist.push({
                 ...item.al,
@@ -256,11 +256,12 @@ export default {
                 id: ids[key].id,
               });
             });
-          },
-          (err) => {
-            console.log(err);
+          } else {
           }
-        );
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
     // 改变切歌方式
     handleChangeType() {
@@ -268,9 +269,9 @@ export default {
     },
     // 获取歌曲信息
     getSong() {
-      this.$http.get(this.baseurl + "/song/url?id=" + this.curMusic.id).then(
-        (data) => {
-          this.curMusic.url = data.data.data[0].url;
+      http.getSongUrl({id:this.curMusic.id}).then((rs) => {
+          if (rs.code==200) {
+            this.curMusic.url = rs.data[0].url;
           let a = document.querySelector("audio");
           if (a != null) {
             a.load();
@@ -288,33 +289,36 @@ export default {
                 that.playInfo.nowtime += 0.1;
               }, 100);
             };
+          } else {
           }
-        },
-        (err) => {
-          console.log(err);
         }
-      );
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    
     },
     // 获取歌词
     getLyric() {
-      this.$http.get(this.baseurl + "/lyric?id=" + this.curMusic.id).then(
-        (data) => {
-          var lyricD = data.data.lrc.lyric.split("\n");
-          var timeArr = [];
-          var lyricArr = [];
-          lyricD.forEach((item, key) => {
-            let curArr = item.slice(1).split("]");
-            // 把01:00.23 转换为秒,
-            timeArr.push(curArr[0]);
-            lyricArr[key] = curArr[1] || "";
-          });
-          this.$set(this.curMusic, "lyric", lyricArr);
-          this.$set(this.curMusic, "lyricTime", timeArr);
-        },
-        (err) => {
+      http.getLyric({id:this.curMusic.id}).then((rs) => {
+          if (rs.code==200) {
+            console.log(rs)
+            var lyricD = rs.lrc.lyric.split("\n");
+            var timeArr = [];
+            var lyricArr = [];
+            lyricD.forEach((item, key) => {
+              let curArr = item.slice(1).split("]");
+              // 把01:00.23 转换为秒,
+              timeArr.push(curArr[0]);
+              lyricArr[key] = curArr[1] || "";
+            });
+            this.$set(this.curMusic, "lyric", lyricArr);
+            this.$set(this.curMusic, "lyricTime", timeArr);
+          }
+        })
+        .catch((err) => {
           console.log(err);
-        }
-      );
+        });
     },
     // 获取dom audio对象
     getAudio() {
@@ -497,7 +501,6 @@ export default {
               i * 16 +
               "px)"
           );
-
         if (document.querySelector("span.on") !== null) {
           document.querySelector("span.on").className = "";
         }

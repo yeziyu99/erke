@@ -5,9 +5,7 @@
       <div class="question_list">
         <div
           class="queation_item"
-          v-for="(item, index) in question_data"
-          :key="index"
-        >
+          v-for="(item, index) in question_data" :key="index">
           <div
             @click="itemFun(index)"
             style="width: 100%; display: flex; justify-content: space-between"

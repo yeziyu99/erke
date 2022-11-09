@@ -1,9 +1,5 @@
 <template>
-  <svg
-    viewBox="0 0 1024 1024"
-    xmlns="http://www.w3.org/2000/svg"
-    :width="width"
-    :height="height"
+  <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" :width="width" :height="height"
   >
     <title :id="iconName" lang="zh">{{ iconTitle }}</title>
     <slot />
