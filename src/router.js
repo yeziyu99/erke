@@ -25,7 +25,7 @@ const router = new Router({
       component: page,
       children: [{
         path: "",
-        redirect: "/home"
+        redirect: "/comingsoon"
       },
       {
         path: "home",
