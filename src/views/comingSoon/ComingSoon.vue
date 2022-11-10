@@ -4,7 +4,10 @@
       <img src="@/assets/image/soon.png" alt="">
     </div>
     <h3 class="font_Bold title">New website coming soon…</h3>
-    <img class="soonbj" src="@/assets/image/soonbj.png" alt="">
+    <div class="soonbj_img">
+      <img class="soonbj" src="@/assets/image/soonbj.png" alt="">
+    </div>
+    
   </div>
 </template>
 
@@ -25,14 +28,28 @@ flex-direction: column;
 align-items: center;
 .soon_img{
   margin-top: 5%;
+  width: 41%;
+  height: 56%;
+img{
+  width: 100%;
+  height: 100%;
+}
 }
 .title{
   font-size: 60px;
   font-weight: 700;
 }
-.soonbj{
+.soonbj_img{
+  width: 100%;
+  height: 27%;
   position: absolute;
   bottom: 0px;
+  .soonbj{
+    width: 100%;
+  height: 100%;
+  
 }
+}
+
 }
 </style>

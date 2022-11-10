@@ -8,7 +8,7 @@ import support from "@/views/support/index.vue";
 import about from "@/views/about/index.vue";
 import invest from "@/views/invest/index.vue";
 import detail from "@/views/detail/index.vue";
-import comingsoon from "@/views/ComingSoon.vue";
+import comingsoon from "@/views/comingSoon/ComingSoon.vue";
 
 
 
