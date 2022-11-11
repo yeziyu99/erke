@@ -5,11 +5,11 @@
       <img class="logo" src="@/assets/images/5.png" alt="" />
       <ul>
         <li class="publicFoot_tip">App账号</li>
-        <li class="publicFoot_btn" style="margin-right: 5px" @click="tiaozhuan('https://weibo.com/u/1910672761?topnav=1&wvr=6&topsug=1')">
+        <li class="publicFoot_btn" style="margin-right: 5px" @click="externalJumpFn('https://www.douyu.com/78622')">
           <img src="@/assets/images/douyu.png" alt="" />
           斗鱼
         </li>
-        <li class="publicFoot_btn"  @click="tiaozhuan('https://www.xiaohongshu.com/user/profile/5ad78361e8ac2b1fca15ff66?xhsshare=CopyLink&appuid=609b9c340000000001004f33&apptime=1667552951')">
+        <li class="publicFoot_btn"  @click="externalJumpFn('https://weibo.com/u/1910672761?topnav=1&wvr=6&topsug=1')">
           <img src="@/assets/images/weibo.png" alt=""  />
           微博
         </li>
@@ -18,30 +18,33 @@
     <div class="publicFoot_con">
       <ul class="publicFoot_con_left">
         <li class="list_router" @click="jumpFun('market')">音乐专辑</li>
-        <li class="list_routerLi" @click="jumpFun('market')">Stocks</li>
-        <li class="list_routerLi" @click="jumpFun('market')">Currencies</li>
-        <li class="list_routerLi" @click="jumpFun('market')">Indicies</li>
-        <li class="list_routerLi" @click="jumpFun('market')">Commodities</li>
+        <li class="list_routerLi" @click="jumpFun('market')">专辑展示</li>
+        <li class="list_routerLi" @click="jumpFun('market')">网易云单曲播放</li>
+        <li class="list_routerLi" @click="jumpFun('market')">酷狗单曲跳转</li>
       </ul>
       <ul class="publicFoot_con_left">
-        <li class="list_router" @click="jumpFun('support')">Support</li>
-        <li class="list_routerLi" @click="jumpFun('support')">Help Centre</li>
+        <li class="list_router" @click="jumpFun('support')">问题解答</li>
+        <li class="list_routerLi" @click="jumpFun('support')">问题搜索</li>
       </ul>
       <ul class="publicFoot_con_left">
-        <li class="list_router" @click="jumpFun('about')">About</li>
-        <li class="list_routerLi" @click="jumpFun('about')">Our Story</li>
+        <li class="list_router" @click="jumpFun('about')">关于我们</li>
+        <li class="list_routerLi" @click="jumpFun('about')">我们的故事</li>
+        <li class="list_routerLi" @click="jumpFun('about')">联系我们</li>
       </ul>
       <ul class="publicFoot_con_left">
-        <li class="list_router">Agreements and Disclosures</li>
-        <li class="list_routerLi">Disclosures</li>
-        <li class="list_routerLi">Terms and Conditions</li>
+        <!-- <li class="list_router">1</li>
+        <li class="list_routerLi">2</li>
+        <li class="list_routerLi">3</li> -->
       </ul>
+      
       <ul class="publicFoot_con_right">
         <li class="con_right_title">
-          Customer Service<br />
-          Weekdays 09:30-05:00 (next day)
+          UI：叶子宇<br />
+          前端：叶子宇<br />
+          后端：黄小珂<br />
+          非官方网站<br />
         </li>
-        <li class="con_right_bottom">clientservice@tigerbrokers.co.uk </li>
+        <li class="con_right_bottom">346989693@qq.com </li>
         <!-- <li class="con_right_con">40x-xxx-xx88</li> -->
         <!-- <li class="con_right_bottom">service@XXXXXXXXXXX.com</li> -->
       </ul>
@@ -58,7 +61,7 @@ export default {
         this.$router.push(route);
       }
     },
-    tiaozhuan(lianjie){
+    externalJumpFn(lianjie){
       window.open(lianjie)
     },
   },

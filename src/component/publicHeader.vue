@@ -4,8 +4,8 @@
       <img  src="@/assets/images/4.png"  @click="jumpFun('home')" alt="" />
       <ul>
         <li :class="{'header_route':true,'fontW700':className==='market'}"  @click="jumpFun('market')">音乐专辑</li>
-        <li :class="{'header_route':true,'fontW700':className==='support'}" @click="jumpFun('support')">Support</li>
-        <li :class="{'header_route':true,'fontW700':className==='about'}" @click="jumpFun('about')">About</li>
+        <li :class="{'header_route':true,'fontW700':className==='support'}" @click="jumpFun('support')">问题解答</li>
+        <li :class="{'header_route':true,'fontW700':className==='about'}" @click="jumpFun('about')">关于我们</li>
         <!-- <li class="header_btn" style="background: #fff; margin-right: 8px" @click="jumpFun('invest')">
           LOGIN
         </li>

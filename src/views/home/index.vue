@@ -12,13 +12,9 @@
             </h4>
             <div class="banner_btn">
               <div class="btn_one">房间未开播</div>
-              <!-- <div class="btn_one">开播中...</div> -->
               <a href="" >
                 <img src="@/assets/images/douyu.png" alt="" />
                开播中...</a>
-              <!-- <a href="" class="android">
-                <img src="@/assets/images/weibo.png" alt="" />
-                微博</a> -->
             </div>
             <p>显示的图像仅用于展示作用</p>
           </div>
@@ -38,7 +34,7 @@
                 <div class="bg_ball"></div>
                 <div class="bg_ball_solid"></div>
               </div>
-              <div class="video_wrap" @click="tiaozhuan('https://www.douyu.com/78622')">
+              <div class="video_wrap" @click="externalJumpFn('https://www.douyu.com/78622')">
                 <div class="animate-wave">
                   <img class="logo"  src="@/assets/images/erke.png" alt="">
                   <div class="w2"></div>
@@ -63,19 +59,19 @@
       <div class="content_img">
         <h2 class="font_Bold">选择直达平台</h2>
         <div class="three_img">
-          <div class="content_item" @click="tiaozhuan('https://www.douyu.com/78622')">
+          <div class="content_item" @click="externalJumpFn('https://www.douyu.com/78622')">
             <div>
               <img src="https://apic.douyucdn.cn/upload/avatar_v3/201807/dca3c7ece148ee546d611ed0815fbbd0_big.jpg" alt="https://www.douyu.com/78622">
             </div>
             <p>二珂78622@斗鱼</p>
           </div>
-          <div class="content_item" @click="tiaozhuan('https://weibo.com/u/1910672761?topnav=1&wvr=6&topsug=1')">
+          <div class="content_item" @click="externalJumpFn('https://weibo.com/u/1910672761?topnav=1&wvr=6&topsug=1')">
             <div>
               <img src="https://tvax2.sinaimg.cn/crop.0.0.1080.1080.180/0025iZgBly8gmmp57xqh3j60u00u0di902.jpg?KID=imgbed,tva&Expires=1667558820&ssig=Bx5ptFoRPv" alt="https://weibo.com/u/1910672761?topnav=1&wvr=6&topsug=1">
             </div>
             <p>二珂Chloe@微博</p>
           </div>
-          <div class="content_item" @click="tiaozhuan('https://www.xiaohongshu.com/user/profile/5ad78361e8ac2b1fca15ff66?xhsshare=CopyLink&appuid=609b9c340000000001004f33&apptime=1667552951')">
+          <div class="content_item" @click="externalJumpFn('https://www.xiaohongshu.com/user/profile/5ad78361e8ac2b1fca15ff66?xhsshare=CopyLink&appuid=609b9c340000000001004f33&apptime=1667552951')">
             <div>
               <img src="https://sns-avatar-qc.xhscdn.com/avatar/6344e5b0a72440a1d6f84aa0.jpg?imageView2/1/w/540/format/jpg" alt="https://www.xiaohongshu.com/user/profile/5ad78361e8ac2b1fca15ff66?xhsshare=CopyLink&appuid=609b9c340000000001004f33&apptime=1667552951">
             </div>
@@ -99,17 +95,18 @@
         </div> -->
         <div class="invest_img">
           <div class="img_left">
-            <img class="left1" src="https://wx3.sinaimg.cn/mw2000/0025iZgBly1gop49qkl1mj62241jkkjm02.jpg" alt="" />
-            <img class="left2" src="https://wx1.sinaimg.cn/mw2000/0025iZgBgy1gvbhdvy1vmj62961i4hdw02.jpg" alt="" />
-            <img class="left3" src="https://wx4.sinaimg.cn/mw2000/0025iZgBgy1gvbhdyo5duj629u1ilb2a02.jpg" alt="" />
+            <!-- <el-image class="left1" src="https://wx3.sinaimg.cn/mw2000/0025iZgBly1gop49qkl1mj62241jkkjm02.jpg"  fit="cover"></el-image> -->
+            <el-image class="left1" src="https://wx3.sinaimg.cn/mw2000/0025iZgBly1gop49qkl1mj62241jkkjm02.jpg" fit="cover" alt="" />
+            <el-image class="left2" src="https://wx1.sinaimg.cn/mw2000/0025iZgBgy1gvbhdvy1vmj62961i4hdw02.jpg" fit="cover" alt="" />
+            <el-image class="left3" src="https://wx4.sinaimg.cn/mw2000/0025iZgBgy1gvbhdyo5duj629u1ilb2a02.jpg" fit="cover" alt="" />
           </div>
           <div class="img_phone">
-            <img style="" src="https://wx2.sinaimg.cn/mw2000/0025iZgBgy1gwb961ksyqj622o340kjl02.jpg" alt="">
+            <el-image style="" src="https://wx2.sinaimg.cn/mw2000/0025iZgBgy1gwb961ksyqj622o340kjl02.jpg" fit="cover" alt=""/>
           </div>
           <div class="img_right">
-            <img class="right1" src="https://wx4.sinaimg.cn/mw2000/0025iZgBly1go2vxnyfsoj62dc1kw1kx02.jpg" alt="" />
-            <img class="right2" src="https://wx4.sinaimg.cn/mw2000/0025iZgBly1h5j0cdybv4j62p2211u1002.jpg" alt="" />
-            <img class="right3" src="https://wx2.sinaimg.cn/mw2000/0025iZgBly1h5j0c7abv2j62re22s1kz02.jpg" alt="" />
+            <el-image class="right1" src="https://wx4.sinaimg.cn/mw2000/0025iZgBly1go2vxnyfsoj62dc1kw1kx02.jpg" fit="cover" alt="" />
+            <el-image class="right2" src="https://wx4.sinaimg.cn/mw2000/0025iZgBly1h5j0cdybv4j62p2211u1002.jpg" fit="cover" alt="" />
+            <el-image class="right3" src="https://wx2.sinaimg.cn/mw2000/0025iZgBly1h5j0c7abv2j62re22s1kz02.jpg" fit="cover" alt="" />
           </div>
         </div>
       </div>
@@ -211,7 +208,7 @@
         <ul class="foot_list">
           <li class="list_item">
             <img src="data:image/webp;base64,UklGRhYDAABXRUJQVlA4IAoDAABQEACdASo2ADYAPo00lkelIqIhLhkvGKARiUAYoYXYLTXo3W3I56pTP6oh6c5QVkDzffFTAFMbACwii486CUe5OFZqvNFkPbLmpekVoYmC1OsNpkJZtBd84o6Sk8FvXGfKWfDKzHB9aU/ja4wul9B6+GDoxxO78BiwtxJ8rQ6vok7qEQO8mBUuT2YQAP7+wp70PxrPTIuyr5pSJfiM+h+AlV55nrToGilL/N9to68hKAGlKhuwwgWdMwGbBzYTjo3/bfDUMi+h8Sc9koWcKRYVH/TQqjXx11vil56mJoxq0kadqZlBPnubrDpvxsQD7qnXf+78qW/sT28i+kfLy6EFH/1dZVQeKJxj2lzEZlmPB63s+7QlPIvTKPi1xeCcidy3cMgHPVzFanHOp23t24jgNDFV5Q0tozqhWUJQ62znlRmfYWmGTaJFCBJmzi3Gn6yQ3QBaJe1Eax7bnDxK4bJ/h8Vh/suJIc6oIYGj1FPnZxB+Yu8v7ZJBExDT7KSv/Vnwq/k02mQpJfaUE578CwiIfUQ7zzhVyu27xxQOTVCxPA+OlvdLgtsqkxX135RIDiqanF00wCzNRPfqMnaK89CiWitVRYYRZn+Ftj+rPp32bnDYOTqD/ZNIuKstRK4meDRZswZfG1I0EujSkasbveIizq+fBVI3mE3mpIeszTe87hC2gO79IrF6BSWB8aWz04IE3XMSP3LzkGuwfZ7sUmx7wQnhz4hZkiTcWHocSTH6RL3PQH4fVClLC0yYDXzi2wd1gCMibelR2Ew76T4Z/LmaqPocWb6dIqA1cGUriA3sZ0TBCK0XP3vArWRXyp/C6kBhF6B4ZfxWPkFd+B2/uGAP8q+3HRXAYPDvNNZbopP5crjGhyggxjXESaT7tZXX1LOBQfPNkUQwg/uxIxiUYeS4oJYx5keMJQvwuQC9s6GxVqfipMVGtr1GPNXjmALPtbsj4T79IZcWvfgEKCwtsdx2L5ajcZ4r4kmt/70HV3JpHmHD5QM/YXdc2m4wWYyv57ZkE9qI9QTcAAAA" alt="二珂的迷猴桃小站" />
-            <h2 @click="tiaozhuan('https://space.bilibili.com/315661291/?spm_id_from=333.999.0.0')">二珂的迷猴桃小站</h2>
+            <h2 @click="externalJumpFn('https://space.bilibili.com/315661291/?spm_id_from=333.999.0.0')">二珂的迷猴桃小站</h2>
             <ul class="foot_list_item">
               <li>
                 这里是二珂的迷猴桃小站，会更新一些关于二珂的视频哦~
@@ -224,7 +221,7 @@
           </li>
           <li class="list_item">
             <img src="data:image/webp;base64,UklGRsYCAABXRUJQVlA4ILoCAACwDQCdASo2ADYAPpE8mUkloyIhKhZtELASCWMAy4lBpuykhwq2XMQI6YcLqnW5J8AeZByPJbPjfumjNafMdGS4oi8IOg2lKpxlFZ2f3cPPhtamaw3RYtDfaFoodqRLfLkM+/n/VxozEqxS3slpBIYRB46Q00AAAP7+k6ilvR8dduKDqXxkCpUv71EsD/m//rBbMVd7aP4h3DJfRepq5ZMDjOeK+LPxywBkDJ8A7lXCYkUEAlRjQGVDxtQV5HqD7EucouV1eQ7ALJevtO2Vkyh4rmq8ufsyi34nKJk1LzZIb2lPWF7NIiPeoLGCgiKdfGIOgv1VoU1ABzZfSNX4BR43LsTmIdkizgrKV03oOsIn/A1crO1DeYbdG96Tyqx7T8nf76uujJHFzj6ooQ2eJWvgRBL0yFz65GJWCSCQifKy2XXr7Fr/Jk1R+MnFLXacWUMluUTaYUWiBab+j/i9DG/jrd6yiLP2oLWwABQ83LQFumjlDRu4vmOojqTGyLNRVMc0yjckQwmqwU5WuYSNi7ZoaXKiG0bLJPCpl1rETolK0c7YhB+rRk+KoCA30TbETTYycoNfLeiIUpQ8ICIIGJ2nKzD0hYurpSDOvLIhOrdSZFAvyvxVyiP+OM4JWvmaznmnJW173O6v5J/YfhI8wAEfIKPrfFFgE9HmyV9hlm8+/Kj02Y9Wdm9KxmjlzAn3zF5j3skNK+4Xf5q32ps1R31A9otbE2vdVRAZBWGI/dVI4YA2phO5nv9aHbwxpp14x30YEI1jVCCFPyS9jKnkNKw3HIeEC+tDtcjNfQBkvazs1xrVtqAhqbvRHgOmZvZlzIEMu7UjWyFqw/f27eHDhrVpEWu9RcEfdZ/i5xsxoaClZ1Pif+v8rpRDy8AivpO/TfQIVKZvurg2TIZPlylNTMaCNxWGUUekDugAAA==" alt="云淡峰輕" />
-            <h2 @click="tiaozhuan('https://space.bilibili.com/338485759/?spm_id_from=333.999.0.0')">云淡峰輕</h2>
+            <h2 @click="externalJumpFn('https://space.bilibili.com/338485759/?spm_id_from=333.999.0.0')">云淡峰輕</h2>
             <ul class="foot_list_item">
               <li>用最好的我赴你的约
                 <!-- <a href="https://space.bilibili.com/338485759/?spm_id_from=333.999.0.0" title="云淡峰輕">查看</a> -->
@@ -247,7 +244,7 @@
           </li>
           <li class="list_item">
             <img src="data:image/webp;base64,UklGRgoEAABXRUJQVlA4IP4DAADQEACdASo2ADYAPpE6lkkloyGhLBgMALASCWUAxQxOggDR3eC/lS9xSiaXuAmVnwm0ss1TyTvsgoYvW+xHWPRH/1c6jfbvIZzjY7hQemNsxYSF5+suhQoMa9wcYhdJULXeuhSZZY0LDj6bMBTvWnXL13pSxrflwbQBSsNjCu39YaA0mcg1fhnZ6GVduGqiAAD+8VERozp1nnwDz4bE9LV38STqWwvRLPm4b6wwkmqo8FsQETazXUpf00gnQq8zaAQ0VaVeeWhPXErtCPeVIBefYiAOx+jWqzCsxZEIOjHgE4uiEn53SexEzu/L/fU4REwyPzhIzfigi7l3U7TWbfJTEfl7f8+1IxN8deyzGTUprOtsPLg1Zz3m+a7eDTyiJn8Eb/8WEa4tuLz/YSS1WGy9rs86kP6PJhR/J/pUUtWc1LFJ8MTFAn2fM/KvUQEnnuGfwL3hzX8N9dixV9UfxoBtKXSvPZn0MQDg3xnJov4/SuaM3/PYWZA6MzDsjNxQcRpD1/HaBp3XImhwrg1qYyTnBcPpT2JaxeM9rYZpYbYCM41t0NDjTlwafjrefX8HJJ06YFNEM4nOdvaoeH597pHr0fsBt1nQucayWpvne4+URnrpVsZOYDi8LMv5Pc4+xvAjJSR4RouavE43nL3gKmE8GZPX4PEA5W3ywJuQJPqTf2Sjp2TUhYfLTY3txqqZSKpT1DjlYIQr5t/RAc8Q2Tkjjje/CPzJqyCT+kAFFYNRjYr6We37q29s6JEf7z4W/rDZXbD8CKIdhgr75WQjkaTIxBMt95NGD3nKPKInmHZEFygeRl7PNhv+NcnDssRQ7Cr55vn/ONi+VG5KUksxMtNG9sHf79Isgt7X4Efllp1a6BLjmwnS/3lLEyD3bWr1lRim5doEJJK249e2jw8aPyScuWCGRlMB9r/fqnsRHRx+tpO/MvdY64B5Vd1FoHJG1PqVmS0zl1ntXFQe2zTG3gpENz3mfIOmBwAx5Imh+7/oW5O53Im3SrCpz91KjfP/B98SY+IaeIcqbecvqyBoay0h4FHrbHFDIQ/dkrqmM1DHA/axI1bjDkZaHgMOxCdb638LbjcFK8OMmK2Cf+SYzKm94Wm9dgCWaJFdLfF56yvRN6n1lzBr0QP8A5LysTt3iuZxUNcykgCLDYv/dnIO2fmZ8rBLkgt74Ca/jsMLG5IJT7Z74rgaXw7cFbNiq8QatZoYpqFkJ+8uEWW/jTYDNYldLc1ReiS9hHRSXrmz4Awjb7KgyQC8mPT2ilTI5jxUNYsNMiWiWAwnQeQZoUoRAd0LHyWCgTRGhWTgKY2MHKiuowGft71Obrhf9Xi0jASMpIk0E1KzJ5JuBA+yqAAAAA==" alt="VKwick" />
-            <h2 @click="tiaozhuan('https://space.bilibili.com/276886844/?spm_id_from=333.999.0.0')">VKwick</h2>
+            <h2 @click="externalJumpFn('https://space.bilibili.com/276886844/?spm_id_from=333.999.0.0')">VKwick</h2>
             <ul class="foot_list_item">
               <li>
                 求关注，求点赞，求投币，求收藏，求转发，求一切。
@@ -335,7 +332,7 @@ export default {
   },
   components: {},
   methods: {
-    tiaozhuan(lianjie){
+    externalJumpFn(lianjie){
       window.open(lianjie)
     },
     jumpFun(route) {
@@ -430,11 +427,8 @@ export default {
       spaceBetween: 5,
       on: {
         slideChange: function () {
-          console.log(_this.activeIndex)
           // 获得下标
           _this.activeIndex = this.activeIndex - 1;
-          console.log(_this.activeIndex)
-
           if (_this.activeIndex === 6) {
             _this.activeIndex = 0;
           }
@@ -822,45 +816,6 @@ export default {
             font-size: 12px;
             color: #62657A;
           }
-
-          .banner_btn {
-            display: flex;
-
-            .btn_one {
-              width: 89 * 2px;
-              font-size: 16px;
-              padding: 14px 40px;
-              background: #000000;
-              border-radius: 26px;
-              color: #fff;
-              text-align: center;
-              &:hover {
-                color: #FFE100;
-                cursor: pointer;
-              }
-            }
-            a {
-              background: no-repeat 15px 50% / auto 15px #f4f4f4;
-              border-radius: 26px;
-              color: #000;
-              font-size: 15px;
-              line-height: 45px;
-              padding: 0 50px 0 50px;
-              display: flex;
-              align-items: center;
-              margin-left: 10px;
-              &:hover {
-                color: orange;
-                cursor: pointer;
-              }
-              img {
-                margin-right: 10px;
-                width: 15px;
-                height: 15px;
-              }
-            }
-          }
-
           p {
             margin-top: 24px;
             font-weight: 700;
@@ -985,7 +940,7 @@ export default {
         display: flex;
         position: relative;
         // margin-top: 80px;
-        img{
+       ::v-deep img{
           border-radius: 16px;
           border: 4px solid;
         }
@@ -1039,6 +994,10 @@ export default {
             width: 100%;
             height: 100%;
           }
+          ::v-deep .el-image{
+          width: 100%;
+          height: 100%;
+          }  
         }
 
         .img_right {

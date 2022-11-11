@@ -1,5 +1,5 @@
 <template>
-    <div class="home">
+    <div class="yinyue">
       <web-music-com :playlistheight="playlistheight"></web-music-com>
     </div>
   </template>
@@ -26,7 +26,7 @@
     height: 100%;
     width: 100%;
   }
-  .home {
+  .yinyue {
     height: 100%;
     margin: 10px;
     display: flex;

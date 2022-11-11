@@ -11,7 +11,8 @@
     <!-- <publicFooter /> -->
     <!-- 一箭到顶 -->
     <div class="site-scrolltop" :style="{display:scrollTop>=100?'block':'none'}">
-      <a title="to top" class="toTop" @click="toTop"></a>
+      <!-- <a title="to top" class="toTop" @click="toTop"></a> -->
+      <img src="@/assets/images/erketop.gif" class="toTop" alt="to top" @click="toTop">
     </div>
   </div>
 </template>
@@ -121,6 +122,8 @@ export default {
       height: 100%;
       display: block !important;
       background-size: 18px 19px;
+      border-radius: 50%;
+      width: 100%;
     }
 }
 

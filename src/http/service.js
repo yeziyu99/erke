@@ -13,13 +13,13 @@ function http(url, method, params = {}) {
         return axios({
             method,
             url,
-            params
+            params:JSON.parse(JSON.stringify(params))
         });
     }
     return axios({
         method,
         url,
-        data: params
+        data: JSON.parse(JSON.stringify(params))
     });
 }
 
@@ -60,7 +60,25 @@ axios.interceptors.response.use(
     }
 );
 const _http = {
-    /**  获取歌曲列表
+    /**  获取歌曲搜索列表
+     * getSearch
+     * params
+     *  //Token	string	no	Token
+     * keywords 搜索名称
+     */
+     getSearch() {
+        return http("/search", "GET",{keywords:'二珂'});
+        // return http("/search", "GET",{keywords:'1081635'});
+    },
+    /**  获取歌单列表
+     * getPlaylistDetail
+     * params
+     *  //Token	string	no	Token
+     */
+     getPlaylistDetail(params) {
+        return http("/playlist/detail", "GET",params);
+    },
+    /**  获取歌单列表
      * getPlaylistDetail
      * params
      *  //Token	string	no	Token
