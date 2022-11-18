@@ -146,21 +146,24 @@
     </div>
     <div class="invest_list">
       <div class="list_title font_Bold" id="list_title">网易云-跳页面播放</div>
-      <el-col :span="8" v-for="(item, index) in playlists" :key="index" style="padding: 0 10px 10px;">
-        <el-card shadow="hover" :body-style="{ padding: '0px' }">
-          <el-image style="width: 367px;height: 367px;" class="image swiper-img" :src="item.al.picUrl" :preview-src-list="[item.al.picUrl]" fit="cover">
-          </el-image>
-          <div style="padding: 14px;">
-            <span>{{ item.name }}-{{ item.al.name }}</span>
-            <div class="bottom clearfix">
-              <span>{{ item.alia[0] }}</span>
-              <!-- <time>{{ item.song_publish_date }}</time> -->
-              <el-button type="text" class="button" @click="jumpFun('wyy')">播放</el-button>
+      <div>
+        <el-col :span="8" v-for="(item, index) in wyList" :key="index" style="padding: 0 10px 10px;">
+          <el-card shadow="hover" :body-style="{ padding: '0px' }">
+            <el-image style="width: 367px;height: 367px;" class="image swiper-img" :src="item.al.picUrl" :preview-src-list="[item.al.picUrl]" fit="cover">
+            </el-image>
+            <div style="padding: 14px;">
+              <span>{{ item.name }}-{{ item.al.name }}</span>
+              <div class="bottom clearfix">
+                <span>{{ item.alia[0] }}</span>
+                <!-- <time>{{ item.song_publish_date }}</time> -->
+                <el-button type="text" class="button" @click="jumpFun('wyy')">播放</el-button>
+              </div>
             </div>
-          </div>
-        </el-card>
-      </el-col>
+          </el-card>
+        </el-col>
+      </div>
     </div>
+    <br/>
     <div class="invest_list">
       <div class="list_title font_Bold" id="list_titlekg">酷狗-直接跳转</div>
       <el-col :span="8" v-for="(item, index) in kgList" :key="index" style="padding: 0 10px 10px;">
@@ -183,6 +186,7 @@
 import http from "@/http/service";
 import { mapActions } from "vuex";
 import kgList from "@/http/kg.json";
+import wyLists from "@/http/wy.json";
 /*{ 
     *"song_name" → 歌曲名字 
     *"song_url" → 歌曲链接 
@@ -202,8 +206,8 @@ export default {
   data() {
     return {
       active: "1",
-      playlist: [],
-      playlists: [],
+      wyList: [],
+      wyLists: wyLists,
       kgList: kgList,
       tableData: [
         { name: "带着音乐去旅行", compose: "魏如萱、Risto Asikainen、Janne Hyöty", makeWord: "郑中庸、陈秀珠、廖庭翊", arranger: "周菲比" },
@@ -350,46 +354,33 @@ export default {
           if (rs.code == 200 && !rs.abroad && rs.result.songs) {
             let hotList = rs.result.songs;
             hotList.forEach((item, key) => {
-              this.playlists.push(item);
+              this.wyLists.push(item);
             });
-            localStorage.setItem('playlists', JSON.stringify(this.playlists))
-            this.playlist = JSON.parse(JSON.stringify(this.playlists));//为了防止一起改变
-            this.playlist.length = 8;//为了列表好看 展示效果
+            localStorage.setItem('wyLists', JSON.stringify(this.wyLists))
+            // this.wyList = JSON.parse(JSON.stringify(this.wyLists));//为了防止一起改变
+            // this.wyList.length = 8;//为了列表好看 展示效果
           } else {
-            var list = JSON.parse(localStorage.getItem('playlists')) || []
+            var list = JSON.parse(localStorage.getItem('wyLists')) || []
             if (list.length != 0) {
-              this.playlists = list
-              this.playlist = JSON.parse(JSON.stringify(this.playlists));//为了防止一起改变
-              this.playlist.length = 8;//为了列表好看 展示效果
+              this.wyLists = list
             }
             // this.getSymbolClassify();
           }
+          this.wyList = JSON.parse(JSON.stringify(this.wyLists));//为了防止一起改变
+          this.wyList.length = 6;//为了列表好看 展示效果
         })
         .catch((err) => {
           console.log(err);
         });
     },
-    getForyouTradeTop(identifier) {
-      //   let identifiers = identifier || "stock";
-      //   http
-      //     .getForyouTradeTop(identifiers)
-      //     .then((rs) => {
-      //       if (rs.is_succ) {
-      //         this.tableData = rs.data;
-      //       } else {
-      //         this.tableData = [];
-      //       }
-      //     })
-      //     .catch((err) => {
-      //       console.log(err);
-      //     });
-    },
   },
   created() {
-    this.getSymbolClassify();
+    // this.getSymbolClassify();
     // this.getForyouTradeTop("stock");
   },
   mounted() {
+    this.wyList = JSON.parse(JSON.stringify(this.wyLists));//为了防止一起改变
+    this.wyList.length = 6;//为了列表好看 展示效果
     // console.log(kgList);
     // this.$refs.video.play();
   },
@@ -405,11 +396,11 @@ export default {
 
 .big_wrap {
   .invest_banner {
+    padding: 110px 0 50px;
+    position: relative;
     background-color: #ffe100;
     color: #000;
     overflow: hidden;
-    padding: 110px 0 50px;
-    position: relative;
 
     .container {
       align-items: center;

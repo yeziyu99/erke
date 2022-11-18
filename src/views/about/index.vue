@@ -5,22 +5,47 @@
         <div class="title_left">
           <div class="about_font_Bold font_Bold">非官方</div>
           <div class="about_ready">自己做着玩</div>
-          <div class="about_ready">
+          <!-- <div class="about_ready">
             因为喜欢珂珂相聚在这里
-          </div>
+          </div> -->
         </div>
 
       </div>
     </div>
     <div class="about_content">
       <p>
-        因为喜欢珂珂我们相识，有资源可以联系一起分享哦～联系方式在下面
+        因为喜欢珂珂我们相识，有资源可以联系一起分享哦～
       </p>
       <h1>我们的故事</h1>
       <div>还没想好写什么 先空着好了 </div>
       <h1>联系我们</h1>
-      <div>QQ：346989693 </div>
+      <!-- <div>QQ：346989693 </div>
       <div>VX：yezituan_yu </div>
+      <div> QQ群：1127402136（二珂的下次戒烟委员会）</div> -->
+      <el-descriptions class="margin-top" :column="1" border>
+            <el-descriptions-item>
+                <template slot="label">
+                    <i class="el-icon-chat-dot-round"></i>
+                    QQ
+                </template>
+                <el-tag size="small">346989693</el-tag>
+            </el-descriptions-item>
+            <el-descriptions-item>
+                <template slot="label">
+                    <i class="el-icon-chat-dot-round"></i>
+                    VX
+                </template>
+                <el-tag size="small">yezituan_yu</el-tag>
+            </el-descriptions-item>
+            <el-descriptions-item>
+                <template slot="label">
+                    <i class="el-icon-chat-dot-round"></i>
+                    QQ群
+                </template>
+                <el-tag size="small">二珂的下次戒烟委员会</el-tag>
+                <el-tag size="small" class="tag">78622游戏群</el-tag>
+            </el-descriptions-item>
+        </el-descriptions>
     </div>
   </div>
 </template>

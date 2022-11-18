@@ -6,9 +6,9 @@
           <div class="banner_left">
             <h2 class="font_Bold">周二珂</h2>
             <h4 style="margin-bottom: 90px; font-size: 20px">
-              探索本站的信息，为您带来便捷体验
+              中文名:周可
               <br />
-              展现直播间、视频、音乐、电台等综合跳转
+              英文名:Chloe
             </h4>
             <div class="banner_btn">
               <div class="btn_one">房间未开播</div>
@@ -57,7 +57,7 @@
 
     <div class="home_content">
       <div class="content_img">
-        <h2 class="font_Bold">选择直达平台</h2>
+        <h2 class="font_Bold">二珂个人社交平台</h2>
         <div class="three_img">
           <div class="content_item" @click="externalJumpFn('https://www.douyu.com/78622')">
             <div>
@@ -65,13 +65,13 @@
             </div>
             <p>二珂78622@斗鱼</p>
           </div>
-          <div class="content_item" @click="externalJumpFn('https://weibo.com/u/1910672761?topnav=1&wvr=6&topsug=1')">
+          <div class="content_item" @click="externalJumpFn('https://weibo.com/u/1910672761')">
             <div>
               <img src="https://tvax2.sinaimg.cn/crop.0.0.1080.1080.180/0025iZgBly8gmmp57xqh3j60u00u0di902.jpg?KID=imgbed,tva&Expires=1667558820&ssig=Bx5ptFoRPv" alt="https://weibo.com/u/1910672761?topnav=1&wvr=6&topsug=1">
             </div>
             <p>二珂Chloe@微博</p>
           </div>
-          <div class="content_item" @click="externalJumpFn('https://www.xiaohongshu.com/user/profile/5ad78361e8ac2b1fca15ff66?xhsshare=CopyLink&appuid=609b9c340000000001004f33&apptime=1667552951')">
+          <div class="content_item" @click="externalJumpFn('https://www.xiaohongshu.com/user/profile/5ad78361e8ac2b1fca15ff66')">
             <div>
               <img src="https://sns-avatar-qc.xhscdn.com/avatar/6344e5b0a72440a1d6f84aa0.jpg?imageView2/1/w/540/format/jpg" alt="https://www.xiaohongshu.com/user/profile/5ad78361e8ac2b1fca15ff66?xhsshare=CopyLink&appuid=609b9c340000000001004f33&apptime=1667552951">
             </div>

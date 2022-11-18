@@ -1,9 +1,9 @@
 <template>
   <div class="publicFoot">
     <div class="publicFoot_back">
-    <div class="publicFoot_head">
-      <img class="logo" src="@/assets/images/5.png" alt="" />
-      <ul>
+      <div class="publicFoot_head">
+        <img class="logo" src="@/assets/images/5.png" alt="" />
+        <!-- <ul>
         <li class="publicFoot_tip">App账号</li>
         <li class="publicFoot_btn" style="margin-right: 5px" @click="externalJumpFn('https://www.douyu.com/78622')">
           <img src="@/assets/images/douyu.png" alt="" />
@@ -13,43 +13,41 @@
           <img src="@/assets/images/weibo.png" alt=""  />
           微博
         </li>
-      </ul>
+      </ul> -->
+      </div>
+      <div class="publicFoot_con">
+        <ul class="publicFoot_con_left">
+          <li class="list_router" @click="jumpFun('market')">音乐专辑</li>
+          <li class="list_routerLi" @click="jumpFun('market')">专辑展示</li>
+          <li class="list_routerLi" @click="jumpFun('market')">网易云单曲播放</li>
+          <li class="list_routerLi" @click="jumpFun('market')">酷狗单曲跳转</li>
+        </ul>
+        <ul class="publicFoot_con_left">
+          <li class="list_router" @click="jumpFun('support')">问题解答</li>
+          <li class="list_routerLi" @click="jumpFun('support')">问题搜索</li>
+        </ul>
+        <ul class="publicFoot_con_left">
+          <li class="list_router">二珂简介</li>
+          <li class="list_routerLi">二珂简介</li>
+          <li class="list_routerLi">二珂个人社交平台</li>
+        </ul>
+        <ul class="publicFoot_con_left">
+          <li class="list_router" @click="jumpFun('about')">关于我们</li>
+          <li class="list_routerLi" @click="jumpFun('about')">我们的故事</li>
+          <li class="list_routerLi" @click="jumpFun('about')">联系我们</li>
+        </ul>
+        <ul class="publicFoot_con_right">
+          <li class="con_right_title">
+            UI：叶子宇<br />
+            前端：叶子宇<br />
+            后端：黄小珂<br />
+            非官方网站<br />
+          </li>
+          <li class="con_right_bottom">346989693@qq.com </li>
+        </ul>
+      </div>
+      <p style="color:#fff">版权所有@叶子宇吖</p>
     </div>
-    <div class="publicFoot_con">
-      <ul class="publicFoot_con_left">
-        <li class="list_router" @click="jumpFun('market')">音乐专辑</li>
-        <li class="list_routerLi" @click="jumpFun('market')">专辑展示</li>
-        <li class="list_routerLi" @click="jumpFun('market')">网易云单曲播放</li>
-        <li class="list_routerLi" @click="jumpFun('market')">酷狗单曲跳转</li>
-      </ul>
-      <ul class="publicFoot_con_left">
-        <li class="list_router" @click="jumpFun('support')">问题解答</li>
-        <li class="list_routerLi" @click="jumpFun('support')">问题搜索</li>
-      </ul>
-      <ul class="publicFoot_con_left">
-        <li class="list_router" @click="jumpFun('about')">关于我们</li>
-        <li class="list_routerLi" @click="jumpFun('about')">我们的故事</li>
-        <li class="list_routerLi" @click="jumpFun('about')">联系我们</li>
-      </ul>
-      <ul class="publicFoot_con_left">
-        <!-- <li class="list_router">1</li>
-        <li class="list_routerLi">2</li>
-        <li class="list_routerLi">3</li> -->
-      </ul>
-      
-      <ul class="publicFoot_con_right">
-        <li class="con_right_title">
-          UI：叶子宇<br />
-          前端：叶子宇<br />
-          后端：黄小珂<br />
-          非官方网站<br />
-        </li>
-        <li class="con_right_bottom">346989693@qq.com </li>
-        <!-- <li class="con_right_con">40x-xxx-xx88</li> -->
-        <!-- <li class="con_right_bottom">service@XXXXXXXXXXX.com</li> -->
-      </ul>
-    </div>
-  </div>
   </div>
 </template>
 
@@ -61,7 +59,7 @@ export default {
         this.$router.push(route);
       }
     },
-    externalJumpFn(lianjie){
+    externalJumpFn(lianjie) {
       window.open(lianjie)
     },
   },
@@ -72,6 +70,7 @@ export default {
 ul li {
   list-style: none;
 }
+
 .publicFoot {
   width: 100%;
   min-width: 1200px;
@@ -80,7 +79,8 @@ ul li {
   display: flex;
   align-items: center;
   flex-direction: column;
-  .publicFoot_back{
+
+  .publicFoot_back {
     height: 354px;
     // background: url('../assets/images/erkexihaun.png') no-repeat;
     // background-size: 100% 100%;
@@ -88,24 +88,29 @@ ul li {
     min-width: 1170px;
     max-width: 1170px;
   }
+
   .publicFoot_head {
     height: 89px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-    .logo{
+
+    .logo {
       width: 150px;
     }
+
     ul {
       display: flex;
       justify-content: space-between;
       align-items: center;
+
       .publicFoot_tip {
         font-size: 10px;
         color: rgba(255, 255, 255, 0.4);
         margin-right: 10px;
       }
+
       .publicFoot_btn {
         // width: 43*2px;
         // height: 14.5*2px;
@@ -118,6 +123,7 @@ ul li {
         align-items: center;
         font-size: 10px;
         color: #fff;
+
         img {
           margin-right: 5px;
           width: 15px;
@@ -127,37 +133,45 @@ ul li {
       }
     }
   }
+
   .publicFoot_con {
     // padding: 0 10px;
     margin-top: 26.5 * 2px;
     color: #fff;
     display: flex;
     justify-content: space-between;
+
     .publicFoot_con_left {
       .list_router {
         margin-bottom: 17 * 2px;
         cursor: pointer;
+
         &:hover {
           opacity: .5;
         }
       }
+
       .list_routerLi {
         margin-bottom: 7 * 2px;
         cursor: pointer;
+
         &:hover {
           opacity: .5;
         }
       }
     }
+
     .publicFoot_con_right {
       .con_right_title {
         text-align: right;
       }
+
       .con_right_con {
         font-size: 16 * 2px;
         margin: 20px 0;
       }
-      .con_right_bottom{
+
+      .con_right_bottom {
         text-align: right;
       }
     }

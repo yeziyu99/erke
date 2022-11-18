@@ -1,14 +1,11 @@
 <template>
-  <div>
+  <div class="wanzheng">
     <!-- 头部 -->
     <publicHeader  id="toTop" :class="{topNav}"/>
     <div class="page">
       <router-view></router-view>
     </div>
-    <!-- 底部 -->
-    <!-- <question v-if="isQuestion" /> -->
     <publicFoot />
-    <!-- <publicFooter /> -->
     <!-- 一箭到顶 -->
     <div class="site-scrolltop" :style="{display:scrollTop>=100?'block':'none'}">
       <!-- <a title="to top" class="toTop" @click="toTop"></a> -->
@@ -20,8 +17,6 @@
 <script>
 import publicHeader from "@/component/publicHeader";
 import publicFoot from "@/component/publicFoot";
-import publicFooter from "@/component/publicFooter";
-import question from "@/component/question";
 export default {
   data() {
     return {
@@ -31,7 +26,7 @@ export default {
     };
   },
   components: {
-    publicHeader, publicFoot, publicFooter, question
+    publicHeader, publicFoot,
   },
   methods: {
     isQuestionData(){
@@ -94,6 +89,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.wanzheng{
+  width: auto;
+}
   #toTop {
     position: sticky;
     top: 0;
@@ -128,6 +126,9 @@ export default {
 }
 
 @media screen and (max-width: 1000px) {
+  .page {
+      min-width: 100%;
+    }
   .publicHeader,
   .publicFoot,
   .publicFooter {

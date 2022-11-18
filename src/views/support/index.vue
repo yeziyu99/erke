@@ -2,10 +2,10 @@
   <div class="big_wraps">
     <div class="help_header">
       <div class="help_content">
-        <h2 class="title">Hi! Let us help you.</h2>
+        <h2 class="title">在下方直接搜索</h2>
         <el-input
           prefix-icon="el-icon-search"
-          placeholder="Support"
+          placeholder="输入关键字进行搜索"
           clearable
           @input="supportInt"
           v-model="supportVal"
@@ -15,7 +15,7 @@
     </div>
     <div class="help_question">
       <div class="question_content help_content">
-        <h2 class="question_title">Find by category</h2>
+        <h2 class="question_title">按up主查找</h2>
         <div class="question_item" v-for="(item, index) in newQuestionData" :key="index">
           <div class="item_big" @click="itemFun(index)">
             <div style="display: flex; align-items: center">
@@ -36,19 +36,18 @@
                 />
                 <img v-else style="width: 18px; margin-right: 10px" src="@/assets/image/pull.png" alt=""
                    />
-                <span style="font-size: 20px; padding: 20px 0">{{
-                val.title
-                }}</span>
+                <span style="font-size: 20px; padding: 20px 0">{{val.title}}</span>
               </div>
               <div v-if="val.show" class="children_answer">
-                {{ val.content }}
+                <el-avatar v-if="val.imgUrl" :src="val.imgUrl"></el-avatar>
+                <el-tag size="small" class="tag">{{ val.content }}</el-tag>
               </div>
             </div>
           </div>
         </div>
         <div class="question_item" v-if="newQuestionData.length==0">
           <div class="question_item_noDate">
-            No results found fo
+            没有查找到
             <span>
               {{supportVal}}
             </span>
@@ -195,6 +194,8 @@ export default {
               width: 94%;
               padding: 20px 16px;
               background: #fafafa;
+              display: flex;
+              align-items: center;
             }
           }
         }
@@ -289,6 +290,8 @@ export default {
               width: 94%;
               padding: px2rem(20 * 2) px2rem(16 * 2);
               background: #fafafa;
+              display: flex;
+              align-items: center;
             }
           }
         }
