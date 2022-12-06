@@ -5,10 +5,11 @@
         <div class="head_con">
           <div class="banner_left">
             <h2 class="font_Bold">周二珂</h2>
-            <h4 style="margin-bottom: 90px; font-size: 20px">
-              中文名:周可
-              <br />
-              英文名:Chloe
+            <h4 style="margin-bottom: 90px; font-size: 20px;text-indent:20px">
+              人美、气质好、唱歌又好听，为人低调和善，但却挡不住她急剧上升的人气。在一个歌荒的寂寞时间，周二珂简直是甜歌小公主，那一刻，让你的心暖暖的。
+              <!-- 新兴游戏（娱乐）主播，小清新歌手，英雄联盟国服“大腿”组选手 -->
+              <!-- <br />
+              英文名:Chloe -->
             </h4>
             <div class="banner_btn">
               <div class="btn_one">房间未开播</div>

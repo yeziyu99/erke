@@ -22,7 +22,7 @@
                             </span>
                             <span v-if="!item.text">
                                 <i v-if="item.icon" :class="item.icon"></i>
-                                <el-avatar v-if="item.img" style="width:20px;height: 20px;" :src="item.img">
+                                <el-avatar v-if="item.img" :src="item.img">
                                 </el-avatar>
                                 {{ item.title }}
                             </span>
@@ -157,6 +157,18 @@ export default {
     .el-avatar>img{
         width: 100%;
         height: 100%;
+    }
+    .el-descriptions-row
+    {
+        .el-descriptions-item__cell.el-descriptions-item__label.is-bordered-label>span{
+            display: flex;
+            align-items: center;
+            span{
+                margin-right: 3px;
+                width: 20px;
+                height: 20px;
+            }
+        }
     }
 }
 </style>

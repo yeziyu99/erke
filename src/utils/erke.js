@@ -7,8 +7,13 @@ import qy from "@/assets/images/qy.png"
 import bili from "@/assets/images/bili.png"
 import instagram from "@/assets/images/instagram.png"
 import xhs from "@/assets/images/xhs.png"
+import daizheyinyuequlvxing from "@/assets/images/daizheyinyuequlvxing.png"
+import fuleyuan from "@/assets/images/fuleyuan.png"
+import yuguang from "@/assets/images/yuguang.png"
+import sinian from "@/assets/images/sinian.png"
 
 /*
+各平台链接名称
 字段备注
 {
     id:{
@@ -21,76 +26,262 @@ import xhs from "@/assets/images/xhs.png"
 }
 */
 export var erkeLink = {
-    1:{
-        title:'哔哩哔哩bilibili',
-        name:'二珂呀呀呀',
-        img:bili,
-        herf:'https://space.bilibili.com/10753901?spm_id_from=333.337.0.0'
+    1: {
+        title: '哔哩哔哩bilibili',
+        name: '二珂呀呀呀',
+        img: bili,
+        herf: 'https://space.bilibili.com/10753901?spm_id_from=333.337.0.0'
     },
-    2:{
-        title:'抖音',
-        name:'二珂Chloe',
-        img:douyin,
-        herf:'https://www.douyin.com/user/MS4wLjABAAAAUGBNwQYCdp7JQAdnPMRBLYlLvENa1-G3aHwlZHhFeng'
+    2: {
+        title: '抖音',
+        name: '二珂Chloe',
+        img: douyin,
+        herf: 'https://www.douyin.com/user/MS4wLjABAAAAUGBNwQYCdp7JQAdnPMRBLYlLvENa1-G3aHwlZHhFeng'
     },
-    3:{
-        title:'个人官方抖音',
-        name:'二珂的迷猴桃小站',
-        img:douyin,
-        herf:'https://www.douyin.com/user/MS4wLjABAAAAvF2YWRC2fZwwJf-WMHt1O3A0y48oSknG-eYqYybXT4vzMGOt-5Z8UoZJJOKDdz5x'
+    3: {
+        title: '个人官方抖音',
+        name: '二珂的迷猴桃小站',
+        img: douyin,
+        herf: 'https://www.douyin.com/user/MS4wLjABAAAAvF2YWRC2fZwwJf-WMHt1O3A0y48oSknG-eYqYybXT4vzMGOt-5Z8UoZJJOKDdz5x'
     },
-    4:{
-        title:'小红书',
-        name:'二珂',
-        img:xhs,
-        herf:'https://www.xiaohongshu.com/user/profile/5ad78361e8ac2b1fca15ff66'
+    4: {
+        title: '小红书',
+        name: '二珂',
+        img: xhs,
+        herf: 'https://www.xiaohongshu.com/user/profile/5ad78361e8ac2b1fca15ff66'
     },
-    5:{
-        title:'网易云音乐',
-        name:'二珂呀呀呀',
-        img:wyy,
-        herf:'https://music.163.com/#/user/home?id=104601777'
+    5: {
+        title: '网易云音乐',
+        name: '二珂呀呀呀',
+        img: wyy,
+        herf: 'https://music.163.com/#/user/home?id=104601777'
     },
-    6:{
-        title:'网易云音乐',
-        name:'二珂 歌手',
-        img:wyy,
-        herf:'https://music.163.com/#/artist?id=1081635'
+    6: {
+        title: '网易云音乐',
+        name: '二珂 歌手',
+        img: wyy,
+        herf: 'https://music.163.com/#/artist?id=1081635'
     },
-    7:{
-        title:'直播平台',
-        name:'斗鱼78622',
-        img:douyu,
-        herf:'https://www.douyu.com/78622'
+    7: {
+        title: '直播平台',
+        name: '斗鱼78622',
+        img: douyu,
+        herf: 'https://www.douyu.com/78622'
     },
-    8:{
-        title:'微博',
-        name:'二珂Chloe',
-        img:weibo,
-        herf:'https://weibo.com/u/1910672761'
+    8: {
+        title: '微博',
+        name: '二珂Chloe',
+        img: weibo,
+        herf: 'https://weibo.com/u/1910672761'
     },
-    9:{
-        title:'酷狗',
-        name:'二珂 歌手',
-        img:kg,
-        herf:'https://www.kugou.com/singer/info/5NFEK0C350FF5/'
+    9: {
+        title: '酷狗',
+        name: '二珂 歌手',
+        img: kg,
+        herf: 'https://www.kugou.com/singer/info/5NFEK0C350FF5/'
     },
-    10:{
-        title:'QQ音乐',
-        name:'二珂歌手',
-        img:qy,
-        herf:'https://y.qq.com/n/ryqq/profile/like/song?uin=owvsNKSP7wvAon**'
+    10: {
+        title: 'QQ音乐',
+        name: '二珂歌手',
+        img: qy,
+        herf: 'https://y.qq.com/n/ryqq/profile/like/song?uin=owvsNKSP7wvAon**'
     },
-    11:{
-        title:'instagram',
-        name:'erke_chloe',
-        img:instagram,
-        herf:''
+    11: {
+        title: 'instagram',
+        name: 'erke_chloe',
+        img: instagram,
+        herf: ''
     },
 }
-
+/*{ 
+    *"song_name" → 歌曲名字 
+    *"song_url" → 歌曲链接 
+    *"song_duration" → 歌曲时长（这个后期应该不需要到，我顺便爬的）
+    *"song_publish_date" → 歌曲上传日期（这个后期应该不需要到，我顺便爬的） 
+    *"album_name" → 专辑名字 
+    *"album_img" → 专辑封面 
+    *"singer_name" → 歌手名字
+}*/
+/*{ 
+    *"name" → 歌曲名字 
+    *"makeWord" → 作词 
+    *"compose" → 作曲 
+    *"arranger" → 编曲
+}*/
+export var erkeAlbum = [
+    {
+        id: 1,
+        title: '《带着音乐去旅行》',
+        img: daizheyinyuequlvxing,
+        background: [
+            `珂这个95后的传奇，延续着她一贯的选曲品味、演绎方式，加上筹备专辑这段时间的专业训练，在林迈可这位超级制作人的操刀下，完成这张专辑。保留与改变、流行与尝新、梦幻与知青，两两之间的拿捏，在这张专辑里一定能感受到这微妙的分寸与制作的诚意。超级制作人林迈可除了用心去分析二珂的声线，还深入她的内心去了解她的欣赏与崇拜，不但亲自为二珂写歌，还集结一流创作人戴佩妮、魏如萱、方文山、Def Tech...之创作,为二珂的第一张个人专辑，注入清新的音乐元素与高聆听度的娱乐价值，铺陈出一段青春的旅程`,
+            `青春 是一场单程旅行`,
+            `当我 走过爱情的四季`,
+            `当我 体会冷暖的交替`,
+            `谢谢你 让我在最美的年纪与你相遇`
+        ],
+        song: [
+            { 
+                name: "带着音乐去旅行",
+                makeWord: "郑中庸、陈秀珠、廖庭翊",
+                compose: "魏如萱、Risto Asikainen、Janne Hyöty",
+                arranger: "周菲比"
+            },
+            { name: "樱花粉的浪漫", compose: "林迈可", makeWord: "郑中庸", arranger: "林迈可" },
+            { name: "三角题", compose: "戴佩妮", makeWord: "戴佩妮", arranger: "黄宣铭" },
+            { name: "第二次表白", compose: "Def Tech、林迈可", makeWord: "Def Tech、许郁翎", arranger: "BGMK" },
+            { name: "I Love Us", compose: "胡珂宁", makeWord: "黎国基、陈秀珠", arranger: "Clement Yang" },
+            { name: "枫红", compose: "林迈可", makeWord: "方文山", arranger: "林迈可" },
+            { name: "飘", compose: "魏诗泉", makeWord: "王奕", arranger: "魏诗泉" },
+            { name: "但是我们分手了", compose: "朱国豪", makeWord: "颜佳薏", arranger: "蔡侑良" },
+            { name: "棉被", compose: "魏诗泉", makeWord: "王奕", arranger: "魏诗泉" },
+            { name: "放心", compose: "陈仪芬", makeWord: "郑中庸", arranger: "陈仪芬" },
+        ]
+    },
+    {
+        id: 2,
+        title: '《复乐园》',
+        img: fuleyuan,
+        background: [
+            `久在樊笼里，今日《复乐园》`,
+            `唯一真实的乐园是已经失去的乐园`,
+            `唯一有吸引力的世界是尚未踏入的世界`,
+            // 曾几何时，我们以为世界是个无忧无虑的伊甸园。
+            // 直到某一天，我们离开庇护，出门远行。
+            // 我们要独自去面对太阳的升起，面对黑夜的降临，面对一切的未知。而这个蛮横的世界怎肯轻易放过那些不甘禁锢的灵魂，对于一个普通的女孩来说，随着一夜之间降临的流言蜚语、有色眼镜，还有猜疑，让她原本的世界瞬间倾覆，犹如沃土长满荆棘，绿野变成荒原。
+            // 。“唯一真实的乐园是已经失去的乐园。唯一有吸引力的世界是尚未踏入的世界。”`,
+           
+        ],
+        song: [
+            { 
+                name: "《复乐园》",
+                makeWord: "李姝",
+                compose: "邹頔、胡晨",
+                arranger: "邹頔",
+                qqyinyue:'https://y.qq.com/n/ryqq/songDetail/002WeNZr1YFwDB',
+                kugouyinyue:'https://www.kugou.com/share/1wM1O6euOV3.html?id=1wM1O6euOV3#hash=3E54BA9E2A0718DFFF1A9BF0B3FB3CD1&album_id=30167611&album_audio_id=220378170',
+                kuwoyinyue:'http://www.kuwo.cn/play_detail/78686842?f=ip&t=usercopy',
+            },
+            { 
+                name: "《橘子树下的阳光》",
+                makeWord: "李姝",
+                compose: "胡晨、邹頔",
+                arranger: "胡晨"
+            },
+            { 
+                name: "《厌氧》",
+                makeWord: "Joi W",
+                compose: "史俊陆",
+                arranger: "沈会斌"
+            },
+            { 
+                name: "《爱应该》",
+                makeWord: "李姝",
+                compose: "刘颜嘉",
+                arranger: "Terence Teo"
+            },
+            { 
+                name: "《走失在1990》",
+                makeWord: "李姝",
+                compose: "吴烦",
+                arranger: "张步鸿"
+            },
+            { 
+                name: "我终究是爱你的》",
+                makeWord: "李姝",
+                compose: "刘颜嘉",
+                arranger: "Terence Teo"
+            },
+            { 
+                name: "《即兴流亡》",
+                makeWord: "Joi W",
+                compose: "林暐浩",
+                arranger: "林暐浩"
+            },
+            { 
+                name: "《蓝莓之夜》",
+                makeWord: "李姝",
+                compose: "邹頔、胡晨",
+                arranger: "邹頔"
+            },
+            { 
+                name: "《纽扣》",
+                makeWord: "Joi W",
+                compose: "林世千",
+                arranger: "林世千"
+            },
+            { 
+                name: "《自我拼图说明》",
+                makeWord: "Joi W",
+                compose: "陈嬛",
+                arranger: "张步鸿"
+            },
+        ]
+    }
+    ,
+    {
+        id: 3,
+        title: '《余光》',
+        img: yuguang,
+        background: [
+            `周二珂 2020全新个人专辑《余光》`,
+            `在岁末与年初交汇之际`,
+            `一同听二珂，聆听关于[爱]的种种`,
+            `凭借清新自然的声音，已发行两张个人专辑的周二珂在乐坛有着不俗口碑，唱红了许多大热单曲，而她对于音乐的执着与坚持，交融在她充满故事感的声音和出众的唱功之中，为自己的歌手事业描绘着更大的可能。`,
+            `暌违一年，以红发亮眼造型示人的周二珂...`
+        ],
+        song: [
+            { name: "出现", compose: "", makeWord: "", arranger: "" },
+            { name: "十字路口", compose: "", makeWord: "", arranger: "" },
+            { name: "给我一个快乐的星期天", compose: "", makeWord: "", arranger: "" },
+            { name: "", compose: "", makeWord: "", arranger: "" },
+            { name: "听你说", compose: "", makeWord: "", arranger: "" },
+            { name: "有些情绪和夜晚有关", compose: "", makeWord: "", arranger: "" },
+            { name: "土星环", compose: "", makeWord: "", arranger: "" },
+            { name: "初初", compose: "", makeWord: "", arranger: "" },
+            { name: "懂了", compose: "", makeWord: "", arranger: "" },
+            { name: "余光", compose: "", makeWord: "", arranger: "" },
+        ]
+    }
+    ,
+    {
+        id: 4,
+        title: '《思念从夜晚徒步到天明》',
+        img: sinian,
+        background: [
+            `思念，在夜间循环。到白昼，汇聚成想你的光。`,
+            `夜幕降临，黑色的世界最容易滋生温柔的不安，将与它博弈，将与它共存。无论如何，终究是任由思念徒步到黎明，等一束光，捍卫内心最脆弱的地方。希望在夜晚到来的时候，思念在呼风唤雨，而这一张能静静地陪着你。`,
+        ],
+        song: [
+            { 
+                name: "月光",
+                makeWord: "",
+                compose: "",
+                arranger: ""
+            },
+            { 
+                name: "零点简讯",
+                makeWord: "",
+                compose: "",
+                arranger: ""
+            },
+            { 
+                name: "幻梦",
+                makeWord: "",
+                compose: "",
+                arranger: ""
+            },
+            { 
+                name: "光芒",
+                makeWord: "",
+                compose: "",
+                arranger: ""
+            },
+        ]
+    }
+]
 /*
-字段备注
+二珂简介
 {
     "icon":"",//没有可以不写 前面展示icon =>el-icon-user或者空
     "text":true,//判断是否是大标题 加粗效果 没有可以不写 =>true或者空
@@ -407,11 +598,11 @@ export var erkeData = [
     {
         "icon": "el-icon-user",
         "title": "个人社交平台",
-        conter:'展开后下列标签点击可直接跳转',
+        conter: '展开后下列标签点击可直接跳转',
         "text": true,
         "children": [
             {
-                "img":erkeLink[1]['img'],
+                "img": erkeLink[1]['img'],
                 "title": erkeLink[1]['title'],
                 "children": [
                     {
@@ -421,7 +612,7 @@ export var erkeData = [
                 ]
             },
             {
-                "img":erkeLink[2]['img'],
+                "img": erkeLink[2]['img'],
                 "title": erkeLink[2]['title'],
                 "children": [
                     {
@@ -431,7 +622,7 @@ export var erkeData = [
                 ]
             },
             {
-                "img":erkeLink[3]['img'],
+                "img": erkeLink[3]['img'],
                 "title": erkeLink[3]['title'],
                 "children": [
                     {
@@ -441,7 +632,7 @@ export var erkeData = [
                 ]
             },
             {
-                "img":erkeLink[4]['img'],
+                "img": erkeLink[4]['img'],
                 "title": erkeLink[4]['title'],
                 "children": [
                     {
@@ -451,7 +642,7 @@ export var erkeData = [
                 ]
             },
             {
-                "img":erkeLink[5]['img'],
+                "img": erkeLink[5]['img'],
                 "title": erkeLink[5]['title'],
                 "children": [
                     {
@@ -461,7 +652,7 @@ export var erkeData = [
                 ]
             },
             {
-                "img":erkeLink[7]['img'],
+                "img": erkeLink[7]['img'],
                 "title": erkeLink[7]['title'],
                 "children": [
                     {
@@ -471,7 +662,7 @@ export var erkeData = [
                 ]
             },
             {
-                "img":erkeLink[8]['img'],
+                "img": erkeLink[8]['img'],
                 "title": erkeLink[8]['title'],
                 "children": [
                     {
@@ -481,7 +672,7 @@ export var erkeData = [
                 ]
             },
             {
-                "img":erkeLink[11]['img'],
+                "img": erkeLink[11]['img'],
                 "title": erkeLink[11]['title'],
                 "children": [
                     {
@@ -496,8 +687,8 @@ export var erkeData = [
         "icon": "el-icon-user",
         text: true,
         "title": "人物经历",
-        conter:'新兴游戏（娱乐）主播，小清新歌手，英雄联盟国服“大腿”组选手...',
-        "children":[
+        conter: '新兴游戏（娱乐）主播，小清新歌手，英雄联盟国服“大腿”组选手...',
+        "children": [
             {
                 "icon": "el-icon-user",
                 "timeline": true,
@@ -653,6 +844,16 @@ export var erkeData = [
                 title: `2017第十届金投赏国际创意节`,
                 herf: ''
             },
+            {
+                time: '2018年4月28日',
+                title: `斗鱼嘉年华红毯`,
+                herf: ''
+            },
+            {
+                time: '2019年1月5日',
+                title: `斗鱼盛典红毯`,
+                herf: ''
+            },
         ]
     },
     {
@@ -676,7 +877,7 @@ export var erkeData = [
         "icon": "el-icon-headset",
         "title": "代表作品",
         text: true,
-        children:[
+        children: [
             {
                 "icon": "el-icon-headset",
                 "title": "翻唱作品",
@@ -816,20 +1017,35 @@ export var erkeData = [
         "icon": "el-icon-video-camera",
         text: true,
         "title": "影视作品",
-        children:[
+        children: [
             {
                 "icon": "el-icon-video-camera",
                 "title": "综艺作品",
                 "timeline": true,
                 "children": [
                     {
-                        time: '2016年11月  3日',
+                        time: '2016年11月3日',
                         title: `《女神经常来》`,
                         herf: ''
                     },
                     {
-                        time: '2016年  9月10日',
+                        time: '2016年9月10日',
                         title: `《PandaKill》第一季`,
+                        herf: ''
+                    },
+                    {
+                        time: '2017年9月21日',
+                        title: `PPTV《乐人无数》`,
+                        herf: ''
+                    },
+                    {
+                        time: '2017年10月14日',
+                        title: `《新电玩快打》`,
+                        herf: ''
+                    },
+                    {
+                        time: '2017年10月21日',
+                        title: `《娱乐百分百》`,
                         herf: ''
                     },
                     {
@@ -838,27 +1054,27 @@ export var erkeData = [
                         herf: ''
                     },
                     {
-                        time: '2017年10月21日 ',
+                        time: '2017年10月21日',
                         title: `《荒岛特训》手游活动推广`,
                         herf: ''
                     },
                     {
-                        time: '2018年  5月19日 ',
+                        time: '2018年5月19日',
                         title: `《快乐大本营》`,
                         herf: ''
                     },
                     {
-                        time: '2018年  8月  4日 ',
+                        time: '2018年8月4日',
                         title: `《嗨！蓝朋友》之《奔跑吧》`,
                         herf: ''
                     },
                     {
-                        time: '2018年  8月11日   ',
+                        time: '2018年8月11日',
                         title: `《嗨！蓝朋友》之《王牌对王牌》`,
                         herf: ''
                     },
                     {
-                        time: '2018年12月27日 ',
+                        time: '2018年12月27日',
                         title: `《超越吧！英雄》`,
                         herf: ''
                     },
@@ -870,12 +1086,12 @@ export var erkeData = [
                 "timeline": true,
                 "children": [
                     {
-                        time: '2021年  2月  8日',
+                        time: '2021年2月8日',
                         title: `《重生只为追影帝》饰  顾瑶瑶 `,
                         herf: ''
                     },
                     {
-                        time: '2016年  8月12日',
+                        time: '2016年8月12日',
                         title: `《微微一笑很倾城》客串`,
                         herf: ''
                     },
@@ -887,7 +1103,7 @@ export var erkeData = [
         "img": douyu,
         text: true,
         "title": "斗鱼主播百科",
-        children:[
+        children: [
             {
                 "icon": "el-icon-user",
                 "title": "主播个人属性",

@@ -13,7 +13,7 @@
       <div class="head_con">
         <div class="banner_left">
           <h2>
-            代表作品有《三角题》、《樱花粉的浪漫》等
+            中国内地网络女主播、歌手
           </h2>
           <div class="banner_btn" style="margin-bottom: 10px;">
             <a href="" @click="jumpFun('invest')">
@@ -52,85 +52,58 @@
       <div class="invest_tab">
         <div class="trade_left">
           <div>
-            <h2 v-if="active == '1'" class="trade_title font_Bold">
-              带着音乐去旅行
-            </h2>
-            <h2 v-if="active == '2'" class="trade_title">
-              孤独她呀
-            </h2>
-            <h2 v-if="active == '3'" class="trade_title">
-              余光
-            </h2>
-            <h2 v-if="active == '4'" class="trade_title">
-              我只是在睡前想了一下你
+            <h2 class="trade_title font_Bold" >
+              {{erkelist.title}}
             </h2>
             <ul class="trade_list">
-              <li v-for="(value, index) in list" :key="index">
+              <li v-for="(value, ind) in erkelist['background']" :key="ind">
                 <div>
                   <span></span>
                 </div>
-                <p>{{ value.name }}</p>
+                <p>{{ value }}</p>
               </li>
             </ul>
-            <!-- <div class="trade_btn foot_btn" @click="jumpFun('invest')">
-              Get started
-            </div> -->
           </div>
         </div>
         <div class="trade_rightO">
           <div class="trade_right">
             <div class="trade_tab">
               <ul>
-                <li style="z-index: 4" :class="active == '1' ? 'active' : ''" @click="tabFn('1')">
+                <li :style="{zIndex: 4-index}" :class="active == index ? 'active' : ''" @click="tabFn(index)" :key="index" v-for="(item, index) in erkeAlbum">
                   <img
-                    src="https://p2.music.126.net/nRNFlT-7G28elSKWoq2-Qg==/109951163041380790.jpg?param=180y180"
-                    alt="带着音乐去旅行" />
-                </li>
-                <li style="z-index: 3" :class="active == '2' ? 'active' : ''" @click="tabFn('2')">
-                  <img
-                    src="https://p2.music.126.net/_Fj9iEdSHbVYPU_RGJ5tgA==/109951163822853208.jpg?param=180y180"
-                    alt="孤独她呀" />
-                </li>
-                <li style="z-index: 2" :class="active == '3' ? 'active' : ''" @click="tabFn('3')">
-                  <img
-                    src="https://p2.music.126.net/-SvmUaLm3Bn7T9JyPLGJbg==/109951165585040132.jpg?param=180y180"
-                    alt="余光" />
-                </li>
-                <li style="z-index: 1" :class="active == '4' ? 'active' : ''" @click="tabFn('4')">
-                  <img
-                    src="https://p2.music.126.net/pci7HQp9IAR21u_6iyZkTw==/109951163799719688.jpg?param=180y180"
-                    alt="我只是在睡前想了一下你" />
+                    :src="item.img"
+                    :alt="item.title" />
                 </li>
               </ul>
             </div>
             <div class="trade_table">
-              <div class="table_title">{{ Title }}</div>
-              <el-table :data="tableData" height="447" :border="false" style="width: 100%">
+              <div class="table_title">{{ erkelist.title }}</div>
+              <el-table :data="erkelist['song']" height="447" :border="false" style="width: 100%">
                 <el-table-column prop="name" label="歌名" width="110">
                   <template slot-scope="scope">
                     <div style="color: #000; font-weight: 700">
-                      {{ scope.row.name }}
+                      {{ scope.row.name || '-' }}
                     </div>
                   </template>
                 </el-table-column>
                 <el-table-column prop="makeWord" label="作词" width="110">
                   <template slot-scope="scope">
                     <div>
-                      {{ scope.row.makeWord }}
+                      {{ scope.row.makeWord || '-' }}
                     </div>
                   </template>
                 </el-table-column>
                 <el-table-column prop="compose" label="作曲">
                   <template slot-scope="scope">
                     <div>
-                      {{ scope.row.compose }}
+                      {{ scope.row.compose || '-' }}
                     </div>
                   </template>
                 </el-table-column>
                 <el-table-column prop="arranger" label="编曲">
                   <template slot-scope="scope">
                     <div>
-                      {{ scope.row.arranger }}
+                      {{ scope.row.arranger || '-' }}
                     </div>
                   </template>
                 </el-table-column>
@@ -144,7 +117,7 @@
         </div>
       </div>
     </div>
-    <div class="invest_list">
+    <!-- <div class="invest_list">
       <div class="list_title font_Bold" id="list_title">网易云-跳页面播放</div>
       <div>
         <el-col :span="8" v-for="(item, index) in wyList" :key="index" style="padding: 0 10px 10px;">
@@ -155,7 +128,6 @@
               <span>{{ item.name }}-{{ item.al.name }}</span>
               <div class="bottom clearfix">
                 <span>{{ item.alia[0] }}</span>
-                <!-- <time>{{ item.song_publish_date }}</time> -->
                 <el-button type="text" class="button" @click="jumpFun('wyy')">播放</el-button>
               </div>
             </div>
@@ -179,7 +151,7 @@
           </div>
         </el-card>
       </el-col>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>
@@ -187,6 +159,8 @@ import http from "@/http/service";
 import { mapActions } from "vuex";
 import kgList from "@/http/kg.json";
 import wyLists from "@/http/wy.json";
+import {erkeAlbum} from "@/utils/erke.js";
+
 /*{ 
     *"song_name" → 歌曲名字 
     *"song_url" → 歌曲链接 
@@ -205,31 +179,12 @@ import wyLists from "@/http/wy.json";
 export default {
   data() {
     return {
-      active: "1",
+      active: "0",
       wyList: [],
       wyLists: wyLists,
       kgList: kgList,
-      tableData: [
-        { name: "带着音乐去旅行", compose: "魏如萱、Risto Asikainen、Janne Hyöty", makeWord: "郑中庸、陈秀珠、廖庭翊", arranger: "周菲比" },
-        { name: "樱花粉的浪漫", compose: "林迈可", makeWord: "郑中庸", arranger: "林迈可" },
-        { name: "三角题", compose: "戴佩妮", makeWord: "戴佩妮", arranger: "黄宣铭" },
-        { name: "第二次表白", compose: "Def Tech、林迈可", makeWord: "Def Tech、许郁翎", arranger: "BGMK" },
-        { name: "I Love Us", compose: "胡珂宁", makeWord: "黎国基、陈秀珠", arranger: "Clement Yang" },
-        { name: "枫红", compose: "林迈可", makeWord: "方文山", arranger: "林迈可" },
-        { name: "飘", compose: "魏诗泉", makeWord: "王奕", arranger: "魏诗泉" },
-        { name: "但是我们分手了", compose: "朱国豪", makeWord: "颜佳薏", arranger: "蔡侑良" },
-        { name: "棉被", compose: "魏诗泉", makeWord: "王奕", arranger: "魏诗泉" },
-        { name: "放心", compose: "陈仪芬", makeWord: "郑中庸", arranger: "陈仪芬" },
-      ],
-      Title: "带着音乐去旅行",
-      symbolBool: false,
-      activeName: "Stocks",
-      list: [
-        { name: "从小喜欢唱歌的二珂，大学二年级开始在直播室唱自己喜欢的歌曲，一首接着一首唱完整个直播时间；因为她清新脱俗的气质、直率清亮的嗓音、品味独特的选曲，人气爆棚、获得粉丝们热烈喜欢，成为粉丝心目中的女神。" },
-        { name: "网络崛起，却不甘于虚拟世界，于是选择用最爱的音乐来抒发真情！" },
-        { name: "2016年11月，二珂正式签约香蕉计划 ，转型成为艺人。" },
-        { name: "..." },
-      ],
+      erkeAlbum:erkeAlbum,
+      erkelist:erkeAlbum[0]
     };
   },
   components: {},
@@ -241,74 +196,8 @@ export default {
     },
     tabFn(val) {
       this.active = val;
-      if (val == "1") {
-        this.Title = "带着音乐去旅行";
-        this.list = [
-          { name: "从小喜欢唱歌的二珂，大学二年级开始在直播室唱自己喜欢的歌曲，一首接着一首唱完整个直播时间；因为她清新脱俗的气质、直率清亮的嗓音、品味独特的选曲，人气爆棚、获得粉丝们热烈喜欢，成为粉丝心目中的女神。" },
-          { name: "网络崛起，却不甘于虚拟世界，于是选择用最爱的音乐来抒发真情！" },
-          { name: "2016年11月，二珂正式签约香蕉计划 ，转型成为艺人。" },
-          { name: "..." },
-        ];
-        this.tableData=[
-          { name: "带着音乐去旅行", compose: "魏如萱、Risto Asikainen、Janne Hyöty", makeWord: "郑中庸、陈秀珠、廖庭翊", arranger: "周菲比" },
-          { name: "樱花粉的浪漫", compose: "林迈可", makeWord: "郑中庸", arranger: "林迈可" },
-          { name: "三角题", compose: "戴佩妮", makeWord: "戴佩妮", arranger: "黄宣铭" },
-          { name: "第二次表白", compose: "Def Tech、林迈可", makeWord: "Def Tech、许郁翎", arranger: "BGMK" },
-          { name: "I Love Us", compose: "胡珂宁", makeWord: "黎国基、陈秀珠", arranger: "Clement Yang" },
-          { name: "枫红", compose: "林迈可", makeWord: "方文山", arranger: "林迈可" },
-          { name: "飘", compose: "魏诗泉", makeWord: "王奕", arranger: "魏诗泉" },
-          { name: "但是我们分手了", compose: "朱国豪", makeWord: "颜佳薏", arranger: "蔡侑良" },
-          { name: "棉被", compose: "魏诗泉", makeWord: "王奕", arranger: "魏诗泉" },
-          { name: "放心", compose: "陈仪芬", makeWord: "郑中庸", arranger: "陈仪芬" }
-        ]
-        // this.getForyouTradeTop("stock");
-      }
-      if (val == "2") {
-        this.Title = "孤独她呀";
-        this.list = [
-          { name: '她的孤独 开出了花' },
-          { name: "把心事偷偷藏进心里，把孤独慢慢拥进怀里。" },
-          { name: "二珂用声音克制又冷静地诉说人们心底的孤独。或许听歌的人，听的也是自己的回忆吧。" },
-          { name: "孤独的人呀，把自己藏在时间里，在没结果的梦中不愿醒来。" },
-          { name: "当你发现她的时候，也许就是梦醒的时刻，那时，我们也就不再害怕..." },
-        ];
-        this.tableData=[
-          { name: "孤独她呀", compose: "曾婕Joey.Z", makeWord: "曾婕Joey.Z", arranger: "苏靖凯、陈通" },
-          { name: "藏着", compose: "曾婕Joey.Z", makeWord: "曾婕Joey.Z", arranger: "周家騵" },
-        ]
-        // this.getForyouTradeTop("index");
-      } else if (val == "3") {
-        this.Title = "余光";
-        this.list = [
-          { name: "周二珂 2020全新个人专辑《余光》" },
-          { name: "在岁末与年初交汇之际" },
-          { name: "一同听二珂，聆听关于[爱]的种种" },
-          { name: "凭借清新自然的声音，已发行两张个人专辑的周二珂在乐坛有着不俗口碑，唱红了许多大热单曲，而她对于音乐的执着与坚持，交融在她充满故事感的声音和出众的唱功之中，为自己的歌手事业描绘着更大的可能。" },
-          { name: "暌违一年，以红发亮眼造型示人的周二珂..." },
-        ];
-        this.tableData=[
-          { name: "出现", compose: "", makeWord: "", arranger: "" },
-          { name: "十字路口", compose: "", makeWord: "", arranger: "" },
-          { name: "给我一个快乐的星期天", compose: "", makeWord: "", arranger: "" },
-          { name: "", compose: "", makeWord: "", arranger: "" },
-          { name: "听你说", compose: "", makeWord: "", arranger: "" },
-          { name: "有些情绪和夜晚有关", compose: "", makeWord: "", arranger: "" },
-          { name: "土星环", compose: "", makeWord: "", arranger: "" },
-          { name: "初初", compose: "", makeWord: "", arranger: "" },
-          { name: "懂了", compose: "", makeWord: "", arranger: "" },
-          { name: "余光", compose: "", makeWord: "", arranger: "" },
-        ]
-        // this.getForyouTradeTop("energy,metal");
-      } else if (val == "4") {
-        this.Title = "我只是在睡前想了一下你";
-        this.list = [
-          { name: "我只是在睡前想了一下你》延续了二珂一贯的作品风格，轻柔，动听。木吉他为主的编曲搭配二珂细腻的声音，产生了丰富的画面感。曾几何时，我们都会在夜深人静的时候思念一个人，一段事，一条街，一场和TA看过的电影；又曾几何时，我们幻想着再次相遇却一笑而过的场景。歌声继续着，或许爱情是未完待续的......" },
-        ];
-        this.tableData=[
-        { name: "我只是在睡前想了一下你", compose: "", makeWord: "", arranger: "" },
-        ]
-        // this.getForyouTradeTop("forex");
-      }
+      this.erkelist = erkeAlbum[val];
+      
     },
     //项目内部跳转
     jumpFun(route) {
