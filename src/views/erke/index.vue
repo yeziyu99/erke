@@ -1,236 +1,99 @@
 <template>
     <div class="erke">
-        <el-descriptions class="margin-top" :column="1" border>
-            <el-descriptions-item>
-                <template slot="label">
-                    <span style="color:#000;font-size: 16px;font-weight: 700">
-                        二珂简介
+        <el-collapse v-model="activeNames">
+            <el-collapse-item :title="itemt.title" :name="index" v-for="(itemt, index) in erkeData" :key="index">
+                <template slot="title">
+                    <!-- 一层的标题 -->
+                    <el-avatar v-if="itemt.img" class="iconImg" :src="itemt.img">
+                    </el-avatar>
+                    <i v-if="!itemt.img" :class="itemt.icon + ' iconImg header-icon'"></i>
+                    <span class="font-weight-700 font-size-16">
+                        {{ itemt.title }}
                     </span>
+                    <span class="mg-lt-10 font-size-12 font-weight-700 color62657A">{{ itemt.conter }}</span>
                 </template>
-                <el-avatar style="width:50px;height: 50px;"
-                    src="https://apic.douyucdn.cn/upload/avatar_v3/201807/dca3c7ece148ee546d611ed0815fbbd0_big.jpg">
-                </el-avatar>
-            </el-descriptions-item>
-            <el-descriptions-item>
-                <template slot="label">
-                    <i class="el-icon-user"></i>
-                    中文名
-                </template>
-                <el-tag size="small">周可</el-tag>
-            </el-descriptions-item>
-            <el-descriptions-item>
-                <template slot="label">
-                    <i class="el-icon-user"></i>
-                    英文名
-                </template>
-                <el-tag size="small">Chloe</el-tag>
-            </el-descriptions-item>
-            <el-descriptions-item>
-                <template slot="label">
-                    <i class="el-icon-user"></i>
-                    曾用名
-                </template>
-                <el-tag size="small">二珂 </el-tag>
-                <el-tag size="small" class="tag">周二珂</el-tag>
-                <el-tag size="small">纳妮</el-tag>
-                <el-tag size="small" class="tag">纳英俊小同学</el-tag>
-                <el-tag size="small">橙英俊</el-tag>
-            </el-descriptions-item>
-            <el-descriptions-item>
-                <template slot="label">
-                    <i class="el-icon-user"></i>
-                    身高BH
-                </template>
-                <el-tag size="small">164CM</el-tag>
-            </el-descriptions-item>
-            <el-descriptions-item>
-                <template slot="label">
-                    <i class="el-icon-user"></i>
-                    体重BW
-                </template>
-                <el-tag size="small">45KG</el-tag>
-            </el-descriptions-item>
-            <el-descriptions-item>
-                <template slot="label">
-                    <i class="el-icon-user"></i>
-                    生日DOB
-                </template>
-                <el-tag size="small">1995年1月6日</el-tag>
-            </el-descriptions-item>
-
-            <el-descriptions-item>
-                <template slot="label">
-                    <i class="el-icon-user"></i>
-                    身高BH
-                </template>
-                <el-tag size="small">164CM</el-tag>
-            </el-descriptions-item>
-            <el-descriptions-item>
-                <template slot="label">
-                    <i class="el-icon-user"></i>
-                    国籍
-                </template>
-                <el-tag size="small">中国</el-tag>
-            </el-descriptions-item>
-            <el-descriptions-item>
-                <template slot="label">
-                    <i class="el-icon-user"></i>
-                    民族
-                </template>
-                <el-tag size="small">汉族</el-tag>
-            </el-descriptions-item>
-            <el-descriptions-item>
-                <template slot="label">
-                    <i class="el-icon-user"></i>
-                    职业
-                </template>
-                <el-tag size="small">网络主播</el-tag>
-                <el-tag size="small" class="tag">歌手</el-tag>
-            </el-descriptions-item>
-            <el-descriptions-item>
-                <template slot="label">
-                    <i class="el-icon-user"></i>
-                    星座
-                </template>
-                <el-tag size="small">摩羯座</el-tag>
-            </el-descriptions-item>
-            <el-descriptions-item>
-                <template slot="label">
-                    <i class="el-icon-user"></i>
-                    兴趣愛好
-                </template>
-                <el-tag size="small">唱歌</el-tag>
-                <el-tag size="small" class="tag">宮崎俊</el-tag>
-                <el-tag size="small">动漫</el-tag>
-                <el-tag size="small" class="tag">电影</el-tag>
-                <el-tag size="small">ONE PIECE</el-tag>
-                <el-tag size="small" class="tag">宅</el-tag>
-                <el-tag size="small">音乐</el-tag>
-            </el-descriptions-item>
-            <el-descriptions-item>
-                <template slot="label">
-                    <i class="el-icon-user"></i>
-                    偶像
-                </template>
-                <el-tag size="small">周星驰</el-tag>
-            </el-descriptions-item>
-            <el-descriptions-item>
-                <template slot="label">
-                    <i class="el-icon-user"></i>
-                    特長
-                </template>
-                <el-tag size="small">游戏</el-tag>
-                <el-tag size="small" class="tag">唱歌</el-tag>
-                <el-tag size="small">爵士乐</el-tag>
-            </el-descriptions-item>
-            <el-descriptions-item>
-                <template slot="label">
-                    <i class="el-icon-user"></i>
-                    代表作品
-                </template>
-                <el-tag size="small">樱花粉的浪漫</el-tag>
-                <el-tag size="small" class="tag">三角题</el-tag>
-                <el-tag size="small">匆匆那年</el-tag>
-                <el-tag size="small" class="tag">走在冷风中</el-tag>
-            </el-descriptions-item>
-            <el-descriptions-item>
-                <template slot="label">
-                    <i class="el-icon-user"></i>
-                    游戏ID
-                </template>
-                <el-tag size="small">猴猴吖</el-tag>
-                <el-tag size="small" class="tag">一碗粥</el-tag>
-            </el-descriptions-item>
-            <el-descriptions-item>
-                <template slot="label">
-                    <i class="el-icon-location-outline"></i>
-                    出生地
-                </template>
-                <el-tag size="small">广东省湛江市赤坎区</el-tag>
-            </el-descriptions-item>
-            <el-descriptions-item>
-                <template slot="label">
-                    <i class="el-icon-tickets"></i>
-                    专业
-                </template>
-                <el-tag size="small">爵士演唱系</el-tag>
-            </el-descriptions-item>
-            <el-descriptions-item>
-                <template slot="label">
-                    <i class="el-icon-tickets"></i>
-                    毕业院校
-                </template>
-                <el-tag size="small">北京現代音乐学院(2015年2月退學)</el-tag>
-            </el-descriptions-item>
-            <el-descriptions-item>
-                <template slot="label">
-                    <span style="color:#000;font-size: 16px;font-weight: 700">
-                        二珂个人社交平台
+                <!-- 二层表格系列 -->
+                <el-descriptions class="margin-top" :column="1" border v-if="itemt.timeline != 'one'">
+                    <el-descriptions-item v-for="(item, index) in itemt.children" :key="index">
+                        <template slot="label">
+                            <!-- 判断二层有没有大标题 -->
+                            <span v-if="item.text" style="color:#000;font-size: 16px;font-weight: 700">
+                                {{ item.title }}
+                            </span>
+                            <span v-if="!item.text">
+                                <i v-if="item.icon" :class="item.icon"></i>
+                                <el-avatar v-if="item.img" style="width:20px;height: 20px;" :src="item.img">
+                                </el-avatar>
+                                {{ item.title }}
+                            </span>
+                        </template>
+                        <!-- 二层数据 -->
+                        <span v-for="(items, index) in item.children" :key="index">
+                            <el-avatar v-if="items.img" style="width:50px;height: 50px;" :src="items.img">
+                            </el-avatar>
+                            <!-- 有跳转数据 -->
+                            <el-tag size="small" class="mg-rg-5 pointer" v-if="items.tag && items.herf"
+                                @click="externalJumpFn(items.herf)">{{ items.tag }}</el-tag>
+                            <!-- 纯展示 -->
+                            <el-tag size="small" class="mg-rg-5 pointer" v-if="items.tag && (!items.herf) && (!items.type)">
+                                {{ items.tag }}</el-tag>
+                            <!-- 特殊提示带 复制可加可不加 type是success才可复制 -->
+                            <el-tooltip class="item" effect="dark" :content="items.tooltip" placement="bottom-start">
+                                <el-tag size="small" :type="items.type" @click="copyText(items.type)" class="mg-rg-5 pointer"
+                                    v-if="items.tag && (!items.herf) && items.type">{{ items.tag }}</el-tag>
+                            </el-tooltip>
+                        </span>
+                        <el-timeline v-if="item.timeline">
+                            <el-timeline-item style="max-width:900px" :timestamp="items.time" placement="top"
+                                v-for="(items, index) in item.children" :key="index">
+                                <!-- <el-card> -->
+                                <h4>{{ items.title }}</h4>
+                                <p>{{ items.conter }}</p>
+                                <!-- </el-card> -->
+                            </el-timeline-item>
+                        </el-timeline>
+                    </el-descriptions-item>
+                </el-descriptions>
+                <!-- 二层直接时间线 -->
+                <el-timeline v-if="itemt.timeline == 'one'">
+                    <el-timeline-item style="max-width:900px" :timestamp="items.time" placement="top"
+                        v-for="(items, index) in itemt.children" :key="index">
+                        <!-- <el-card> -->
+                        <h4>{{ items.title }}</h4>
+                        <p>{{ items.conter }}</p>
+                        <!-- </el-card> -->
+                    </el-timeline-item>
+                </el-timeline>
+            </el-collapse-item>
+            <!-- 最下面的微信展示 -->
+            <el-descriptions class="margin-top" :column="1" border>
+                <el-descriptions-item>
+                    <template slot="label">
+                        <span>
+                            <i class="el-icon-bell"></i>
+                            二珂个人工作洽谈WeChat
+                        </span>
+                    </template>
+                    <span>
+                        <el-tooltip class="item" effect="dark" content="点击复制" placement="bottom-start">
+                            <el-tag size="small" type="success" @click="copyText('success', 'Alba_1015')" class="pointer">
+                                Alba_1015 （何女士）</el-tag>
+                        </el-tooltip>
                     </span>
-                </template>
-                <el-tag type="info">点击下方标签可直接跳转</el-tag>
-            </el-descriptions-item>
-            <el-descriptions-item>
-                <template slot="label">
-                    <i class="el-icon-service"></i>
-                    微博
-                </template>
-                <el-tag size="small" class="cursor" @click="externalJumpFn('http://www.weibo.com/u/1910672761')">二珂Chloe
-                </el-tag>
-            </el-descriptions-item>
-
-            <el-descriptions-item>
-                <template slot="label">
-                    <i class="el-icon-service"></i>
-                    抖音
-                </template>
-                <el-tag size="small" class="cursor"
-                    @click="externalJumpFn('https://www.douyin.com/user/MS4wLjABAAAAUGBNwQYCdp7JQAdnPMRBLYlLvENa1-G3aHwlZHhFeng')">
-                    二珂Chloe</el-tag>
-            </el-descriptions-item>
-            <el-descriptions-item>
-                <template slot="label">
-                    <i class="el-icon-service"></i>
-                    小红书
-                </template>
-                <el-tag size="small" class="cursor"
-                    @click="externalJumpFn('https://www.xiaohongshu.com/user/profile/5ad78361e8ac2b1fca15ff66')">二珂
-                </el-tag>
-            </el-descriptions-item>
-            <el-descriptions-item>
-                <template slot="label">
-                    <i class="el-icon-service"></i>
-                    直播平台
-                </template>
-                <el-tag size="small" class="cursor" @click="externalJumpFn('https://www.douyu.com/78622')">二珂 斗鱼78622
-                </el-tag>
-            </el-descriptions-item>
-            <el-descriptions-item>
-                <template slot="label">
-                    <i class="el-icon-service"></i>
-                    网易云音乐
-                </template>
-                <el-tag size="small" class="cursor"
-                    @click="externalJumpFn('https://music.163.com/#/user/home?id=104601777')">二珂 </el-tag>
-                <el-tag size="small" class="cursor tag"
-                    @click="externalJumpFn('https://music.163.com/#/artist?id=1081635')">二珂呀呀呀 </el-tag>
-            </el-descriptions-item>
-            <el-descriptions-item>
-                <template slot="label">
-                    <i class="el-icon-service"></i>
-                    哔哩哔哩Bilibili
-                </template>
-                <el-tag size="small" class="cursor" @click="externalJumpFn('https://space.bilibili.com/10753901')">二珂呀呀呀
-                </el-tag>
-
-            </el-descriptions-item>
-        </el-descriptions>
+                </el-descriptions-item>
+            </el-descriptions>
+        </el-collapse>
+        <!-- 数据整理/编辑备注 -->
+        <p class="mg-tp-25 font-size-12 font-weight-700 color62657A text-ag-rg">数据整理/编辑：周二珂周三鸽</p>
     </div>
 </template>
 <script>
+import {erkeData} from "@/utils/erke.js";
 export default {
     data() {
         return {
+            erkeData: erkeData,
+            activeNames: [1, 8]
         };
     },
     mounted() {
@@ -239,6 +102,25 @@ export default {
 
     },
     methods: {
+        copyText(type, value) {
+            if (type != 'success') {
+                return
+            }
+            // 模拟 输入框
+            var cInput = document.createElement("input");
+            cInput.value = value;
+            document.body.appendChild(cInput);
+            cInput.select(); // 选取文本框内容
+
+            // 执行浏览器复制命令
+            // 复制命令会将当前选中的内容复制到剪切板中（这里就是创建的input标签）
+            // Input要在正常的编辑状态下原生复制方法才会生效
+            document.execCommand("copy");
+
+            this.$message.success("复制成功!");
+            // 复制成功后再将构造的标签 移除
+            document.body.removeChild(cInput);
+        },
         externalJumpFn(open) {
             window.open(open)
         },
@@ -252,11 +134,29 @@ export default {
 </script>
   
 <style lang="scss" scoped>
+.iconImg {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    line-height: 30px;
+    text-align: center;
+}
+
 .erke {
-    min-height: 1000px;
+    min-height: 888px;
     width: 60%;
     margin: 0 auto;
     min-width: 1170px;
     max-width: 1170px;
+}
+
+::v-deep{
+    .el-descriptions-item__cell.el-descriptions-item__label.is-bordered-label {
+        width: 210px;
+    }
+    .el-avatar>img{
+        width: 100%;
+        height: 100%;
+    }
 }
 </style>

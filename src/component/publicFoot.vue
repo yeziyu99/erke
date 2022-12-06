@@ -23,8 +23,8 @@
           <li class="list_routerLi" @click="jumpFun('market')">酷狗单曲跳转</li>
         </ul>
         <ul class="publicFoot_con_left">
-          <li class="list_router" @click="jumpFun('support')">问题解答</li>
-          <li class="list_routerLi" @click="jumpFun('support')">问题搜索</li>
+          <li class="list_router" @click="jumpFun('support')">优质UP主</li>
+          <li class="list_routerLi" @click="jumpFun('support')">UP主推荐</li>
         </ul>
         <ul class="publicFoot_con_left">
           <li class="list_router">二珂简介</li>
@@ -46,7 +46,7 @@
           <li class="con_right_bottom">346989693@qq.com </li>
         </ul>
       </div>
-      <p style="color:#fff">版权所有@叶子宇吖</p>
+      <p style="color:#fff;text-align: center;">版权所有@叶子宇吖</p>
     </div>
   </div>
 </template>

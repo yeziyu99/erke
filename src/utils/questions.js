@@ -1,8 +1,4 @@
 import icon1 from  '@/assets/image/icon1.png';
-import icon2 from  '@/assets/image/icon2.png';
-import icon3 from  '@/assets/image/icon3.png';
-import icon4 from  '@/assets/image/icon4.png';
-import icon5 from  '@/assets/image/icon5.png';
 export default [
     {
         title: "哔哩哔哩",

@@ -90,7 +90,7 @@ export default {
 
 <style lang="scss" scoped>
 .wanzheng{
-  width: auto;
+  width: 100%;
 }
   #toTop {
     position: sticky;
