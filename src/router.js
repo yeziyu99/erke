@@ -10,6 +10,7 @@ import invest from "@/views/invest/index.vue";
 import detail from "@/views/detail/index.vue";
 import erke from "@/views/erke/index.vue";
 import wyy from "@/views/wyy/index.vue";
+import music from "@/views/music.vue";
 
 
 
@@ -73,6 +74,11 @@ const router = new Router({
       path: "/invest",
       name: "invest",
       component: invest
+    },
+    {
+      path: "/music",
+      name: "music",
+      component: music
     },
     {
       path: "/home",

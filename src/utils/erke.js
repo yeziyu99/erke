@@ -11,23 +11,71 @@ import daizheyinyuequlvxing from "@/assets/images/daizheyinyuequlvxing.png"
 import fuleyuan from "@/assets/images/fuleyuan.png"
 import yuguang from "@/assets/images/yuguang.png"
 import sinian from "@/assets/images/sinian.png"
+import QQ from "@/assets/images/QQ.png"
+import VX from "@/assets/images/VX.png"
 
-/*
-各平台链接名称
-字段备注
-{
-    id:{
-        title:'',//标题
-        name:'',//名称
-        img:, //图片
-        herf:''//地址
+/* contactUs 联系我们
+    *{
+        *   id:{
+            *   title 联系方式
+            *   center 联系方式
+            *   img  图片
+        *  },
+    *}
+*/
+export var contactUs = [
+    {
+        title: 'QQ',
+        center: [
+            {
+                name:'346989693',
+                con:'346989693'
+            },
+        ],
+        img: QQ,
+    },
+    {
+        title: 'VX',
+        center: [
+            {
+                name:'yezituan_yu',
+                con:'yezituan_yu'
+            },
+        ],
+        img: VX,
+    },
+    {
+        title: 'QQ群',
+        center: [
+            {
+                name:'二珂的下次戒烟委员会',
+                con:'1127402136'
+            },
+            {
+                name:'78622游戏群',
+                con:'1127402136'
+            },
+        ],
+        img: QQ,
     },
 ]
-}
+/* erkeLink
+各平台链接名称
+字段备注
+    *{
+        *   id:{
+            *   title 标题
+            *   name 名称
+            *   img  图片
+            *   herf 地址
+            *   remarks 备注简写
+        *  },
+    *}
 */
 export var erkeLink = {
     1: {
         title: '哔哩哔哩bilibili',
+        remarks: '哔哩',
         name: '二珂呀呀呀',
         img: bili,
         herf: 'https://space.bilibili.com/10753901?spm_id_from=333.337.0.0'
@@ -35,23 +83,27 @@ export var erkeLink = {
     2: {
         title: '抖音',
         name: '二珂Chloe',
+        remarks: '抖音',
         img: douyin,
         herf: 'https://www.douyin.com/user/MS4wLjABAAAAUGBNwQYCdp7JQAdnPMRBLYlLvENa1-G3aHwlZHhFeng'
     },
     3: {
         title: '个人官方抖音',
+        remarks: '抖音',
         name: '二珂的迷猴桃小站',
         img: douyin,
         herf: 'https://www.douyin.com/user/MS4wLjABAAAAvF2YWRC2fZwwJf-WMHt1O3A0y48oSknG-eYqYybXT4vzMGOt-5Z8UoZJJOKDdz5x'
     },
     4: {
         title: '小红书',
+        remarks: '小红书',
         name: '二珂',
         img: xhs,
         herf: 'https://www.xiaohongshu.com/user/profile/5ad78361e8ac2b1fca15ff66'
     },
     5: {
         title: '网易云音乐',
+        remarks: '网易云',
         name: '二珂呀呀呀',
         img: wyy,
         herf: 'https://music.163.com/#/user/home?id=104601777'
@@ -64,36 +116,43 @@ export var erkeLink = {
     },
     7: {
         title: '直播平台',
+        remarks: '斗鱼',
         name: '斗鱼78622',
         img: douyu,
         herf: 'https://www.douyu.com/78622'
     },
     8: {
         title: '微博',
+        remarks: '微博',
         name: '二珂Chloe',
         img: weibo,
         herf: 'https://weibo.com/u/1910672761'
     },
     9: {
-        title: '酷狗',
+        title: '酷狗音乐',
+        remarks: '酷狗',
         name: '二珂 歌手',
         img: kg,
         herf: 'https://www.kugou.com/singer/info/5NFEK0C350FF5/'
     },
     10: {
         title: 'QQ音乐',
+        remarks: 'QQ音乐',
         name: '二珂歌手',
         img: qy,
         herf: 'https://y.qq.com/n/ryqq/profile/like/song?uin=owvsNKSP7wvAon**'
     },
     11: {
         title: 'instagram',
+        remarks: 'instagram',
         name: 'erke_chloe',
         img: instagram,
         herf: ''
     },
 }
-/*{ 
+/*
+酷狗音乐的数据 现在用不到
+{ 
     *"song_name" → 歌曲名字 
     *"song_url" → 歌曲链接 
     *"song_duration" → 歌曲时长（这个后期应该不需要到，我顺便爬的）
@@ -101,13 +160,24 @@ export var erkeLink = {
     *"album_name" → 专辑名字 
     *"album_img" → 专辑封面 
     *"singer_name" → 歌手名字
-}*/
-/*{ 
-    *"name" → 歌曲名字 
-    *"makeWord" → 作词 
-    *"compose" → 作曲 
-    *"arranger" → 编曲
-}*/
+}
+*/
+/* erkeAlbum
+{ 
+    * id 专辑ID
+    * title 专辑名称
+    * img 图片
+    * background 背景解说
+    * song
+        * name → 歌曲名字 
+        * makeWord → 作词 
+        * compose → 作曲 
+        * arranger → 编曲
+        * qqyinyue → QQ音乐
+        * kugouyinyue → 酷狗音乐
+        * kuwoyinyue: → 酷我音乐
+}
+*/
 export var erkeAlbum = [
     {
         id: 1,
@@ -146,11 +216,6 @@ export var erkeAlbum = [
             `久在樊笼里，今日《复乐园》`,
             `唯一真实的乐园是已经失去的乐园`,
             `唯一有吸引力的世界是尚未踏入的世界`,
-            // 曾几何时，我们以为世界是个无忧无虑的伊甸园。
-            // 直到某一天，我们离开庇护，出门远行。
-            // 我们要独自去面对太阳的升起，面对黑夜的降临，面对一切的未知。而这个蛮横的世界怎肯轻易放过那些不甘禁锢的灵魂，对于一个普通的女孩来说，随着一夜之间降临的流言蜚语、有色眼镜，还有猜疑，让她原本的世界瞬间倾覆，犹如沃土长满荆棘，绿野变成荒原。
-            // 。“唯一真实的乐园是已经失去的乐园。唯一有吸引力的世界是尚未踏入的世界。”`,
-           
         ],
         song: [
             { 
@@ -280,27 +345,28 @@ export var erkeAlbum = [
         ]
     }
 ]
-/*
-二珂简介
-{
-    "icon":"",//没有可以不写 前面展示icon =>el-icon-user或者空
-    "text":true,//判断是否是大标题 加粗效果 没有可以不写 =>true或者空
-    "timeline":true,//判断右边是否有时间线格式展示 没有可以不写 =>true或者空
-    "title": "",//标题字段 =>个人简介
-    conter:''//内容讲解或者备注
-    "children": [//下面内容&右边内容
-    {
-        tag:'',//标签名称
-        herf:'',//标签跳转地址
-        type:'',//特殊标签展示（比如置灰色=）
-        img:'',//图片展示 因展示图片太小 尽量选用内存小的小图
-        时间线展示
-        time:'',//时间线
-        title:``,//标题
-        conter:''//内容讲解或者备注
-    }
-]
-}
+/* erkeData
+二珂简介 
+*{
+    * icon ->没有可以不写 前面展示icon =>el-icon-user或者空
+    * text -> 判断是否是大标题 加粗效果 没有可以不写 =>true或者空
+    * timeline -> 判断右边是否有时间线格式展示 没有可以不写 =>true或者空
+    * title -> 标题字段 =>个人简介
+    * conter -> 内容讲解或者备注
+    * children -> 下面内容&右边内容
+    * [
+        * {
+            * tag: -> 标签名称
+            * herf -> 标签跳转地址
+            * type -> 特殊标签展示（比如置灰色=）
+            * img -> 图片展示 因展示图片太小 尽量选用内存小的小图
+            * 时间线展示
+            * time -> 时间线
+            * title -> 标题
+            *conter -> 内容讲解或者备注
+        * }
+    *]
+*}
 */
 export var erkeData = [
     {

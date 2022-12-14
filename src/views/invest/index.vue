@@ -100,7 +100,7 @@ export default {
         position: absolute;
         top: 17.96%;
         width: 60%;
-        min-width: 1200px;
+        min-width: 1170px;
         z-index: 2;
       }
       .bg-semicircle {

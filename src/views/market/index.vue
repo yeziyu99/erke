@@ -15,27 +15,11 @@
           <h2>
             中国内地网络女主播、歌手
           </h2>
-          <div class="banner_btn" style="margin-bottom: 10px;">
-            <a href="" @click="jumpFun('invest')">
-              <img src="@/assets/images/douyu.png" alt="" @click="jumpFun('invest')" />
-              斗鱼</a>
-              <a href="" class="red" @click="jumpFun('invest')">
-              <img src="@/assets/images/weibo.png" alt="" @click="jumpFun('invest')" />
-              微博</a>
-              <a href="" class="ios" @click="jumpFun('invest')">
-              <img src="@/assets/images/douyin.png" alt="" @click="jumpFun('invest')" />
-              抖音</a>
-          </div>
-          <div class="banner_btn">
-              <a href="" class="red" @click="jumpFun('invest')">
-              <img src="@/assets/images/wyy.png" alt="" @click="jumpFun('invest')" />
-              网易云</a>
-            <a href="" class="kg " @click="jumpFun('invest')">
-              <img src="@/assets/images/kg.png" alt="" @click="jumpFun('invest')" />
-              酷狗</a>
-              <a href="" class="qy" @click="jumpFun('invest')">
-              <img src="@/assets/images/qy.png" alt="" @click="jumpFun('invest')" />
-              QQ音乐</a>
+          <div class="banner_btn" v-for="(item, index) in btnList" :key="index">
+            <a href="" @click="externalJumpFn(erkeLink[items].herf)" v-for="(items, ind) in item" :key="ind">
+              <img :src="erkeLink[items].img" />
+              {{erkeLink[items]['remarks']}}
+            </a>
           </div>
           <p>显示的图像仅用于展示作用</p>
         </div>
@@ -52,8 +36,8 @@
       <div class="invest_tab">
         <div class="trade_left">
           <div>
-            <h2 class="trade_title font_Bold" >
-              {{erkelist.title}}
+            <h2 class="trade_title font_Bold">
+              {{ erkelist.title }}
             </h2>
             <ul class="trade_list">
               <li v-for="(value, ind) in erkelist['background']" :key="ind">
@@ -69,10 +53,9 @@
           <div class="trade_right">
             <div class="trade_tab">
               <ul>
-                <li :style="{zIndex: 4-index}" :class="active == index ? 'active' : ''" @click="tabFn(index)" :key="index" v-for="(item, index) in erkeAlbum">
-                  <img
-                    :src="item.img"
-                    :alt="item.title" />
+                <li :style="{ zIndex: 4 - index }" :class="active == index ? 'active' : ''" @click="tabFn(index)"
+                  :key="index" v-for="(item, index) in erkeAlbum">
+                  <img :src="item.img" :alt="item.title" />
                 </li>
               </ul>
             </div>
@@ -111,12 +94,103 @@
             </div>
           </div>
           <div class="table_foot">
-            <a href="#list_title"> 查看网易云单曲展示 </a>
-            <a href="#list_titlekg"> 查看酷狗单曲展示 </a>
+            <a href="#list_title"> 查看更多歌曲 </a>
           </div>
         </div>
       </div>
     </div>
+    <div class="invest_list">
+      <div class="list_title font_Bold" id="list_title">本站可播放音乐</div>
+      <div>
+        <el-col :span="8" v-for="(item, index) in wyList" :key="index" style="padding: 0 10px 10px;">
+          <el-card shadow="hover" :body-style="{ padding: '0px' }">
+            <el-image style="width: 367px;height: 367px;" class="image swiper-img" src="https://wsingbssdl.kugou.com/060ae290b3bdceffa7f2ada54816c41e.png_360x360.png" :preview-src-list="['https://wsingbssdl.kugou.com/060ae290b3bdceffa7f2ada54816c41e.png_360x360.png']" fit="cover">
+            </el-image>
+            <div style="padding: 14px;">
+              <span>{{ item.name }}-{{ item.al.name }}</span>
+              <div class="bottom clearfix">
+                <span>{{ item.alia[0] }}</span>
+                <el-button type="text" class="button" @click="jumpFun('music')">播放</el-button>
+              </div>
+            </div>
+          </el-card>
+        </el-col>
+      </div>
+    </div>
+    <!-- <div class="invest_list">
+      <div class="list_title font_Bold" id="list_title">歌曲链接直跳</div>
+      <div class="tab">
+        <el-tabs v-model="erkeAlbumName">
+          <el-tab-pane :label="item.title" :name="item.title" v-for="(item, index) in erkeAlbum" :key="index">
+            <el-table stripe :data="item.song" style="width: 100%; margin-top: 44px; margin-bottom: 60px">
+              <el-table-column prop="name" label="歌名" align="center">
+                <template slot-scope="scope">
+                  <div>
+                    {{ scope.row.name || '-' }}
+                  </div>
+                </template>
+              </el-table-column>
+              <el-table-column prop="makeWord" label="作词" align="center">
+                <template slot-scope="scope">
+                  <div>
+                    {{ scope.row.makeWord || '-' }}
+                  </div>
+                </template>
+              </el-table-column>
+              <el-table-column prop="compose" label="作曲" align="center">
+                <template slot-scope="scope">
+                  <div>
+                    {{ scope.row.compose || '-' }}
+                  </div>
+                </template>
+              </el-table-column>
+              <el-table-column prop="arranger" label="编曲" align="center">
+                <template slot-scope="scope">
+                  <div>
+                    {{ scope.row.arranger || '-' }}
+                  </div>
+                </template>
+              </el-table-column>
+              <el-table-column prop="qqyinyue" label="QQ音乐" align="center">
+                <template slot-scope="scope">
+                  <span v-if="!scope.row.qqyinyue">暂无</span>
+                  <el-link v-if="scope.row.qqyinyue" :href="scope.row.qqyinyue" type="primary" icon="el-icon-headset">播放
+                  </el-link>
+                </template>
+              </el-table-column>
+              <el-table-column prop="kugouyinyue" label="酷狗音乐" align="center">
+                <template slot-scope="scope">
+                  <span v-if="!scope.row.kugouyinyue">暂无</span>
+                  <el-link v-if="scope.row.kugouyinyue" :href="scope.row.kugouyinyue" type="primary"
+                    icon="el-icon-headset">播放</el-link>
+                </template>
+              </el-table-column>
+              <el-table-column prop="kuwoyinyue" label="酷我音乐" align="center">
+                <template slot-scope="scope">
+                  <span v-if="!scope.row.kuwoyinyue">暂无</span>
+                  <el-link v-if="scope.row.kuwoyinyue" :href="scope.row.kuwoyinyue" type="primary"
+                    icon="el-icon-headset">播放</el-link>
+                </template>
+              </el-table-column>
+              <el-table-column prop="wangyiyunyinyue" label="网易云音乐" align="center">
+                <template slot-scope="scope">
+                  <span v-if="!scope.row.wangyiyunyinyue">暂无</span>
+                  <el-link v-if="scope.row.wangyiyunyinyue" :href="scope.row.wangyiyunyinyue" type="primary"
+                    icon="el-icon-headset">播放</el-link>
+                </template>
+              </el-table-column>
+              <el-table-column prop="wangyiyunyinyue" label="本站直接播放" align="center">
+                <template slot-scope="scope">
+                  <span v-if="!scope.row.wangyiyunyinyue">暂无</span>
+                  <el-link v-if="scope.row.wangyiyunyinyue" :href="scope.row.wangyiyunyinyue" type="primary"
+                    icon="el-icon-headset">播放</el-link>
+                </template>
+              </el-table-column>
+            </el-table>
+          </el-tab-pane>
+        </el-tabs>
+      </div>
+    </div> -->
     <!-- <div class="invest_list">
       <div class="list_title font_Bold" id="list_title">网易云-跳页面播放</div>
       <div>
@@ -134,9 +208,9 @@
           </el-card>
         </el-col>
       </div>
-    </div>
-    <br/>
-    <div class="invest_list">
+    </div> -->
+    <!-- <br/> -->
+    <!-- <div class="invest_list">
       <div class="list_title font_Bold" id="list_titlekg">酷狗-直接跳转</div>
       <el-col :span="8" v-for="(item, index) in kgList" :key="index" style="padding: 0 10px 10px;">
         <el-card shadow="hover" :body-style="{ padding: '0px' }">
@@ -155,11 +229,12 @@
   </div>
 </template>
 <script>
+// https://wsaudiobssdlbig.yun.kugou.com/202212071450/dda38b3c76d74430d144d32061c99d3b/bss/extname/wsaudio/e4e87293c82881fbdab505dabca8db4e.mp3
 import http from "@/http/service";
 import { mapActions } from "vuex";
 import kgList from "@/http/kg.json";
 import wyLists from "@/http/wy.json";
-import {erkeAlbum} from "@/utils/erke.js";
+import { erkeAlbum,erkeLink } from "@/utils/erke.js";
 
 /*{ 
     *"song_name" → 歌曲名字 
@@ -180,24 +255,30 @@ export default {
   data() {
     return {
       active: "0",
+      erkeAlbumName: erkeAlbum[0]['title'],
       wyList: [],
       wyLists: wyLists,
       kgList: kgList,
-      erkeAlbum:erkeAlbum,
-      erkelist:erkeAlbum[0]
+      erkeAlbum: erkeAlbum,
+      erkelist: erkeAlbum[0],
+      btnList:{
+        btnTopList:[7,8,2],
+        btnBottomList:[5,9,10],
+      },
+      erkeLink:erkeLink
     };
   },
   components: {},
   methods: {
     ...mapActions(["webSocketInit"]),
     //跳转外部链接/打开新标签页
-    externalJumpFn(open){
+    externalJumpFn(open) {
       window.open(open)
     },
     tabFn(val) {
       this.active = val;
       this.erkelist = erkeAlbum[val];
-      
+
     },
     //项目内部跳转
     jumpFun(route) {
@@ -433,7 +514,14 @@ export default {
 
         .trade_list {
           margin-top: 40px;
-
+          li:first-child{
+          p::first-letter{
+            color: #c69c6d;
+            font-size: 2em;
+            float:left;
+            margin: -0.4em .2em 0 0;
+          }
+            }
           li {
             margin-bottom: 24px;
             display: flex;

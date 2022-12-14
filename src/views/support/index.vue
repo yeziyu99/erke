@@ -19,7 +19,7 @@
         <div class="question_item" v-for="(item, index) in newQuestionData" :key="index">
           <div class="item_big" @click="itemFun(index)">
             <div style="display: flex; align-items: center">
-              <img class="item_icon" style="width: 52px; margin-right: 10px" :src="item.icon" alt="" />
+              <img class="item_icon" style="width: 52px; margin-right: 10px; border-radius: 50%;" :src="item.icon" alt="" />
               <span style="font-size: 24px" class="item_big_title">{{
               item.title
               }}</span>

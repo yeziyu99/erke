@@ -134,13 +134,7 @@ export default {
 </script>
   
 <style lang="scss" scoped>
-.iconImg {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-    line-height: 30px;
-    text-align: center;
-}
+
 
 .erke {
     min-height: 888px;
@@ -150,25 +144,4 @@ export default {
     max-width: 1170px;
 }
 
-::v-deep{
-    .el-descriptions-item__cell.el-descriptions-item__label.is-bordered-label {
-        width: 210px;
-    }
-    .el-avatar>img{
-        width: 100%;
-        height: 100%;
-    }
-    .el-descriptions-row
-    {
-        .el-descriptions-item__cell.el-descriptions-item__label.is-bordered-label>span{
-            display: flex;
-            align-items: center;
-            span{
-                margin-right: 3px;
-                width: 20px;
-                height: 20px;
-            }
-        }
-    }
-}
 </style>

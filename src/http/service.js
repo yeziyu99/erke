@@ -78,13 +78,23 @@ const _http = {
      getPlaylistDetail(params) {
         return http("/playlist/detail", "GET",params);
     },
-    /**  获取歌单列表
-     * getPlaylistDetail
+    /**  获取电台
+     * getDjProgram
      * params
      *  //Token	string	no	Token
+     * rid  969709687
      */
-    getPlaylistDetail(params) {
-        return http("/playlist/detail", "GET",params);
+    getDjProgram(params) {
+        return http("/dj/program", "GET",params);
+    },
+    /**  获取电台详情
+     * getDjProgramDetail
+     * params
+     *  //Token	string	no	Token
+     * id  节目id
+     */
+    getDjProgramDetail(params) {
+        return http("/dj/program/detail", "GET",params);
     },
     /**  获取歌曲信息
      * getSongUrl
@@ -102,6 +112,7 @@ const _http = {
      getLyric(params) {
         return http("/lyric", "GET",params);
     },
+    
 };
 
 

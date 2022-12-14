@@ -19,50 +19,57 @@
       <h1>我们的故事</h1>
       <div>还没想好写什么 先空着好了 </div>
       <h1>联系我们</h1>
-      <!-- <div>QQ：346989693 </div>
-      <div>VX：yezituan_yu </div>
-      <div> QQ群：1127402136（二珂的下次戒烟委员会）</div> -->
-      <el-descriptions class="margin-top" :column="1" border>
-            <el-descriptions-item>
+      <el-descriptions  :column="1" border>
+            <el-descriptions-item v-for="(item, index) in contactUs" :key="index">
                 <template slot="label">
-                    <i class="el-icon-chat-dot-round"></i>
-                    QQ
+                  <span>
+                    <el-avatar v-if="item.img" :src="item.img"></el-avatar>
+                    {{item.title}}
+                  </span>                  
                 </template>
-                <el-tag size="small">346989693</el-tag>
-            </el-descriptions-item>
-            <el-descriptions-item>
-                <template slot="label">
-                    <i class="el-icon-chat-dot-round"></i>
-                    VX
-                </template>
-                <el-tag size="small">yezituan_yu</el-tag>
-            </el-descriptions-item>
-            <el-descriptions-item>
-                <template slot="label">
-                    <i class="el-icon-chat-dot-round"></i>
-                    QQ群
-                </template>
-                <el-tag size="small">二珂的下次戒烟委员会</el-tag>
-                <el-tag size="small" class="tag">78622游戏群</el-tag>
+                  <el-tooltip class="item" effect="dark" content="点击复制" placement="bottom-start" v-for="(items, ind) in item.center" :key="ind">
+                    <el-tag size="small"  type="success" @click="copyText(items.con)" class="mg-rg-5 pointer">{{ items.name }}</el-tag>
+                  </el-tooltip>
             </el-descriptions-item>
         </el-descriptions>
     </div>
   </div>
 </template>
   
-  <script>
+<script>
+import { contactUs } from "@/utils/erke.js";
+
 export default {
   data() {
-    return {};
+    return {
+      contactUs:contactUs
+    };
   },
   components: {},
-  methods: {},
+  methods: {
+    copyText(value){
+      // 模拟 输入框
+      var cInput = document.createElement("input");
+      cInput.value = value;
+      document.body.appendChild(cInput);
+      cInput.select(); // 选取文本框内容
+
+      // 执行浏览器复制命令
+      // 复制命令会将当前选中的内容复制到剪切板中（这里就是创建的input标签）
+      // Input要在正常的编辑状态下原生复制方法才会生效
+      document.execCommand("copy");
+
+      this.$message.success("复制成功!");
+      // 复制成功后再将构造的标签 移除
+      document.body.removeChild(cInput);
+    }
+  },
   created() {},
   mounted() {},
 };
 </script>
   
-  <style lang="scss" scoped>
+<style lang="scss" scoped>
 .big_wrap {
   width: 100%;
   min-width: 1170px;

@@ -1,9 +1,21 @@
-import icon1 from  '@/assets/image/icon1.png';
+import douyu from "@/assets/images/douyu.png"
+import weibo from "@/assets/images/weibo.png"
+import douyin from "@/assets/images/douyin.png"
+import wyy from "@/assets/images/wyy.png"
+import kg from "@/assets/images/kg.png"
+import qy from "@/assets/images/qy.png"
+import bili from "@/assets/images/bili.png"
+import instagram from "@/assets/images/instagram.png"
+import xhs from "@/assets/images/xhs.png"
+import daizheyinyuequlvxing from "@/assets/images/daizheyinyuequlvxing.png"
+import fuleyuan from "@/assets/images/fuleyuan.png"
+import yuguang from "@/assets/images/yuguang.png"
+import sinian from "@/assets/images/sinian.png"
 export default [
     {
         title: "哔哩哔哩",
         platform: "哔哩哔哩",
-        icon:icon1,
+        icon:bili,
         show:false,
         children: [
             {
@@ -65,7 +77,7 @@ export default [
     {
         title: "网易云电台",
         platform: "网易云",
-        icon:icon1,
+        icon:wyy,
         show:false,
         children: [
             {

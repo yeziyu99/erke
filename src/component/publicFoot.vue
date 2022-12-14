@@ -19,8 +19,7 @@
         <ul class="publicFoot_con_left">
           <li class="list_router" @click="jumpFun('market')">音乐专辑</li>
           <li class="list_routerLi" @click="jumpFun('market')">专辑展示</li>
-          <li class="list_routerLi" @click="jumpFun('market')">网易云单曲播放</li>
-          <li class="list_routerLi" @click="jumpFun('market')">酷狗单曲跳转</li>
+          <li class="list_routerLi" @click="jumpFun('market')">歌曲链接直跳</li>
         </ul>
         <ul class="publicFoot_con_left">
           <li class="list_router" @click="jumpFun('support')">优质UP主</li>
@@ -73,7 +72,7 @@ ul li {
 
 .publicFoot {
   width: 100%;
-  min-width: 1200px;
+  min-width: 1170px;
   overflow-x: auto;
   background: #000000;
   display: flex;

@@ -55,7 +55,7 @@ export default {
 .question {
   width: 100%;
   background: #ffe100;
-  min-width: 1200px;
+  min-width: 1170px;
   overflow-x: auto;
   display: flex;
   justify-content: center;
