@@ -1,6 +1,6 @@
 <template>
     <div class="yinyue">
-      <web-music-com :playlistheight="playlistheight"></web-music-com>
+      <web-music-com :paramsId="paramsId"></web-music-com>
     </div>
   </template>
   
@@ -13,9 +13,13 @@
     },
     data() {
       return {
-        playlistheight: 186,
+        paramsId: 1,
       };
     },
+    created() {
+      this.paramsId=this.$route.params.id
+    },
+    
   };
   </script>
   

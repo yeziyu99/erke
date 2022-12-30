@@ -7,9 +7,6 @@
             <h2 class="font_Bold">周二珂</h2>
             <h4 style="margin-bottom: 90px; font-size: 20px;text-indent:20px">
               人美、气质好、唱歌又好听，为人低调和善，但却挡不住她急剧上升的人气。在一个歌荒的寂寞时间，周二珂简直是甜歌小公主，那一刻，让你的心暖暖的。
-              <!-- 新兴游戏（娱乐）主播，小清新歌手，英雄联盟国服“大腿”组选手 -->
-              <!-- <br />
-              英文名:Chloe -->
             </h4>
             <div class="banner_btn">
               <div class="btn_one">房间未开播</div>
@@ -21,12 +18,7 @@
           </div>
         </div>
         <div class="home_bg">
-          <div style="
-              max-width: 230px;
-              flex: 1 1;
-              margin: 0 auto;
-              position: relative;
-            ">
+          <div style=" max-width: 230px; flex: 1;margin: 0 auto;position: relative;">
             <div>
               <div class="inset_bg">
                 <div class="insetbg_annulus"></div>
@@ -42,13 +34,6 @@
                   <div class="w3"></div>
                   <div class="w4"></div>
                 </div>
-                <!-- <p>未开播，期待...</p> -->
-                <!-- <video class="inset_video enter-play" muted playsinline webkit-playsinline autoplay loop
-                  poster="https://c1.itigergrowth.com/portal5/static/media/banner-poster.7a77394e.jpg" preload="auto"
-                  data-status="playing">
-                  <source src="@/assets/image/banner-inset-0215.mp4" />
-                </video>
-                <img class="inset_iphone" src="@/assets/image/iphone13promax.png" alt="" /> -->
               </div>
             </div>
           </div>
@@ -68,13 +53,13 @@
           </div>
           <div class="content_item" @click="externalJumpFn('https://weibo.com/u/1910672761')">
             <div>
-              <img src="https://tvax2.sinaimg.cn/crop.0.0.1080.1080.180/0025iZgBly8gmmp57xqh3j60u00u0di902.jpg?KID=imgbed,tva&Expires=1667558820&ssig=Bx5ptFoRPv" alt="https://weibo.com/u/1910672761?topnav=1&wvr=6&topsug=1">
+              <img src="https://tvax3.sinaimg.cn/crop.0.0.1080.1080.180/0025iZgBly8h8yqklw9t2j60u00u0go802.jpg?KID=imgbed,tva&Expires=1672148346&ssig=HxIrnrfB6A" alt="https://weibo.com/u/1910672761?topnav=1&wvr=6&topsug=1">
             </div>
             <p>二珂Chloe@微博</p>
           </div>
           <div class="content_item" @click="externalJumpFn('https://www.xiaohongshu.com/user/profile/5ad78361e8ac2b1fca15ff66')">
             <div>
-              <img src="https://sns-avatar-qc.xhscdn.com/avatar/6344e5b0a72440a1d6f84aa0.jpg?imageView2/1/w/540/format/jpg" alt="https://www.xiaohongshu.com/user/profile/5ad78361e8ac2b1fca15ff66?xhsshare=CopyLink&appuid=609b9c340000000001004f33&apptime=1667552951">
+              <img src="https://sns-avatar-qc.xhscdn.com/avatar/639431ecb20ad5e81020288b.jpg?imageView2/1/w/540/format/jpg" alt="https://www.xiaohongshu.com/user/profile/5ad78361e8ac2b1fca15ff66?xhsshare=CopyLink&appuid=609b9c340000000001004f33&apptime=1667552951">
             </div>
             <p>二珂@小红书</p>
           </div>
@@ -91,18 +76,20 @@
         <!-- </div> -->
       </div>
       <div class="invest_bg">
-        <!-- <div class="invest_bg_title font_Bold">
-          珂珂真好看～
-        </div> -->
+        <div class="invest_bg_title font_Bold">
+          希望我们都能寻觅到真正的自己，永远像Juliet’s Rose的美丽盛开。
+        </div>
         <div class="invest_img">
           <div class="img_left">
-            <!-- <el-image class="left1" src="https://wx3.sinaimg.cn/mw2000/0025iZgBly1gop49qkl1mj62241jkkjm02.jpg"  fit="cover"></el-image> -->
             <el-image class="left1" src="https://wx3.sinaimg.cn/mw2000/0025iZgBly1gop49qkl1mj62241jkkjm02.jpg" fit="cover" alt="" />
             <el-image class="left2" src="https://wx1.sinaimg.cn/mw2000/0025iZgBgy1gvbhdvy1vmj62961i4hdw02.jpg" fit="cover" alt="" />
             <el-image class="left3" src="https://wx4.sinaimg.cn/mw2000/0025iZgBgy1gvbhdyo5duj629u1ilb2a02.jpg" fit="cover" alt="" />
           </div>
           <div class="img_phone">
-            <el-image style="" src="https://wx2.sinaimg.cn/mw2000/0025iZgBgy1gwb961ksyqj622o340kjl02.jpg" fit="cover" alt=""/>
+            <video class="inset_video" playsinline webkit-playsinline autoplay loop preload="auto" data-status="playing">
+            <source src="@/assets/images/xin.mp4" />
+          </video>
+            <!-- <el-image style="" src="https://wx2.sinaimg.cn/mw2000/0025iZgBgy1gwb961ksyqj622o340kjl02.jpg" fit="cover" alt=""/> -->
           </div>
           <div class="img_right">
             <el-image class="right1" src="https://wx4.sinaimg.cn/mw2000/0025iZgBly1go2vxnyfsoj62dc1kw1kx02.jpg" fit="cover" alt="" />
@@ -115,7 +102,7 @@
         <div class="swiper_left">
           <div class="swiper-left-text">
             <div class="swiper-wrapper">
-              <h3 class="swiper-slide font_Bold">2021.12</h3>
+              <h3 class="swiper-slide font_Bold">二珂&三岛</h3>
               <h3 class="swiper-slide font_Bold">
                 滑雪装
               </h3>
@@ -126,16 +113,14 @@
             <div class="swiper-wrapper">
               <div class="swiper-slide">
                  <img src="https://wx2.sinaimg.cn/orj360/0025iZgBly1gx1rclbizzj61jk224e8102.jpg" alt="" />
-                 <!-- <img src="https://wx2.sinaimg.cn/mw2000/0025iZgBly1gx1rclbizzj61jk224e8102.jpg" alt="" /> -->
               </div>
               <div class="swiper-slide">
                 <img src="https://wx1.sinaimg.cn/orj360/0025iZgBly1gx1rcs8uqxj61jk224b2902.jpg" alt="" />
-                <!-- <img src="https://wx1.sinaimg.cn/mw2000/0025iZgBly1gx1rcs8uqxj61jk224b2902.jpg" alt="" /> -->
               </div>
               <div class="swiper-slide">
                 <img src="https://wx2.sinaimg.cn/mw2000/0025iZgBly1gx1rct2x76j61jk2241i002.jpg" alt="" />
-                <!-- <img src="https://wx2.sinaimg.cn/mw2000/0025iZgBly1gx1rct2x76j61jk2241i002.jpg" alt="" /> -->
               </div>
+              
             </div>
           </div>
         </div>
@@ -175,7 +160,7 @@
                 <li v-for="(item, index) in textContainerfour" :key="index" :class="{ active: index == activeIndex }"
                   @click="changeActiveSwiper(index)">
                   {{ item.title }}
-                  <a v-if="item.href" :href="item.href" class="font_Bold">直达</a>
+                  <a v-if="item.href" :href="item.href" class="font_Bold">🛫️</a>
                 </li>
               </ul>
             </div>
@@ -200,64 +185,30 @@
             </div>
           </div>
         </div>
-        <div class="foot_btn" >查看更多</div>
+        <div class="foot_btn" @click="externalJumpFn('https://weibo.com/u/1910672761')">查看更多</div>
       </div>
     </div>
     <div class="home_foot">
       <div class="foot_con">
         <div class="foot_title font_Bold">优质UP主推荐</div>
         <ul class="foot_list">
-          <li class="list_item">
-            <img src="data:image/webp;base64,UklGRhYDAABXRUJQVlA4IAoDAABQEACdASo2ADYAPo00lkelIqIhLhkvGKARiUAYoYXYLTXo3W3I56pTP6oh6c5QVkDzffFTAFMbACwii486CUe5OFZqvNFkPbLmpekVoYmC1OsNpkJZtBd84o6Sk8FvXGfKWfDKzHB9aU/ja4wul9B6+GDoxxO78BiwtxJ8rQ6vok7qEQO8mBUuT2YQAP7+wp70PxrPTIuyr5pSJfiM+h+AlV55nrToGilL/N9to68hKAGlKhuwwgWdMwGbBzYTjo3/bfDUMi+h8Sc9koWcKRYVH/TQqjXx11vil56mJoxq0kadqZlBPnubrDpvxsQD7qnXf+78qW/sT28i+kfLy6EFH/1dZVQeKJxj2lzEZlmPB63s+7QlPIvTKPi1xeCcidy3cMgHPVzFanHOp23t24jgNDFV5Q0tozqhWUJQ62znlRmfYWmGTaJFCBJmzi3Gn6yQ3QBaJe1Eax7bnDxK4bJ/h8Vh/suJIc6oIYGj1FPnZxB+Yu8v7ZJBExDT7KSv/Vnwq/k02mQpJfaUE578CwiIfUQ7zzhVyu27xxQOTVCxPA+OlvdLgtsqkxX135RIDiqanF00wCzNRPfqMnaK89CiWitVRYYRZn+Ftj+rPp32bnDYOTqD/ZNIuKstRK4meDRZswZfG1I0EujSkasbveIizq+fBVI3mE3mpIeszTe87hC2gO79IrF6BSWB8aWz04IE3XMSP3LzkGuwfZ7sUmx7wQnhz4hZkiTcWHocSTH6RL3PQH4fVClLC0yYDXzi2wd1gCMibelR2Ew76T4Z/LmaqPocWb6dIqA1cGUriA3sZ0TBCK0XP3vArWRXyp/C6kBhF6B4ZfxWPkFd+B2/uGAP8q+3HRXAYPDvNNZbopP5crjGhyggxjXESaT7tZXX1LOBQfPNkUQwg/uxIxiUYeS4oJYx5keMJQvwuQC9s6GxVqfipMVGtr1GPNXjmALPtbsj4T79IZcWvfgEKCwtsdx2L5ajcZ4r4kmt/70HV3JpHmHD5QM/YXdc2m4wWYyv57ZkE9qI9QTcAAAA" alt="二珂的迷猴桃小站" />
-            <h2 @click="externalJumpFn('https://space.bilibili.com/315661291/?spm_id_from=333.999.0.0')">二珂的迷猴桃小站</h2>
-            <ul class="foot_list_item">
-              <li>
-                这里是二珂的迷猴桃小站，会更新一些关于二珂的视频哦~
-                <!-- <a href="https://space.bilibili.com/315661291/?spm_id_from=333.999.0.0" title="二珂的迷猴桃小站">查看</a> -->
-              </li>
-              <li>
-                <a href="https://space.bilibili.com/315661291/?spm_id_from=333.999.0.0" title="二珂的迷猴桃小站">官方账号</a>
-              </li>
-            </ul>
-          </li>
-          <li class="list_item">
-            <img src="data:image/webp;base64,UklGRsYCAABXRUJQVlA4ILoCAACwDQCdASo2ADYAPpE8mUkloyIhKhZtELASCWMAy4lBpuykhwq2XMQI6YcLqnW5J8AeZByPJbPjfumjNafMdGS4oi8IOg2lKpxlFZ2f3cPPhtamaw3RYtDfaFoodqRLfLkM+/n/VxozEqxS3slpBIYRB46Q00AAAP7+k6ilvR8dduKDqXxkCpUv71EsD/m//rBbMVd7aP4h3DJfRepq5ZMDjOeK+LPxywBkDJ8A7lXCYkUEAlRjQGVDxtQV5HqD7EucouV1eQ7ALJevtO2Vkyh4rmq8ufsyi34nKJk1LzZIb2lPWF7NIiPeoLGCgiKdfGIOgv1VoU1ABzZfSNX4BR43LsTmIdkizgrKV03oOsIn/A1crO1DeYbdG96Tyqx7T8nf76uujJHFzj6ooQ2eJWvgRBL0yFz65GJWCSCQifKy2XXr7Fr/Jk1R+MnFLXacWUMluUTaYUWiBab+j/i9DG/jrd6yiLP2oLWwABQ83LQFumjlDRu4vmOojqTGyLNRVMc0yjckQwmqwU5WuYSNi7ZoaXKiG0bLJPCpl1rETolK0c7YhB+rRk+KoCA30TbETTYycoNfLeiIUpQ8ICIIGJ2nKzD0hYurpSDOvLIhOrdSZFAvyvxVyiP+OM4JWvmaznmnJW173O6v5J/YfhI8wAEfIKPrfFFgE9HmyV9hlm8+/Kj02Y9Wdm9KxmjlzAn3zF5j3skNK+4Xf5q32ps1R31A9otbE2vdVRAZBWGI/dVI4YA2phO5nv9aHbwxpp14x30YEI1jVCCFPyS9jKnkNKw3HIeEC+tDtcjNfQBkvazs1xrVtqAhqbvRHgOmZvZlzIEMu7UjWyFqw/f27eHDhrVpEWu9RcEfdZ/i5xsxoaClZ1Pif+v8rpRDy8AivpO/TfQIVKZvurg2TIZPlylNTMaCNxWGUUekDugAAA==" alt="云淡峰輕" />
-            <h2 @click="externalJumpFn('https://space.bilibili.com/338485759/?spm_id_from=333.999.0.0')">云淡峰輕</h2>
-            <ul class="foot_list_item">
-              <li>用最好的我赴你的约
-                <!-- <a href="https://space.bilibili.com/338485759/?spm_id_from=333.999.0.0" title="云淡峰輕">查看</a> -->
-              </li>
-              <li>
-                <a href="https://space.bilibili.com/338485759/channel/seriesdetail?sid=266668" title="二珂单曲视频剪辑">二珂单曲视频剪辑</a>
-              </li>
-              <li>
-                <a href="https://space.bilibili.com/338485759/channel/seriesdetail?sid=266651" title="二珂直播录像">二珂直播录像</a>
-              </li>
-              <li>
-                <a href="https://space.bilibili.com/338485759/channel/seriesdetail?sid=266684" title="二珂特别剪辑">二珂特别剪辑</a>
-              </li>
-              <li>
-                <a href="https://space.bilibili.com/338485759/channel/seriesdetail?sid=266639" title="二珂20190106演唱会">二珂20190106演唱会</a>
-              </li>
-
-              
-            </ul>
-          </li>
-          <li class="list_item">
-            <img src="data:image/webp;base64,UklGRgoEAABXRUJQVlA4IP4DAADQEACdASo2ADYAPpE6lkkloyGhLBgMALASCWUAxQxOggDR3eC/lS9xSiaXuAmVnwm0ss1TyTvsgoYvW+xHWPRH/1c6jfbvIZzjY7hQemNsxYSF5+suhQoMa9wcYhdJULXeuhSZZY0LDj6bMBTvWnXL13pSxrflwbQBSsNjCu39YaA0mcg1fhnZ6GVduGqiAAD+8VERozp1nnwDz4bE9LV38STqWwvRLPm4b6wwkmqo8FsQETazXUpf00gnQq8zaAQ0VaVeeWhPXErtCPeVIBefYiAOx+jWqzCsxZEIOjHgE4uiEn53SexEzu/L/fU4REwyPzhIzfigi7l3U7TWbfJTEfl7f8+1IxN8deyzGTUprOtsPLg1Zz3m+a7eDTyiJn8Eb/8WEa4tuLz/YSS1WGy9rs86kP6PJhR/J/pUUtWc1LFJ8MTFAn2fM/KvUQEnnuGfwL3hzX8N9dixV9UfxoBtKXSvPZn0MQDg3xnJov4/SuaM3/PYWZA6MzDsjNxQcRpD1/HaBp3XImhwrg1qYyTnBcPpT2JaxeM9rYZpYbYCM41t0NDjTlwafjrefX8HJJ06YFNEM4nOdvaoeH597pHr0fsBt1nQucayWpvne4+URnrpVsZOYDi8LMv5Pc4+xvAjJSR4RouavE43nL3gKmE8GZPX4PEA5W3ywJuQJPqTf2Sjp2TUhYfLTY3txqqZSKpT1DjlYIQr5t/RAc8Q2Tkjjje/CPzJqyCT+kAFFYNRjYr6We37q29s6JEf7z4W/rDZXbD8CKIdhgr75WQjkaTIxBMt95NGD3nKPKInmHZEFygeRl7PNhv+NcnDssRQ7Cr55vn/ONi+VG5KUksxMtNG9sHf79Isgt7X4Efllp1a6BLjmwnS/3lLEyD3bWr1lRim5doEJJK249e2jw8aPyScuWCGRlMB9r/fqnsRHRx+tpO/MvdY64B5Vd1FoHJG1PqVmS0zl1ntXFQe2zTG3gpENz3mfIOmBwAx5Imh+7/oW5O53Im3SrCpz91KjfP/B98SY+IaeIcqbecvqyBoay0h4FHrbHFDIQ/dkrqmM1DHA/axI1bjDkZaHgMOxCdb638LbjcFK8OMmK2Cf+SYzKm94Wm9dgCWaJFdLfF56yvRN6n1lzBr0QP8A5LysTt3iuZxUNcykgCLDYv/dnIO2fmZ8rBLkgt74Ca/jsMLG5IJT7Z74rgaXw7cFbNiq8QatZoYpqFkJ+8uEWW/jTYDNYldLc1ReiS9hHRSXrmz4Awjb7KgyQC8mPT2ilTI5jxUNYsNMiWiWAwnQeQZoUoRAd0LHyWCgTRGhWTgKY2MHKiuowGft71Obrhf9Xi0jASMpIk0E1KzJ5JuBA+yqAAAAA==" alt="VKwick" />
-            <h2 @click="externalJumpFn('https://space.bilibili.com/276886844/?spm_id_from=333.999.0.0')">VKwick</h2>
-            <ul class="foot_list_item">
-              <li>
-                求关注，求点赞，求投币，求收藏，求转发，求一切。
-                <!-- <a href="https://space.bilibili.com/276886844/?spm_id_from=333.999.0.0" title="VKwick">查看</a> -->
-              </li>
-              <li>
-                <a href="https://space.bilibili.com/276886844/article" title="VKwick">专栏-封面图</a>
+          <li class="list_item" v-for="(item, index) in supportLinks" :key="index">
+            <img :src="item.imgUrl" :alt="item.title" />
+            <h2> {{item.title}} </h2>
+            <ul class="foot_list_item"  v-for="(val, i) in item.children" :key="i">
+              <li @click="externalJumpFn(val.herf)">
+                <el-tag size="small" class="tag pointer mg-bt-10">
+                    <span v-if="val.type=='bili'"  style="color:palevioletred">哔哩哔哩</span>
+                    <span v-if="val.type=='dy'"  style="color:#000">抖音</span>
+                    <span v-if="val.type=='sing'"  style="color:#00BBB3">5Sing</span>
+                    <span v-if="val.type=='wyy'"  style="color:red">网易云</span>
+                  -- {{ val.name }}
+                </el-tag>
               </li>
             </ul>
           </li>
         </ul>
-        <div class="foot_btn">查看更多</div>
+        <div class="foot_btn" @click="jumpFun('support')">查看更多</div>
       </div>
     </div>
   </div>
@@ -265,45 +216,53 @@
    
 <script>
 import "swiper/css/swiper.min.css";
+import {supportLink} from "@/utils/support.js";
 import Swiper from "swiper";
 export default {
   data() {
     return {
+      supportLink: supportLink,
+      supportLinks:[],
       textContainerfour: [
         {
           title: "几张‘书不离手‘的胶片照片",
           img:'https://wx2.sinaimg.cn/mw2000/0025iZgBly1h5j0c7abv2j62re22s1kz02.jpg',
+          imgArr:['https://wx2.sinaimg.cn/mw2000/0025iZgBly1h5j0c7abv2j62re22s1kz02.jpg'],
           href:'https://weibo.com/1910672761/M2FxPqk6t?pagetype=profilefeed',
           active: true,
         },
         {
           title: "你们用随身听的那年，听的谁的歌。",
           img:'https://wx1.sinaimg.cn/mw2000/0025iZgBly1h3i13xu2e8j60yi1a0wi002.jpg',
-          // img:'https://wx1.sinaimg.cn/mw2000/0025iZgBly1h3i13xu2e8j60yi1a0wi002.jpg',
+          imgArr:['https://wx1.sinaimg.cn/mw2000/0025iZgBly1h3i13xu2e8j60yi1a0wi002.jpg'],
           href:'https://weibo.com/1910672761/Lz1UeuyD2?pagetype=profilefeed',
           active: false,
         },
         {
           title: "消失的画",
           img:'https://wx1.sinaimg.cn/mw2000/0025iZgBly1h3etbzx7kyj61jk2247wh02.jpg',
+          imgArr:['https://wx1.sinaimg.cn/mw2000/0025iZgBly1h3etbzx7kyj61jk2247wh02.jpg'],
           href:'https://weibo.com/1910672761/LyBGwnVqK?pagetype=profilefeed',
           active: false,
         },
         {
           title: "某天的夜里",
           img:'https://wx4.sinaimg.cn/mw2000/0025iZgBly1gy7dkwa283j62241jknpd02.jpg',
+          imgArr:['https://wx4.sinaimg.cn/mw2000/0025iZgBly1gy7dkwa283j62241jknpd02.jpg'],
           href:'https://weibo.com/1910672761/L9XejCC1m?pagetype=profilefeed',
           active: false,
         },
         {
           title: "滑满五天，开心！-滑雪照",
           img:'https://wx2.sinaimg.cn/mw2000/0025iZgBly1gx1rct2x76j61jk2241i002.jpg',
+          imgArr:['https://wx2.sinaimg.cn/mw2000/0025iZgBly1gx1rct2x76j61jk2241i002.jpg'],
           href:'https://weibo.com/1910672761/L4tRIyz0y?pagetype=profilefeed',
           active: false,
         },
         {
           title: "存图… 想去看雪❄️ ​​​",
           img:'https://wx2.sinaimg.cn/mw2000/0025iZgBgy1gwb961ksyqj622o340kjl02.jpg',
+          imgArr:['https://wx2.sinaimg.cn/mw2000/0025iZgBgy1gwb961ksyqj622o340kjl02.jpg'],
           href:'https://weibo.com/1910672761/L0ZJbjYu5?pagetype=profilefeed',
           active: false,
         },
@@ -333,8 +292,8 @@ export default {
   },
   components: {},
   methods: {
-    externalJumpFn(lianjie){
-      window.open(lianjie)
+    externalJumpFn(value){
+      window.open(value)
     },
     jumpFun(route) {
       if (this.$route.name != route) {
@@ -351,6 +310,9 @@ export default {
   },
   created() { },
   mounted() {
+  this.supportLinks.push(this.supportLink[1])
+  this.supportLinks.push(this.supportLink[2])
+  this.supportLinks.push(this.supportLink[3])
     let _this = this;
     //  有问题可以看swiper文档/swiper documents
     new Swiper(".swiper-container", {
@@ -658,6 +620,7 @@ export default {
             text-align: end;
           }
           .inset_video {
+            // width: 100%;height: 600px;background: #000;border-radius: 16px;
             border-radius: 16px;
             height: auto;
             left: 50%;
@@ -940,15 +903,14 @@ export default {
       .invest_img {
         display: flex;
         position: relative;
-        // margin-top: 80px;
        ::v-deep img{
           border-radius: 16px;
-          border: 4px solid;
+          border: 4px solid rgba(0,0,0,0.75);
         }
         .img_left {
           flex-shrink: 0;
           position: relative;
-          width: 38.5%;
+          width: 36.5%;
           z-index: 2;
 
           .left1 {
@@ -975,43 +937,60 @@ export default {
             width: 55%;
             position: absolute;
             top: 74%;
-            right: 2.7%;
+            right: 4.7%;
           }
         }
 
         .img_phone {
           -webkit-animation: insetSlideUpThree 8s linear 1s infinite forwards;
           animation: insetSlideUpThree 8s linear 1s infinite forwards;
-          // background: url("https://wx2.sinaimg.cn/mw2000/0025iZgBgy1gwb961ksyqj622o340kjl02.jpg") no-repeat 50%/100%;
           flex-shrink: 0;
           padding-top: 30px;
           position: relative;
           transition: background-image 0.3s linear;
-          width: 23%;
+          width: 26%;
           border-radius: 16px;
           overflow: hidden;
           height: 600px;
+          .inset_video {
+            width: 100%;
+            height: 600px;
+            background: #000;
+            border-radius: 16px;
+            border-radius: 16px;
+            // height: auto;
+            // left: 50%;
+            // overflow: hidden;
+            // pointer-events: none;
+            // position: absolute;
+            // top: 50%;
+            // -webkit-transform: perspective(480px) scaleX(0.96) rotateY(-8deg) skewY(4deg) translate(-58%, -50%);
+            // transform: perspective(480px) scaleX(0.96) rotateY(-8deg) skewY(4deg) translate(-58%, -50%);
+            // -webkit-transform-style: preserve-3d;
+            // transform-style: preserve-3d;
+            // width: 100%;
+          }
           img{
             width: 100%;
             height: 100%;
           }
           ::v-deep .el-image{
-          width: 100%;
-          height: 100%;
+            width: 100%;
+            height: 100%;
           }  
         }
 
         .img_right {
           flex-shrink: 0;
           position: relative;
-          width: 38.5%;
+          width: 36.5%;
 
           .right1 {
             -webkit-animation: insetSlideUpTwo 3s linear 1s infinite forwards;
             animation: insetSlideUpTwo 3s linear 1s infinite forwards;
             width: 52%;
             position: absolute;
-            top: -5%;
+            top: 0%;
             right: 4.3%;
           }
 
@@ -1020,7 +999,7 @@ export default {
             animation: insetSlideUpTwo 7s linear 1s infinite forwards;
             width: 52%;
             position: absolute;
-            top: 28%;
+            top: 32%;
             left: 20px;
           }
 
@@ -1029,7 +1008,7 @@ export default {
             animation: insetSlideUpTwo 5s linear 1s infinite forwards;
             width: 52%;
             position: absolute;
-            bottom: 11%;
+            bottom: 8%;
             left: 27%;
           }
         }
@@ -1272,6 +1251,8 @@ export default {
           width: 29%;
           img{
             border-radius: 50%;
+            width: 50px;
+            height: 50px;
           }
           h2 {
             font-size: 24px;

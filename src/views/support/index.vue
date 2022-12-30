@@ -15,14 +15,14 @@
     </div>
     <div class="help_question">
       <div class="question_content help_content">
-        <h2 class="question_title">按up主查找</h2>
+        <h2 class="question_title">按up主查找
+          <span class="mg-lt-10 font-size-12 font-weight-700 color62657A">排名不分先后</span>
+        </h2>
         <div class="question_item" v-for="(item, index) in newQuestionData" :key="index">
           <div class="item_big" @click="itemFun(index)">
             <div style="display: flex; align-items: center">
-              <img class="item_icon" style="width: 52px; margin-right: 10px; border-radius: 50%;" :src="item.icon" alt="" />
-              <span style="font-size: 24px" class="item_big_title">{{
-              item.title
-              }}</span>
+              <img class="item_icon" style="width: 52px; margin-right: 10px; border-radius: 50%;" :src="item.imgUrl" alt="" />
+              <span class="item_big_title font-size-24">{{ item.title }}</span>
             </div>
             <div >
               <img class="icon_status" v-if="!item.show" src="@/assets/image/upward.png" alt="" />
@@ -31,16 +31,28 @@
           </div>
           <div v-if="item.show">
             <div class="item_children" v-for="(val, i) in item.children" :key="i" >
-              <div class="item_children_title" @click="childrenFun(index, i)">
-                <img v-if="!val.show" style="width: 18px; margin-right: 10px" src="@/assets/image/dropDown.png" alt=""
-                />
-                <img v-else style="width: 18px; margin-right: 10px" src="@/assets/image/pull.png" alt=""
-                   />
-                <span style="font-size: 20px; padding: 20px 0">{{val.title}}</span>
+              <div class="item_children_title" @click="childrenFun(index, i)" style="margin-bottom: 7px;">
+                <div v-if="val.children&&val.children.length>1"  >
+                  <img v-if="!val.show" style="width: 18px; margin-right: 10px" src="@/assets/image/dropDown.png" alt="" />
+                  <img v-else style="width: 18px; margin-right: 10px" src="@/assets/image/pull.png" alt="" />
+                </div>
+                <el-avatar  class="iconImg" :src="val.imgUrl||item.imgUrl">
+                </el-avatar>
+                <el-tag size="small" class="tag pointer" @click="externalJumpFn(val.herf)">
+                    <span v-if="val.type=='bili'"  style="color:palevioletred">哔哩哔哩</span>
+                    <span v-if="val.type=='dy'"  style="color:#000">抖音</span>
+                    <span v-if="val.type=='sing'"  style="color:#00BBB3">5Sing</span>
+                    <span v-if="val.type=='wyy'"  style="color:red">网易云</span>
+                  -- {{ val.name }}
+                </el-tag>
+                <el-link  v-if="val.children&&val.children.length==1" type="info" class="mg-lt-10 font-size-12 pointer">{{ val.children[0].name }}</el-link>
               </div>
-              <div v-if="val.show" class="children_answer">
-                <el-avatar v-if="val.imgUrl" :src="val.imgUrl"></el-avatar>
-                <el-tag size="small" class="tag">{{ val.content }}</el-tag>
+              <div v-if="val.show&&val.children&&val.children.length>1" class="children_answer">
+                <el-timeline >
+                    <el-timeline-item style="max-width:900px"  placement="top" v-for="(itt, i) in val.children" :key="i">
+                        <el-link type="primary" class="pointer" @click="externalJumpFn(itt.herf)">{{ itt.name }}</el-link>
+                    </el-timeline-item>
+                </el-timeline>
               </div>
             </div>
           </div>
@@ -59,22 +71,26 @@
 </template>
   
 <script>
-import questionData from "@/utils/questions.js";
+import {supportLink} from "@/utils/support.js";
 export default {
   data() {
     return {
-      questionData: questionData,
-      newQuestionData: questionData,
-      supportVal: ''
+      supportLink: supportLink,
+      newQuestionData: supportLink,
+      supportVal: '',
+      Object:Object
     };
   },
   components: {},
   methods: {
+    externalJumpFn(value){
+      window.open(value)
+    },
     supportInt(){
        this.newQuestionData=[]
-      for(let key in this.questionData){
-        if(JSON.stringify(this.questionData[key]).indexOf(this.supportVal)!=-1){
-          this.newQuestionData.push(this.questionData[key])
+      for(let key in this.supportLink){
+        if(JSON.stringify(this.supportLink[key]).indexOf(this.supportVal)!=-1){
+          this.newQuestionData.push(this.supportLink[key])
         }
       }
     },
@@ -82,8 +98,7 @@ export default {
       this.newQuestionData[val].show = !this.newQuestionData[val].show;
     },
     childrenFun(val, index) {
-      this.newQuestionData[val].children[index].show =
-        !this.newQuestionData[val].children[index].show;
+      this.newQuestionData[val].children[index].show =!this.newQuestionData[val].children[index].show;
     },
   },
   created() { },

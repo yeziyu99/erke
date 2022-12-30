@@ -3,18 +3,27 @@
     <div class="yinyue_top">
       <div class="yinyue_top_left">
         <div>
-          <img class="imgrotate" :src="computCur||'https://p1.music.126.net/PMZ2HH_vuAhtNCOSrfGCGQ==/109951168131572411.jpg'"
-            alt="">
+          <img class="imgrotate" @error='imgOnError'
+            :src="computCur||'https://p1.music.126.net/PMZ2HH_vuAhtNCOSrfGCGQ==/109951168131572411.jpg'" alt="">
         </div>
+
       </div>
       <div class="yinyue_top_con">
         <div class="yinyue_top_con_title">
-          {{ curMusic.name }}
+          {{ curMusic.song_name  }} - {{ curMusic.author }}
+          <el-tag size="small"  type="success"  class="mg-rg-5 pointer">{{ curMusic.song_type == 'fc' ? '翻唱' : '原唱' }}</el-tag>
         </div>
+        <div ></div>
         <!-- <div class="music-title-name"> -->
-        <div class="music-lyric-box">
-          <div class="music-lyric" style="">
+        <div class="music-lyric-box" ref="musicLyricBox">
+          <div class="music-lyric" v-if="curMusic.lrcType==0">
+            <span style="color:red">*该歌词不支持滚动*</span>
+          </div>
+          <div class="music-lyric"  ref="musicLyric" v-if="curMusic.lyric">
             <span v-for="(i, key) in curMusic.lyric" :key="key">{{ i }}</span>
+          </div>
+          <div class="music-lyric" v-if="!curMusic.lyric">
+            <span>二珂的直播间douyu 78622~欢迎您来收听~</span>
           </div>
         </div>
         <!-- </div> -->
@@ -29,14 +38,14 @@
         <icon-base icon-name="random" icon-title="随机播放" v-else @click.native="handleChangeType">
           <icon-random /></icon-base>
         <div class="music-title-name">
-          <div >
+          <div>
             <span>{{ curMusic.name }}</span>
             <span>{{ curMusic.arname }}</span>
           </div>
-          
+
         </div>
 
-        <icon-base class="iconSwitch" icon-name="switch" icon-title="切换" >
+        <icon-base class="iconSwitch" icon-name="switch" icon-title="切换">
           <icon-switch /></icon-base>
       </div>
       <div class="music-process">
@@ -71,19 +80,34 @@
         </icon-base>
       </div>
     </div>
-    <audio autoplay  style="display:none" :src="curMusic.musicUrl" id="music-audio" type="audio/mpeg" controls></audio>
-    <el-drawer title="播放列表" :visible.sync="drawer" :direction="direction" :before-close="handleClose">
-      <div id="playlistcom">
-        <ul ref="playListComRef">
-          <div v-for="(item, index) in playlist" :key="index">
+    <!-- 音乐文件-隐藏 -->
+    <audio autoplay style="display:none" :src="curMusic.musicUrl" id="music-audio" type="audio/mpeg" controls></audio>
+    <!-- 播放列表 - 抽屉形式 -->
+    <el-drawer title="播放列表" :visible.sync="isShowPlayList" :direction="direction" :before-close="handleClose" >
+      <div  id="playlistcom" class="infinite-list-wrapper" style="overflow:auto">
+        <ul ref="playListComRef" class="list" v-infinite-scroll="load" infinite-scroll-disabled="disabled">
+          <div v-for="(item, index) in songDatasMthMethodList" :key="index">
             <div class="line"></div>
-            <li @click="choseItem(index)" :class="{currentLi:index==curIndex}">
-              <div class="item-song">{{ item.name }}</div>
-              <div class="item-artist">{{ item.arname }}</div>
+            <li @click="choseItem(index)" :class="{ currentLi: index == curIndex }" class="infinite-list-item">
+              <div class="item-song">{{ item.song_name }}</div>
+              <div class="item-artist">{{ item.author }}--{{ item.song_type == 'fc' ? '翻唱' : '原唱' }}</div>
             </li>
           </div>
         </ul>
+        <p v-if="loading" style="text-align: center;">加载中...</p>
+        <p v-if="noMore" style="text-align: center;">没有更多了</p>
       </div>
+      <!-- <div  >
+        <ul  class="infinite-list" v-infinite-scroll="load" style="overflow:auto">
+          <div v-for="(item, index) in songDatasMthMethodList" :key="index">
+            <div class="line"></div>
+            <li @click="choseItem(index)" :class="{ currentLi: index == curIndex }" class="infinite-list-item">
+              <div class="item-song">{{ item.song_name }}</div>
+              <div class="item-artist">{{ item.author }}--{{ item.song_type == 'fc' ? '翻唱' : '原唱' }}</div>
+            </li>
+          </div>
+        </ul>
+      </div> -->
     </el-drawer>
   </div>
 </template>
@@ -91,7 +115,7 @@
 
 <script>
 import http from "@/http/service";
-
+import WaveSurfer from 'wavesurfer.js'
 import "./css/global.css";
 import iconBase from "./iconBase";
 import iconLoop from "./icons/iconLoop";
@@ -106,31 +130,15 @@ import IconSingle from "./icons/iconSingle.vue";
 import iconSuona from "./icons/iconSuona";
 import iconSuspend from "./icons/iconSuspend";
 import iconSwitch from "./icons/iconSwitch";
-import shanshan from "../../assets/music/1.mp3";
-import { erkeMusic } from "../../utils/music.js";
+// import shanshan from "../../assets/music/姗姗.mp3";
+// import { erkeMusic } from "../../utils/music.js";
 
 export default {
   name: "web-music-com",
   props: {
-    size: {
-      type: String,
-      validator: function (value) {
-        // 这个值必须匹配下列字符串中的一个
-        return ["medium", "small"].indexOf(value) !== -1;
-      },
-      default: "medium",
-    },
-    playlistid: {
+    paramsId: {
       type: Number,
-      default: 980148359,
-    },
-    playlistheight: {
-      type: Number,
-      default: 186,
-    },
-    baseurl: {
-      type: String,
-      default: "https://autumnfish.cn/",
+      default: 0,
     },
   },
   components: {
@@ -150,19 +158,20 @@ export default {
   data() {
     IconSingle;
     return {
+      wavesurfer: null,
       direction: 'rtl',
-      drawer: false,
-      // playlist:[{ name: "获取歌曲失败", arname: "" }],
+      drawer: true,
       height: 186,
-      playlist: [],
-      playlistH: 0,
-      // 现在播放的音乐在playlist中的index
+      songDatasMthMethodList: [],
+      songDatasMthMethodListTotal: [],
       curIndex: 0,
+      curIndexs: 1,
       curMusic: {
         id: 0,
-        arname: "二珂直播翻唱合集",
-        name: "二珂 - 月牙湾",
-        url: shanshan,
+        arname: "二珂",
+        name: "-",
+        song_type:'fc',
+        url: '-',
         picUrl: "https://p1.music.126.net/PMZ2HH_vuAhtNCOSrfGCGQ==/109951168131572411.jpg",
         lyric: [],
         lyricTime: [],
@@ -184,68 +193,76 @@ export default {
       // 是否静音
       ismute: false,
       // 是否显示播放列表
-      isShowPlayList: false,
+      isShowPlayList: true,
+      loading: false,
+      info:{
+        page:1,
+        methods: 'aid',
+        method: 1,
+      }
       // 是否显示歌词
-      // isShowLyric: false,
     };
   },
   created() {
-    
     this.getHot();
   },
+  
   methods: {
-    // 默认选中歌曲
-    // defaultChose() {
-    //   var listbox = document.querySelector("#playlistcom");
-    //   var listitems = listbox.querySelectorAll("li");
-    //   listitems[this.curIndex].className = "currentLi";
-    // },
+    load () {
+      if(this.songDatasMthMethodList.length >= this.songDatasMthMethodListTotal){
+        return
+      }
+      this.loading = true;
+      this.songDatasMthMethodList.length >= this.songDatasMthMethodListTotal
+      this.info.page=this.info.page+1;
+      this.getSongDatasMthMethod()
+        // setTimeout(() => {
+        //   this.count += 2
+        //   this.loading = false
+        //   console.log( this.count,this.loading)
+        // }, 2000)
+      },
+    imgOnError() {
+      this.curMusic.computCur = ''
+    },
     // 滑动当前播放歌曲至视图的顶部,必须当前视图可见，none不起作用。
     scrollToTop() {
       document
         .querySelector("li.currentLi")
         .parentElement.scrollIntoView({ behavior: "smooth" });
     },
-    // 获取电台数据
+    getSongDatasMthMethod() {
+      http.getSongDatasMthMethod({
+        methods: this.info.methods,
+        method: this.info.method,
+        page: this.info.page
+      }).then(rs => {
+        this.loading = false
+        if (rs.code == 200) {
+          this.songDatasMthMethodListTotal=rs.datas.total;
+          if (rs.datas.lists.length) {
+            this.songDatasMthMethodList = [...this.songDatasMthMethodList,...rs.datas.lists];
+          } else {
+            this.songDatasMthMethodList = [];
+
+          }
+        } else {
+          this.songDatasMthMethodList = [...this.songDatasMthMethodList];
+        }
+      }).catch((err) => {
+        this.loading = false
+        this.songDatasMthMethodList = [...this.songDatasMthMethodList];
+        console.log(err);
+      });
+    },
+    // 因为谷歌等软件规定 进入页面需要触发交互之后才可以播放声音
     getHot() {
       this.$alert('欢迎来到本站，开始您的听歌之旅吧', '开始听歌', {
-          confirmButtonText: '确定',
-          callback: action => {
-            this.playlist=erkeMusic
-            // this.$message({
-            //   type: 'info',
-            //   // message: `action: ${ this.playlist=erkeMusic }`
-            // });
-          }
-        });
-      
-      // http.getDjProgram({rid:this.playlistid,}).then((rs) => {
-      //     if (rs.code==200) {
-      //       // let ids = rs.playlist.trackIds;
-      //       let hotList = rs.programs;
-      //       hotList.forEach((item, key) => {
-      //         this.playlist.push({
-      //           // ...item,
-      //           arname: item.radio.name,
-      //           name: item.name,
-      //           id: item.radio.lastProgramId,
-      //           musicUrl: '',
-      //           picUrl: item.radio.picUrl,
-      //           duration:item.duration,
-      //           // duration:item.duration,
-      //           createTime:item.createTime,
-      //           lyric: [],
-      //           lyricTime: [],
-      //         });
-      //         console.log(this.playlist)
-      //       });
-      //     } else {
-      //     }
-      //     console.log(JSON.stringify(this.playlist))
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
+        confirmButtonText: '确定',
+        callback: action => {
+          this.getSongDatasMthMethod()
+        }
+      });
     },
     // 改变切歌方式
     handleChangeType() {
@@ -253,8 +270,9 @@ export default {
     },
     // 获取歌曲信息
     getSong() {
-      // http.getDjProgramDetail({ id: this.curMusic.id }).then((rs) => {
-      //   if (rs.code == 200) {
+      http.getSongUrl({ songid: this.curMusic.song_id, songtype: this.curMusic.song_type }).then((rs) => {
+        if (rs.code == 200) {
+          this.curMusic.musicUrl = rs.datas.urls.hq.burl||rs.datas.urls.lq.burl||rs.datas.urls.sq.burl
           let a = document.querySelector("audio");
           if (a != null) {
             a.load();
@@ -274,34 +292,43 @@ export default {
             };
           } else {
           }
-      //   }
-      // })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
+        }
+      })
+        .catch((err) => {
+          console.log(err);
+        });
 
     },
-    // 获取歌词
+    // 获取歌词 现在都是没有时间的歌词 所以不加滚动
     getLyric() {
-      // http.getLyric({id:this.curMusic.id}).then((rs) => {
-      //     if (rs.code==200 && rs.lrc) {
-      //       var lyricD = rs.lrc.lyric.split("\n");
-      //       var timeArr = [];
-      //       var lyricArr = [];
-      //       lyricD.forEach((item, key) => {
-      //         let curArr = item.slice(1).split("]");
-      //         // 把01:00.23 转换为秒,
-      //         timeArr.push(curArr[0]);
-      //         lyricArr[key] = curArr[1] || "";
-      //       });
-      //       console.log(lyricArr,timeArr)
-      //       this.$set(this.curMusic, "lyric", lyricArr);
-      //       this.$set(this.curMusic, "lyricTime", timeArr);
-      //     }
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
+      http.getSongLrc({ songid: this.curMusic.song_id, songtype: this.curMusic.song_type }).then((rs) => {
+        if (rs.code == 200) {
+          this.curIndexs=this.curIndex;
+          // 歌词不支持滚动的
+          this.curMusic.lrcType=rs.datas.lrc.type;
+          var lyricD = rs.datas.txt.split("\n");
+          var timeArr = [];
+          var lyricArr = [];
+          if(rs.datas.lrc.type==0){
+            lyricD.forEach((item, key) => {
+              lyricArr[key] = item || "";
+            });
+          }else{
+            // 歌词支持滚动的
+            lyricD.forEach((item, key) => {
+              let curArr = item.slice(1).split("]");
+              // 把01:00.23 转换为秒,
+              timeArr.push(curArr[0]);
+              lyricArr[key] = curArr[1] || "";
+            });
+            this.$set(this.curMusic, "lyricTime", timeArr);//时间=>主要运用于歌词滚动
+          }
+          this.$set(this.curMusic, "lyric", lyricArr);
+        }
+      })
+        .catch((err) => {
+          console.log(err);
+        });
     },
     // 获取dom audio对象
     getAudio() {
@@ -347,7 +374,7 @@ export default {
             .setAttribute("style", "animation-play-state: running");
           break;
         case 1:
-          if (this.curIndex < this.playlist.length - 1) {
+          if (this.curIndex < this.songDatasMthMethodList.length - 1) {
             this.curIndex = this.curIndex + 1;
             document
               .querySelector("img.imgrotate")
@@ -355,7 +382,7 @@ export default {
           }
           break;
         default:
-          this.curIndex = parseInt(Math.random() * this.playlist.length, 10);
+          this.curIndex = parseInt(Math.random() * this.songDatasMthMethodList.length, 10);
           document
             .querySelector("img.imgrotate")
             .setAttribute("style", "animation-play-state: running");
@@ -382,7 +409,7 @@ export default {
           }
           break;
         default:
-          this.curIndex = parseInt(Math.random() * this.playlist.length, 10);
+          this.curIndex = parseInt(Math.random() * this.songDatasMthMethodList.length, 10);
           document
             .querySelector("img.imgrotate")
             .setAttribute("style", "animation-play-state: running");
@@ -408,14 +435,9 @@ export default {
     // 显示隐藏播放列表
     collapsePlayList() {
       this.isShowPlayList = !this.isShowPlayList;
-      // if (this.isShowPlayList) {
-      //   this.playlistH = this.playlistheight;
-      // } else {
-      //   this.playlistH = 0;
-      // }
       // 滑动当前播放音乐至视图顶部。
-      this.drawer = true;
-      let then=this;
+      // this.drawer = true;
+      let then = this;
       if (this.isShowPlayList) {
         setTimeout(() => {
           then.scrollToTop();
@@ -427,20 +449,23 @@ export default {
     }
   },
   computed: {
+    noMore () {
+        return this.songDatasMthMethodList.length >= this.songDatasMthMethodListTotal
+      },
+    disabled () {
+      return this.loading || this.noMore
+    },
     computCur: function () {
-      if (this.playlist.length > 0) {
-        this.curMusic = this.playlist[this.curIndex];
-        // this.curMusic.picUrl = this.playlist[this.curIndex].picUrl;
-        // this.curMusic.id = this.playlist[this.curIndex].id;
-        // this.curMusic.name = this.playlist[this.curIndex].name;
-        // this.curMusic.arname = this.playlist[this.curIndex].arname;
+      if (this.songDatasMthMethodList.length > 0) {
+        this.curMusic = this.songDatasMthMethodList[this.curIndex];
         // 获取歌曲
-       var then=this
-        setTimeout(function(){
+        var then = this
+        console.log(then.curIndexs,then.curIndex)
+        if(then.curIndexs!=then.curIndex){
           then.getSong();
-        },100)
+          then.getLyric();
+        }
         // 获取歌词
-        // this.getLyric();
         return this.curMusic.picUrl;
       }
     },
@@ -479,32 +504,22 @@ export default {
     },
     // 监听现在播放时间，滚动歌词
     currtime: function () {
-      var i = this.curMusic.lyricTime.findIndex((item) => {
-        return item.indexOf(this.currtime) != -1;
-      });
-      // 第i个设置on transform i*16
-      if (i !== -1) {
-        document
-          .querySelector(".music-lyric")
-          .setAttribute(
-            "style",
-            "transition: -webkit-transform 0.25s ease-out 0.1s;transform:translateY(-" +
-            i * 16 +
-            "px)"
-          );
-        if (document.querySelector("span.on") !== null) {
-          document.querySelector("span.on").className = "";
+      if(this.curMusic.lyricTime){
+        var i = this.curMusic.lyricTime.findIndex((item) => {
+          return item.indexOf(this.currtime) != -1;
+        });
+        // 第i个设置on transform i*30
+        if (i !== -1) {
+          if (document.querySelector("span.on") !== null) {
+            document.querySelector("span.on").className = "";
+          }
+          document.querySelector(".music-lyric").children[i].className = "on";
+          if (i > 5) {
+            this.$refs.musicLyricBox.scrollTop = 30 * (i - 5);
+          }
         }
-        document.querySelector(".music-lyric").children[i].className = "on";
       }
     },
-    // curIndex(val, oldval) {
-    //   var listbox = document.querySelector("#playlistcom");
-    //   var listitems = listbox.querySelectorAll("li");
-    //   listitems[oldval].className = "";
-    //   listitems[val].className = "currentLi";
-    //   listitems[val].parentElement.scrollIntoView({ behavior: "smooth" });
-    // },
   },
   // updated() {
   //   this.defaultChose();
@@ -513,56 +528,78 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// .mixin-components-container {
+//   width: 100% !important;
+//   // #f0f2f5;
+//   padding: 30px;
+//   /* min-height: calc(100vh - 84px); */
+// }
+// .el-card__body {
+//   height: 70px !important;
+//   padding: 0 auto !important;
+// .card {
+//   height: 70px;
+// #waveform {
+// wave {
+//   height: 50px !important;}}}}
 .yinyue_top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 800px;
+  flex: 1;
+  min-width: 1170px;
+  margin: 0 auto;
+}
+
+.yinyue_top_left {
+  width: 50%;
+  min-width: 500px;
+
+  div {
+    height: 500px;
+    background-color: tan;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+    background: url("../../component/webMusicCom/img/singlecover.png") no-repeat center;
+    background-size: contain;
+    padding: 5px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    min-height: 800px;
-    flex:1
-  }
+    justify-content: center;
 
-  .yinyue_top_left {
-    width: 500px;
-
-    div {
-      height: 500px;
-      background-color: tan;
-      border-radius: 10px 10px 0 0;
-      text-align: center;
-      background: url("../../component/webMusicCom/img/singlecover.png") no-repeat center;
-      background-size: contain;
-      padding: 5px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      img {
-        height: 75%;
-        max-width: 100%;
-        border-radius: 50%;
-      }
+    img {
+      height: 75%;
+      max-width: 100%;
+      border-radius: 50%;
     }
   }
+}
 
-  .yinyue_top_con {
-    flex: 1;
-    height: 100%;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-  }
+.yinyue_top_con {
+  flex: 1;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
 
-  .yinyue_top_con_title {
-    font-size: 38px;
-    font-weight: 600;
-    margin: 10px 0;
-  }
+.yinyue_top_con_title {
+  font-size: 38px;
+  font-weight: 600;
+  margin: 10px 0;
+}
 
-  .yinyue_top_con_geci {
-    margin: 20px 0;
-    font-size: 18px;
-  }
+.yinyue_top_con_geci {
+  margin: 20px 0;
+  font-size: 18px;
+}
+
 ::v-deep {
+  .el-drawer.rtl {
+    min-width: 200px;
+  }
+
   .f-cd {
     height: 111px;
   }
@@ -583,7 +620,7 @@ ul {
 }
 
 .currentLi {
-  color: skyblue;
+  color: red;
 }
 
 li {
@@ -724,16 +761,19 @@ li:hover {
   background: #9e9e9e;
   opacity: 0.5;
 }
+
 .music-lyric {
   display: flex;
   flex-direction: column;
 }
+
 .music-lyric-box {
   font-size: 12px;
   top: 0px;
   bottom: 0px;
   overflow-y: auto;
   flex: 1;
+  margin: 150px 0;
 
   span {
     height: 30px;

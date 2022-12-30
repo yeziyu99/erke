@@ -85,11 +85,6 @@ export default {
     display: flex;
     align-items: center;
     flex-direction: column;
-    // background-image: url("../../assets/image/about.png");
-    // background-image: url("../../assets/images/erkexh.png");
-    // background-repeat: no-repeat;
-    // background-position: bottom 0px right 23%;
-    // background-size: 200px 300px;
     
     .about_head_title {
       width: 60%;
@@ -103,10 +98,6 @@ export default {
       background-repeat: no-repeat;
       background-position: bottom 0px right 0px;
       background-size: 200px 300px;
-      // background-image: url("../../assets/images/erkexihuan.png");
-      // background-repeat: no-repeat;
-      // background-position: top 38% left 0%;
-      // padding-left: 22px;
 
       .title_left {
         white-space: nowrap;

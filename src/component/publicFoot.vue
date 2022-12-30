@@ -3,17 +3,6 @@
     <div class="publicFoot_back">
       <div class="publicFoot_head">
         <img class="logo" src="@/assets/images/5.png" alt="" />
-        <!-- <ul>
-        <li class="publicFoot_tip">App账号</li>
-        <li class="publicFoot_btn" style="margin-right: 5px" @click="externalJumpFn('https://www.douyu.com/78622')">
-          <img src="@/assets/images/douyu.png" alt="" />
-          斗鱼
-        </li>
-        <li class="publicFoot_btn"  @click="externalJumpFn('https://weibo.com/u/1910672761?topnav=1&wvr=6&topsug=1')">
-          <img src="@/assets/images/weibo.png" alt=""  />
-          微博
-        </li>
-      </ul> -->
       </div>
       <div class="publicFoot_con">
         <ul class="publicFoot_con_left">
@@ -37,10 +26,11 @@
         </ul>
         <ul class="publicFoot_con_right">
           <li class="con_right_title">
-            UI：叶子宇<br />
+            非官方网站<br />
             前端：叶子宇<br />
             后端：黄小珂<br />
-            非官方网站<br />
+            UI：叶子宇&&周三鸽<br />
+            资料：周三鸽&&叶子宇<br />
           </li>
           <li class="con_right_bottom">346989693@qq.com </li>
         </ul>

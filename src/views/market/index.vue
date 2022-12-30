@@ -18,15 +18,14 @@
           <div class="banner_btn" v-for="(item, index) in btnList" :key="index">
             <a href="" @click="externalJumpFn(erkeLink[items].herf)" v-for="(items, ind) in item" :key="ind">
               <img :src="erkeLink[items].img" />
-              {{erkeLink[items]['remarks']}}
+              {{ erkeLink[items]['remarks'] }}
             </a>
           </div>
           <p>显示的图像仅用于展示作用</p>
         </div>
         <div class="banner_img">
           <img src="@/assets/image/phone.png" alt="" />
-          <video class="inset_video" muted playsinline webkit-playsinline autoplay loop preload="auto"
-            data-status="playing">
+          <video class="inset_video" playsinline webkit-playsinline autoplay loop preload="auto" data-status="playing">
             <source src="@/assets/images/tianmei.mp4" />
           </video>
         </div>
@@ -99,151 +98,50 @@
         </div>
       </div>
     </div>
-    <div class="invest_list">
-      <div class="list_title font_Bold" id="list_title">本站可播放音乐</div>
-      <div>
-        <el-col :span="8" v-for="(item, index) in wyList" :key="index" style="padding: 0 10px 10px;">
-          <el-card shadow="hover" :body-style="{ padding: '0px' }">
-            <el-image style="width: 367px;height: 367px;" class="image swiper-img" src="https://wsingbssdl.kugou.com/060ae290b3bdceffa7f2ada54816c41e.png_360x360.png" :preview-src-list="['https://wsingbssdl.kugou.com/060ae290b3bdceffa7f2ada54816c41e.png_360x360.png']" fit="cover">
+    <div class="invest_list clearfix">
+      <div class="list_title font_Bold clearfix" id="list_title">
+        本站可播放音乐
+        <el-button type="primary" class="button" style="background: #ffe100;color:#000" @click="jumpFun('music')">跳转播放页查看更多</el-button>
+      </div>
+      <div v-if="songDatasMthMethodList.length">
+        <el-col :span="8" v-for="(item, index) in songDatasMthMethodList" :key="index" style="padding: 0 10px 10px;">
+          <el-card shadow="hover">
+            <el-image style="width: 200px;height: 200px;" class="image swiper-img"
+              src="https://wsingbssdl.kugou.com/060ae290b3bdceffa7f2ada54816c41e.png_360x360.png"
+              :preview-src-list="['https://wsingbssdl.kugou.com/060ae290b3bdceffa7f2ada54816c41e.png_360x360.png']"
+              fit="cover">
             </el-image>
-            <div style="padding: 14px;">
-              <span>{{ item.name }}-{{ item.al.name }}</span>
+            <div class="invest_list_r pointer">
+              <div class="mg-bt-10">
+                <p class="mg-bt-5">{{ item.song_name }}-{{ item.author }}</p>
+                <el-link type="info">{{ item.song_type == 'fc' ? '翻唱' : '原唱' }}</el-link>
+              </div>
               <div class="bottom clearfix">
-                <span>{{ item.alia[0] }}</span>
-                <el-button type="text" class="button" @click="jumpFun('music')">播放</el-button>
+                <el-button type="primary" class="button" @click="jumpFun('music',item.id)">播放</el-button>
               </div>
             </div>
           </el-card>
         </el-col>
+      </div>
+      <div v-if="!songDatasMthMethodList.length">
+        暂无符合参数的数据
       </div>
     </div>
-    <!-- <div class="invest_list">
-      <div class="list_title font_Bold" id="list_title">歌曲链接直跳</div>
-      <div class="tab">
-        <el-tabs v-model="erkeAlbumName">
-          <el-tab-pane :label="item.title" :name="item.title" v-for="(item, index) in erkeAlbum" :key="index">
-            <el-table stripe :data="item.song" style="width: 100%; margin-top: 44px; margin-bottom: 60px">
-              <el-table-column prop="name" label="歌名" align="center">
-                <template slot-scope="scope">
-                  <div>
-                    {{ scope.row.name || '-' }}
-                  </div>
-                </template>
-              </el-table-column>
-              <el-table-column prop="makeWord" label="作词" align="center">
-                <template slot-scope="scope">
-                  <div>
-                    {{ scope.row.makeWord || '-' }}
-                  </div>
-                </template>
-              </el-table-column>
-              <el-table-column prop="compose" label="作曲" align="center">
-                <template slot-scope="scope">
-                  <div>
-                    {{ scope.row.compose || '-' }}
-                  </div>
-                </template>
-              </el-table-column>
-              <el-table-column prop="arranger" label="编曲" align="center">
-                <template slot-scope="scope">
-                  <div>
-                    {{ scope.row.arranger || '-' }}
-                  </div>
-                </template>
-              </el-table-column>
-              <el-table-column prop="qqyinyue" label="QQ音乐" align="center">
-                <template slot-scope="scope">
-                  <span v-if="!scope.row.qqyinyue">暂无</span>
-                  <el-link v-if="scope.row.qqyinyue" :href="scope.row.qqyinyue" type="primary" icon="el-icon-headset">播放
-                  </el-link>
-                </template>
-              </el-table-column>
-              <el-table-column prop="kugouyinyue" label="酷狗音乐" align="center">
-                <template slot-scope="scope">
-                  <span v-if="!scope.row.kugouyinyue">暂无</span>
-                  <el-link v-if="scope.row.kugouyinyue" :href="scope.row.kugouyinyue" type="primary"
-                    icon="el-icon-headset">播放</el-link>
-                </template>
-              </el-table-column>
-              <el-table-column prop="kuwoyinyue" label="酷我音乐" align="center">
-                <template slot-scope="scope">
-                  <span v-if="!scope.row.kuwoyinyue">暂无</span>
-                  <el-link v-if="scope.row.kuwoyinyue" :href="scope.row.kuwoyinyue" type="primary"
-                    icon="el-icon-headset">播放</el-link>
-                </template>
-              </el-table-column>
-              <el-table-column prop="wangyiyunyinyue" label="网易云音乐" align="center">
-                <template slot-scope="scope">
-                  <span v-if="!scope.row.wangyiyunyinyue">暂无</span>
-                  <el-link v-if="scope.row.wangyiyunyinyue" :href="scope.row.wangyiyunyinyue" type="primary"
-                    icon="el-icon-headset">播放</el-link>
-                </template>
-              </el-table-column>
-              <el-table-column prop="wangyiyunyinyue" label="本站直接播放" align="center">
-                <template slot-scope="scope">
-                  <span v-if="!scope.row.wangyiyunyinyue">暂无</span>
-                  <el-link v-if="scope.row.wangyiyunyinyue" :href="scope.row.wangyiyunyinyue" type="primary"
-                    icon="el-icon-headset">播放</el-link>
-                </template>
-              </el-table-column>
-            </el-table>
-          </el-tab-pane>
-        </el-tabs>
-      </div>
-    </div> -->
-    <!-- <div class="invest_list">
-      <div class="list_title font_Bold" id="list_title">网易云-跳页面播放</div>
-      <div>
-        <el-col :span="8" v-for="(item, index) in wyList" :key="index" style="padding: 0 10px 10px;">
-          <el-card shadow="hover" :body-style="{ padding: '0px' }">
-            <el-image style="width: 367px;height: 367px;" class="image swiper-img" :src="item.al.picUrl" :preview-src-list="[item.al.picUrl]" fit="cover">
-            </el-image>
-            <div style="padding: 14px;">
-              <span>{{ item.name }}-{{ item.al.name }}</span>
-              <div class="bottom clearfix">
-                <span>{{ item.alia[0] }}</span>
-                <el-button type="text" class="button" @click="jumpFun('wyy')">播放</el-button>
-              </div>
-            </div>
-          </el-card>
-        </el-col>
-      </div>
-    </div> -->
-    <!-- <br/> -->
-    <!-- <div class="invest_list">
-      <div class="list_title font_Bold" id="list_titlekg">酷狗-直接跳转</div>
-      <el-col :span="8" v-for="(item, index) in kgList" :key="index" style="padding: 0 10px 10px;">
-        <el-card shadow="hover" :body-style="{ padding: '0px' }">
-          <el-image style="width: 367px;height: 367px;" class="image swiper-img" :src="item.album_img" :preview-src-list="[item.album_img]" fit="cover">
-          </el-image>
-          <div style="padding: 14px;">
-            <span>{{ item.song_name }}-{{ item.album_name }}</span>
-            <div class="bottom clearfix">
-              <time>{{ item.song_publish_date }}</time>
-              <el-button type="text" class="button" @click="externalJumpFn(item.song_url)">跳转</el-button>
-            </div>
-          </div>
-        </el-card>
-      </el-col>
-    </div> -->
+    <div class="foot_btn" @click="songDatasMthMethodBoolFn()">{{songDatasMthMethodBool?'收起':'展开更多'}}</div>
   </div>
 </template>
 <script>
-// https://wsaudiobssdlbig.yun.kugou.com/202212071450/dda38b3c76d74430d144d32061c99d3b/bss/extname/wsaudio/e4e87293c82881fbdab505dabca8db4e.mp3
 import http from "@/http/service";
 import { mapActions } from "vuex";
-import kgList from "@/http/kg.json";
-import wyLists from "@/http/wy.json";
-import { erkeAlbum,erkeLink } from "@/utils/erke.js";
+import { erkeAlbum, erkeLink } from "@/utils/erke.js";
 
 /*{ 
-    *"song_name" → 歌曲名字 
-    *"song_url" → 歌曲链接 
-    *"song_duration" → 歌曲时长（这个后期应该不需要到，我顺便爬的）
-    *"song_publish_date" → 歌曲上传日期（这个后期应该不需要到，我顺便爬的） 
-    *"album_name" → 专辑名字 
-    *"album_img" → 专辑封面 
-    *"singer_name" → 歌手名字
+    * id	歌曲专辑的id	int
+    album_name	歌曲专辑的名称	string
+    album_desc	歌曲专辑的描述	string
+    cover_img_id	歌曲专辑的封面图id(使用获取图片数据接口可获取该图片的真实url)	int
+    release_time	专辑封面发布时间戳	int
+
 }*/
 /*{ 
     *"name" → 歌曲名字 
@@ -256,21 +154,53 @@ export default {
     return {
       active: "0",
       erkeAlbumName: erkeAlbum[0]['title'],
-      wyList: [],
-      wyLists: wyLists,
-      kgList: kgList,
       erkeAlbum: erkeAlbum,
       erkelist: erkeAlbum[0],
-      btnList:{
-        btnTopList:[7,8,2],
-        btnBottomList:[5,9,10],
+      btnList: {
+        btnTopList: [7, 8, 2],
+        btnBottomList: [5, 9, 10],
       },
-      erkeLink:erkeLink
+      erkeLink: erkeLink,
+      songDatasMthMethodBool: false,
+      songDatasMthMethodList: [],
+      songDatasMthMethodLists: []
     };
   },
   components: {},
   methods: {
     ...mapActions(["webSocketInit"]),
+    getSongDatasMthMethod() {
+      http.getSongDatasMthMethod({
+        methods: 'aid',
+        method: 1,
+        page: 1
+      }).then(rs => {
+        if (rs.code == 200) {
+          if (rs.datas.lists.length) {
+            this.songDatasMthMethodLists = rs.datas.lists
+            this.songDatasMthMethodList = JSON.parse(JSON.stringify(this.songDatasMthMethodLists));//为了防止一起改变
+            this.songDatasMthMethodList.length = 6;//为了列表好看 展示效果
+
+          } else {
+            this.songDatasMthMethodList = []
+            this.songDatasMthMethodLists = []
+
+          }
+        } else {
+          this.songDatasMthMethodLists = []
+          this.songDatasMthMethodList = []
+        }
+      }).catch((err) => {
+        this.songDatasMthMethodList = []
+        this.songDatasMthMethodLists = []
+        console.log(err);
+      });
+    },
+    songDatasMthMethodBoolFn(){
+      this.songDatasMthMethodBool=!this.songDatasMthMethodBool
+      this.songDatasMthMethodList = JSON.parse(JSON.stringify(this.songDatasMthMethodLists));//为了防止一起改变
+      this.songDatasMthMethodList.length = this.songDatasMthMethodBool?this.songDatasMthMethodList.length:6;//为了列表好看 展示效果
+    },
     //跳转外部链接/打开新标签页
     externalJumpFn(open) {
       window.open(open)
@@ -281,89 +211,39 @@ export default {
 
     },
     //项目内部跳转
-    jumpFun(route) {
-      if (this.$route.name != route) {
-        this.$router.push(route);
+    jumpFun(name,id) {
+      if (this.$route.name != name) {
+        this.$router.push({name: name, params: {id: id}});
       }
-    },
-    getCommodities(data) {
-      let datas = [];
-      var commodities = {
-        symbols: [],
-        identifier: "Commodities",
-        identifier_name: "Commodities",
-        identifier_names: "Commodities",
-      };
-      for (let key in data) {
-        if (
-          data[key]["identifier"] == "metal" ||
-          data[key]["identifier"] == "energy"
-        ) {
-          commodities["symbols"] = [
-            ...data[key]["symbols"],
-            ...commodities["symbols"],
-          ];
-        } else {
-          if (data[key]["identifier"] == "stock") {
-            data[key]["identifier_names"] = "Stocks";
-          } else if (data[key]["identifier"] == "forex") {
-            data[key]["identifier_names"] = "Currencies";
-          } else if (data[key]["identifier"] == "index") {
-            data[key]["identifier_names"] = "Indices";
-          }
-          datas.push(data[key]);
-        }
-      }
-      datas.push(commodities);
-      return datas;
-    },
-    getSymbolClassify() {
-      http
-        .getSearch()
-        .then((rs) => {
-          if (rs.code == 200 && !rs.abroad && rs.result.songs) {
-            let hotList = rs.result.songs;
-            hotList.forEach((item, key) => {
-              this.wyLists.push(item);
-            });
-            localStorage.setItem('wyLists', JSON.stringify(this.wyLists))
-            // this.wyList = JSON.parse(JSON.stringify(this.wyLists));//为了防止一起改变
-            // this.wyList.length = 8;//为了列表好看 展示效果
-          } else {
-            var list = JSON.parse(localStorage.getItem('wyLists')) || []
-            if (list.length != 0) {
-              this.wyLists = list
-            }
-            // this.getSymbolClassify();
-          }
-          this.wyList = JSON.parse(JSON.stringify(this.wyLists));//为了防止一起改变
-          this.wyList.length = 6;//为了列表好看 展示效果
-        })
-        .catch((err) => {
-          console.log(err);
-        });
     },
   },
   created() {
-    // this.getSymbolClassify();
-    // this.getForyouTradeTop("stock");
+    this.getSongDatasMthMethod()
   },
   mounted() {
-    this.wyList = JSON.parse(JSON.stringify(this.wyLists));//为了防止一起改变
-    this.wyList.length = 6;//为了列表好看 展示效果
-    // console.log(kgList);
-    // this.$refs.video.play();
   },
 };
 </script>
   
 <style lang="scss" scoped>
-// ::v-deep.el-image.swiper-img {
-//   width: 80px;
-//   height: 80px;
-//   border-radius: 50%;
-// }
-
+::v-deep{
+  .el-card.is-hover-shadow>.el-card__body{
+    display: flex;
+    .invest_list_r{
+      flex: 1;
+      position: relative;
+      text-align: end;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      // .bottom.clearfix{
+      //   position: absolute;
+      //   bottom: 0;
+      //   right: 0;
+      // }
+    }
+  }
+}
 .big_wrap {
   .invest_banner {
     padding: 110px 0 50px;
@@ -408,7 +288,6 @@ export default {
 
           .bg_img {
             background: url("../../assets/image/enter-play.png") no-repeat 100%;
-            // background: url("../../assets/images/111.png") no-repeat 100%;
             flex-shrink: 0;
             height: 100%;
             -webkit-transform: translateZ(0);
@@ -514,14 +393,16 @@ export default {
 
         .trade_list {
           margin-top: 40px;
-          li:first-child{
-          p::first-letter{
-            color: #c69c6d;
-            font-size: 2em;
-            float:left;
-            margin: -0.4em .2em 0 0;
-          }
+
+          li:first-child {
+            p::first-letter {
+              color: #c69c6d;
+              font-size: 2em;
+              float: left;
+              margin: -0.4em .2em 0 0;
             }
+          }
+
           li {
             margin-bottom: 24px;
             display: flex;
@@ -619,6 +500,7 @@ export default {
         }
 
         .trade_table {
+          width: 455px;
           height: 279.5 * 2px;
           background: #fff;
           border-radius: 0px 9px 9px 9px;
@@ -654,7 +536,6 @@ export default {
     max-width: 1170px;
     margin: 0 auto;
     margin-top: 80px;
-    padding-bottom: 120px;
 
     .list_title {
       font-size: 36px;

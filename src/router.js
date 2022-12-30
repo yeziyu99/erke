@@ -6,10 +6,7 @@ import home from "@/views/home/index.vue";
 import market from "@/views/market/index.vue";
 import support from "@/views/support/index.vue";
 import about from "@/views/about/index.vue";
-import invest from "@/views/invest/index.vue";
-import detail from "@/views/detail/index.vue";
 import erke from "@/views/erke/index.vue";
-import wyy from "@/views/wyy/index.vue";
 import music from "@/views/music.vue";
 
 
@@ -53,27 +50,12 @@ const router = new Router({
             component: about
           },
           {
-            path: "/detail",
-            name: "detail",
-            component: detail
-          },
-          {
-            path: "/wyy",
-            name: "wyy",
-            component: wyy
-          },
-          {
             path: "/erke",
             name: "erke",
             component: erke
           },
         ]
       }]
-    },
-    {
-      path: "/invest",
-      name: "invest",
-      component: invest
     },
     {
       path: "/music",

@@ -375,8 +375,6 @@ export var erkeData = [
         "title": "个人简介",
         img: 'https://apic.douyucdn.cn/upload/avatar_v3/201807/dca3c7ece148ee546d611ed0815fbbd0_big.jpg',
         "children": [
-            // {
-            // }
             {
                 "icon": "el-icon-user",
                 "title": "艺名",
