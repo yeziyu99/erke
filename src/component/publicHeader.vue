@@ -1,18 +1,21 @@
 <template>
   <div class="publicHeader">
     <div class="header_con">
-      <img  src="@/assets/images/4.png"  @click="jumpFun('home')" alt="" />
+      <img src="@/assets/images/4.png" @click="jumpFun('home')" alt="" />
       <ul>
-        <li :class="{'header_route':true,'fontW700':className==='market'}"  @click="jumpFun('market')">音乐专辑</li>
-        <li :class="{'header_route':true,'fontW700':className==='support'}" @click="jumpFun('support')">优质UP主</li>
-        <li :class="{'header_route':true,'fontW700':className==='erke'}" @click="jumpFun('erke')">二珂简介</li>
-        <li :class="{'header_route':true,'fontW700':className==='about'}" @click="jumpFun('about')">关于我们</li>
+        <li :class="{ 'header_route': true, 'fontW700': className === 'market' }" @click="jumpFun('market')">音乐专辑</li>
+        <li :class="{ 'header_route': true, 'fontW700': className === 'support' }" @click="jumpFun('support')">优质UP主</li>
+        <li :class="{ 'header_route': true, 'fontW700': className === 'erke' }" @click="jumpFun('erke')">二珂简介</li>
+        <li :class="{ 'header_route': true, 'fontW700': className === 'about' }" @click="jumpFun('about')">关于我们</li>
         <!-- <li class="header_btn" style="background: #fff; margin-right: 8px" @click="jumpFun('invest')">
           LOGIN
         </li>
         <li class="header_btn" style="background: #000000; color: #fff" @click="jumpFun('invest')">
           SIGN UP
         </li> -->
+        <li>
+          <img src="@/assets/images/logo.png" style="width:88px" @click="jumpFun('home')" alt="" />
+        </li>
       </ul>
     </div>
   </div>
@@ -21,15 +24,15 @@
 export default {
   data() {
     return {
-      className:this.$route.name
+      className: this.$route.name
     };
   },
   mounted() {
   },
-  watch:{
-    $route(to,form){
-      if(to.name!=form.name||!form){
-        this.className=to.name
+  watch: {
+    $route(to, form) {
+      if (to.name != form.name || !form) {
+        this.className = to.name
       }
     }
   },
@@ -52,11 +55,12 @@ ul li {
   height: 75px;
   width: 100%;
   overflow-x: auto;
-  background: #ffe100;
+  background: $back-primary1-1;
   display: flex;
   justify-content: center;
   align-items: center;
   min-width: 1170px;
+
   .header_con {
     width: 60%;
     min-width: 1170px;
@@ -64,11 +68,12 @@ ul li {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    img{
+
+    img {
       width: 200px;
       cursor: pointer;
     }
-    
+
     ul {
       display: flex;
       align-items: center;
@@ -79,16 +84,19 @@ ul li {
         margin-right: 30px;
         cursor: pointer;
       }
-      .header_route:hover{
+
+      .header_route:hover {
         border-bottom: 2px solid;
         font-weight: 600;
         transform: scaleX(1);
         transition: 0.4s cubic-bezie÷r(0.165, 0.84, 0.44, 1);
       }
-      .fontW700{
+
+      .fontW700 {
         font-weight: 700;
         font-family: Gilroy-Bold;
       }
+
       .header_btn {
         width: 110px;
         height: 36px;

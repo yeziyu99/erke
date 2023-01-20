@@ -1,7 +1,6 @@
 * {
     box-sizing: border-box;
 }
-
 html {
     color: #000;
     background: #fff;
@@ -148,7 +147,7 @@ img {
 .foot_btn {
     margin: 20px auto 66px;
     width: 89 * 2px;
-    background: #ffe100;
+    background: $back-primary1;
     padding: 14px 20px;
     border-radius: 26px;
     text-align: center;
@@ -156,7 +155,7 @@ img {
     &:hover {
         cursor: pointer;
         color: #fff !important;
-        background: #000 !important;
+        background: $back-primary2 !important;
     }
 }
 
@@ -175,17 +174,20 @@ p {
 .banner_btn {
     display: flex;
     margin-bottom: 10px;
+
     .btn_one {
         cursor: pointer;
-        width: 89 * 2px;
+        min-width: 89 * 2px;
         font-size: 16px;
         padding: 14px 40px;
-        background: #000000;
+        background: $back-primary2;
         border-radius: 26px;
         color: #fff;
+        text-align: center;
 
         &:hover {
-            color: #ffe100;
+            background: $back-primary2;
+            color: #000;
             cursor: pointer;
         }
     }
@@ -204,7 +206,8 @@ p {
         margin-right: 10px;
 
         &:hover {
-            color: orange;
+            background: $back-primary2;
+            color: #fff;
             cursor: pointer;
         }
 
@@ -216,19 +219,23 @@ p {
         }
     }
 
-    .red:hover {
-        color: red;
-    }
+    // .red:hover {
+    //     color: red;
+    // }
+
     .qy:hover {
         color: #31c27c;
     }
+
     .kg:hover {
-        color:#00A9FF;
+        color: #00A9FF;
     }
 }
-.cursor{
+
+.cursor {
     cursor: pointer
 }
+
 .iconImg {
     width: 30px;
     height: 30px;
@@ -236,24 +243,27 @@ p {
     line-height: 30px;
     text-align: center;
 }
-::v-deep{
+
+::v-deep {
     .el-descriptions-item__cell.el-descriptions-item__label.is-bordered-label {
         width: 210px;
     }
-    .el-avatar>img{
+
+    .el-avatar>img {
         width: 100%;
         height: 100%;
     }
-    .el-descriptions-row
-    {
+
+    .el-descriptions-row {
         .el-descriptions-item__cell.el-descriptions-item__label.is-bordered-label>span {
             display: flex;
             align-items: center;
-            span{
+
+            span {
                 margin-right: 3px;
                 width: 20px;
                 height: 20px;
             }
         }
     }
-  }
+}

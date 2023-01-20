@@ -16,7 +16,7 @@
             中国内地网络女主播、歌手
           </h2>
           <div class="banner_btn" v-for="(item, index) in btnList" :key="index">
-            <a href="" @click="externalJumpFn(erkeLink[items].herf)" v-for="(items, ind) in item" :key="ind">
+            <a href="" @click="externalJumpFn(erkeLink[items].herf)" :class="erkeLink[items].class" v-for="(items, ind) in item" :key="ind">
               <img :src="erkeLink[items].img" />
               {{ erkeLink[items]['remarks'] }}
             </a>
@@ -25,8 +25,8 @@
         </div>
         <div class="banner_img">
           <img src="@/assets/image/phone.png" alt="" />
-          <video class="inset_video" playsinline webkit-playsinline autoplay loop preload="auto" data-status="playing">
-            <source src="@/assets/images/tianmei.mp4" />
+          <video class="inset_video" muted playsinline webkit-playsinline autoplay loop preload="auto" data-status="playing">
+            <source src="@/assets/video/tianmei.mp4" />
           </video>
         </div>
       </div>
@@ -101,7 +101,7 @@
     <div class="invest_list clearfix">
       <div class="list_title font_Bold clearfix" id="list_title">
         本站可播放音乐
-        <el-button type="primary" class="button" style="background: #ffe100;color:#000" @click="jumpFun('music')">跳转播放页查看更多</el-button>
+        <el-button type="primary" class="button" style="background:#f4c8c7;color:#000; font-weight:400;" @click="jumpFun('music')">跳转播放页查看更多</el-button>
       </div>
       <div v-if="songDatasMthMethodList.length">
         <el-col :span="8" v-for="(item, index) in songDatasMthMethodList" :key="index" style="padding: 0 10px 10px;">
@@ -248,7 +248,7 @@ export default {
   .invest_banner {
     padding: 110px 0 50px;
     position: relative;
-    background-color: #ffe100;
+    background-color: $back-primary1;
     color: #000;
     overflow: hidden;
 
@@ -410,7 +410,7 @@ export default {
             div {
               width: 20px;
               height: 20px;
-              background: #ffe100;
+              background: $back-primary1;
               border-radius: 50%;
               display: flex;
               align-items: center;
@@ -440,7 +440,7 @@ export default {
         .trade_btn {
           width: 135px;
           padding: 14px 30px;
-          background: #ffe100;
+          background: $back-primary1;
           border-radius: 26px;
           display: inline-block;
           margin-bottom: 10px;
@@ -491,7 +491,7 @@ export default {
               &.active {
                 width: 88px;
                 height: 70px;
-                background: #ffe100;
+                background: $back-primary1;
                 box-shadow: -7px 6px 14px 14px rgba(233, 236, 253, 0.5);
                 z-index: 9 !important;
               }
@@ -587,7 +587,7 @@ export default {
       .tab_btn {
         width: 89 * 2px;
         height: 44px;
-        background: #ffe100;
+        background: $back-primary1;
         text-align: center;
         line-height: 44px;
         margin: 0 auto;

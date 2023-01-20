@@ -91,6 +91,13 @@ export default {
 <style lang="scss" scoped>
 .wanzheng{
   width: 100%;
+  // background: url('../assets/images/back.png') no-repeat;
+  //   background-size: 100% 100%;
+  //   background-repeat: no-repeat;
+  //   background-color: #000000;
+  //   background-position: center top;
+  //   background-attachment: fixed;
+  //   background-size: cover;
 }
   #toTop {
     position: sticky;
@@ -101,7 +108,9 @@ export default {
     .page {
       min-width: 1170px;
     }
-    .site-scrolltop {
+    
+}
+.site-scrolltop {
       display: bl;
       position: fixed;
       bottom: 70px;
@@ -111,7 +120,7 @@ export default {
       box-shadow: 0 0 20px rgb(0 0 0 / 30%), 0 0 0 1px #fff;
       height: 48px;
       width: 48px;
-      z-index: 10;
+      z-index: 99;
     }
     .toTop {
       background: url('../assets/font/totop.svg')no-repeat 50%/25px;
@@ -123,8 +132,6 @@ export default {
       border-radius: 50%;
       width: 100%;
     }
-}
-
 @media screen and (max-width: 1000px) {
   .page {
       min-width: 100%;

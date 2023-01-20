@@ -3,12 +3,13 @@
     <div class="publicFoot_back">
       <div class="publicFoot_head">
         <img class="logo" src="@/assets/images/5.png" alt="" />
+        <img class="logos" src="@/assets/images/logo.png" alt="" />
       </div>
       <div class="publicFoot_con">
         <ul class="publicFoot_con_left">
           <li class="list_router" @click="jumpFun('market')">音乐专辑</li>
           <li class="list_routerLi" @click="jumpFun('market')">专辑展示</li>
-          <li class="list_routerLi" @click="jumpFun('market')">歌曲链接直跳</li>
+          <li class="list_routerLi" @click="jumpFun('market')">本站现有音乐</li>
         </ul>
         <ul class="publicFoot_con_left">
           <li class="list_router" @click="jumpFun('support')">优质UP主</li>
@@ -35,7 +36,11 @@
           <li class="con_right_bottom">346989693@qq.com </li>
         </ul>
       </div>
-      <p style="color:#fff;text-align: center;">版权所有@叶子宇吖</p>
+      <p style="margin-top: 10px;text-align: center;">
+        <el-link @click="externalJumpFn('https://beian.miit.gov.cn')"  style="color:#fff;">
+          京ICP备2023001053号
+        </el-link>
+      </p>
     </div>
   </div>
 </template>
@@ -64,7 +69,7 @@ ul li {
   width: 100%;
   min-width: 1170px;
   overflow-x: auto;
-  background: #000000;
+  background: #000;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -87,6 +92,9 @@ ul li {
 
     .logo {
       width: 150px;
+    }
+    .logos{
+      width: 88px;
     }
 
     ul {

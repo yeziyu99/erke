@@ -1,18 +1,23 @@
 <template>
-  <div class="big_wrap">
+  <div class="big_wrap" ref="page">
     <div class="homepage_banner">
       <div class="home_header">
         <div class="head_con">
           <div class="banner_left">
-            <h2 class="font_Bold">周二珂</h2>
-            <h4 style="margin-bottom: 90px; font-size: 20px;text-indent:20px">
+            <h2 class="font_Bold logo_title">
+              <img  src="@/assets/images/logo.png" style="" @click="jumpFun('home')" alt="" />
+              <span class="">
+                周二珂
+              </span>
+            </h2>
+            <h4 style="margin-bottom: 90px; font-size: 20px;text-indent:20px" class="">
               人美、气质好、唱歌又好听，为人低调和善，但却挡不住她急剧上升的人气。在一个歌荒的寂寞时间，周二珂简直是甜歌小公主，那一刻，让你的心暖暖的。
             </h4>
             <div class="banner_btn">
-              <div class="btn_one">房间未开播</div>
-              <a href="" >
+              <div @click="externalJumpFn('https://www.douyu.com/78622')" class="btn_one" v-if="erkeLive!=200">未开播～</div>
+              <a @click="externalJumpFn('https://www.douyu.com/78622')" v-if="erkeLive==200">
                 <img src="@/assets/images/douyu.png" alt="" />
-               开播中...</a>
+                开播中...</a>
             </div>
             <p>显示的图像仅用于展示作用</p>
           </div>
@@ -21,18 +26,19 @@
           <div style=" max-width: 230px; flex: 1;margin: 0 auto;position: relative;">
             <div>
               <div class="inset_bg">
-                <div class="insetbg_annulus"></div>
-                <div class="inset_annulus_sm"></div>
                 <div class="bg-semicircle"></div>
                 <div class="bg_ball"></div>
                 <div class="bg_ball_solid"></div>
               </div>
               <div class="video_wrap" @click="externalJumpFn('https://www.douyu.com/78622')">
                 <div class="animate-wave">
-                  <img class="logo"  src="@/assets/images/erke.png" alt="">
+                  <img class="logo" src="@/assets/images/erke.png" alt="">
                   <div class="w2"></div>
                   <div class="w3"></div>
                   <div class="w4"></div>
+                  <div class="w5"></div>
+                  <div class="w6"></div>
+                  <div class="w7"></div>
                 </div>
               </div>
             </div>
@@ -47,19 +53,25 @@
         <div class="three_img">
           <div class="content_item" @click="externalJumpFn('https://www.douyu.com/78622')">
             <div>
-              <img src="https://apic.douyucdn.cn/upload/avatar_v3/201807/dca3c7ece148ee546d611ed0815fbbd0_big.jpg" alt="https://www.douyu.com/78622">
+              <img :src="dyhead"
+                alt="https://www.douyu.com/78622">
             </div>
             <p>二珂78622@斗鱼</p>
           </div>
           <div class="content_item" @click="externalJumpFn('https://weibo.com/u/1910672761')">
             <div>
-              <img src="https://tvax3.sinaimg.cn/crop.0.0.1080.1080.180/0025iZgBly8h8yqklw9t2j60u00u0go802.jpg?KID=imgbed,tva&Expires=1672148346&ssig=HxIrnrfB6A" alt="https://weibo.com/u/1910672761?topnav=1&wvr=6&topsug=1">
+              <img
+                :src="wbhead"
+                alt="https://weibo.com/u/1910672761?topnav=1&wvr=6&topsug=1">
             </div>
             <p>二珂Chloe@微博</p>
           </div>
-          <div class="content_item" @click="externalJumpFn('https://www.xiaohongshu.com/user/profile/5ad78361e8ac2b1fca15ff66')">
+          <div class="content_item"
+            @click="externalJumpFn('https://www.xiaohongshu.com/user/profile/5ad78361e8ac2b1fca15ff66')">
             <div>
-              <img src="https://sns-avatar-qc.xhscdn.com/avatar/639431ecb20ad5e81020288b.jpg?imageView2/1/w/540/format/jpg" alt="https://www.xiaohongshu.com/user/profile/5ad78361e8ac2b1fca15ff66?xhsshare=CopyLink&appuid=609b9c340000000001004f33&apptime=1667552951">
+              <img
+                :src="wbhead"
+                alt="https://www.xiaohongshu.com/user/profile/5ad78361e8ac2b1fca15ff66?xhsshare=CopyLink&appuid=609b9c340000000001004f33&apptime=1667552951">
             </div>
             <p>二珂@小红书</p>
           </div>
@@ -67,36 +79,53 @@
       </div>
       <div class="invest_title">
         <!-- <div> -->
-          <p class="title_wrapper">部分图片展示</p>
-          <h2 class="font_Bold">
-            二珂微博发布的个别图片展示 
-            <!-- <br /> -->
-            <!-- 好看耶 -->
-          </h2>
+        <p class="title_wrapper">部分图片展示</p>
+        <h2 class="font_Bold">
+          二珂微博发布的个别图片展示
+        </h2>
         <!-- </div> -->
       </div>
-      <div class="invest_bg">
-        <div class="invest_bg_title font_Bold">
-          希望我们都能寻觅到真正的自己，永远像Juliet’s Rose的美丽盛开。
+      <!-- invest_bg -->
+      <div class=" customize-container">
+        <!-- invest_bg_con -->
+        <div class=" customize" :class="{ isFixed: barFixed, invest: true }" :style="myStyle">
+          <div class="container">
+            <!-- invest_bg_title font_Bold -->
+            <div class=" customize-bg-container" :style="{ backgroundSize: containerBack + '%' }">
+              <div class="customize-wrapper" style="position: relative">
+                希望我们都能寻觅到真正的自己，永远像Juliet’s Rose的美丽盛开。
+                <div class="invest_img">
+                  <div class="img_left">
+                    <el-image class="left1 img_border" :src="vv.v1"
+                      fit="cover" alt="" />
+                    <el-image class="left2 img_border" :src="vv.v2"
+                      fit="cover" alt="" />
+                    <el-image class="left3 img_border" :src="vv.v3"
+                      fit="cover" alt="" />
+                  </div>
+                  <div class="img_phone">
+                    <!-- <video class="inset_video" playsinline webkit-playsinline autoplay loop preload="auto"
+                      data-status="playing">
+                      <source src="@/assets/images/xin.mp4" />
+                    </video> -->
+                    <el-image class="img_border" :src="vv.v7"
+                      fit="cover" alt="" />
+                  </div>
+                  <div class="img_right">
+                    <el-image class="right1 img_border" :src="vv.v4"
+                      fit="cover" alt="" />
+                    <el-image class="right2 img_border" :src="vv.v5"
+                      fit="cover" alt="" />
+                    <el-image class="right3 img_border" :src="vv.v6"
+                      fit="cover" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="invest_img">
-          <div class="img_left">
-            <el-image class="left1" src="https://wx3.sinaimg.cn/mw2000/0025iZgBly1gop49qkl1mj62241jkkjm02.jpg" fit="cover" alt="" />
-            <el-image class="left2" src="https://wx1.sinaimg.cn/mw2000/0025iZgBgy1gvbhdvy1vmj62961i4hdw02.jpg" fit="cover" alt="" />
-            <el-image class="left3" src="https://wx4.sinaimg.cn/mw2000/0025iZgBgy1gvbhdyo5duj629u1ilb2a02.jpg" fit="cover" alt="" />
-          </div>
-          <div class="img_phone">
-            <video class="inset_video" playsinline webkit-playsinline autoplay loop preload="auto" data-status="playing">
-            <source src="@/assets/images/xin.mp4" />
-          </video>
-            <!-- <el-image style="" src="https://wx2.sinaimg.cn/mw2000/0025iZgBgy1gwb961ksyqj622o340kjl02.jpg" fit="cover" alt=""/> -->
-          </div>
-          <div class="img_right">
-            <el-image class="right1" src="https://wx4.sinaimg.cn/mw2000/0025iZgBly1go2vxnyfsoj62dc1kw1kx02.jpg" fit="cover" alt="" />
-            <el-image class="right2" src="https://wx4.sinaimg.cn/mw2000/0025iZgBly1h5j0cdybv4j62p2211u1002.jpg" fit="cover" alt="" />
-            <el-image class="right3" src="https://wx2.sinaimg.cn/mw2000/0025iZgBly1h5j0c7abv2j62re22s1kz02.jpg" fit="cover" alt="" />
-          </div>
-        </div>
+        <div ref="placeholder" class="customize-placeholder"
+          :style="{ height: clientHeight + 'px' }"></div>
       </div>
       <div class="mobile_intro_swiper">
         <div class="swiper_left">
@@ -111,16 +140,16 @@
 
           <div class="swiper-container linear">
             <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                 <img src="https://wx2.sinaimg.cn/orj360/0025iZgBly1gx1rclbizzj61jk224e8102.jpg" alt="" />
+              <div class="swiper-slide" :key="index" v-for="(item,index) in ekLeftList">
+                <img :src="item" alt="" />
               </div>
-              <div class="swiper-slide">
+              <!-- <div class="swiper-slide">
                 <img src="https://wx1.sinaimg.cn/orj360/0025iZgBly1gx1rcs8uqxj61jk224b2902.jpg" alt="" />
               </div>
               <div class="swiper-slide">
                 <img src="https://wx2.sinaimg.cn/mw2000/0025iZgBly1gx1rct2x76j61jk2241i002.jpg" alt="" />
-              </div>
-              
+              </div> -->
+
             </div>
           </div>
         </div>
@@ -128,14 +157,14 @@
           <div :class="{ active: rightIndex === 1 }">
             <div class="swiper-right-text">
               <div class="swiper-wrapper">
-                <h3 class="swiper-slide font_Bold">2021年四月</h3>
-                <h3 class="swiper-slide font_Bold">图片展示（图片待修改）</h3>
+                <h3 class="swiper-slide font_Bold">2022新图</h3>
+                <h3 class="swiper-slide font_Bold">盛世美颜</h3>
               </div>
             </div>
             <div class="swiper-containerTwo">
               <div class="swiper-wrapper">
                 <div class="swiper-slide" v-for="(item, index) in imageSrcs" :key="index">
-                  <img  :src="item" alt="" />
+                  <img :src="item" alt="" />
                 </div>
               </div>
               <div class="swiper-pagination"></div>
@@ -169,18 +198,10 @@
             <div class="swiper-containerfour">
               <div class="swiper-wrapper">
                 <div class="swiper-slide" v-for="(item, index) in textContainerfour" :key="index">
-                  <el-image
-                    v-if="index!=0"
-                    class="swiper-img"
-                      :src="item.img"
-                      :preview-src-list="srcList"
-                      fit="cover"></el-image>
-                      <img
-                        v-if="index==0" 
-                        class="swiper-img"
-                        :src="item.img" alt=""
-                      >
-                </div> 
+                  <el-image v-if="index != 0" class="swiper-img" :src="item.img" :preview-src-list="srcList"
+                    fit="cover"></el-image>
+                  <img v-if="index == 0" class="swiper-img" :src="item.img" alt="">
+                </div>
               </div>
             </div>
           </div>
@@ -194,14 +215,14 @@
         <ul class="foot_list">
           <li class="list_item" v-for="(item, index) in supportLinks" :key="index">
             <img :src="item.imgUrl" :alt="item.title" />
-            <h2> {{item.title}} </h2>
-            <ul class="foot_list_item"  v-for="(val, i) in item.children" :key="i">
+            <h2> {{ item.title }} </h2>
+            <ul class="foot_list_item" v-for="(val, i) in item.children" :key="i">
               <li @click="externalJumpFn(val.herf)">
                 <el-tag size="small" class="tag pointer mg-bt-10">
-                    <span v-if="val.type=='bili'"  style="color:palevioletred">哔哩哔哩</span>
-                    <span v-if="val.type=='dy'"  style="color:#000">抖音</span>
-                    <span v-if="val.type=='sing'"  style="color:#00BBB3">5Sing</span>
-                    <span v-if="val.type=='wyy'"  style="color:red">网易云</span>
+                  <span v-if="val.type == 'bili'" style="color:palevioletred">哔哩哔哩</span>
+                  <span v-if="val.type == 'dy'" style="color:#000">抖音</span>
+                  <span v-if="val.type == 'sing'" style="color:#00BBB3">5Sing</span>
+                  <span v-if="val.type == 'wyy'" style="color:red">网易云</span>
                   -- {{ val.name }}
                 </el-tag>
               </li>
@@ -216,59 +237,107 @@
    
 <script>
 import "swiper/css/swiper.min.css";
-import {supportLink} from "@/utils/support.js";
+import { supportLink,pictureList } from "@/utils/support.js";
+import erkeI from "@/assets/images/erkeI.png";
+import erkeV from "@/assets/images/erkeV.png";
+import dyhead from "@/assets/images/dyhead.png";
+import wbhead from "@/assets/images/wbhead.png";
+import v1 from "@/assets/home/top/1.png";
+import v2 from "@/assets/home/top/2.png";
+import v3 from "@/assets/home/top/3.png";
+import v4 from "@/assets/home/top/4.png";
+import v5 from "@/assets/home/top/5.png";
+import v6 from "@/assets/home/top/6.png";
+import v7 from "@/assets/home/top/7.png";
+import l1 from "@/assets/home/left/l1.png";
+import l2 from "@/assets/home/left/l2.png";
+import l3 from "@/assets/home/left/l3.png";
+import l4 from "@/assets/home/left/l4.png";
+import l5 from "@/assets/home/left/l5.png";
+import l6 from "@/assets/home/left/l6.png";
+import l7 from "@/assets/home/left/l7.png";
+import l8 from "@/assets/home/left/l8.png";
+import l9 from "@/assets/home/left/l9.png";
+import l10 from "@/assets/home/left/l10.png";
+import http from "@/http/service";
 import Swiper from "swiper";
 export default {
   data() {
     return {
+      vv:{
+        v1:v1,
+        v2:v2,
+        v3:v3,
+        v4:v4,
+        v5:v5,
+        v6:v6,
+        v7:v7,
+      },
+      ekLeftList:[l1,l2,l3,l4,l5,l6,l7,l8,l9,l10],
+      erkeLive:false,
+      pictureList:pictureList,
+      pictureLists:[],
+      dyhead:dyhead,
+      wbhead:wbhead,
+      barFixed: false,
+      containerBack: 45,
+      myStyle: {},
+      scrollTop: 0,
+      scrollEndPosition: 0,
+      headNavHeight: 0,
+      scrollStartPosition: 0,
+      clientHeight: 0,
+      imageScrollHeight: 0,
+      imageHeight: 0,
+      imageScrollWrapperHeight: 0,
       supportLink: supportLink,
-      supportLinks:[],
+      supportLinks: [],
       textContainerfour: [
         {
           title: "几张‘书不离手‘的胶片照片",
-          img:'https://wx2.sinaimg.cn/mw2000/0025iZgBly1h5j0c7abv2j62re22s1kz02.jpg',
-          imgArr:['https://wx2.sinaimg.cn/mw2000/0025iZgBly1h5j0c7abv2j62re22s1kz02.jpg'],
-          href:'https://weibo.com/1910672761/M2FxPqk6t?pagetype=profilefeed',
+          img: 'https://wx2.sinaimg.cn/mw2000/0025iZgBly1h5j0c7abv2j62re22s1kz02.jpg',
+          imgArr: ['https://wx2.sinaimg.cn/mw2000/0025iZgBly1h5j0c7abv2j62re22s1kz02.jpg'],
+          href: 'https://weibo.com/1910672761/M2FxPqk6t?pagetype=profilefeed',
           active: true,
         },
         {
           title: "你们用随身听的那年，听的谁的歌。",
-          img:'https://wx1.sinaimg.cn/mw2000/0025iZgBly1h3i13xu2e8j60yi1a0wi002.jpg',
-          imgArr:['https://wx1.sinaimg.cn/mw2000/0025iZgBly1h3i13xu2e8j60yi1a0wi002.jpg'],
-          href:'https://weibo.com/1910672761/Lz1UeuyD2?pagetype=profilefeed',
+          img: 'https://wx1.sinaimg.cn/mw2000/0025iZgBly1h3i13xu2e8j60yi1a0wi002.jpg',
+          imgArr: ['https://wx1.sinaimg.cn/mw2000/0025iZgBly1h3i13xu2e8j60yi1a0wi002.jpg'],
+          href: 'https://weibo.com/1910672761/Lz1UeuyD2?pagetype=profilefeed',
           active: false,
         },
         {
           title: "消失的画",
-          img:'https://wx1.sinaimg.cn/mw2000/0025iZgBly1h3etbzx7kyj61jk2247wh02.jpg',
-          imgArr:['https://wx1.sinaimg.cn/mw2000/0025iZgBly1h3etbzx7kyj61jk2247wh02.jpg'],
-          href:'https://weibo.com/1910672761/LyBGwnVqK?pagetype=profilefeed',
+          img: 'https://wx1.sinaimg.cn/mw2000/0025iZgBly1h3etbzx7kyj61jk2247wh02.jpg',
+          imgArr: ['https://wx1.sinaimg.cn/mw2000/0025iZgBly1h3etbzx7kyj61jk2247wh02.jpg'],
+          href: 'https://weibo.com/1910672761/LyBGwnVqK?pagetype=profilefeed',
           active: false,
         },
         {
           title: "某天的夜里",
-          img:'https://wx4.sinaimg.cn/mw2000/0025iZgBly1gy7dkwa283j62241jknpd02.jpg',
-          imgArr:['https://wx4.sinaimg.cn/mw2000/0025iZgBly1gy7dkwa283j62241jknpd02.jpg'],
-          href:'https://weibo.com/1910672761/L9XejCC1m?pagetype=profilefeed',
+          img: 'https://wx4.sinaimg.cn/mw2000/0025iZgBly1gy7dkwa283j62241jknpd02.jpg',
+          imgArr: ['https://wx4.sinaimg.cn/mw2000/0025iZgBly1gy7dkwa283j62241jknpd02.jpg'],
+          href: 'https://weibo.com/1910672761/L9XejCC1m?pagetype=profilefeed',
           active: false,
         },
         {
           title: "滑满五天，开心！-滑雪照",
-          img:'https://wx2.sinaimg.cn/mw2000/0025iZgBly1gx1rct2x76j61jk2241i002.jpg',
-          imgArr:['https://wx2.sinaimg.cn/mw2000/0025iZgBly1gx1rct2x76j61jk2241i002.jpg'],
-          href:'https://weibo.com/1910672761/L4tRIyz0y?pagetype=profilefeed',
+          img: 'https://wx2.sinaimg.cn/mw2000/0025iZgBly1gx1rct2x76j61jk2241i002.jpg',
+          imgArr: ['https://wx2.sinaimg.cn/mw2000/0025iZgBly1gx1rct2x76j61jk2241i002.jpg'],
+          href: 'https://weibo.com/1910672761/L4tRIyz0y?pagetype=profilefeed',
           active: false,
         },
         {
           title: "存图… 想去看雪❄️ ​​​",
-          img:'https://wx2.sinaimg.cn/mw2000/0025iZgBgy1gwb961ksyqj622o340kjl02.jpg',
-          imgArr:['https://wx2.sinaimg.cn/mw2000/0025iZgBgy1gwb961ksyqj622o340kjl02.jpg'],
-          href:'https://weibo.com/1910672761/L0ZJbjYu5?pagetype=profilefeed',
+          img: 'https://wx2.sinaimg.cn/mw2000/0025iZgBgy1gwb961ksyqj622o340kjl02.jpg',
+          imgArr: ['https://wx2.sinaimg.cn/mw2000/0025iZgBgy1gwb961ksyqj622o340kjl02.jpg'],
+          href: 'https://weibo.com/1910672761/L0ZJbjYu5?pagetype=profilefeed',
           active: false,
         },
       ],
       //放大地址
-      srcList:[
+      srcList: [
         'https://wx2.sinaimg.cn/mw2000/0025iZgBly1h5j0c7abv2j62re22s1kz02.jpg',
         'https://wx1.sinaimg.cn/mw2000/0025iZgBly1h3i13xu2e8j60yi1a0wi002.jpg',
         'https://wx1.sinaimg.cn/mw2000/0025iZgBly1h3etbzx7kyj61jk2247wh02.jpg',
@@ -286,13 +355,64 @@ export default {
       ],
       rightIndex: 0,
       activeIndex: 1,
-      imageSrcs: [  'https://wx1.sinaimg.cn/orj360/0025iZgBgy1gpp6cxzw7ij62c0340qv602.jpg','https://wx1.sinaimg.cn/orj360/0025iZgBly1gpeo23a9f1j61jk1jkhdu02.jpg'],
-      images: ['https://wx4.sinaimg.cn/orj360/0025iZgBgy1gvbhdyo5duj629u1ilb2a02.jpg','https://wx4.sinaimg.cn/orj360/0025iZgBgy1gvbhdyo5duj629u1ilb2a02.jpg'],
+      imageSrcs: [erkeV, erkeI],
+      images: ['https://wx4.sinaimg.cn/orj360/0025iZgBgy1gvbhdyo5duj629u1ilb2a02.jpg', 'https://wx4.sinaimg.cn/orj360/0025iZgBgy1gvbhdyo5duj629u1ilb2a02.jpg'],
     };
   },
   components: {},
   methods: {
-    externalJumpFn(value){
+    handleScroll(e) {
+      this.headNavHeight =
+        document.getElementsByClassName("publicHeader")[0].offsetHeight; //导航的高度
+      this.scrollStartPosition =
+        this.$refs.placeholder.getBoundingClientRect().top-this.headNavHeight ; //距离顶部的高度
+      this.scrollTop = window.pageYOffset;
+      this.scrollEndPosition =
+        this.scrollStartPosition +
+        this.clientHeight -
+        document.documentElement.clientHeight +
+        this.headNavHeight;
+      if (this.scrollStartPosition <= 0 && this.scrollEndPosition >= 0) {
+        this.oldScrollTop = document.documentElement.scrollTop;
+        this.clientHeight = document.documentElement.clientHeight + 2200;
+        const imageScrollOffset = this.scrollTop - this.scrollStartPosition;
+        this.barFixed = true;
+        this.myStyle = {
+          position: "fixed",
+          top: 0+ "px",
+          bottom: "0px",
+        };
+        this.containerBack = `${
+          (imageScrollOffset /
+            (this.clientHeight + document.documentElement.clientHeight+1700)) *
+            100 +
+          70
+        }`;
+      } else {
+        this.barFixed = false;
+        this.myStyle = {
+          position: "absolute",
+          top: '0',
+          bottom: "0",
+        };
+      }
+      if (this.scrollTop < this.scrollStartPosition) {
+        this.myStyle = {
+          position: "absolute",
+          top: "0",
+          bottom: "0",
+        };
+        this.containerBack = 70;
+      }
+      if(this.scrollTop > (this.scrollEndPosition+this.clientHeight+170)){
+        this.myStyle = {
+          position: "absolute",
+          top: "auto",
+          bottom: "0",
+        };
+      }
+    },
+    externalJumpFn(value) {
       window.open(value)
     },
     jumpFun(route) {
@@ -310,9 +430,38 @@ export default {
   },
   created() { },
   mounted() {
-  this.supportLinks.push(this.supportLink[1])
-  this.supportLinks.push(this.supportLink[2])
-  this.supportLinks.push(this.supportLink[3])
+    http.getLive().then(rs => {
+        this.loading = false
+        if (rs.code == 200) {
+          console.log(rs)
+          this.erkeLive=rs.datas.status
+        } else {
+        }
+      })
+    const headNavHeight =
+      document.getElementsByClassName("publicHeader")[0].offsetHeight; // 导航高度
+    let placeholderElementTop = document.getElementsByClassName(
+      "customize-placeholder"
+    )[0].offsetTop; // 占位元素顶部距离
+    const scrollStartPosition = placeholderElementTop - headNavHeight; // 滚动开始位置
+    const scrollEndPosition = scrollStartPosition + 100;
+    // 占位元素高度: 图片高度 + 固定容器高度 - 滚动区域高度
+    const pageHeight = document.documentElement.clientHeight - headNavHeight;
+    this.placeholderHeight = 100 + pageHeight;
+    this.clientHeight = document.documentElement.clientHeight + 1200;
+    let that = this;
+    window.onresize = function () {
+      that.clientHeight = document.documentElement.clientHeight;
+      if (that.$refs.page) {
+        that.$refs.page.style.minHeight = clientHeight - 1000 + "px";
+      }
+    };
+    window.addEventListener("scroll", this.handleScroll,true);
+
+
+    this.supportLinks.push(this.supportLink[1])
+    this.supportLinks.push(this.supportLink[2])
+    this.supportLinks.push(this.supportLink[3])
     let _this = this;
     //  有问题可以看swiper文档/swiper documents
     new Swiper(".swiper-container", {
@@ -369,7 +518,7 @@ export default {
           }
           _this.swiper_right_text.slideTo(_this.rightIndex + 1);
         },
-        slideChangeTransitionEnd: function(){
+        slideChangeTransitionEnd: function () {
           let img_right = document.querySelector('.swiper-containerTwo .swiper-slide-prev img')
           if (img_right) {
             img_right.className = '';
@@ -399,884 +548,14 @@ export default {
       },
     });
   },
+  watch: {
+    clientHeight(lod, lo) {
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-::v-deep .linear.swiper-container>.swiper-wrapper {
-  -webkit-transition-timing-function: linear;
-  /*之前是ease-out*/
-  -moz-transition-timing-function: linear;
-  -ms-transition-timing-function: linear;
-  -o-transition-timing-function: linear;
-  transition-timing-function: linear;
-  margin: 0 auto;
-}
 
-::v-deep {
-  #thumbs .swiper-slide {
-    opacity: 0.6;
-    width: 25%;
-    height: 40px;
-    margin: auto 30px;
-    cursor: pointer;
-    filter: grayscale(100%);
-  }
-
-  #thumbs .swiper-slide-thumb-active {
-    opacity: 1;
-    filter: grayscale(0);
-  }
-}
-
-@keyframes insetSlideUpTwo {
-  0% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-
-  25% {
-    -webkit-transform: translateY(8%);
-    transform: translateY(8%);
-  }
-
-  50% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-
-  75% {
-    -webkit-transform: translateY(-8%);
-    transform: translateY(-8%);
-  }
-
-  to {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-}
-
-@keyframes insetSlideUpThree {
-  0% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-
-  25% {
-    -webkit-transform: translateY(4%);
-    transform: translateY(4%);
-  }
-
-  50% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-
-  75% {
-    -webkit-transform: translateY(-4%);
-    transform: translateY(-4%);
-  }
-
-  to {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-}
-
-.big_wrap {
-  width: 100%;
-  height: 100%;
-  background: #ffffff;
-
-  .homepage_banner {
-    width: 100%;
-    height: 600px;
-    background: #ffe100;
-    padding-top: 100px;
-
-    // position: relative;
-    .home_header {
-      width: 60%;
-      min-width: 1170px;
-      max-width: 1170px;
-      height: 100%;
-      margin: 0 auto;
-      position: relative;
-      display: flex;
-      .home_bg {
-        width: 50%;
-        position: relative;
-
-        @keyframes phoneSlide {
-          0% {
-            -webkit-transform: translateY(-60px);
-            transform: translateY(-60px);
-          }
-
-          50% {
-            -webkit-transform: translateY(-100px);
-            transform: translateY(-100px);
-          }
-
-          to {
-            -webkit-transform: translateY(-60px);
-            transform: translateY(-60px);
-          }
-        }
-
-        @-webkit-keyframes medalSlide {
-          0% {
-            -webkit-transform: translateY(10px);
-            transform: translateY(10px);
-          }
-
-          50% {
-            -webkit-transform: translateY(0);
-            transform: translateY(0);
-          }
-
-          to {
-            -webkit-transform: translateY(10px);
-            transform: translateY(10px);
-          }
-        }
-
-        .video_wrap {
-          -webkit-animation: phoneSlide 6s linear infinite forwards;
-          animation: phoneSlide 6s linear infinite forwards;
-          display: block;
-          cursor: pointer;
-          // height: 100%;
-          left: -72px;
-          position: absolute;
-          top: 72px;
-          -webkit-transform: translateY(-60px);
-          transform: translateY(-60px);
-          // width: 100%;
-          .animate-wave {
-            width: 350px;
-            height: 350px;
-            position: absolute;
-            top: 30px;
-            left: 15px;
-            right: 0;
-            margin: 0 auto;
-            // background: rgba(255,255,255,0.4);
-            border-radius: 50%;
-            .logo{
-              background: rgba(255,255,255,0.6);
-              color: #fff;
-              text-align: center;
-              border-radius: 50%;
-              position: absolute;
-              left: 0;
-              right: 0;
-              z-index: 9;
-              opacity: 0.6;
-              width: 50%;
-              height: 50%;
-              top:25%;
-              left:25%;
-            }
-        }
-          @-webkit-keyframes opac {
-            from {
-                opacity: 1;
-                width: 10px;
-                height: 10px;
-                top: 50%;
-                left: 50%;
-            }
-        
-            to {
-                opacity: 0;
-                width: 100%;
-                height: 100%;
-                top: 0;
-                left: 0;
-            }
-        }
- 
-        .animate-wave .w2,.animate-wave .w3,.animate-wave .w4 {
-            background: rgba(255,255,255,0.7);
-            position: absolute;
-            border-radius: 50%;
-            animation: opac 4s infinite;
-        }
-        
-        .animate-wave .w2 {
-            animation-delay: 1s;
-        }
-        
-        .animate-wave .w3 {
-            animation-delay: 2s;
-        }
-        
-        .animate-wave .w4 {
-            animation-delay: 3s;
-        }
-          p{
-            font-size: 20px;
-            text-align: end;
-          }
-          .inset_video {
-            // width: 100%;height: 600px;background: #000;border-radius: 16px;
-            border-radius: 16px;
-            height: auto;
-            left: 50%;
-            overflow: hidden;
-            pointer-events: none;
-            position: absolute;
-            top: 50%;
-            -webkit-transform: perspective(480px) scaleX(0.96) rotateY(-8deg) skewY(4deg) translate(-58%, -50%);
-            transform: perspective(480px) scaleX(0.96) rotateY(-8deg) skewY(4deg) translate(-58%, -50%);
-            -webkit-transform-style: preserve-3d;
-            transform-style: preserve-3d;
-            width: 93%;
-          }
-
-          .inset_iphone {
-            height: auto;
-            left: 0%;
-            position: absolute;
-            top: 0%;
-            width: 100%;
-          }
-        }
-
-        .inset_bg {
-          height: 502px;
-          left: 50%;
-          position: absolute;
-          top: 11px;
-          -webkit-transform: translateX(-50%) translateY(-60px);
-          transform: translateX(-50%) translateY(-60px);
-          width: 502px;
-        }
-
-        .insetbg_annulus {
-          background: url(/img/banner-annulus.70676fe8.png) no-repeat 50% / contain;
-          height: 100%;
-          left: 0;
-          position: absolute;
-          top: 0;
-          width: 100%;
-          z-index: 1;
-        }
-
-        @keyframes semicircleAnimation {
-          0% {
-            -webkit-transform: rotate(45deg);
-            transform: rotate(45deg);
-          }
-
-          50% {
-            -webkit-transform: rotate(-30deg);
-            transform: rotate(-30deg);
-          }
-
-          to {
-            -webkit-transform: rotate(45deg);
-            transform: rotate(45deg);
-          }
-        }
-
-        .inset_annulus_sm {
-          background: url("../../assets/image/banner-annulus-sm.png") no-repeat 50% / contain;
-          height: 80.08%;
-          left: 9.96%;
-          position: absolute;
-          top: 9.96%;
-          width: 80.08%;
-          z-index: 2;
-        }
-
-        .bg-semicircle {
-          -webkit-animation: semicircleAnimation 6s linear infinite forwards;
-          animation: semicircleAnimation 6s linear infinite forwards;
-          background: url(/img/banner-semicircle.0fa5aa84.png) no-repeat 50% / contain;
-          height: 88.84%;
-          left: 9.96%;
-          opacity: 0.6;
-          position: absolute;
-          top: 6%;
-          -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-          -webkit-transform-origin: 206px center;
-          transform-origin: 206px center;
-          width: 88.84%;
-          z-index: 3;
-        }
-
-        @keyframes insetSlideUp {
-          0% {
-            -webkit-transform: translateY(0);
-            transform: translateY(0);
-          }
-
-          25% {
-            -webkit-transform: translateY(25%);
-            transform: translateY(25%);
-          }
-
-          50% {
-            -webkit-transform: translateY(0);
-            transform: translateY(0);
-          }
-
-          75% {
-            -webkit-transform: translateY(-25%);
-            transform: translateY(-25%);
-          }
-
-          to {
-            -webkit-transform: translateY(0);
-            transform: translateY(0);
-          }
-        }
-
-        .bg_ball {
-          -webkit-animation: insetSlideUp 12s linear infinite forwards;
-          animation: insetSlideUp 12s linear infinite forwards;
-          -webkit-backdrop-filter: blur(3px);
-          backdrop-filter: blur(3px);
-          background: url("../../assets/image/bg_ball.png") no-repeat 50% / contain;
-          height: 30.08%;
-          left: 3.58%;
-          opacity: 0.8;
-          position: absolute;
-          top: 11.15%;
-          width: 30.08%;
-          z-index: 4;
-        }
-
-        .bg_ball_solid {
-          -webkit-animation: insetSlideUp 6s linear 1s infinite forwards;
-          animation: insetSlideUp 6s linear 1s infinite forwards;
-          background: url("../../assets/image/sphere.png") no-repeat 50% / contain;
-          bottom: 22.5%;
-          height: 7.17%;
-          position: absolute;
-          right: 13.15%;
-          width: 7.17%;
-          z-index: 5;
-        }
-      }
-
-      .head_con {
-        width: 50%;
-
-        .banner_left {
-          min-width: 600px;
-
-          h2 {
-            font-size: 48px;
-            font-weight: 700;
-            line-height: 1;
-            margin-bottom: 60px;
-          }
-
-          p {
-            font-size: 12px;
-            color: #62657A;
-          }
-          p {
-            margin-top: 24px;
-            font-weight: 700;
-          }
-        }
-
-        .banner_img {
-          position: absolute;
-          top: 30px;
-          left: 60%;
-
-          img {
-            width: 220px;
-          }
-        }
-      }
-    }
-  }
-
-  .home_content {
-    width: 60%;
-    margin: 0 auto;
-    min-width: 1170px;
-    max-width: 1170px;
-    padding-top: 120px;
-
-    .content_img {
-      width: 100%;
-      height: 463px;
-
-      h2 {
-        height: 29px;
-        font-size: 48px;
-        font-weight: 700;
-        text-align: center;
-        color: #000000;
-        height: 58px;
-        line-height: 58px;
-      }
-
-      .three_img {
-        margin-top: 60px;
-        display: flex;
-        justify-content: space-between;
-        box-sizing: border-box;
-        padding: 0 30px;
-
-        .content_item {
-          width: 310px;
-          height: 359px;
-          background: #ffffff;
-          border-radius: 8px;
-          box-shadow: 8px 10px 30px 0px rgba(233, 236, 253, 0.50);
-          transition: 1s;
-          cursor: pointer;
-          p {
-            width: 270px;
-            height: 58px;
-            font-size: 24px;
-            font-family: Gilroy-Bold;
-            font-weight: 700;
-            text-align: center;
-            color: #000000;
-            line-height: 29px;
-            margin-left: 20px;
-          }
-
-          div {
-            width: 100%;
-            height: 210px;
-            padding-top: 88px;
-            text-align: center;
-
-            img {
-              width: 80px;
-              height: 80px;
-              border-radius: 16px;
-            }
-          }
-
-          &:hover {
-            transform: scale(1.2, 1.2);
-          }
-        }
-      }
-    }
-
-    .invest_title {
-      margin-top: 200px;
-      h2{
-        font-size: 48px;
-        text-align: center;
-        font-weight: 700;
-      }
-    }
-    .title_wrapper{
-      -webkit-background-clip: text;
-      background-clip: text;
-      background-image: linear-gradient(180deg,hsla(0,0%,84%,.6),hsla(0,0%,84%,0));
-      color: transparent;
-      font-size: 99px;
-      font-weight: 800;
-      line-height: 1;
-      margin-bottom: -45px;
-      text-align: center;
-    }
-
-    .invest_bg {
-      width: 100%;
-      background: url("../../assets/image/content.png") no-repeat 100%/100%;
-      border-radius: 10px;
-      margin-top: 60px;
-      position: relative;
-      padding: 50px;
-
-      .invest_bg_title {
-        font-size: 24px;
-        font-weight: 700;
-      }
-
-      .invest_img {
-        display: flex;
-        position: relative;
-       ::v-deep img{
-          border-radius: 16px;
-          border: 4px solid rgba(0,0,0,0.75);
-        }
-        .img_left {
-          flex-shrink: 0;
-          position: relative;
-          width: 36.5%;
-          z-index: 2;
-
-          .left1 {
-            -webkit-animation: insetSlideUpTwo 6s linear 1s infinite forwards;
-            animation: insetSlideUpTwo 6s linear 1s infinite forwards;
-            width: 52%;
-            position: absolute;
-            top: 8%;
-            right: 7.3%;
-          }
-
-          .left2 {
-            -webkit-animation: insetSlideUpTwo 5s linear 1s infinite forwards;
-            animation: insetSlideUpTwo 5s linear 1s infinite forwards;
-            width: 55%;
-            position: absolute;
-            top: 43%;
-            right: 30.3%;
-          }
-
-          .left3 {
-            -webkit-animation: insetSlideUpTwo 4s linear 1s infinite forwards;
-            animation: insetSlideUpTwo 4s linear 1s infinite forwards;
-            width: 55%;
-            position: absolute;
-            top: 74%;
-            right: 4.7%;
-          }
-        }
-
-        .img_phone {
-          -webkit-animation: insetSlideUpThree 8s linear 1s infinite forwards;
-          animation: insetSlideUpThree 8s linear 1s infinite forwards;
-          flex-shrink: 0;
-          padding-top: 30px;
-          position: relative;
-          transition: background-image 0.3s linear;
-          width: 26%;
-          border-radius: 16px;
-          overflow: hidden;
-          height: 600px;
-          .inset_video {
-            width: 100%;
-            height: 600px;
-            background: #000;
-            border-radius: 16px;
-            border-radius: 16px;
-            // height: auto;
-            // left: 50%;
-            // overflow: hidden;
-            // pointer-events: none;
-            // position: absolute;
-            // top: 50%;
-            // -webkit-transform: perspective(480px) scaleX(0.96) rotateY(-8deg) skewY(4deg) translate(-58%, -50%);
-            // transform: perspective(480px) scaleX(0.96) rotateY(-8deg) skewY(4deg) translate(-58%, -50%);
-            // -webkit-transform-style: preserve-3d;
-            // transform-style: preserve-3d;
-            // width: 100%;
-          }
-          img{
-            width: 100%;
-            height: 100%;
-          }
-          ::v-deep .el-image{
-            width: 100%;
-            height: 100%;
-          }  
-        }
-
-        .img_right {
-          flex-shrink: 0;
-          position: relative;
-          width: 36.5%;
-
-          .right1 {
-            -webkit-animation: insetSlideUpTwo 3s linear 1s infinite forwards;
-            animation: insetSlideUpTwo 3s linear 1s infinite forwards;
-            width: 52%;
-            position: absolute;
-            top: 0%;
-            right: 4.3%;
-          }
-
-          .right2 {
-            -webkit-animation: insetSlideUpTwo 7s linear 1s infinite forwards;
-            animation: insetSlideUpTwo 7s linear 1s infinite forwards;
-            width: 52%;
-            position: absolute;
-            top: 32%;
-            left: 20px;
-          }
-
-          .right3 {
-            -webkit-animation: insetSlideUpTwo 5s linear 1s infinite forwards;
-            animation: insetSlideUpTwo 5s linear 1s infinite forwards;
-            width: 52%;
-            position: absolute;
-            bottom: 8%;
-            left: 27%;
-          }
-        }
-      }
-    }
-
-    .mobile_intro_swiper {
-      margin-top: 20px;
-      display: flex;
-      
-      .swiper_left {
-        background-color: #f2f3f5;
-        border-radius: 20px;
-        flex-shrink: 0;
-        margin-right: 23px;
-        overflow: hidden;
-        width: 43%;
-        min-width: 430px;
-        max-width: 503px;
-        position: relative;
-
-        .swiper-left-text {
-          margin: 40px 0 0px 40px;
-          position: absolute;
-          height: 80px;
-          overflow: hidden;
-          width: 350px;
-
-          .swiper-wrapper {
-            .swiper-slide {
-              font-size: 24px;
-              font-weight: 700;
-            }
-          }
-        }
-
-        .swiper-container {
-          margin-top: 120px;
-          width: 100%;
-
-          .swiper-wrapper {
-            .swiper-slide {
-              width: 230px;
-              box-sizing: border-box;
-              padding: 20px 15px;
-
-              img {
-                width: 200px;
-                background: #ffffff;
-                border-radius: 5px;
-                box-shadow: 0px 10px 20px 0px #e3e4e6, 0px 5px 8px 0px #d2d2d6;
-              }
-            }
-          }
-        }
-      }
-
-      .swiper_right {
-        width: 55%;
-        min-width: 550px;
-        max-width: 643px;
-        // height: 100%;
-        background: url("../../assets/image/right4.png") no-repeat 100%/100%;
-        overflow: hidden;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        border-radius: 20px;
-
-        >div {
-          padding-left: 155px;
-
-          &.active {
-            background: rgba(255, 255, 255, .5);
-          }
-
-          .swiper-right-text {
-            position: absolute;
-            left: 40px;
-            top: 40px;
-            height: 80px;
-            overflow: hidden;
-            width: 350px;
-
-            .swiper-wrapper {
-              .swiper-slide {
-                font-size: 24px;
-                font-weight: 700;
-              }
-            }
-          }
-
-          .swiper-containerTwo {
-            margin-top: 51px;
-            overflow: hidden;
-            white-space: nowrap;
-            width: 100%;
-
-            .swiper-wrapper {
-              .swiper-slide {
-                img {
-                  width: 100%;
-                  z-index: 9999;
-                  vertical-align: bottom;
-                  width: 488px;
-                  height: 389px;
-                  border-radius: 16px;
-                  &.active_img {
-                    display: none;
-                  }
-                }
-              }
-            }
-            
-            .swiper-pagination {
-              text-align: left;
-              margin-left: 30px;
-
-              ::v-deep .swiper-pagination-bullet-active {
-                background: #000 !important;
-                opacity: 1 !important;
-              }
-            }
-          }
-        }
-      }
-    }
-    >p {
-      margin-top: 20px;
-      font-size: 12px;
-      color: #62657A;
-    }
-
-    .home_pounce {
-      width: 100%;
-
-      .pounce_title {
-        text-align: left;
-        margin-top: 160px;
-        margin-bottom: 20px;
-        h2{
-          font-size: 48px;
-          font-weight: 700;
-        }
-        p{
-          text-align: left;
-        }
-      }
-
-      .pounce_content {
-        position: relative;
-        display: flex;
-        width: 100%;
-        height: 100%;
-
-        .pounce_left {
-          width: 31%;
-
-          div {
-            ul {
-              li {
-                cursor: pointer;
-                height: 80px;
-                box-sizing: border-box;
-                font-size: 20px;
-                padding: 12px 30px;
-                background: #f7f8fa;
-                margin-bottom: 20px;
-                border-radius: 10px;
-
-                a {
-                  font-weight: 700;
-                  color: #000;
-                  text-decoration: underline;
-                }
-
-                &.active {
-                  background: #fff652;
-                  font-family: Gilroy-Bold;
-                  font-weight: 700;
-                }
-              }
-            }
-          }
-        }
-
-        .pounce_right {
-          // width: 100%;
-          width: 754px;
-          max-height: 580px;
-          line-height: 580px;
-          overflow: hidden;
-          margin-left: 60px;
-          background: #000;
-          .swiper-containerfour{
-            width: 100%;
-            height: 100%;
-          }
-          .swiper-containerfour {
-            .swiper-wrapper {
-              .swiper-slide {
-                .swiper-img {
-                  width: 100%;
-                  height: 100%;
-                  line-height: 588px;
-                  object-fit: cover;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  .home_foot {
-    width: 100%;
-    background: #f8f8fa;
-    padding: 120px 0 116px 0;
-
-    .foot_con {
-      width: 60%;
-      margin: 0 auto;
-      min-width: 1170px;
-      max-width: 1170px;
-
-      .foot_title {
-        width: 100%;
-        font-size: 48px;
-        font-weight: 700;
-        text-align: center;
-      }
-
-      .foot_list {
-        display: flex;
-        margin-top: 60px;
-        justify-content: space-between;
-
-        .list_item {
-          width: 29%;
-          img{
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-          }
-          h2 {
-            font-size: 24px;
-            font-weight: 700;
-            margin-top: 45px;
-            margin-bottom: 12px;
-          }
-
-          .foot_list_item {
-            li {
-              background: url("../../assets/image/icon-check.svg") no-repeat left 5px/14px 12px;
-              padding-left: 28px;
-
-              a {
-                color: #000;
-                font-weight: 700;
-                text-decoration: underline;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
 </style>
   

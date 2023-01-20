@@ -54,7 +54,7 @@ export default {
 <style lang="scss" scoped>
 .question {
   width: 100%;
-  background: #ffe100;
+  background: $back-primary1;
   min-width: 1170px;
   overflow-x: auto;
   display: flex;

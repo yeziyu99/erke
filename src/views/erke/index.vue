@@ -1,5 +1,5 @@
 <template>
-    <div class="erke">
+    <div class="erke" :style="{ minHeight: clientHeight + 'px' }" ref="page">
         <el-collapse v-model="activeNames">
             <el-collapse-item :title="itemt.title" :name="index" v-for="(itemt, index) in erkeData" :key="index">
                 <template slot="title">
@@ -69,7 +69,7 @@
             <el-descriptions class="margin-top" :column="1" border>
                 <el-descriptions-item>
                     <template slot="label">
-                        <span>
+                        <span style="color:red">
                             <i class="el-icon-bell"></i>
                             二珂个人工作洽谈WeChat
                         </span>
@@ -93,10 +93,20 @@ export default {
     data() {
         return {
             erkeData: erkeData,
-            activeNames: [1, 8]
+            activeNames: [1, 8],
+            clientHeight:0
         };
     },
     mounted() {
+    window.addEventListener('scroll', this.handleScroll, true)
+    this.clientHeight = `${document.documentElement.clientHeight}`;
+    let that = this;
+    window.onresize = function () {
+      that.clientHeight = `${document.documentElement.clientHeight}`;
+      if (that.$refs.page) {
+        that.$refs.page.style.minHeight = clientHeight - 100 + 'px';
+      }
+    }
     },
     watch: {
 

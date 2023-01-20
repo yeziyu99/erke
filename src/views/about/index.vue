@@ -22,13 +22,13 @@
       <el-descriptions  :column="1" border>
             <el-descriptions-item v-for="(item, index) in contactUs" :key="index">
                 <template slot="label">
-                  <span>
+                  <span :style="{color:item.tag=='danger'?'red':''}">
                     <el-avatar v-if="item.img" :src="item.img"></el-avatar>
                     {{item.title}}
                   </span>                  
                 </template>
                   <el-tooltip class="item" effect="dark" content="点击复制" placement="bottom-start" v-for="(items, ind) in item.center" :key="ind">
-                    <el-tag size="small"  type="success" @click="copyText(items.con)" class="mg-rg-5 pointer">{{ items.name }}</el-tag>
+                    <el-tag size="small"  :type="item.tag||''" @click="copyText(items.con)" class="mg-rg-5 pointer">{{ items.name }}</el-tag>
                   </el-tooltip>
             </el-descriptions-item>
         </el-descriptions>
@@ -81,7 +81,7 @@ export default {
   .aboutUs_head {
     width: 100%;
     height: 325px;
-    background-color: #ffe103;
+    background-color: $back-primary1;
     display: flex;
     align-items: center;
     flex-direction: column;

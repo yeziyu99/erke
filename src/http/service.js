@@ -214,7 +214,7 @@ const _http = {
         * getPictureDatasMthMmethod
         * params
         *  //Token	string	no	Token
-       {method} 为请求方法，共有两个请求方法 aid 和 sid 。aid--相集的id，pid--图片的id。{value}为相应请求数值。用 aid(相集id)获取数据的话，会有分页page参数，分页默认50条数据）
+        {method} 为请求方法，共有两个请求方法 aid 和 sid 。aid--相集的id，pid--图片的id。{value}为相应请求数值。用 aid(相集id)获取数据的话，会有分页page参数，分页默认50条数据）
         请求方式：Get
         返回参数如下（通用返回参数data中的参数）
             参数	描述	数据类型
@@ -231,10 +231,6 @@ const _http = {
                 (0--非本地链接，即第三方图片储存；1--为本地链接，使用时需要拼。即:
                 http://api.erkechloe.com/upload/{img_url})	int
                 release_time	图片的发布日期的时间戳	int
-
-
-
-
      */
     getPictureDatasMthMmethod(params) {
         return http("/picture/datas/mth/"+params.method, "GET",params);

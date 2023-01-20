@@ -317,6 +317,7 @@ export default {
             // 歌词支持滚动的
             lyricD.forEach((item, key) => {
               let curArr = item.slice(1).split("]");
+              console.log(item,curArr)
               // 把01:00.23 转换为秒,
               timeArr.push(curArr[0]);
               lyricArr[key] = curArr[1] || "";
@@ -634,7 +635,7 @@ li {
 
 li:hover {
   cursor: pointer;
-  background-color: #ffe100;
+  background-color: $back-primary1;
   // color: #fff;
 }
 
@@ -701,7 +702,7 @@ li:hover {
 
 .music-content {
   padding: 10px 0px 10px 0px;
-  background-color: #ffe100;
+  background-color: $back-primary1;
   border-radius: 0 0 10px 10px;
 
   div.music-title div span {
@@ -777,13 +778,16 @@ li:hover {
 
   span {
     height: 30px;
+    line-height: 30px ;
     font-size: 16px;
   }
 }
 
 .on {
-  font-size: 14px;
-  color: #31c27c;
+    font-size: 30px !important;
+    color: #31c27c;
+    line-height: 50px !important;
+    height: 50px !important;
 }
 
 // 播放列表过渡动画

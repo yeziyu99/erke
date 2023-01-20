@@ -58,6 +58,17 @@ export var contactUs = [
         ],
         img: QQ,
     },
+    {
+        title: '二珂个人工作洽谈WeChat',
+        center: [
+            {
+                name:'Alba_1015 （何女士）',
+                con:'Alba_1015'
+            },
+        ],
+        img: VX,
+        tag:'danger'
+    },
 ]
 /* erkeLink
 各平台链接名称
@@ -98,12 +109,14 @@ export var erkeLink = {
         title: '小红书',
         remarks: '小红书',
         name: '二珂',
+        class:'red',
         img: xhs,
         herf: 'https://www.xiaohongshu.com/user/profile/5ad78361e8ac2b1fca15ff66'
     },
     5: {
         title: '网易云音乐',
         remarks: '网易云',
+        class:'red',
         name: '二珂呀呀呀',
         img: wyy,
         herf: 'https://music.163.com/#/user/home?id=104601777'
@@ -125,12 +138,14 @@ export var erkeLink = {
         title: '微博',
         remarks: '微博',
         name: '二珂Chloe',
+        class:'red',
         img: weibo,
         herf: 'https://weibo.com/u/1910672761'
     },
     9: {
         title: '酷狗音乐',
         remarks: '酷狗',
+        class:'kg',
         name: '二珂 歌手',
         img: kg,
         herf: 'https://www.kugou.com/singer/info/5NFEK0C350FF5/'
@@ -138,6 +153,7 @@ export var erkeLink = {
     10: {
         title: 'QQ音乐',
         remarks: 'QQ音乐',
+        class:'qy',
         name: '二珂歌手',
         img: qy,
         herf: 'https://y.qq.com/n/ryqq/profile/like/song?uin=owvsNKSP7wvAon**'
