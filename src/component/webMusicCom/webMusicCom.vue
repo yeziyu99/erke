@@ -257,7 +257,7 @@ export default {
     },
     // 因为谷歌等软件规定 进入页面需要触发交互之后才可以播放声音
     getHot() {
-      this.$alert('欢迎来到本站，开始您的听歌之旅吧', '开始听歌', {
+      this.$alert('因为一些浏览器规定 进入页面需要触发交互之后才可以播放声音', '开始听歌', {
         confirmButtonText: '确定',
         callback: action => {
           this.getSongDatasMthMethod()

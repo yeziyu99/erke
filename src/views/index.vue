@@ -103,6 +103,7 @@ export default {
     position: sticky;
     top: 0;
     z-index: 99;
+    overflow: hidden;
   }
   @media screen and (min-width: 1170px) {
     .page {

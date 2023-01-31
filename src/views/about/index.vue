@@ -4,7 +4,8 @@
       <div class="about_head_title">
         <div class="title_left">
           <div class="about_font_Bold font_Bold">非官方</div>
-          <div class="about_ready">自己做着玩</div>
+          <div class="about_ready">与官方无关，纯属自己做着玩，纯展示 </div>
+          <div class="about_ready">有时候可能会有抽奖通告，需要你出钱的不要信,出事本站不负责 </div>
           <!-- <div class="about_ready">
             因为喜欢珂珂相聚在这里
           </div> -->
@@ -16,9 +17,14 @@
       <p>
         因为喜欢珂珂我们相识，有资源可以联系一起分享哦～
       </p>
-      <h1>我们的故事</h1>
-      <div>还没想好写什么 先空着好了 </div>
-      <h1>联系我们</h1>
+      <!-- 故事板块 -->
+      <h1>
+        我们的故事
+        <span class="mg-tp-25 font-size-12 font-weight-700 color62657A text-ag-rg">（欢迎投稿）</span>
+      </h1>
+      <p>无意间遇见，就确定了永远~ </p>
+      <h1>联系我们 <span class="mg-tp-25 font-size-12 font-weight-700 color62657A text-ag-rg">（点击下列对应标签复制）</span></h1>
+      <!-- 表格-联系方式 -->
       <el-descriptions  :column="1" border>
             <el-descriptions-item v-for="(item, index) in contactUs" :key="index">
                 <template slot="label">

@@ -39,3 +39,4 @@ mv /tmp/dist.tar /data/web/frontend_tb/www
 ```
 rm -rf dist && tar -xf dist.tar
 ```
+mv /www/wwwroot/www.erkechloe.com/dist/* /www/wwwroot/www.erkechloe.com

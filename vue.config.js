@@ -18,8 +18,8 @@ module.exports = {
       open: true,
       proxy: {// 配置多个代理(配置一个 proxy: 'http://localhost:4000' )
           '/api': {
-            //   target: 'www.tigerbrokers.co.uk'  ,   // 线上接口地址
-              target: 'https://api.jy129.cn'  ,   // 测试接口地址
+              target: 'https://api.erkechloe.com'  ,   // 线上接口地址
+            //   target: 'https://api.jy129.cn'  ,   // 测试接口地址
               ws: true,
               changeOrigin: true
           },

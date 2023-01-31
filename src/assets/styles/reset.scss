@@ -155,7 +155,7 @@ img {
     &:hover {
         cursor: pointer;
         color: #fff !important;
-        background: $back-primary2 !important;
+        // background: $back-primary2 !important;
     }
 }
 
@@ -180,15 +180,13 @@ p {
         min-width: 89 * 2px;
         font-size: 16px;
         padding: 14px 40px;
-        background: $back-primary2;
+        background: $back-primary1;
         border-radius: 26px;
         color: #fff;
         text-align: center;
 
         &:hover {
-            background: $back-primary2;
             color: #000;
-            cursor: pointer;
         }
     }
 

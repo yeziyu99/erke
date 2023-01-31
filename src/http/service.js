@@ -6,7 +6,7 @@ import Vue from "vue";
 
 import router from "../router";
 
-axios.defaults.baseURL = "https://api.jy129.cn"
+axios.defaults.baseURL = "https://api.erkechloe.com"
 //请求
 function http(url, method, params = {}) {
     if (method === "GET") {

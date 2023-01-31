@@ -109,8 +109,6 @@ ul li {
       }
 
       .publicFoot_btn {
-        // width: 43*2px;
-        // height: 14.5*2px;
         padding: 9px 10px;
         box-sizing: border-box;
         border: 1px solid rgba(255, 255, 255, 0.4);

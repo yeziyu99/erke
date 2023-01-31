@@ -28,9 +28,13 @@ export var contactUs = [
         title: 'QQ',
         center: [
             {
-                name:'346989693',
+                name:'叶子宇',
                 con:'346989693'
             },
+            {
+                name:'周三鸽',
+                con:'1845701248'
+            }
         ],
         img: QQ,
     },
@@ -38,7 +42,7 @@ export var contactUs = [
         title: 'VX',
         center: [
             {
-                name:'yezituan_yu',
+                name:'叶子宇',
                 con:'yezituan_yu'
             },
         ],

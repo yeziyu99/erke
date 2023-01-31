@@ -32,7 +32,7 @@
               </div>
               <div class="video_wrap" @click="externalJumpFn('https://www.douyu.com/78622')">
                 <div class="animate-wave">
-                  <img class="logo" src="@/assets/images/erke.png" alt="">
+                  <img class="logo" src="https://img.douyucdn.cn/data/yuba/weibo/2023/01/29/202301291721386043550652722.png" alt="">
                   <div class="w2"></div>
                   <div class="w3"></div>
                   <div class="w4"></div>
@@ -93,7 +93,9 @@
             <!-- invest_bg_title font_Bold -->
             <div class=" customize-bg-container" :style="{ backgroundSize: containerBack + '%' }">
               <div class="customize-wrapper" style="position: relative">
-                希望我们都能寻觅到真正的自己，永远像Juliet’s Rose的美丽盛开。
+                <p  class="font-size-24 font-weight-700 mg-lt-30">
+                  无意间遇见，就确定了永远~
+                </p>
                 <div class="invest_img">
                   <div class="img_left">
                     <el-image class="left1 img_border" :src="vv.v1"
@@ -104,11 +106,7 @@
                       fit="cover" alt="" />
                   </div>
                   <div class="img_phone">
-                    <!-- <video class="inset_video" playsinline webkit-playsinline autoplay loop preload="auto"
-                      data-status="playing">
-                      <source src="@/assets/images/xin.mp4" />
-                    </video> -->
-                    <el-image class="img_border" :src="vv.v7"
+                    <el-image class="img_border img_borders" :src="vv.v7"
                       fit="cover" alt="" />
                   </div>
                   <div class="img_right">
@@ -143,13 +141,6 @@
               <div class="swiper-slide" :key="index" v-for="(item,index) in ekLeftList">
                 <img :src="item" alt="" />
               </div>
-              <!-- <div class="swiper-slide">
-                <img src="https://wx1.sinaimg.cn/orj360/0025iZgBly1gx1rcs8uqxj61jk224b2902.jpg" alt="" />
-              </div>
-              <div class="swiper-slide">
-                <img src="https://wx2.sinaimg.cn/mw2000/0025iZgBly1gx1rct2x76j61jk2241i002.jpg" alt="" />
-              </div> -->
-
             </div>
           </div>
         </div>
@@ -167,7 +158,7 @@
                   <img :src="item" alt="" />
                 </div>
               </div>
-              <div class="swiper-pagination"></div>
+              <div class="swiper-pagination mg-lt-30"></div>
             </div>
           </div>
         </div>
@@ -186,9 +177,9 @@
           <div class="pounce_left">
             <div>
               <ul>
-                <li v-for="(item, index) in textContainerfour" :key="index" :class="{ active: index == activeIndex }"
+                <li v-for="(item, index) in pictureList" :key="index" :class="{ active: index == activeIndex }"
                   @click="changeActiveSwiper(index)">
-                  {{ item.title }}
+                  {{ item.album_desc }}
                   <a v-if="item.href" :href="item.href" class="font_Bold">🛫️</a>
                 </li>
               </ul>
@@ -197,10 +188,10 @@
           <div class="pounce_right">
             <div class="swiper-containerfour">
               <div class="swiper-wrapper">
-                <div class="swiper-slide" v-for="(item, index) in textContainerfour" :key="index">
-                  <el-image v-if="index != 0" class="swiper-img" :src="item.img" :preview-src-list="srcList"
-                    fit="cover"></el-image>
-                  <img v-if="index == 0" class="swiper-img" :src="item.img" alt="">
+                <div class="swiper-slide" v-for="(item, index) in pictureList" :key="index">
+                  <!-- <el-image class="swiper-img" :src="item.cover_img" :preview-src-list="item.img_urls" :index="index"
+                    fit="cover"></el-image> -->
+                  <img class="swiper-img" :src="item.cover_img" alt="">
                 </div>
               </div>
             </div>
@@ -209,6 +200,7 @@
         <div class="foot_btn" @click="externalJumpFn('https://weibo.com/u/1910672761')">查看更多</div>
       </div>
     </div>
+    <!-- 优质UP主推荐 -->
     <div class="home_foot">
       <div class="foot_con">
         <div class="foot_title font_Bold">优质UP主推荐</div>
@@ -265,15 +257,28 @@ export default {
   data() {
     return {
       vv:{
-        v1:v1,
-        v2:v2,
-        v3:v3,
-        v4:v4,
-        v5:v5,
-        v6:v6,
-        v7:v7,
+        v1:'https://img.douyucdn.cn/data/yuba/weibo/2023/01/29/202301291738328674805332466.580x0.png',
+        v2:'https://img.douyucdn.cn/data/yuba/weibo/2023/01/29/202301291739587934172479369.580x0.png',
+        v3:'https://img.douyucdn.cn/data/yuba/weibo/2023/01/29/202301291740441564456501936.580x0.png',
+        v4:'https://img.douyucdn.cn/data/yuba/weibo/2023/01/29/202301291741099980187137568.580x0.png',
+        v5:'https://img.douyucdn.cn/data/yuba/weibo/2023/01/29/202301291741466346082477334.580x0.png',
+        v6:'https://img.douyucdn.cn/data/yuba/weibo/2023/01/29/202301291742187461269183839.580x0.png',
+        v7:'https://img.douyucdn.cn/data/yuba/weibo/2023/01/29/202301291742475589446201300.580x0.png',
       },
-      ekLeftList:[l1,l2,l3,l4,l5,l6,l7,l8,l9,l10],
+      ekLeftList:[
+        'https://img.douyucdn.cn/data/yuba/weibo/2023/01/29/202301291654065627224646997.580x0.png',
+        'https://img.douyucdn.cn/data/yuba/weibo/2023/01/29/202301291701064549801064309.580x0.png',
+        'https://img.douyucdn.cn/data/yuba/weibo/2023/01/29/202301291701422273822708637.580x0.png',
+        'https://img.douyucdn.cn/data/yuba/weibo/2023/01/29/202301291702064534517015489.580x0.png',
+        'https://img.douyucdn.cn/data/yuba/weibo/2023/01/29/202301291708124074405665696.580x0.png',
+        'https://img.douyucdn.cn/data/yuba/weibo/2023/01/29/202301291709127003136243706.580x0.png',
+        'https://img.douyucdn.cn/data/yuba/weibo/2023/01/29/202301291709442800825856161.580x0.png',
+        'https://img.douyucdn.cn/data/yuba/weibo/2023/01/29/202301291710129561712583672.580x0.png',
+        'https://img.douyucdn.cn/data/yuba/weibo/2023/01/29/202301291710474549124381053.580x0.png',
+        'https://img.douyucdn.cn/data/yuba/weibo/2023/01/29/202301291711144290885696046.580x0.png',
+        'https://img.douyucdn.cn/data/yuba/weibo/2023/01/29/202301291711452634071577250.580x0.png',
+        'https://img.douyucdn.cn/data/yuba/weibo/2023/01/29/202301291712122758329118808.580x0.png'
+      ],
       erkeLive:false,
       pictureList:pictureList,
       pictureLists:[],
@@ -292,71 +297,11 @@ export default {
       imageScrollWrapperHeight: 0,
       supportLink: supportLink,
       supportLinks: [],
-      textContainerfour: [
-        {
-          title: "几张‘书不离手‘的胶片照片",
-          img: 'https://wx2.sinaimg.cn/mw2000/0025iZgBly1h5j0c7abv2j62re22s1kz02.jpg',
-          imgArr: ['https://wx2.sinaimg.cn/mw2000/0025iZgBly1h5j0c7abv2j62re22s1kz02.jpg'],
-          href: 'https://weibo.com/1910672761/M2FxPqk6t?pagetype=profilefeed',
-          active: true,
-        },
-        {
-          title: "你们用随身听的那年，听的谁的歌。",
-          img: 'https://wx1.sinaimg.cn/mw2000/0025iZgBly1h3i13xu2e8j60yi1a0wi002.jpg',
-          imgArr: ['https://wx1.sinaimg.cn/mw2000/0025iZgBly1h3i13xu2e8j60yi1a0wi002.jpg'],
-          href: 'https://weibo.com/1910672761/Lz1UeuyD2?pagetype=profilefeed',
-          active: false,
-        },
-        {
-          title: "消失的画",
-          img: 'https://wx1.sinaimg.cn/mw2000/0025iZgBly1h3etbzx7kyj61jk2247wh02.jpg',
-          imgArr: ['https://wx1.sinaimg.cn/mw2000/0025iZgBly1h3etbzx7kyj61jk2247wh02.jpg'],
-          href: 'https://weibo.com/1910672761/LyBGwnVqK?pagetype=profilefeed',
-          active: false,
-        },
-        {
-          title: "某天的夜里",
-          img: 'https://wx4.sinaimg.cn/mw2000/0025iZgBly1gy7dkwa283j62241jknpd02.jpg',
-          imgArr: ['https://wx4.sinaimg.cn/mw2000/0025iZgBly1gy7dkwa283j62241jknpd02.jpg'],
-          href: 'https://weibo.com/1910672761/L9XejCC1m?pagetype=profilefeed',
-          active: false,
-        },
-        {
-          title: "滑满五天，开心！-滑雪照",
-          img: 'https://wx2.sinaimg.cn/mw2000/0025iZgBly1gx1rct2x76j61jk2241i002.jpg',
-          imgArr: ['https://wx2.sinaimg.cn/mw2000/0025iZgBly1gx1rct2x76j61jk2241i002.jpg'],
-          href: 'https://weibo.com/1910672761/L4tRIyz0y?pagetype=profilefeed',
-          active: false,
-        },
-        {
-          title: "存图… 想去看雪❄️ ​​​",
-          img: 'https://wx2.sinaimg.cn/mw2000/0025iZgBgy1gwb961ksyqj622o340kjl02.jpg',
-          imgArr: ['https://wx2.sinaimg.cn/mw2000/0025iZgBgy1gwb961ksyqj622o340kjl02.jpg'],
-          href: 'https://weibo.com/1910672761/L0ZJbjYu5?pagetype=profilefeed',
-          active: false,
-        },
-      ],
-      //放大地址
-      srcList: [
-        'https://wx2.sinaimg.cn/mw2000/0025iZgBly1h5j0c7abv2j62re22s1kz02.jpg',
-        'https://wx1.sinaimg.cn/mw2000/0025iZgBly1h3i13xu2e8j60yi1a0wi002.jpg',
-        'https://wx1.sinaimg.cn/mw2000/0025iZgBly1h3etbzx7kyj61jk2247wh02.jpg',
-        'https://wx4.sinaimg.cn/mw2000/0025iZgBly1gy7dkwa283j62241jknpd02.jpg',
-        'https://wx2.sinaimg.cn/mw2000/0025iZgBly1gx1rct2x76j61jk2241i002.jpg',
-        'https://wx2.sinaimg.cn/mw2000/0025iZgBgy1gwb961ksyqj622o340kjl02.jpg'
-      ],
-      leftTopTexts: [
-        "30:1 leverage to apply",
-        "Tight price gap between buying & selling",
-      ],
-      rightTopTexts: [
-        "No commission & hidden fee",
-        "Negative balance protection",
-      ],
+      pictureList:pictureList,
       rightIndex: 0,
       activeIndex: 1,
       imageSrcs: [erkeV, erkeI],
-      images: ['https://wx4.sinaimg.cn/orj360/0025iZgBgy1gvbhdyo5duj629u1ilb2a02.jpg', 'https://wx4.sinaimg.cn/orj360/0025iZgBgy1gvbhdyo5duj629u1ilb2a02.jpg'],
+      img_url:'https://api.erkechloe.com/upload/'
     };
   },
   components: {},
@@ -430,14 +375,22 @@ export default {
   },
   created() { },
   mounted() {
+    let thes=this;
+    thes.pictureList.forEach((item,index)=>{
+      item.cover_img=item.is_loc_url==1?thes.img_url+item.cover_img_id:item.cover_img_id;
+      item.img_urls=[];
+      item.children.forEach((val,ind)=>{
+        item.img_urls.push(item.is_loc_url==1?thes.img_url+val.img_url:val.img_url)
+      })
+    })
     http.getLive().then(rs => {
         this.loading = false
         if (rs.code == 200) {
-          console.log(rs)
           this.erkeLive=rs.datas.status
         } else {
         }
       })
+    
     const headNavHeight =
       document.getElementsByClassName("publicHeader")[0].offsetHeight; // 导航高度
     let placeholderElementTop = document.getElementsByClassName(
@@ -457,8 +410,6 @@ export default {
       }
     };
     window.addEventListener("scroll", this.handleScroll,true);
-
-
     this.supportLinks.push(this.supportLink[1])
     this.supportLinks.push(this.supportLink[2])
     this.supportLinks.push(this.supportLink[3])
