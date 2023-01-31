@@ -188,10 +188,10 @@
           <div class="pounce_right">
             <div class="swiper-containerfour">
               <div class="swiper-wrapper">
-                <div class="swiper-slide" v-for="(item, index) in pictureList" :key="index">
+                <div class="swiper-slide" v-for="(item, index) in pictureLists" :key="index">
                   <!-- <el-image class="swiper-img" :src="item.cover_img" :preview-src-list="item.img_urls" :index="index"
                     fit="cover"></el-image> -->
-                  <img class="swiper-img" :src="item.cover_img" alt="">
+                  <img class="swiper-img" :src="item" alt="">
                 </div>
               </div>
             </div>
@@ -376,13 +376,18 @@ export default {
   created() { },
   mounted() {
     let thes=this;
+    thes.pictureLists=[]
     thes.pictureList.forEach((item,index)=>{
       item.cover_img=item.is_loc_url==1?thes.img_url+item.cover_img_id:item.cover_img_id;
       item.img_urls=[];
       item.children.forEach((val,ind)=>{
         item.img_urls.push(item.is_loc_url==1?thes.img_url+val.img_url:val.img_url)
       })
+      thes.pictureLists.push(
+        item.cover_img
+      )
     })
+    console.log(thes.pictureLists)
     http.getLive().then(rs => {
         this.loading = false
         if (rs.code == 200) {
