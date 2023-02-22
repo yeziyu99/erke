@@ -6,7 +6,7 @@
           <img class="imgrotate" @error='imgOnError'
             :src="computCur||'https://p1.music.126.net/PMZ2HH_vuAhtNCOSrfGCGQ==/109951168131572411.jpg'" alt="">
         </div>
-
+      
       </div>
       <div class="yinyue_top_con">
         <div class="yinyue_top_con_title">
@@ -306,7 +306,7 @@ export default {
           this.curIndexs=this.curIndex;
           // 歌词不支持滚动的
           this.curMusic.lrcType=rs.datas.lrc.type;
-          var lyricD = rs.datas.txt.split("\n");
+          var lyricD = rs.datas.txt.split("\r\n");
           var timeArr = [];
           var lyricArr = [];
           if(rs.datas.lrc.type==0){
@@ -529,20 +529,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// .mixin-components-container {
-//   width: 100% !important;
-//   // #f0f2f5;
-//   padding: 30px;
-//   /* min-height: calc(100vh - 84px); */
-// }
-// .el-card__body {
-//   height: 70px !important;
-//   padding: 0 auto !important;
-// .card {
-//   height: 70px;
-// #waveform {
-// wave {
-//   height: 50px !important;}}}}
 .yinyue_top {
   display: flex;
   justify-content: center;
