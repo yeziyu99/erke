@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     isQuestionData(){
-      if(this.$route.name=='home'||this.$route.name=='market'){
+      if(this.$route.name=='home'||this.$route.name=='music'){
         this.isQuestion=true
       }else{
         this.isQuestion=false
@@ -133,7 +133,7 @@ export default {
       border-radius: 50%;
       width: 100%;
     }
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1169px) {
   .page {
       min-width: 100%;
     }

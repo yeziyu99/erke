@@ -3,7 +3,8 @@
     <div class="header_con">
       <img src="@/assets/images/4.png" @click="jumpFun('home')" alt="" />
       <ul>
-        <li :class="{ 'header_route': true, 'fontW700': className === 'market' }" @click="jumpFun('market')">音乐专辑</li>
+        <li :class="{ 'header_route': true, 'fontW700': className === 'photo' }" @click="jumpFun('photo')">相册视频</li>
+        <li :class="{ 'header_route': true, 'fontW700': className === 'music' }" @click="jumpFun('music')">音乐专辑</li>
         <li :class="{ 'header_route': true, 'fontW700': className === 'support' }" @click="jumpFun('support')">优质UP主</li>
         <li :class="{ 'header_route': true, 'fontW700': className === 'erke' }" @click="jumpFun('erke')">二珂简介</li>
         <li :class="{ 'header_route': true, 'fontW700': className === 'about' }" @click="jumpFun('about')">关于我们</li>

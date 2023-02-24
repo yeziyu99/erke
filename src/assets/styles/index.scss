@@ -1,14 +1,23 @@
 $back-primary1: #f4c8c7;
 $back-primary1-1: #FCC6C6;
+
 /* 更换的颜色 */
+
 $back-primary2: #0c61BB;
+
 /* 更换的颜色 */
+
 $color-primary1: #000;
+
 /* 更换的颜色 */
+
 $color-primary2: #fff;
 
 /* 更换的颜色 */
+
+
 /*定义方法*/
+
 // @mixin color_primary($color) {
 //     color: $color;
 // }
@@ -16,5 +25,5 @@ $color-primary2: #fff;
 @import './_util';
 @import './reset';
 @import './home';
-@import './market';
+@import './music';
 @import './support';

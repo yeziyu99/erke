@@ -71,12 +71,12 @@
 </template>
   
 <script>
-import {supportLink} from "@/utils/support.js";
+import support from "@/utils/support.js";
 export default {
   data() {
     return {
-      supportLink: supportLink,
-      newQuestionData: supportLink,
+      supportLink: support.supportLink,
+      newQuestionData: support.supportLink,
       supportVal: '',
       Object:Object
     };

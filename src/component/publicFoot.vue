@@ -7,12 +7,18 @@
       </div>
       <div class="publicFoot_con">
         <ul class="publicFoot_con_left">
-          <li class="list_router" @click="jumpFun('market')">音乐专辑</li>
-          <li class="list_routerLi" @click="jumpFun('market')">专辑展示</li>
-          <li class="list_routerLi" @click="jumpFun('market')">本站现有音乐</li>
+          <li class="list_router" @click="jumpFun('photo')">相册视频</li>
+          <li class="list_routerLi" @click="jumpFun('photo')">图册展示</li>
+          <li class="list_routerLi" @click="jumpFun('photo')">视频展示</li>
+        </ul>
+        <ul class="publicFoot_con_left">
+          <li class="list_router" @click="jumpFun('music')">音乐专辑</li>
+          <li class="list_routerLi" @click="jumpFun('music')">专辑展示</li>
+          <li class="list_routerLi" @click="jumpFun('music')">本站现有音乐</li>
         </ul>
         <ul class="publicFoot_con_left">
           <li class="list_router" @click="jumpFun('support')">优质UP主</li>
+          <li class="list_routerLi" @click="jumpFun('support')">点击搜索</li>
           <li class="list_routerLi" @click="jumpFun('support')">UP主推荐</li>
         </ul>
         <ul class="publicFoot_con_left">

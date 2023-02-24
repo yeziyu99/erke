@@ -14,7 +14,8 @@
               人美、气质好、唱歌又好听，为人低调和善，但却挡不住她急剧上升的人气。在一个歌荒的寂寞时间，周二珂简直是甜歌小公主，那一刻，让你的心暖暖的。
             </h4>
             <div class="banner_btn">
-              <div @click="externalJumpFn('https://www.douyu.com/78622')" class="btn_one" v-if="erkeLive != 200">未开播～</div>
+              <div @click="externalJumpFn('https://www.douyu.com/78622')" class="btn_one" v-if="erkeLive != 200">未开播～
+              </div>
               <a @click="externalJumpFn('https://www.douyu.com/78622')" v-if="erkeLive == 200">
                 <img src="@/assets/images/douyu.png" alt="" />
                 开播中...</a>
@@ -32,7 +33,8 @@
               </div>
               <div class="video_wrap" @click="externalJumpFn('https://www.douyu.com/78622')">
                 <div class="animate-wave">
-                  <img class="logo" src="https://img.douyucdn.cn/data/yuba/weibo/2023/01/29/202301291721386043550652722.png" alt="">
+                  <img class="logo"
+                    src="https://img.douyucdn.cn/data/yuba/weibo/2023/01/29/202301291721386043550652722.png" alt="">
                   <div class="w2"></div>
                   <div class="w3"></div>
                   <div class="w4"></div>
@@ -93,31 +95,38 @@
                 </p>
                 <div class="invest_img">
                   <div class="img_left">
-                    <el-image class="left1 img_border"
-                      :src="imgDetails.imgHead + bgImgList.left1 + imgDetails.imgSize580 + imgDetails.imgSuffix"
-                      :preview-src-list="[imgDetails.imgHead + bgImgList.left1 + imgDetails.imgSuffix]" fit="cover" alt="" />
-                    <el-image class="left2 img_border"
-                      :src="imgDetails.imgHead + bgImgList.left2 + imgDetails.imgSize580 + imgDetails.imgSuffix"
-                      :preview-src-list="[imgDetails.imgHead + bgImgList.left2 + imgDetails.imgSuffix]" fit="cover" alt="" />
-                    <el-image class="left3 img_border"
-                      :src="imgDetails.imgHead + bgImgList.left3 + imgDetails.imgSize580 + imgDetails.imgSuffix"
-                      :preview-src-list="[imgDetails.imgHead + bgImgList.left3 + imgDetails.imgSuffix]" fit="cover" alt="" />
+                    <el-image class="left1 img_border" lazy
+                      :src="imgDetails.imgHead + bgImgList.left1 + imgDetails.imgSize580 + imgDetails.imgSuffixpng"
+                      :preview-src-list="[imgDetails.imgHead + bgImgList.left1 + imgDetails.imgSuffixpng]" fit="cover"
+                      alt="" />
+                    <el-image class="left2 img_border" lazy
+                      :src="imgDetails.imgHead + bgImgList.left2 + imgDetails.imgSize580 + imgDetails.imgSuffixpng"
+                      :preview-src-list="[imgDetails.imgHead + bgImgList.left2 + imgDetails.imgSuffixpng]" fit="cover"
+                      alt="" />
+                    <el-image class="left3 img_border" lazy
+                      :src="imgDetails.imgHead + bgImgList.left3 + imgDetails.imgSize580 + imgDetails.imgSuffixpng"
+                      :preview-src-list="[imgDetails.imgHead + bgImgList.left3 + imgDetails.imgSuffixpng]" fit="cover"
+                      alt="" />
                   </div>
                   <div class="img_phone">
-                    <el-image class="img_border img_borders"
-                      :src="imgDetails.imgHead + bgImgList.center + imgDetails.imgSize580 + imgDetails.imgSuffix"
-                      :preview-src-list="[imgDetails.imgHead + bgImgList.center + imgDetails.imgSuffix]" fit="cover" alt="" />
+                    <el-image class="img_border img_borders" lazy
+                      :src="imgDetails.imgHead + bgImgList.center + imgDetails.imgSize580 + imgDetails.imgSuffixpng"
+                      :preview-src-list="[imgDetails.imgHead + bgImgList.center + imgDetails.imgSuffixpng]" fit="cover"
+                      alt="" />
                   </div>
                   <div class="img_right">
-                    <el-image class="right1 img_border"
-                      :src="imgDetails.imgHead + bgImgList.right1 + imgDetails.imgSize580 + imgDetails.imgSuffix"
-                      :preview-src-list="[imgDetails.imgHead + bgImgList.right1 + imgDetails.imgSuffix]" fit="cover" alt="" />
-                    <el-image class="right2 img_border"
-                      :src="imgDetails.imgHead + bgImgList.right2 + imgDetails.imgSize580 + imgDetails.imgSuffix"
-                      :preview-src-list="[imgDetails.imgHead + bgImgList.right2 + imgDetails.imgSuffix]" fit="cover" alt="" />
-                    <el-image class="right3 img_border"
-                      :src="imgDetails.imgHead + bgImgList.right3 + imgDetails.imgSize580 + imgDetails.imgSuffix"
-                      :preview-src-list="[imgDetails.imgHead + bgImgList.right1 + imgDetails.imgSuffix]" fit="cover" alt="" />
+                    <el-image class="right1 img_border" lazy
+                      :src="imgDetails.imgHead + bgImgList.right1 + imgDetails.imgSize580 + imgDetails.imgSuffixpng"
+                      :preview-src-list="[imgDetails.imgHead + bgImgList.right1 + imgDetails.imgSuffixpng]" fit="cover"
+                      alt="" />
+                    <el-image class="right2 img_border" lazy
+                      :src="imgDetails.imgHead + bgImgList.right2 + imgDetails.imgSize580 + imgDetails.imgSuffixpng"
+                      :preview-src-list="[imgDetails.imgHead + bgImgList.right2 + imgDetails.imgSuffixpng]" fit="cover"
+                      alt="" />
+                    <el-image class="right3 img_border" lazy
+                      :src="imgDetails.imgHead + bgImgList.right3 + imgDetails.imgSize580 + imgDetails.imgSuffixpng"
+                      :preview-src-list="[imgDetails.imgHead + bgImgList.right1 + imgDetails.imgSuffixpng]" fit="cover"
+                      alt="" />
                   </div>
                 </div>
               </div>
@@ -140,7 +149,8 @@
           <div class="swiper-container linear">
             <div class="swiper-wrapper">
               <div class="swiper-slide" :key="index" v-for="(item, index) in ekLeftList">
-                <img :src="imgDetails.imgHead + item + imgDetails.imgSize580 + imgDetails.imgSuffix" fit="cover" alt="" />
+                <el-image :src="imgDetails.imgHead + item + imgDetails.imgSize580 + imgDetails.imgSuffixpng" lazy
+                  fit="cover" alt="" />
               </div>
             </div>
           </div>
@@ -181,7 +191,10 @@
                 <li v-for="(item, index) in pictureList" :key="index" :class="{ active: index == activeIndex }"
                   @click="changeActiveSwiper(index)">
                   {{ item.album_desc }}
-                  <a v-if="item.href" :href="item.href" class="font_Bold">🛫️</a>
+                  <a class="img_ico" title="点击查看详情" @click="externalJumpFn(item.href)">
+                    <img src="~@/assets/images/faviconx.png" alt="站内查看">
+                  </a>
+                  <a v-if="item.href" @click="externalJumpFn(item.href)" class="img_ico" title="微博查看原文">🛫️</a>
                 </li>
               </ul>
             </div>
@@ -189,10 +202,10 @@
           <div class="pounce_right">
             <div class="swiper-containerfour">
               <div class="swiper-wrapper">
-                <div class="swiper-slide" v-for="(item, index) in pictureList" :key="index" ref="abcd">
+                <div class="swiper-slide" v-for="(item, index) in pictureLists" :key="index" ref="abcd">
                   <!-- <el-image class="swiper-img" :src="item.cover_img" :preview-src-list="item.img_urls" :index="index"
                     fit="cover"></el-image> -->
-                  <img class="swiper-img" :src="item.cover_img" alt="">
+                  <img class="swiper-img" :src="item" alt="">
                 </div>
               </div>
             </div>
@@ -209,7 +222,7 @@
           <li class="list_item" v-for="(item, index) in supportLinks" :key="index">
             <img :src="item.imgUrl" :alt="item.title" />
             <h2> {{ item.title }} </h2>
-          
+
             <ul class="foot_list_item" v-for="(val, i) in item.children" :key="i">
               <li @click="externalJumpFn(val.herf)">
                 <el-tag size="small" class="tag pointer mg-bt-10">
@@ -231,7 +244,7 @@
    
 <script>
 import "swiper/css/swiper.min.css";
-import { supportLink, pictureList } from "@/utils/support.js";
+import support from "@/utils/support.js";
 import erkeI from "@/assets/images/erkeI.png";
 import erkeV from "@/assets/images/erkeV.png";
 import dyhead from "@/assets/images/dyhead.png";
@@ -241,11 +254,7 @@ import Swiper from "swiper";
 export default {
   data() {
     return {
-      imgDetails: {
-        imgHead: 'https://img.douyucdn.cn/data/yuba/weibo',
-        imgSuffix: '.png',
-        imgSize580: '.580x0'
-      },
+      imgDetails: support.imgDetails,
       //中间一片
       bgImgList: {
         left1: '/2023/01/29/202301291738328674805332466',
@@ -273,7 +282,7 @@ export default {
         '/2023/01/29/202301291712122758329118808'
       ],
       erkeLive: false,
-      pictureLists: [],
+      pictureLists: support.pictureLists,
       dyhead: dyhead,
       wbhead: wbhead,
       barFixed: false,
@@ -287,9 +296,9 @@ export default {
       imageScrollHeight: 0,
       imageHeight: 0,
       imageScrollWrapperHeight: 0,
-      supportLink: supportLink,
+      supportLink: support.supportLink,
       supportLinks: [],
-      pictureList: pictureList,
+      pictureList: support.pictureList,
       rightIndex: 0,
       activeIndex: 1,
       imageSrcs: [erkeV, erkeI],
@@ -320,7 +329,7 @@ export default {
           bottom: "0px",
         };
         this.containerBack = `${(imageScrollOffset /
-            (this.clientHeight + document.documentElement.clientHeight + 1700)) *
+          (this.clientHeight + document.documentElement.clientHeight + 1700)) *
           100 +
           70
           }`;
@@ -366,19 +375,19 @@ export default {
   },
   created() { },
   mounted() {
-    let thes = this;
-    thes.pictureLists = []
-    thes.pictureList.forEach((item, index) => {
-      item.cover_img = item.is_loc_url == 1 ? thes.img_url + item.cover_img_id : item.cover_img_id;
-      item.img_urls = [];
-      item.children.forEach((val, ind) => {
-        item.img_urls.push(item.is_loc_url == 1 ? thes.img_url + val.img_url : val.img_url)
-      })
-      thes.pictureLists.push(
-        item.cover_img
-      )
-    })
-    console.log(thes.pictureLists)
+    // let thes = this;
+    // // thes.pictureLists = []
+    // thes.pictureList.forEach((item, index) => {
+    //   item.cover_img = item.is_loc_url == 0 ? imgDetails.imgHead + item.cover_img_id + imgDetails.imgSize580 + imgDetails.imgSuffixjpg : item.cover_img_id;
+    //   item.img_urls = [];
+    //   item.children.forEach((val, ind) => {
+    //     item.img_urls.push(item.is_loc_url == 0 ? imgDetails.imgHead + val.img_url + imgDetails.imgSuffixjpg : val.img_url)
+    //   })
+    //   // thes.pictureLists.push(
+    //   //   item.cover_img
+    //   // )
+    //   console.log(thes.pictureLists)
+    // })
     http.getLive().then(rs => {
       this.loading = false
       if (rs.code == 200) {
