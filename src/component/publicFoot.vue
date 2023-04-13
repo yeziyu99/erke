@@ -1,5 +1,5 @@
 <template>
-  <div class="publicFoot">
+  <div class="publicFoot background_linear">
     <div class="publicFoot_back">
       <div class="publicFoot_head">
         <img class="logo" src="@/assets/images/5.png" alt="" />
@@ -42,11 +42,11 @@
           <li class="con_right_bottom">346989693@qq.com </li>
         </ul>
       </div>
-      <p style="margin-top: 10px;text-align: center;">
+      <!-- <p style="margin-top: 10px;text-align: center;">
         <el-link @click="externalJumpFn('https://beian.miit.gov.cn')"  style="color:#fff;">
           京ICP备2023001053号
         </el-link>
-      </p>
+      </p> -->
     </div>
   </div>
 </template>
@@ -75,7 +75,7 @@ ul li {
   width: 100%;
   min-width: 1170px;
   overflow-x: auto;
-  background: #000;
+  //background: #000;
   display: flex;
   align-items: center;
   flex-direction: column;

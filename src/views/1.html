@@ -1,5 +1,5 @@
 <!-- https://img.douyucdn.cn/data/yuba/weibo/2023/01/30/202301301644519310725438672.580x0.jpg -->
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -62,8 +62,8 @@
     </div>
 </body>
 
-</html>
-<!-- <!DOCTYPE html>
+</html> -->
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -85,132 +85,153 @@
     <div class="lyricPanel"></div>
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <script>
-
         ((w) => {
-            let lyricFormat = function (lyric02) {
-                let reg2 = /([[\d{2}:\d{2}\.\d{2,3}]+]+)(\n|.+)/g;
-                let lyricUnformatedArray = [];
-                res = reg2.exec(lyric02);
-                while (res) {
-                    lyricUnformatedArray.push({ time: res[1], lyric: res[2] });
-                    res = reg2.exec(lyric02)
-                }
-                for (let i = 0; i < lyricUnformatedArray.length; i++) {
-                    const element = lyricUnformatedArray[i];
-                    if (element.lyric == "\n") {
-                        if (lyricUnformatedArray[i + 1] != undefined && lyricUnformatedArray[i + 1].lyric == "\n") {
-                            if (lyricUnformatedArray[i + 2].lyric == "\n") {
-                                lyricUnformatedArray[i + 2] = { time: lyricUnformatedArray[i + 2].time, lyric: lyricUnformatedArray[i + 3].lyric }
-                                lyricUnformatedArray[i] = { time: lyricUnformatedArray[i].time, lyric: lyricUnformatedArray[i + 3].lyric }
-                            } else {
-                                lyricUnformatedArray[i + 1] = { time: lyricUnformatedArray[i + 1].time, lyric: lyricUnformatedArray[i + 2].lyric }
-                                lyricUnformatedArray[i] = { time: lyricUnformatedArray[i + 1].time, lyric: lyricUnformatedArray[i + 2].lyric }
-                            }
-                        } else {
-                            if (lyricUnformatedArray[i + 1] != undefined) {
-                                lyricUnformatedArray[i] = { time: element.time, lyric: lyricUnformatedArray[i + 1].lyric }
-                            }
-                        }
-                    }
-                }
+            // let lyricFormat = function(lyric02) {
+            //     let reg2 = /([[\d{2}:\d{2}\.\d{2,3}]+]+)(\n|.+)/g;
+            //     let lyricUnformatedArray = [];
+            //     res = reg2.exec(lyric02);
+            //     while (res) {
+            //         lyricUnformatedArray.push({
+            //             time: res[1],
+            //             lyric: res[2]
+            //         });
+            //         res = reg2.exec(lyric02)
+            //     }
+            //     for (let i = 0; i < lyricUnformatedArray.length; i++) {
+            //         const element = lyricUnformatedArray[i];
+            //         if (element.lyric == "\n") {
+            //             if (lyricUnformatedArray[i + 1] != undefined && lyricUnformatedArray[i + 1].lyric == "\n") {
+            //                 if (lyricUnformatedArray[i + 2].lyric == "\n") {
+            //                     lyricUnformatedArray[i + 2] = {
+            //                         time: lyricUnformatedArray[i + 2].time,
+            //                         lyric: lyricUnformatedArray[i + 3].lyric
+            //                     }
+            //                     lyricUnformatedArray[i] = {
+            //                         time: lyricUnformatedArray[i].time,
+            //                         lyric: lyricUnformatedArray[i + 3].lyric
+            //                     }
+            //                 } else {
+            //                     lyricUnformatedArray[i + 1] = {
+            //                         time: lyricUnformatedArray[i + 1].time,
+            //                         lyric: lyricUnformatedArray[i + 2].lyric
+            //                     }
+            //                     lyricUnformatedArray[i] = {
+            //                         time: lyricUnformatedArray[i + 1].time,
+            //                         lyric: lyricUnformatedArray[i + 2].lyric
+            //                     }
+            //                 }
+            //             } else {
+            //                 if (lyricUnformatedArray[i + 1] != undefined) {
+            //                     lyricUnformatedArray[i] = {
+            //                         time: element.time,
+            //                         lyric: lyricUnformatedArray[i + 1].lyric
+            //                     }
+            //                 }
+            //             }
+            //         }
+            //     }
 
 
-                //把数组时间转换成秒
-                let lyricFormated = [];
-                for (let i = 0; i < lyricUnformatedArray.length; i++) {
-                    let element = lyricUnformatedArray[i].time;
-                    element = element.replaceAll("[", "").replaceAll("]", "");
-                    element = element.split(".");
-                    let nanoSecond = element[1];
-                    let minutesAndSeconds = element[0];
-                    minutesAndSeconds = minutesAndSeconds.split(":");
-                    let minutes = minutesAndSeconds[0];
-                    let seconds = minutesAndSeconds[1];
-                    let musicSecond =
-                        parseInt(minutes * 60) +
-                        parseInt(seconds) +
-                        parseFloat(nanoSecond / 1000);
-                    lyricSentence = lyricUnformatedArray[i].lyric;
-                    lyricFormated.push({ time: musicSecond, lyric: lyricSentence });
-                }
-                //进行数组排序
-                function sortArray(n1, n2) {
-                    return n1.time - n2.time;
-                }
-                lyricFormated.sort(sortArray)
-                console.log(lyricFormated)
-                return lyricFormated;
-            };
-            // let s = '[00:11.66]\r\n[01:47.03][00:14.99]你说我冷得像水仙\r\n[01:53.40][00:21.60]冬天才看到我的笑脸\r\n[02:00.99][00:29.26]你说我在等一个寓言\r\n[02:07.10][00:35.68]却永远不能够 不能够实现\r\n[02:13.54][00:42.00]\r\n[02:14.98][00:43.53]要为你改变 盛开在夏天\r\n[02:22.03][00:50.14]别忘了我就是水仙\r\n[02:25.26][00:53.58]白雪映出了 我的春天\r\n[03:03.54][02:31.41][00:59.75]\r\n[03:04.16][02:32.27][01:00.39]盛开在冬天的水仙\r\n[03:07.83][02:35.93][01:04.12]你是否闻得到我的娇艳\r\n[03:11.25][02:39.55][01:07.90]如果你给我一双舞鞋\r\n[03:14.70][02:42.93][01:11.34]我就会为你长袖翩翩\r\n[03:18.16][02:46.54][01:14.79]如果你看穿我的思念\r\n[03:21.77][02:50.02][01:18.33]我就不会为你哭红双眼\r\n[03:25.38][02:53.75][01:22.02]如果我能戒掉了思念\r\n[03:35.58][03:28.70][02:57.05][01:25.34]就不会开在你的窗前\r\n[03:46.24][01:32.18]'
-            let s = '[00:36.00](若不是因为爱著你)\r\n[00:42.00]怎麼會夜深还没睡意\r\n[00:48.00]每个念头都关於你\r\n[00:54.00]我想你 想你 好想你\r\n[01:06.00](若不是因为爱著你)\r\n[01:12.00]怎麼有不安的情绪\r\n[01:18.00]每个莫名的日子里\r\n[01:23.00]我想你 想你 好想你\r\n[01:36.00][03:00.00]爱是折磨人的东西\r\n[01:42.00][03:06.00]却又不舍得这样放弃\r\n[01:48.00][03:12.00]不停偳测你的心理 可有我姓名\r\n[02:05.00][03:54.00](若不是因为爱著你)\r\n[02:12.00][04:00.00]怎麼會不经意就叹息\r\n[02:18.00][04:06.00]有种不完整的心情\r\n[02:24.00][04:11.00]爱你 爱你 (爱著你)\r\n[03:24.00]爱是我唯一的秘密\r\n[03:30.00]让人心碎却又著迷\r\n[03:36.00]无论是用什麼言语只會(只會)思念你'
-            // lyricFormat(arr)
-            function shiftTimeStamp(time) {
-                // time /= 1000; 如果传进来的是 毫秒 形式，则在这里除1000将其转为 秒 形式
-                function f_m_dispose(min, sec) { // 分秒处理函数
-                    if (min < 10 && sec < 10) {
-                        return "0" + min + ":" + "0" + sec; // 如果分和秒都小于10，则前面都加入0
-                    } else if (min < 10 && sec >= 10) {
-                        return "0" + min + ":" + sec; // 如果分小于10，秒大于10，则给分前面加0
-                    } else if (min >= 10 && sec < 10) {
-                        return min + ":" + "0" + sec; // 如果分大于10，秒小于10，则给秒前面加0
-                    } else {
-                        return min + ":" + sec; // 如果分秒都大于10，则直接return 
-                    }
-                }
-                let hour = Number.parseInt(time / 3600); // 获取总的小时
-                let min = Number.parseInt((time - hour * 3600) / 60); // 获取总分钟
-                let sec = time - (hour * 3600) - (min * 60); // 减去总 分 后剩余的分秒数
-                if (!hour) { // 小时为0时
-                    return f_m_dispose(min, sec);
-                } else { // 小时大于0的处理
-                    if (!min) { // 分为0时
-                        // 如果秒也小于10，则返回 例1:00:07
-                        return sec < 10 ? hour + ":" + "00" + ":0" + sec : hour + ":" + "00" + ":" + sec;
-                    } else { // 有分钟时的处理
-                        return hour + ":" + f_m_dispose(min, sec); // 返回总小时加上处理好的分秒数
-                    }
-                }
-            }
-            // console.log(shiftTimeStamp(42000));
-            // let newTime = new Date(42000).toLocaleDateString();
-            function timeToMinute(times) {
-                var t;
-                if (times > -1) {
-                    var hour = Math.floor(times / 3600);
-                    var min = Math.floor(times / 60) % 60;
-                    var sec = times % 60;
-                    if (hour < 10) {
-                        t = '0' + hour + ":";
-                    } else {
-                        t = hour + ":";
-                    }
+            //     //把数组时间转换成秒
+            //     let lyricFormated = [];
+            //     for (let i = 0; i < lyricUnformatedArray.length; i++) {
+            //         let element = lyricUnformatedArray[i].time;
+            //         element = element.replaceAll("[", "").replaceAll("]", "");
+            //         element = element.split(".");
+            //         let nanoSecond = element[1];
+            //         let minutesAndSeconds = element[0];
+            //         minutesAndSeconds = minutesAndSeconds.split(":");
+            //         let minutes = minutesAndSeconds[0];
+            //         let seconds = minutesAndSeconds[1];
+            //         let musicSecond =
+            //             parseInt(minutes * 60) +
+            //             parseInt(seconds) +
+            //             parseFloat(nanoSecond / 1000);
+            //         lyricSentence = lyricUnformatedArray[i].lyric;
+            //         lyricFormated.push({
+            //             time: musicSecond,
+            //             lyric: lyricSentence
+            //         });
+            //     }
+            //     //进行数组排序
+            //     function sortArray(n1, n2) {
+            //         return n1.time - n2.time;
+            //     }
+            //     lyricFormated.sort(sortArray)
+            //     console.log(11, lyricFormated)
+            //     return lyricFormated;
+            // };
+            // // let s = '[00:11.66]\r\n[01:47.03][00:14.99]你说我冷得像水仙\r\n[01:53.40][00:21.60]冬天才看到我的笑脸\r\n[02:00.99][00:29.26]你说我在等一个寓言\r\n[02:07.10][00:35.68]却永远不能够 不能够实现\r\n[02:13.54][00:42.00]\r\n[02:14.98][00:43.53]要为你改变 盛开在夏天\r\n[02:22.03][00:50.14]别忘了我就是水仙\r\n[02:25.26][00:53.58]白雪映出了 我的春天\r\n[03:03.54][02:31.41][00:59.75]\r\n[03:04.16][02:32.27][01:00.39]盛开在冬天的水仙\r\n[03:07.83][02:35.93][01:04.12]你是否闻得到我的娇艳\r\n[03:11.25][02:39.55][01:07.90]如果你给我一双舞鞋\r\n[03:14.70][02:42.93][01:11.34]我就会为你长袖翩翩\r\n[03:18.16][02:46.54][01:14.79]如果你看穿我的思念\r\n[03:21.77][02:50.02][01:18.33]我就不会为你哭红双眼\r\n[03:25.38][02:53.75][01:22.02]如果我能戒掉了思念\r\n[03:35.58][03:28.70][02:57.05][01:25.34]就不会开在你的窗前\r\n[03:46.24][01:32.18]'
+            // let s = '[00:36.00](若不是因为爱著你)\r\n[00:42.00]怎麼會夜深还没睡意\r\n[00:48.00]每个念头都关於你\r\n[00:54.00]我想你 想你 好想你\r\n[01:06.00](若不是因为爱著你)\r\n[01:12.00]怎麼有不安的情绪\r\n[01:18.00]每个莫名的日子里\r\n[01:23.00]我想你 想你 好想你\r\n[01:36.00][03:00.00]爱是折磨人的东西\r\n[01:42.00][03:06.00]却又不舍得这样放弃\r\n[01:48.00][03:12.00]不停偳测你的心理 可有我姓名\r\n[02:05.00][03:54.00](若不是因为爱著你)\r\n[02:12.00][04:00.00]怎麼會不经意就叹息\r\n[02:18.00][04:06.00]有种不完整的心情\r\n[02:24.00][04:11.00]爱你 爱你 (爱著你)\r\n[03:24.00]爱是我唯一的秘密\r\n[03:30.00]让人心碎却又著迷\r\n[03:36.00]无论是用什麼言语只會(只會)思念你'
+            //     // lyricFormat(arr)
+            // function shiftTimeStamp(time) {
+            //     // time /= 1000; 如果传进来的是 毫秒 形式，则在这里除1000将其转为 秒 形式
+            //     function f_m_dispose(min, sec) { // 分秒处理函数
+            //         if (min < 10 && sec < 10) {
+            //             return "0" + min + ":" + "0" + sec; // 如果分和秒都小于10，则前面都加入0
+            //         } else if (min < 10 && sec >= 10) {
+            //             return "0" + min + ":" + sec; // 如果分小于10，秒大于10，则给分前面加0
+            //         } else if (min >= 10 && sec < 10) {
+            //             return min + ":" + "0" + sec; // 如果分大于10，秒小于10，则给秒前面加0
+            //         } else {
+            //             return min + ":" + sec; // 如果分秒都大于10，则直接return 
+            //         }
+            //     }
+            //     let hour = Number.parseInt(time / 3600); // 获取总的小时
+            //     let min = Number.parseInt((time - hour * 3600) / 60); // 获取总分钟
+            //     let sec = time - (hour * 3600) - (min * 60); // 减去总 分 后剩余的分秒数
+            //     if (!hour) { // 小时为0时
+            //         return f_m_dispose(min, sec);
+            //     } else { // 小时大于0的处理
+            //         if (!min) { // 分为0时
+            //             // 如果秒也小于10，则返回 例1:00:07
+            //             return sec < 10 ? hour + ":" + "00" + ":0" + sec : hour + ":" + "00" + ":" + sec;
+            //         } else { // 有分钟时的处理
+            //             return hour + ":" + f_m_dispose(min, sec); // 返回总小时加上处理好的分秒数
+            //         }
+            //     }
+            // }
+            // // console.log(shiftTimeStamp(42000));
+            // // let newTime = new Date(42000).toLocaleDateString();
+            // function timeToMinute(times) {
+            //     var t;
+            //     if (times > -1) {
+            //         var hour = Math.floor(times / 3600);
+            //         var min = Math.floor(times / 60) % 60;
+            //         var sec = times % 60;
+            //         if (hour < 10) {
+            //             t = '0' + hour + ":";
+            //         } else {
+            //             t = hour + ":";
+            //         }
 
-                    if (min < 10) {
-                        t += "0";
-                    }
-                    t += min + ":";
-                    if (sec < 10) {
-                        t += "0";
-                    }
-                    t += sec.toFixed(2);
-                }
-                t = t.substring(0, t.length - 3);
-                return t;
-            }
-            function durationTrans(a) {
-                var b = ""
-                var h = parseInt(a / 3600),
-                    m = parseInt(a % 3600 / 60),
-                    s = parseInt(a % 3600 % 60);
-                if (h > 0) {
-                    h = h < 10 ? '0' + h : h
-                    b += h + ":"
-                }
-                m = m < 10 ? '0' + m : m
-                s = s < 10 ? '0' + s : s
-                b += m + ":" + s
-                return b;
-            }
+            //         if (min < 10) {
+            //             t += "0";
+            //         }
+            //         t += min + ":";
+            //         if (sec < 10) {
+            //             t += "0";
+            //         }
+            //         t += sec.toFixed(2);
+            //     }
+            //     t = t.substring(0, t.length - 3);
+            //     return t;
+            // }
+
+            // function durationTrans(a) {
+            //     var b = ""
+            //     var h = parseInt(a / 3600),
+            //         m = parseInt(a % 3600 / 60),
+            //         s = parseInt(a % 3600 % 60);
+            //     if (h > 0) {
+            //         h = h < 10 ? '0' + h : h
+            //         b += h + ":"
+            //     }
+            //     m = m < 10 ? '0' + m : m
+            //     s = s < 10 ? '0' + s : s
+            //     b += m + ":" + s
+            //     return b;
+            // }
             // console.log(durationTrans(127010))
 
             //这个不行 只能用上面的
@@ -242,8 +263,98 @@
             //     "[01:55.91][04:01.08]过程不留遗憾结果也就伟大" +
             //     "[04:13.18]Lrc By：珍妮 QQ：929964514";
 
+            s = `[00:19.92]叶子是不会飞翔的翅膀
 
-            if (typeof binlyric != 'object') { binlyric = {}; }
+[00:28.44]翅膀是落在天上的叶子
+
+[00:37.10]天堂原来应该不是妄想
+
+[00:45.28]只是我早已经遗忘
+
+[00:49.65]当初怎麽开始飞翔
+
+[00:54.50]孤单是一个人的狂欢
+
+[01:02.99]狂欢是一群人的孤单
+
+[01:11.41]爱情原来的开始是陪伴
+
+[01:19.95]但我也渐渐地遗忘
+
+[01:24.18]当时是怎样有人陪伴
+
+[01:28.11]我一个人吃饭旅行
+
+[01:31.21]到处走走停停
+
+[01:36.57]也一个人看书写信
+
+[01:39.67]自己对话谈心
+
+[01:45.31]只是心又飘到了哪里
+
+[01:49.58]就连自己看也看不清
+
+[01:54.74]我想我不仅仅是失去你
+
+[02:02.80]我一个人吃饭旅行
+
+[02:05.80]到处走走停停
+
+[02:11.24]也一个人看书写信
+
+[02:14.29]自己对话谈心
+
+[02:19.87]只是心又飘到了哪里
+
+[02:24.33]就连自己看也看不清
+
+[02:29.42]我想我不仅仅是失去你
+
+[02:53.01]孤单是一个人的狂欢
+
+[03:01.03]狂欢是一群人的孤单
+
+[03:09.60]爱情原来的开始是陪伴
+
+[03:17.90]但我也渐渐地遗忘
+
+[03:22.14]当时是怎样有人陪伴
+
+[03:25.91]我一个人吃饭旅行
+
+[03:29.06]到处走走停停
+
+[03:34.06]也一个人看书写信
+
+[03:37.71]自己对话谈心
+
+[03:43.40]只是心又飘到了哪里
+
+[03:47.56]就连自己看也看不清
+
+[03:52.72]我想我不仅仅是失去你
+
+[04:00.58]我一个人吃饭旅行
+
+[04:03.69]到处走走停停
+
+[04:09.16]也一个人看书写信
+
+[04:12.16]自己对话谈心
+
+[04:17.90]只是心又飘到了哪里
+
+[04:22.11]就连自己看也看不清
+
+[04:27.28]我想我不仅仅是失去你
+
+[04:37.87]叶子是不会飞翔的翅膀
+
+[04:46.33]翅膀是落在天上的叶子`
+            if (typeof binlyric != 'object') {
+                binlyric = {};
+            }
             binlyric = {
                 edition: "1.1",
                 obj: "",
@@ -282,7 +393,8 @@
                     // 因为此方法是在后面写的，所以时间标签并没有使用此方法
                     number = number || this.txt.length;
                     number = (number > this.txt.length) ? this.txt.length : number;
-                    var i, j, complete = 0, value;
+                    var i, j, complete = 0,
+                        value;
                     var obj = new Object();
                     obj.booble = false;
                     obj.value = "[";
@@ -292,8 +404,7 @@
                             if (complete > 1) {
                                 if (complete < strArray.length) {
                                     obj.value += '{value:"' + this.txt.substr(value + 1, i - value - 1) + '"},';
-                                }
-                                else {
+                                } else {
                                     obj.value += '{value:"' + this.txt.substr(value + 1, i - value - 1) + '"}]';
                                 }
                             }
@@ -305,12 +416,10 @@
                                 break
                             }
                             value = i;
-                        }
-                        else if (this.txt.substr(i, 1) == "\n") {
+                        } else if (this.txt.substr(i, 1) == "\n") {
                             obj.booble = false;
                             return obj;
-                        }
-                        else if (this.txt.substr(i, 1) == strArray[0].s && complete > 0) // 遇到2次开始标志就退出
+                        } else if (this.txt.substr(i, 1) == strArray[0].s && complete > 0) // 遇到2次开始标志就退出
                         {
                             obj.booble = false;
                             return obj;
@@ -324,14 +433,19 @@
                     var i;
                     for (i = index; i < str.length; i++) {
                         if (str.charAt(i) == "[") {
-                            var _obj = this.findTags(i, [{ s: "[" }, { s: ":" }, { s: "]" }]);
+                            var _obj = this.findTags(i, [{
+                                s: "["
+                            }, {
+                                s: ":"
+                            }, {
+                                s: "]"
+                            }]);
                             if (_obj.booble) {
-                                obj.index = i;//i + _obj.txt.length;
+                                obj.index = i; //i + _obj.txt.length;
                                 obj.lyric = str.substr(index, i - index);
                                 return obj;
                             }
-                        }
-                        else if (str.charAt(i) == "\n") {
+                        } else if (str.charAt(i) == "\n") {
                             obj.index = i + 1;
                             obj.lyric = str.substr(index, i - index);
                             return obj
@@ -353,6 +467,7 @@
                     var thisobj = this;
                     var str = this.txt;
                     obj.index = index;
+
                     function recursion() {
                         var _obj = thisobj.findTime(obj.index);
                         if (_obj.time) {
@@ -367,8 +482,7 @@
                         obj.time = str.substr(index + 1, 8) + "|";
                         obj.index = index + 9 + 1;
                         recursion();
-                    }
-                    else if (/\[\d{1,2}\:\d{1,2}\]/.test(str.substr(index, 7))) // [mm:ss]
+                    } else if (/\[\d{1,2}\:\d{1,2}\]/.test(str.substr(index, 7))) // [mm:ss]
                     {
                         obj.time = str.substr(index + 1, 5) + ".00" + "|";
                         obj.index = index + 6 + 1;
@@ -379,35 +493,37 @@
                     // [mm:s] [m:ss] [s:s]
                     return obj;
                 },
-                findID: function (index) { // 查找预定义标识
-                    //[ar:艺人名]
-                    //[ti:曲名]
-                    //[al:专辑名]
-                    //[by:编者（指编辑LRC歌词的人）]
-                    //[offset:时间补偿值] 其单位是毫秒，正值表示整体提前，负值相反。这是用于总体调整显示快慢的。（很少被使用）
-                    // 注：本程序也不支持 offset 功能（但是能取值），如需要 请自行在 sort 方法添加此功能
-                    // 此处功能 使用 findTags方法 实现
-                    var obj;
-                    obj = this.findTags(index, [{ s: "[" }, { s: ":" }, { s: "]" }]);
-                    if (obj.booble) {
-                        if (obj.value[0].value == "ar") {
-                            this.ar = obj.value[1].value;
-                        }
-                        else if (obj.value[0].value == "ti") {
-                            this.ti = obj.value[1].value;
-                        }
-                        else if (obj.value[0].value == "al") {
-                            this.al = obj.value[1].value;
-                        }
-                        else if (obj.value[0].value == "by") {
-                            this.by = obj.value[1].value;
-                        }
-                        else if (obj.value[0].value == "offset") // 这里是 offset 的值
-                        {
-                            this.offset = obj.value[1].value;
-                        }
-                    }
-                },
+                // findID: function(index) { // 查找预定义标识
+                //     //[ar:艺人名]
+                //     //[ti:曲名]
+                //     //[al:专辑名]
+                //     //[by:编者（指编辑LRC歌词的人）]
+                //     //[offset:时间补偿值] 其单位是毫秒，正值表示整体提前，负值相反。这是用于总体调整显示快慢的。（很少被使用）
+                //     // 注：本程序也不支持 offset 功能（但是能取值），如需要 请自行在 sort 方法添加此功能
+                //     // 此处功能 使用 findTags方法 实现
+                //     var obj;
+                //     obj = this.findTags(index, [{
+                //         s: "["
+                //     }, {
+                //         s: ":"
+                //     }, {
+                //         s: "]"
+                //     }]);
+                //     if (obj.booble) {
+                //         if (obj.value[0].value == "ar") {
+                //             this.ar = obj.value[1].value;
+                //         } else if (obj.value[0].value == "ti") {
+                //             this.ti = obj.value[1].value;
+                //         } else if (obj.value[0].value == "al") {
+                //             this.al = obj.value[1].value;
+                //         } else if (obj.value[0].value == "by") {
+                //             this.by = obj.value[1].value;
+                //         } else if (obj.value[0].value == "offset") // 这里是 offset 的值
+                //         {
+                //             this.offset = obj.value[1].value;
+                //         }
+                //     }
+                // },
                 analysis: function () { // 解析
                     if (this.txt == "") return false;
                     var str = this.txt;
@@ -430,8 +546,7 @@
                                     }
                                 }
                                 i = time.index;
-                            }
-                            else // 预定义标签
+                            } else // 预定义标签
                             {
                                 this.findID(i);
                             }
@@ -441,8 +556,10 @@
                     this.createPanel();
                 },
                 play: function (position, CSS) { // 定位指定时间的歌词
+                    console.log(position)
                     var time;
                     var obj = this;
+
                     function set(index) {
                         var height = parseInt($(obj.obj).find("div").css("height"));
                         var top = parseInt($(obj.obj).find("div").css("margin-top"));
@@ -455,32 +572,30 @@
                     }
                     for (var i = 0; i < this.index; i++) {
                         if (position == this.time[i]) {
-                            Set(i);
+                            set(i);
                             return;
-                        }
-                        else if (position > this.time[i]) {
+                        } else if (position > this.time[i]) {
                             time = i;
                         }
                     }
-                    set(time);// 没找到匹配时间 则就近最小选择
+                    set(time); // 没找到匹配时间 则就近最小选择
                 }
             };
 
             binlyric.txt = s;
             binlyric.obj = ".lyricPanel";
-            binlyric.lyricCSS = { "font-size": "16px", "margin-top": "15px", "text-align": "center" };
+            binlyric.lyricCSS = {
+                "font-size": "16px",
+                "margin-top": "15px",
+                "text-align": "center"
+            };
             binlyric.analysis();
-            binlyric.play("01:20.22", {
+            binlyric.play("04:03.69", {
                 color: "red"
             });
-            console.log("艺人名：" + binlyric.ar);
-            console.log("专辑名：" + binlyric.al);
-            console.log("歌词编者：" + binlyric.by);
-            console.log("歌曲名：" + binlyric.ti);
+            console.log(binlyric)
         })(window);
-
-
     </script>
 </body>
 
-</html> -->
+</html>

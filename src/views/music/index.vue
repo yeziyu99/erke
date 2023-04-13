@@ -96,9 +96,12 @@
       </div>
     </div>
     <div class="invest_list clearfix">
-      <div class="list_title font_Bold clearfix" style="display: flex;" id="list_title">
+      <div class="list_title font_Bold clearfix" style="display: flex; align-items: flex-end;" id="list_title">
         本站可播放音乐
-        <el-button type="primary" class="button mg-lt-10" style="background:#f4c8c7;color:#000; font-weight:400; border-color:#f4c8c7;" @click="jumpFun('song')">跳转播放页查看更多</el-button>
+        <el-button type="primary" class="button mg-lt-10" style="background:#f4c8c7;color:#000; font-weight:400; border-color:#f4c8c7;" @click="jumpFun('song')">
+          <i class="el-icon-headset"></i>
+          查看更多</el-button>
+        <span class="mg-lt-5 mg-tp-25 font-size-12 font-weight-700 color62657A text-ag-rg">本页最多展示五十条数据，更多请移步播放页查看</span>
       </div>
       <div v-if="songDatasMthMethodList.length">
         <el-col :span="8" v-for="(item, index) in songDatasMthMethodList" :key="index" style="padding: 0 10px 10px;">

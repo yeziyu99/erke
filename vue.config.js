@@ -12,26 +12,26 @@ module.exports = {
     },
 
     devServer: {
-      host: 'localhost',
-      port:6688,
-      disableHostCheck: true,
-      open: true,
-      proxy: {// 配置多个代理(配置一个 proxy: 'http://localhost:4000' )
-          '/api': {
-              target: 'https://api.erkechloe.com'  ,   // 线上接口地址
-            //   target: 'https://api.jy129.cn'  ,   // 测试接口地址
-              ws: true,
-              changeOrigin: true
-          },
-          '/foo': {
-              target: '<other_url>'
-          }
-      }
+        host: 'localhost',
+        port: 6688,
+        disableHostCheck: true,
+        open: true,
+        proxy: { // 配置多个代理(配置一个 proxy: 'http://localhost:4000' )
+            '/api': {
+                target: 'https://api.erkechloe.com', // 线上接口地址
+                //   target: 'https://api.jy129.cn'  ,   // 测试接口地址
+                ws: true,
+                changeOrigin: true
+            },
+            '/foo': {
+                target: '<other_url>'
+            }
+        }
     },
     //关闭eslint规范
     lintOnSave: false,
-    pluginOptions: {// 第三方插件配置
+    pluginOptions: { // 第三方插件配置
         // ...
     },
-    productionSourceMap: false   // 代码build后压缩
+    productionSourceMap: false // 代码build后压缩
 }

@@ -308,10 +308,14 @@ export default {
   components: {},
   methods: {
     handleScroll(e) {
+      let publicHeaderLeft = document.getElementsByClassName("publicHeader")[0]
+      if (!publicHeaderLeft) {
+        return
+      }
+      let placeholderDome=this.$refs.placeholder;
       this.headNavHeight =
         document.getElementsByClassName("publicHeader")[0].offsetHeight; //导航的高度
-      this.scrollStartPosition =
-        this.$refs.placeholder.getBoundingClientRect().top - this.headNavHeight; //距离顶部的高度
+      this.scrollStartPosition =placeholderDome? placeholderDome.getBoundingClientRect().top:'0' - this.headNavHeight; //距离顶部的高度
       this.scrollTop = window.pageYOffset;
       this.scrollEndPosition =
         this.scrollStartPosition +

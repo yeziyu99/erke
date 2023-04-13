@@ -6,9 +6,13 @@
       <router-view></router-view>
     </div>
     <publicFoot />
+    <p class="background_linear text-center" >
+      <a href='https://beian.miit.gov.cn'  style="color:#fff;" target="_blank">
+        京ICP备2023001053号
+      </a>
+    </p>
     <!-- 一箭到顶 -->
     <div class="site-scrolltop" :style="{display:scrollTop>=100?'block':'none'}">
-      <!-- <a title="to top" class="toTop" @click="toTop"></a> -->
       <img src="@/assets/images/erketop.gif" class="toTop" alt="to top" @click="toTop">
     </div>
   </div>

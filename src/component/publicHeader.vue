@@ -1,7 +1,7 @@
 <template>
-  <div class="publicHeader">
+  <div class="publicHeader background_linear">
     <div class="header_con">
-      <img src="@/assets/images/4.png" @click="jumpFun('home')" alt="" />
+      <img src="@/assets/images/5.png" @click="jumpFun('home')" alt="" />
       <ul>
         <li :class="{ 'header_route': true, 'fontW700': className === 'photo' }" @click="jumpFun('photo')">相册视频</li>
         <li :class="{ 'header_route': true, 'fontW700': className === 'music' }" @click="jumpFun('music')">音乐专辑</li>
@@ -61,6 +61,7 @@ ul li {
   justify-content: center;
   align-items: center;
   min-width: 1170px;
+  color: #fff;
 
   .header_con {
     width: 60%;

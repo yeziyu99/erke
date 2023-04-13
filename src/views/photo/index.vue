@@ -1,18 +1,6 @@
 <template>
-    <div class="big_wrap_photo">
+    <div class="big_wrap_photo background_linear">
         <div class="banner">
-            <!-- <el-carousel :interval="4000" type="card" height="200px">
-                <el-carousel-item v-for="(item, index) in pictureList" :key="index">
-                    <el-image :src="item.cover_img" fit="cover" alt="" :preview-src-list="item.img_urls" >
-                        <div slot="error" class="image-slot">
-                            <img :src="erke" alt="">
-                            <p>
-                                图片加载失败
-                            </p>
-                        </div>
-                    </el-image>
-                </el-carousel-item>
-            </el-carousel> -->
             <el-carousel :interval="5000" :type="carouselType" ref="slideCarousel">
                 <el-carousel-item v-for="(item, index) in pictureList" :key="index">
                     <el-image :src="item.cover_img" fit="cover" alt="" :preview-src-list="item.img_urls">
@@ -25,6 +13,7 @@
                     </el-image>
                 </el-carousel-item>
             </el-carousel>
+            <hr>
             <p class="photo_title">
                 <i class="el-icon-picture-outline"></i>
                 相册图集
@@ -59,7 +48,7 @@
 
                 </el-row>
             </div>
-
+            <hr>
             <p class="photo_title">
                 <i class="el-icon-video-camera"></i>
                 最新视频
@@ -67,14 +56,13 @@
             <div>
                 <el-row>
                     <el-col :span="24">
-                        <iframe
-                        id="spkj"
+                        <iframe id="spkj"
                             src="//player.bilibili.com/player.html?aid=949981517&bvid=BV1ts4y187Yv&cid=1022376075&page=1"
                             scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
                     </el-col>
                 </el-row>
-
             </div>
+            <!-- <hr> -->
         </div>
     </div>
 </template>
@@ -92,29 +80,14 @@ export default {
             erke: erke,
             imgDetails: support.imgDetails,
             pictureLists: support.pictureLists,
-            screenWidth: null,
+            screenWidth: document.body.clientWidth,
             carouselType: 'card',
             spanNum: 8,//8/12/24
         };
     },
     components: {},
     methods: {
-        //跳转外部链接/打开新标签页
-        externalJumpFn(open) {
-            window.open(open)
-        },
-        tabFn(val) {
-            this.active = val;
-            this.erkelist = erkeAlbum[val];
-
-        },
-        //项目内部跳转
-        jumpFun(name, id) {
-            if (this.$route.name != name) {
-                this.$router.push({ name: name, params: { id: id } });
-            }
-        },
-        // 滑动切换
+        // 移动端屏幕滑动切换
         slideBanner() {
             //选中的轮播图
             var box = document.querySelector('.el-carousel__container');
@@ -154,40 +127,76 @@ export default {
                 }
             });
         },
-
+        //跳转外部链接/打开新标签页
+        externalJumpFn(open) {
+            window.open(open)
+        },
+        //项目内部跳转
+        jumpFun(name, id) {
+            if (this.$route.name != name) {
+                this.$router.push({ name: name, params: { id: id } });
+            }
+        },
+        screenWidthFn() {
+            let spkj=document.getElementById("spkj");
+            spkj?document.getElementById("spkj").style.height = document.getElementById("spkj").scrollWidth * 0.5625 + "px":undefined;
+            this.screenWidth = document.body.clientWidth;
+            if (this.screenWidth < 500) {
+                    if (this.carouselType == 'card') {
+                        this.carouselType = ''
+                        this.spanNum = 24;
+                    }
+                } else if (this.screenWidth < 1170 && this.screenWidth >= 500) {
+                    if (this.carouselType != 'card') {
+                        this.carouselType = 'card'
+                    }
+                    this.spanNum = 12;
+                } else {
+                    if (this.carouselType != 'card') {
+                        this.carouselType = 'card'
+                    }
+                    this.spanNum = 8;
+                }
+        }
     },
     created() {
 
     },
     mounted() {
-        this.slideBanner()
         this.screenWidth = document.body.clientWidth
+        this.screenWidthFn()
+        this.slideBanner()
         window.onresize = () => {
             return (() => {
-                this.screenWidth = document.body.clientWidth
+                this.screenWidthFn()
+
             })()
         }
     },
     watch: {
-        screenWidth: {
-            handler: function (val, oldVal) {
-                document.getElementById("spkj").style.height=document.getElementById("spkj").scrollWidth*0.5625+"px";
-                if (val < 500) {
-                    if (this.carouselType == 'card') {
-                        this.carouselType = ''
-                        this.spanNum = 24;
-                    }
-                } else if (val < 1170 && val >= 500) {
-                    this.spanNum = 12;
-                } else {
-                    if (this.carouselType != 'card') {
-                        this.carouselType = 'card'
-                        this.spanNum = 8;
-                    }
-                }
-            },
-            immediate: true
-        },
+        // screenWidth: {
+        //     handler: function (val, oldVal) {
+        //         if (val < 500) {
+        //             if (this.carouselType == 'card') {
+        //                 this.carouselType = ''
+        //                 this.spanNum = 24;
+        //             }
+        //         } else if (val < 1170 && val >= 500) {
+        //             if (this.carouselType != 'card') {
+        //                 this.carouselType = 'card'
+        //             }
+        //             this.spanNum = 12;
+        //             // this.spanNum = 12;
+        //         } else {
+        //             if (this.carouselType != 'card') {
+        //                 this.carouselType = 'card'
+        //             }
+        //             this.spanNum = 8;
+        //         }
+        //     },
+        //     // deep:true
+        //     // immediate: true
+        // },
     }
 };
 </script>
@@ -196,12 +205,14 @@ export default {
 ::v-deep {
     iframe {
         width: 100%;
+        border-radius: 16px;
     }
 
     .photo_title {
-        font-size: 24px;
+        font-size: 36px;
         font-weight: 600;
         margin: 20px 0;
+        text-align: center;
     }
 
     .photo_img {
@@ -222,12 +233,14 @@ export default {
             text-align: center;
             padding: 0 !important;
             position: relative;
+            border-radius: 16px;
+            overflow: hidden;
 
             p {
                 height: 15%;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
+                //overflow: hidden;
+                //text-overflow: ellipsis;
+                //white-space: nowrap;
                 cursor: pointer;
                 width: 90%;
                 position: absolute;
@@ -236,7 +249,6 @@ export default {
                 //background:rgba(225,225,225,0.4);
                 background: rgba(0, 0, 0, 0.4);
                 color: #fff;
-                line-height: 45px;
                 border-radius: 0 0 16px 16px;
                 display: flex;
                 align-items: center;
@@ -247,16 +259,20 @@ export default {
                     margin-right: 10px;
                 }
 
-                /*span{
-                background: linear-gradient(to right, #f4c8c7 0%, #0c61BB 45%, #0c61BB 55%, #FCC6C6 100%) ;
-                text-align: center;
-                -webkit-background-clip: text;
-                color:transparent;
-            }*/
+                span {
+                    max-width: 100%;
+                    height: 100%;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    line-height: 45px;
+                    white-space: nowrap;
+
+                }
             }
 
             .photo_bg {
                 border-radius: 16px;
+                overflow: hidden;
                 height: 100%;
                 width: 90%;
                 position: absolute;
@@ -278,9 +294,11 @@ export default {
 
             .colImgdiv {
                 height: 100%;
+                box-shadow: 0 2px 12px 0 rgb(0 0 0 / 20%);
+                border-radius: 16px 16px 0 0;
+                overflow: hidden;
 
                 >div {
-                    border-radius: 16px;
                     height: 100%;
                     width: 100%;
                 }
@@ -293,6 +311,16 @@ export default {
         }
     }
 
+    .el-carousel__indicators {
+        width: 100%;
+        text-align: center;
+
+        .el-carousel__indicator>.el-carousel__button {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+    }
 
     @media screen and (max-width: 500px) {
 
@@ -315,7 +343,7 @@ export default {
         }
 
         .el-carousel {
-            height: 300px !important;
+            height: 350px !important;
         }
 
 
@@ -407,7 +435,6 @@ export default {
 }
 
 .big_wrap_photo {
-    background: linear-gradient(to right, #f4c8c7 0%, #0c61BB 45%, #0c61BB 55%, #FCC6C6 100%) !important;
     padding: 20px 0 !important;
 }
 </style>

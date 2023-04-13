@@ -4,22 +4,23 @@
       <div class="yinyue_top_left">
         <div>
           <img class="imgrotate" @error='imgOnError'
-            :src="computCur||'https://p1.music.126.net/PMZ2HH_vuAhtNCOSrfGCGQ==/109951168131572411.jpg'" alt="">
+            :src="computCur || 'https://p1.music.126.net/PMZ2HH_vuAhtNCOSrfGCGQ==/109951168131572411.jpg'" alt="">
         </div>
-      
+
       </div>
       <div class="yinyue_top_con">
         <div class="yinyue_top_con_title">
-          {{ curMusic.song_name  }} - {{ curMusic.author }}
-          <el-tag size="small"  type="success"  class="mg-rg-5 pointer">{{ curMusic.song_type == 'fc' ? '翻唱' : '原唱' }}</el-tag>
+          {{ curMusic.song_name }} - {{ curMusic.author }}
+          <el-tag size="small" type="success" class="mg-rg-5 pointer">{{ curMusic.song_type == 'fc' ? '翻唱' : '原唱'
+          }}</el-tag>
         </div>
-        <div ></div>
+        <div></div>
         <!-- <div class="music-title-name"> -->
-        <div class="music-lyric-box" ref="musicLyricBox">
-          <div class="music-lyric" v-if="curMusic.lrcType==0">
+        <div class="music-lyric-box" ref="musicLyricBox" :style="{ height: screenHeight + 'px' }">
+          <div class="music-lyric" v-if="curMusic.lrcType == 0">
             <span style="color:red">*该歌词不支持滚动*</span>
           </div>
-          <div class="music-lyric"  ref="musicLyric" v-if="curMusic.lyric">
+          <div class="music-lyric" ref="musicLyric" v-if="curMusic.lyric">
             <span v-for="(i, key) in curMusic.lyric" :key="key">{{ i }}</span>
           </div>
           <div class="music-lyric" v-if="!curMusic.lyric">
@@ -83,8 +84,8 @@
     <!-- 音乐文件-隐藏 -->
     <audio autoplay style="display:none" :src="curMusic.musicUrl" id="music-audio" type="audio/mpeg" controls></audio>
     <!-- 播放列表 - 抽屉形式 -->
-    <el-drawer title="播放列表" :visible.sync="isShowPlayList" :direction="direction" :before-close="handleClose" >
-      <div  id="playlistcom" class="infinite-list-wrapper" style="overflow:auto">
+    <el-drawer title="播放列表" :visible.sync="isShowPlayList" :direction="direction" :before-close="handleClose">
+      <div id="playlistcom" class="infinite-list-wrapper" style="overflow:auto">
         <ul ref="playListComRef" class="list" v-infinite-scroll="load" infinite-scroll-disabled="disabled">
           <div v-for="(item, index) in songDatasMthMethodList" :key="index">
             <div class="line"></div>
@@ -94,20 +95,9 @@
             </li>
           </div>
         </ul>
-        <p v-if="loading" style="text-align: center;">加载中...</p>
-        <p v-if="noMore" style="text-align: center;">没有更多了</p>
+        <p v-if="loading" class="text-align" style="text-align: center;">加载中...</p>
+        <p v-if="noMore" class="text-align" style="text-align: center;">没有更多了</p>
       </div>
-      <!-- <div  >
-        <ul  class="infinite-list" v-infinite-scroll="load" style="overflow:auto">
-          <div v-for="(item, index) in songDatasMthMethodList" :key="index">
-            <div class="line"></div>
-            <li @click="choseItem(index)" :class="{ currentLi: index == curIndex }" class="infinite-list-item">
-              <div class="item-song">{{ item.song_name }}</div>
-              <div class="item-artist">{{ item.author }}--{{ item.song_type == 'fc' ? '翻唱' : '原唱' }}</div>
-            </li>
-          </div>
-        </ul>
-      </div> -->
     </el-drawer>
   </div>
 </template>
@@ -160,7 +150,7 @@ export default {
     return {
       wavesurfer: null,
       direction: 'rtl',
-      drawer: true,
+      drawer: false,
       height: 186,
       songDatasMthMethodList: [],
       songDatasMthMethodListTotal: [],
@@ -170,11 +160,18 @@ export default {
         id: 0,
         arname: "二珂",
         name: "-",
-        song_type:'fc',
+        song_type: 'fc',
         url: '-',
         picUrl: "https://p1.music.126.net/PMZ2HH_vuAhtNCOSrfGCGQ==/109951168131572411.jpg",
         lyric: [],
         lyricTime: [],
+        edition: "1.1",
+        obj: "",
+        lyricCSS: new Object(),
+        txt: "",
+        index: 0,
+        time: new Array(),
+        lyric: new Array(),
       },
       // 播放信息 min：0秒 max：歌曲长度 nowime播放时间
       playInfo: {
@@ -195,33 +192,220 @@ export default {
       // 是否显示播放列表
       isShowPlayList: true,
       loading: false,
-      info:{
-        page:1,
+      info: {
+        page: 1,
         methods: 'aid',
         method: 1,
-      }
+      },
+      screenHeight: document.body.clientHeight - 115 - 53 - 300,
       // 是否显示歌词
     };
   },
   created() {
     this.getHot();
   },
-  
+
   methods: {
-    load () {
-      if(this.songDatasMthMethodList.length >= this.songDatasMthMethodListTotal){
+    sort() { // 冒泡排序（从小到大）
+      var third;
+      for (var j = 0; j < this.curMusic.index - 1; j++) {
+        for (var i = 0; i < this.curMusic.index - 1; i++) {
+          if (this.curMusic.time[i] > this.curMusic.time[i + 1]) {
+            third = this.curMusic.time[i];
+            this.curMusic.time[i] = this.curMusic.time[i + 1];
+            this.curMusic.time[i + 1] = third;
+            third = this.curMusic.lyric[i];
+            this.curMusic.lyric[i] = this.curMusic.lyric[i + 1];
+            this.curMusic.lyric[i + 1] = third;
+          }
+        }
+      }
+    },
+    createPanel() { // 创建歌词面板
+      // var i = 0;
+      // $(this.curMusic.obj).html("");
+      // for (i = 0; i < this.curMusic.index; i++) {
+      //     $(this.curMusic.obj).append("<div>" + this.curMusic.lyric[i] + "</div>");
+      // }
+      // for (i in this.curMusic.lyricCSS) {
+      //     $(this.curMusic.obj).find("div").css(this.curMusic.lyricCSS, this.curMusic.lyricCSS[i]);
+      // }
+    },
+    findTags(index, strArray, number) { // 查找标签（包括任何扩展的标签）
+      // 此方法能匹配所有格式的标签
+      // 因为此方法是在后面写的，所以时间标签并没有使用此方法
+      number = number || this.curMusic.txt.length;
+      number = (number > this.curMusic.txt.length) ? this.curMusic.txt.length : number;
+      var i, j, complete = 0,
+        value;
+      var obj = new Object();
+      obj.booble = false;
+      obj.value = "[";
+      for (i = index; i < number; i++) {
+        if (this.curMusic.txt.substr(i, 1) == strArray[complete].s) {
+          complete += 1;
+          if (complete > 1) {
+            if (complete < strArray.length) {
+              obj.value += '{value:"' + this.curMusic.txt.substr(value + 1, i - value - 1) + '"},';
+            } else {
+              obj.value += '{value:"' + this.curMusic.txt.substr(value + 1, i - value - 1) + '"}]';
+            }
+          }
+          if (complete == strArray.length) {
+            obj.txt = this.curMusic.txt.substr(index, i - index + 1);
+            obj.value = eval('(' + obj.value + ')');
+            obj.index = i + 1;
+            obj.booble = true;
+            break
+          }
+          value = i;
+        } else if (this.curMusic.txt.substr(i, 1) == "\n") {
+          obj.booble = false;
+          return obj;
+        } else if (this.curMusic.txt.substr(i, 1) == strArray[0].s && complete > 0) // 遇到2次开始标志就退出
+        {
+          obj.booble = false;
+          return obj;
+        }
+      }
+      return obj;
+    },
+    findlyric(index) { // 查找歌词： 有则返回 歌词、继续查找的位置， 否则只返回继续查找的位置
+      var obj = {};
+      var str = this.curMusic.txt;
+      var i;
+      for (i = index; i < str.length; i++) {
+        if (str.charAt(i) == "[") {
+          var _obj = this.findTags(i, [{
+            s: "["
+          }, {
+            s: ":"
+          }, {
+            s: "]"
+          }]);
+          if (_obj.booble) {
+            obj.index = i; //i + _obj.txt.length;
+            obj.lyric = str.substr(index, i - index);
+            return obj;
+          }
+        } else if (str.charAt(i) == "\n") {
+          obj.index = i + 1;
+          obj.lyric = str.substr(index, i - index);
+          return obj
+        }
+      }
+      if (i == str.length) // 专处理最后一句歌词（最后一句歌词比较特殊）
+      {
+        obj.index = i + 1;
+        obj.lyric = str.substr(index, i - index);
+        return obj;
+      }
+      obj.index = i;
+      return obj;
+    },
+    findTime(index) { // 查找时间 ： 有则返回 时间、继续查找的位置， 否则只返回继续查找的位置
+      // 此功能可以用 findTags 方法实现，更简单、更强大、代码更少
+      // findTags方法 是在后面写的，所以这里就不改了，具体可参考 findID方法里的使用实例
+      var obj = {};
+      var thisobj = this;
+      var str = this.curMusic.txt;
+      obj.index = index;
+
+      function recursion() {
+        
+        var _obj = thisobj.$options.methods.findTime.bind(obj.index);
+        if (_obj.time) {
+          obj.time += _obj.time;
+          obj.index = _obj.index;
+        }
+      }
+      // --------------- 可以在这里 扩展 其它功能 ---------------
+      // lrc歌词只能精确到每句歌词，可以通过扩展lrc 精确 到 每个字
+      if (/\[\d{1,2}\:\d{1,2}\.\d{1,2}\]/.test(str.substr(index, 10))) // [mm:ss.ff]
+      {
+        obj.time = str.substr(index + 1, 8) + "|";
+        obj.index = index + 9 + 1;
+        recursion();
+      } else if (/\[\d{1,2}\:\d{1,2}\]/.test(str.substr(index, 7))) // [mm:ss]
+      {
+        obj.time = str.substr(index + 1, 5) + ".00" + "|";
+        obj.index = index + 6 + 1;
+        recursion();
+      }
+      // 以下标签均属于合法标签，但很少被使用，请根据需要进行扩展
+      // [mm:ss.f] [mm:s.ff] [mm:s.f] [m:ss.ff] [m:s.ff] [m:s.f]
+      // [mm:s] [m:ss] [s:s]
+      return obj;
+    },
+    analysis() { // 解析
+      if (this.curMusic.txt == "") return false;
+      var str = this.curMusic.txt;
+      this.curMusic.index = 0;
+      for (var i = 0; i < str.length; i++) {
+        if (str.charAt(i) == "[") {
+          var time = this.findTime(i);
+          if (time.time) // 时间标签
+          {
+            var lyric = this.findlyric(time.index);
+            if (lyric.lyric != "\n" && lyric.lyric != "") // 去掉无意义歌词
+            {
+              var timeArray = time.time.split("|");
+              for (var j = 0; j < timeArray.length; j++) {
+                if (timeArray[j]) {
+                  this.curMusic.time[this.curMusic.index] = timeArray[j];
+                  this.curMusic.lyric[this.curMusic.index] = lyric.lyric;
+                  this.curMusic.index += 1;
+                }
+              }
+            }
+            i = time.index;
+          } else // 预定义标签
+          {
+            this.curMusic.findID(i);
+          }
+        }
+      }
+      this.curMusic.sort();
+      this.curMusic.createPanel();
+    },
+    play(position, CSS) { // 定位指定时间的歌词
+      console.log(position)
+      var time;
+      var obj = this;
+
+      function set(index) {
+        var height = parseInt($(obj.obj).find("div").css("height"));
+        var top = parseInt($(obj.obj).find("div").css("margin-top"));
+        $(obj.obj).animate({
+          scrollTop: (index * height + index * top - parseInt($(obj.obj).css("height")) / 2 + height / 2)
+        }, 300);
+        for (var i in CSS) {
+          $(obj.obj).find("div").eq(index).css(CSS, CSS[i]);
+        }
+      }
+      for (var i = 0; i < this.curMusic.index; i++) {
+        if (position == this.curMusic.time[i]) {
+          set(i);
+          return;
+        } else if (position > this.curMusic.time[i]) {
+          time = i;
+        }
+      }
+      set(time); // 没找到匹配时间 则就近最小选择
+    },
+    load() {
+      if (this.songDatasMthMethodList.length >= this.songDatasMthMethodListTotal) {
         return
       }
       this.loading = true;
       this.songDatasMthMethodList.length >= this.songDatasMthMethodListTotal
-      this.info.page=this.info.page+1;
+      this.info.page = this.info.page + 1;
       this.getSongDatasMthMethod()
-        // setTimeout(() => {
-        //   this.count += 2
-        //   this.loading = false
-        //   console.log( this.count,this.loading)
-        // }, 2000)
-      },
+      setTimeout(() => {
+        this.count += 2
+        this.loading = false
+      }, 2000)
+    },
     imgOnError() {
       this.curMusic.computCur = ''
     },
@@ -239,9 +423,9 @@ export default {
       }).then(rs => {
         this.loading = false
         if (rs.code == 200) {
-          this.songDatasMthMethodListTotal=rs.datas.total;
+          this.songDatasMthMethodListTotal = rs.datas.total;
           if (rs.datas.lists.length) {
-            this.songDatasMthMethodList = [...this.songDatasMthMethodList,...rs.datas.lists];
+            this.songDatasMthMethodList = [...this.songDatasMthMethodList, ...rs.datas.lists];
           } else {
             this.songDatasMthMethodList = [];
 
@@ -272,7 +456,7 @@ export default {
     getSong() {
       http.getSongUrl({ songid: this.curMusic.song_id, songtype: this.curMusic.song_type }).then((rs) => {
         if (rs.code == 200) {
-          this.curMusic.musicUrl = rs.datas.urls.hq.burl||rs.datas.urls.lq.burl||rs.datas.urls.sq.burl
+          this.curMusic.musicUrl = rs.datas.urls.sq.burl || rs.datas.urls.hq.burl || rs.datas.urls.lq.burl
           let a = document.querySelector("audio");
           if (a != null) {
             a.load();
@@ -303,25 +487,27 @@ export default {
     getLyric() {
       http.getSongLrc({ songid: this.curMusic.song_id, songtype: this.curMusic.song_type }).then((rs) => {
         if (rs.code == 200) {
-          this.curIndexs=this.curIndex;
+          this.curIndexs = this.curIndex;
           // 歌词不支持滚动的
-          this.curMusic.lrcType=rs.datas.lrc.type;
+          this.curMusic.lrcType = rs.datas.lrc.type;
           var lyricD = rs.datas.txt.split("\r\n");
           var timeArr = [];
           var lyricArr = [];
-          if(rs.datas.lrc.type==0){
+          if (this.curMusic.lrcType == 0) {
             lyricD.forEach((item, key) => {
               lyricArr[key] = item || "";
             });
-          }else{
+          } else {
+            this.curMusic.txt=rs.datas.txt
+            this.analysis()
             // 歌词支持滚动的
             lyricD.forEach((item, key) => {
               let curArr = item.slice(1).split("]");
-              console.log(item,curArr)
               // 把01:00.23 转换为秒,
               timeArr.push(curArr[0]);
               lyricArr[key] = curArr[1] || "";
             });
+            console.log(this.curMusic, "lyricTime", timeArr)
             this.$set(this.curMusic, "lyricTime", timeArr);//时间=>主要运用于歌词滚动
           }
           this.$set(this.curMusic, "lyric", lyricArr);
@@ -450,10 +636,10 @@ export default {
     }
   },
   computed: {
-    noMore () {
-        return this.songDatasMthMethodList.length >= this.songDatasMthMethodListTotal
-      },
-    disabled () {
+    noMore() {
+      return this.songDatasMthMethodList.length >= this.songDatasMthMethodListTotal
+    },
+    disabled() {
       return this.loading || this.noMore
     },
     computCur: function () {
@@ -461,8 +647,7 @@ export default {
         this.curMusic = this.songDatasMthMethodList[this.curIndex];
         // 获取歌曲
         var then = this
-        console.log(then.curIndexs,then.curIndex)
-        if(then.curIndexs!=then.curIndex){
+        if (then.curIndexs != then.curIndex) {
           then.getSong();
           then.getLyric();
         }
@@ -505,7 +690,7 @@ export default {
     },
     // 监听现在播放时间，滚动歌词
     currtime: function () {
-      if(this.curMusic.lyricTime){
+      if (this.curMusic.lyricTime) {
         var i = this.curMusic.lyricTime.findIndex((item) => {
           return item.indexOf(this.currtime) != -1;
         });
@@ -522,6 +707,14 @@ export default {
       }
     },
   },
+  mounted() {
+    this.screenHeight = document.body.clientHeight - 115 - 53 - 300;
+    window.onresize = () => {
+      return (() => {
+        this.screenHeight = document.body.clientHeight - 115 - 53 - 300;
+      })()
+    }
+  },
   // updated() {
   //   this.defaultChose();
   // },
@@ -534,29 +727,28 @@ export default {
   justify-content: center;
   align-items: center;
   min-height: 800px;
-  flex: 1;
-  min-width: 1170px;
   margin: 0 auto;
 }
 
 .yinyue_top_left {
-  width: 50%;
-  min-width: 500px;
+  //width: 50%;
 
   div {
-    height: 500px;
+    width: 50%;
+    margin: 0 auto;
+    //height: 500px;
     background-color: tan;
     border-radius: 10px 10px 0 0;
     text-align: center;
     background: url("../../component/webMusicCom/img/singlecover.png") no-repeat center;
     background-size: contain;
-    padding: 5px;
+    padding: 8%;
     display: flex;
     align-items: center;
     justify-content: center;
 
     img {
-      height: 75%;
+      //height: 75%;
       max-width: 100%;
       border-radius: 50%;
     }
@@ -637,9 +829,9 @@ li:hover {
 }
 
 .music-container {
-  display: flex;
-  flex-direction: column;
   width: 100%;
+  padding-bottom: 115px;
+  background: linear-gradient(to right, #f4c8c7 0%, #0c61BB 45%, #0c61BB 55%, #FCC6C6 100%);
 }
 
 .music-pic {
@@ -666,6 +858,10 @@ li:hover {
   padding: 10px 0px 10px 0px;
   background-color: $back-primary1;
   border-radius: 0 0 10px 10px;
+  height: 115px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
 
   div.music-title div span {
     display: block;
@@ -735,21 +931,21 @@ li:hover {
   top: 0px;
   bottom: 0px;
   overflow-y: auto;
-  flex: 1;
-  margin: 150px 0;
+  margin-top: 150px;
+  min-height: 432px;
 
   span {
     height: 30px;
-    line-height: 30px ;
+    line-height: 30px;
     font-size: 16px;
   }
 }
 
 .on {
-    font-size: 30px !important;
-    color: #31c27c;
-    line-height: 50px !important;
-    height: 50px !important;
+  font-size: 30px !important;
+  color: #31c27c;
+  line-height: 50px !important;
+  height: 50px !important;
 }
 
 // 播放列表过渡动画
@@ -805,6 +1001,59 @@ div#playlistcom ul {
 
   to {
     transform: rotate(359deg);
+  }
+}
+
+@media screen and (min-width: 1170px) {
+  .yinyue_top {
+    min-width: 1170px;
+  }
+}
+
+@media screen and (max-width: 1169px) {
+  .music-container {
+    padding-top: 70px;
+  }
+
+  .yinyue_top {
+    flex-flow: column;
+
+    .yinyue_top_left {
+
+      >div {}
+    }
+
+    .music-lyric-box {
+      margin-top: 30px;
+    }
+  }
+}
+
+@media screen and (min-width: 360px) {
+  .yinyue_top {
+
+    .yinyue_top_left {
+
+      //width: 247px;
+      // height: 247px;
+      >div {
+        //height: 100%;
+
+      }
+
+      /* >div::before{
+        content: " ";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 2;
+        background: url(//s3.music.126.net/mobile-new/img/disc.png?d3bdd10…=) no-repeat;
+        background-size: contain;
+        background-image: url(https://p5.music.126.net/obj/wo3DlcOGw6DClTvDisK1/4602256867/5855/63fb/325b/d7e4e3a….png?imageView=&quality=75&thumbnail=200y200);
+      }*/
+    }
   }
 }
 </style>

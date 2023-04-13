@@ -32,10 +32,18 @@
   }
   .yinyue {
     height: 100%;
-    display: flex;
-    justify-content: center;
-    min-width: 1170px;
+    min-height: 900px;
     background: linear-gradient(to right, #f4c8c7 0%, #0c61BB 45%, #0c61BB 55%, #FCC6C6 100%);
+  }
+  @media screen and (min-width: 1170px) {
+    .yinyue{
+      min-width: 1170px;
+    }
+  }
+  @media screen and (max-width: 1169px) {
+    .yinyue{
+      min-width: 320px;
+    }
   }
   </style>
   

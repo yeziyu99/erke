@@ -1,59 +1,69 @@
 <template>
-  <div class="big_wrap">
-    <div class="aboutUs_head">
-      <div class="about_head_title">
-        <div class="title_left">
-          <div class="about_font_Bold font_Bold">非官方</div>
-          <div class="about_ready">与官方无关，纯属自己做着玩，纯展示 </div>
-          <div class="about_ready">有时候可能会有抽奖通告，需要你出钱的不要信,出事本站不负责 </div>
-          <!-- <div class="about_ready">
-            因为喜欢珂珂相聚在这里
-          </div> -->
-        </div>
-
-      </div>
-    </div>
+  <div class="about_big_wrap background_linear">
     <div class="about_content">
       <p>
         因为喜欢珂珂我们相识，有资源可以联系一起分享哦～
       </p>
       <!-- 故事板块 -->
       <h1>
-        我们的故事
-        <span class="mg-tp-25 font-size-12 font-weight-700 color62657A text-ag-rg">（欢迎投稿）</span>
+        <span class="title">
+          我们的故事
+        </span>
+        <span class=" font-size-12 font-weight-700 color62657A text-ag-rg">（欢迎投稿）</span>
       </h1>
-      <p>无意间遇见，就确定了永远~ </p>
-      <h1>联系我们 <span class="mg-tp-25 font-size-12 font-weight-700 color62657A text-ag-rg">（点击下列对应标签复制）</span></h1>
+      <div class="about_story">
+        <div class="about_story_item" v-for="(item, index) in erkeStory" :key="index">
+          <h3 class="about_story_item_name">投稿人：{{ item.name }}</h3>
+          <div class="about_story_item_content">
+            <p v-for="(i, ind) in item.contentArr" :key="ind" v-html="i">
+            </p>
+          </div>
+          <hr>
+          <br>
+        </div>
+      </div>
+      <h1>
+        <span class="title">
+          联系我们
+        </span>
+        <span class=" font-size-12 font-weight-700 color62657A text-ag-rg">（点击标签复制）</span>
+      </h1>
       <!-- 表格-联系方式 -->
-      <el-descriptions  :column="1" border>
-            <el-descriptions-item v-for="(item, index) in contactUs" :key="index">
-                <template slot="label">
-                  <span :style="{color:item.tag=='danger'?'red':''}">
-                    <el-avatar v-if="item.img" :src="item.img"></el-avatar>
-                    {{item.title}}
-                  </span>                  
-                </template>
-                  <el-tooltip class="item" effect="dark" content="点击复制" placement="bottom-start" v-for="(items, ind) in item.center" :key="ind">
-                    <el-tag size="small"  :type="item.tag||''" @click="copyText(items.con)" class="mg-rg-5 pointer">{{ items.name }}</el-tag>
-                  </el-tooltip>
-            </el-descriptions-item>
-        </el-descriptions>
+      <el-descriptions :column="1" border>
+        <el-descriptions-item v-for="(item, index) in contactUs" :key="index">
+          <template slot="label">
+            <span :style="{ color: item.tag == 'danger' ? 'red' : '' }">
+              <el-avatar v-if="item.img" :src="item.img"></el-avatar>
+              <i class="contactUs_title">
+                {{ item.title }}
+              </i>
+            </span>
+          </template>
+          <el-tooltip class="item" effect="dark" content="点击复制" placement="bottom-start"
+            v-for="(items, ind) in item.center" :key="ind">
+            <el-tag size="small" :type="item.tag || ''" @click="copyText(items.con)" class="mg-rg-5 pointer mg-bt-5">{{ items.name
+            }}</el-tag>
+          </el-tooltip>
+        </el-descriptions-item>
+      </el-descriptions>
     </div>
   </div>
 </template>
   
 <script>
 import { contactUs } from "@/utils/erke.js";
+import support from "@/utils/support.js";
 
 export default {
   data() {
     return {
-      contactUs:contactUs
+      contactUs: contactUs,
+      erkeStory: support.erkeStory
     };
   },
   components: {},
   methods: {
-    copyText(value){
+    copyText(value) {
       // 模拟 输入框
       var cInput = document.createElement("input");
       cInput.value = value;
@@ -68,84 +78,202 @@ export default {
       this.$message.success("复制成功!");
       // 复制成功后再将构造的标签 移除
       document.body.removeChild(cInput);
-    }
+    },
   },
-  created() {},
-  mounted() {},
+  created() { },
+  mounted() {
+
+  },
 };
 </script>
   
 <style lang="scss" scoped>
-.big_wrap {
+::v-deep {
+  .el-descriptions-row {
+    .el-descriptions-item__cell.el-descriptions-item__content {
+      padding: 2px !important;
+
+    }
+  }
+
+
+  .el-descriptions-row .el-descriptions-item__cell.el-descriptions-item__label.is-bordered-label>span span {
+    width: 15px;
+    height: 15px;
+  }
+
+}
+
+.about_big_wrap {
   width: 100%;
-  min-width: 1170px;
   overflow-x: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #fff;
-  .aboutUs_head {
-    width: 100%;
-    height: 325px;
-    background-color: $back-primary1;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    
-    .about_head_title {
-      width: 60%;
-      min-width: 1170px;
-      max-width: 1170px;
-      height: 100%;
+  .about_content {
+      min-height: 100px;
+      background-color: #fff;
+      border-radius: 50px;
+      -webkit-box-shadow: 0 0 10px 0 #ccc;
+      box-shadow: 0 0 10px 0 #ccc;
+      margin: 100px auto 100px;
+      padding: 46px 58px;
+  
+    h1 {
+      color: #212c3f;
+      line-height: 43px;
       display: flex;
+      -webkit-align-items: center;
+      -moz-align-items: center;
+      -ms-align-items: center;
+      -o-align-items: center;
       align-items: center;
-      justify-content: space-between;
-      background-image: url("../../assets/images/erkexh.png");
-      background-repeat: no-repeat;
-      background-position: bottom 0px right 0px;
-      background-size: 200px 300px;
-
-      .title_left {
-        white-space: nowrap;
-        // color: #fff;
-        .about_font_Bold {
-          font-size: 60px;
-          margin-bottom: 12px;
-          font-weight: 700;
-        }
-        .about_ready {
-          font-size: 24px;
-        }
+      margin: 10px 0;
+  
+      .title {
+        margin: 0 20px;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -moz-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
       }
-      .title_right {
-        height: 100%;
-        display: flex;
-        align-items: flex-end;
-        margin-right: -63px;
+    }
+  
+    h1::before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      border: 6px solid #FCC6C6;
+      border-radius: 50px;
+      display: inline-block;
+    }
+  
+    .about_story {
+      .about_story_item {
+        .about_story_item_name {
+          color: #0c61BB;
+        }
+  
+        .about_story_item_content {
+          p {
+            color: #90959f;
+            font-size: 16px;
+            text-indent: 32px;
+          }
+        }
       }
     }
   }
-  .about_content {
-    width: 60%;
-    min-width: 1170px;
-    max-width: 1170px;
-    min-height: 575px;
-    padding: 80px 0 50px 0;
+}
 
-    p{
-      font-size: 18px;
-      font-weight: 700;
-      font-family: Gilroy-Bold;
+
+
+@media screen and (min-width: 1170px) {
+  .about_big_wrap {
+    .about_content {
+      width: 60%;
+      max-width: 1170px;
+      min-width: 1170px;
+      min-height: 575px;
+
+      p {
+        font-size: 18px;
+        font-weight: 700;
+        font-family: Gilroy-Bold;
+      }
+
+      h1 {
+        font-size: 36px;
+        margin-top: 60px;
+        font-family: Gilroy-Bold;
+      }
+
+      div {
+        margin-top: 15px;
+        line-height: 1.5;
+
+      }
+
     }
-    h1{
-      font-size: 36px;
-      margin-top: 60px;
-      font-family: Gilroy-Bold;
+  }
+}
+
+@media screen and (max-width: 1169px) {
+  .about_big_wrap {
+    width: 100%;
+
+    .about_content {
+      width: 90%;
+      margin: 50px auto 50px;
+      .about_story_item_content {
+        //max-height: 600px;
+      }
     }
-    div{
-      margin-top: 15px;
-      line-height: 1.5;
+  }
+}
+
+@media screen and (max-width: 500px) {
+
+  .contactUs_title {
+    transform: scale(0.8);
+    flex: 1;
+  }
+
+  .about_big_wrap {
+    width: 100%;
+
+    .about_content {
+      margin: 20px auto 20px;
+      width: 90%;
+      padding: 46px 10%;
+      min-width: 320px;
+      .about_story_item {
+        .about_story_item_content {
+          //max-height: 100%;
+          p {
+            font-size: 12px !important;
+          }
+        }
+
+        .about_story_item_name {
+          font-size: 13px;
+
+        }
+      }
+
+      h1 {
+        color: #212c3f;
+        line-height: 43px;
+        display: flex;
+        -webkit-align-items: center;
+        -moz-align-items: center;
+        -ms-align-items: center;
+        -o-align-items: center;
+        align-items: center;
+
+        .title {
+          //transform: scale(0.8);
+          margin: 0 20px;
+          -webkit-box-flex: 1;
+          -webkit-flex: 1;
+          -moz-box-flex: 1;
+          -ms-flex: 1;
+          flex: 1;
+          font-size: 14px;
+        }
+      }
+
+      h1::before {
+        content: "";
+        width: 15px;
+        height: 15px;
+        border: 6px solid #FCC6C6;
+        border-radius: 50px;
+        display: inline-block;
+      }
     }
+
   }
 }
 </style>

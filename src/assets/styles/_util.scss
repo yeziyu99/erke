@@ -506,3 +506,7 @@ button {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
     background-color: #FCC6C6;
 }
+
+.background_linear {
+    background: linear-gradient(to right, #f4c8c7 0%, #0c61BB 45%, #0c61BB 55%, #FCC6C6 100%) !important;
+}
