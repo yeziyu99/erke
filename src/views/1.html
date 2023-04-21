@@ -86,6 +86,65 @@
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <script>
         ((w) => {
+            console.log(timeToMinute('36097'))
+            function timeToMinute(times) {
+                console.log(times)
+                var t;
+                if (times > -1) {
+                    var hour = Math.floor(times / 3600);
+                    var min = Math.floor(times / 60) % 60;
+                    var sec = times % 60;
+                    if (hour < 10) {
+                        t = '0' + hour + ":";
+                    } else {
+                        t = hour + ":";
+                    }
+
+                    if (min < 10) {
+                        t += "0";
+                    }
+                    t += min + ":";
+                    if (sec < 10) {
+                        t += "0";
+                    }
+                    t += sec.toFixed(2);
+                }
+                console.log(t)
+                t = t.substring(0, t.length - 3);
+                console.log(t)
+                return t;
+            }
+            function formatSeconds(value) {
+                // console.log(value)
+                var theTime = parseInt(value);// 秒
+                // console.log(theTime)
+                var theTime1 = 0;// 分
+                var theTime2 = 0;// 小时
+                if (theTime > 60) {
+                    theTime1 = parseInt(theTime / 60);
+                    theTime = parseInt(theTime % 60);
+                    if (theTime1 > 60) {
+                        theTime2 = parseInt(theTime1 / 60);
+                        theTime1 = parseInt(theTime1 % 60);
+                    }
+                }
+                var result = "" + parseInt(theTime);//秒
+                if (10 > theTime > 0) {
+                    result = "0" + parseInt(theTime);//秒
+                } else {
+                    result = "" + parseInt(theTime);//秒
+                }
+                if (10 > theTime1 > 0) {
+                    result = "0" + parseInt(theTime1) + ":" + result;//分，不足两位数，首位补充0，
+                } else {
+                    result = "" + parseInt(theTime1) + ":" + result;//分
+                }
+                if (theTime2 > 0) {
+                    result = "" + parseInt(theTime2) + ":" + result;//时
+                }
+                // console.log(result)
+                return result;
+            }
             // let lyricFormat = function(lyric02) {
             //     let reg2 = /([[\d{2}:\d{2}\.\d{2,3}]+]+)(\n|.+)/g;
             //     let lyricUnformatedArray = [];
@@ -556,7 +615,7 @@
                     this.createPanel();
                 },
                 play: function (position, CSS) { // 定位指定时间的歌词
-                    console.log(position)
+                    // console.log(position)
                     var time;
                     var obj = this;
 
@@ -593,7 +652,7 @@
             binlyric.play("04:03.69", {
                 color: "red"
             });
-            console.log(binlyric)
+            // console.log(binlyric)
         })(window);
     </script>
 </body>

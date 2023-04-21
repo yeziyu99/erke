@@ -191,7 +191,7 @@
                 <li v-for="(item, index) in pictureList" :key="index" :class="{ active: index == activeIndex }"
                   @click="changeActiveSwiper(index)">
                   {{ item.album_desc }}
-                  <a class="img_ico" title="点击查看详情" @click="externalJumpFn(item.href)">
+                  <a class="img_ico" title="点击查看详情" @click="jumpFun('photo')">
                     <img src="~@/assets/images/faviconx.png" alt="站内查看">
                   </a>
                   <a v-if="item.href" @click="externalJumpFn(item.href)" class="img_ico" title="微博查看原文">🛫️</a>

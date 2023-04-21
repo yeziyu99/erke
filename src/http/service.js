@@ -33,7 +33,6 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
     response => {
-        // console.log(response)
         if (response.data.is_succ) {
             return response.data;
         } else if (response.data.code == '100100') {

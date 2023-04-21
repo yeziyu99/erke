@@ -13,8 +13,11 @@
       </h1>
       <div class="about_story">
         <div class="about_story_item" v-for="(item, index) in erkeStory" :key="index">
-          <h3 class="about_story_item_name">投稿人：{{ item.name }}</h3>
-          <div class="about_story_item_content">
+          <h3 class="about_story_item_name" @click="item.show=!item.show">投稿人：{{ item.name }}
+            <i class="el-icon-arrow-down" v-show="item.show"></i>
+            <i class="el-icon-arrow-up" v-show="!item.show"></i>
+          </h3>
+          <div class="about_story_item_content" v-show="!item.show">
             <p v-for="(i, ind) in item.contentArr" :key="ind" v-html="i">
             </p>
           </div>
@@ -153,6 +156,12 @@ export default {
       .about_story_item {
         .about_story_item_name {
           color: #0c61BB;
+          cursor: pointer;
+          display: flex;
+          justify-content: space-between;
+          i{
+            line-height: 1.5;
+          }
         }
   
         .about_story_item_content {

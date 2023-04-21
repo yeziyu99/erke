@@ -114,8 +114,44 @@ var supportLink = {
                     },
                 ]
             }]
-        },
-        4: {
+    },
+    4: {
+        title: "录播侠",
+        url: 'https://space.bilibili.com/374159300',
+        imgUrl: 'https://img.douyucdn.cn/data/yuba/weibo/2023/04/21/202304211518175961173195432.png',
+        show: false,
+        children: [{
+            name: '录播侠',
+            type: 'bili',
+            show: false,
+            imgUrl: 'https://img.douyucdn.cn/data/yuba/weibo/2023/04/21/202304211518175961173195432.png',
+            remarks: '永远喜欢二珂与初寒! 主要更新二珂的直播，初寒和成果的直播了就会更!',
+            herf: 'https://space.bilibili.com/374159300',
+            children: [
+                {
+                    name: '专栏-封面图',
+                    herf: 'https://space.bilibili.com/374159300/article'
+                },
+                {
+                    name: '合集-周二珂',
+                    herf: 'https://space.bilibili.com/374159300/channel/collectiondetail?sid=47630'
+                },
+                {
+                    name: '合集-二珂唱歌',
+                    href:'https://space.bilibili.com/374159300/channel/collectiondetail?sid=561984'
+                },
+                {
+                    name: '合集-二珂直播趣事',
+                    href:'https://space.bilibili.com/374159300/channel/collectiondetail?sid=1128685'
+                },
+                {
+                    name: '合集-二珂直播弹幕版',
+                    href:'https://space.bilibili.com/374159300/channel/collectiondetail?sid=676492'
+                }
+            ]
+        }]
+    },
+        5: {
             title: "丶一瓶AD钙",
             url: 'https://space.bilibili.com/14094124',
             imgUrl: bili,
@@ -133,7 +169,7 @@ var supportLink = {
                 }, ]
             }]
         },
-        5: {
+        6: {
             title: "小龙吖丶",
             url: 'https://space.bilibili.com/3970477',
             imgUrl: bili,
@@ -151,7 +187,7 @@ var supportLink = {
                 }, ]
             }]
         },
-        6: {
+        7: {
             title: "二珂呀呀呀",
             url: 'https://space.bilibili.com/10753901',
             imgUrl: 'http://p2.music.126.net/HY6NAECJ9PYbK8CntSTE1w==/18778559091333928.jpg?param=200y200',
@@ -192,7 +228,7 @@ var supportLink = {
                 }
             ]
         },
-        7: {
+        8: {
             title: "周二珂周三鸽",
             imgUrl: bili,
             url: 'https://space.bilibili.com/2034302701',
@@ -215,7 +251,7 @@ var supportLink = {
                 ]
             }]
         },
-        8: {
+        9: {
             title: "寂寞是凯神",
             url: 'https://space.bilibili.com/233895985',
             imgUrl: bili,
@@ -233,7 +269,7 @@ var supportLink = {
                 }, ]
             }]
         },
-        9: {
+        10: {
             title: "叶子宇吖",
             show: false,
             imgUrl: 'http://p2.music.126.net/m6545W0uGHXl9B19-SF2Bg==/109951166734969798.jpg?param=200y200',
@@ -246,7 +282,7 @@ var supportLink = {
                 herf: 'https://music.163.com/#/djradio?id=969709687',
             }]
         },
-        10: {
+        11: {
             title: "双层吉士汉堡er",
             imgUrl: 'http://p2.music.126.net/c8jktP7SB0vp1e4Dv8FAxQ==/109951163302654233.jpg?param=200y200',
             show: false,
@@ -259,7 +295,7 @@ var supportLink = {
                 herf: 'https://music.163.com/#/djradio?id=526548699',
             }]
         },
-        11: {
+        12: {
             title: "本本吖_benbenya",
             show: false,
             imgUrl: 'http://p2.music.126.net/0ZuVjrNW0tacFu-5QyIjnw==/109951165495925382.jpg?param=200y200',
@@ -272,7 +308,7 @@ var supportLink = {
                 herf: 'https://music.163.com/#/djradio?id=347381086',
             }]
         },
-        12: {
+        13: {
             title: "--PENG----",
             show: false,
             imgUrl: 'http://p2.music.126.net/pcealsGiQSkTE2eaN7hP0w==/109951163075958798.jpg?param=200y200',
@@ -309,23 +345,52 @@ var supportLink = {
 
             *}
     */
-var pictureList = [{
-        id: 1,
-        album_name: "20220825微博更新",
-        album_desc: "几张“书不离手”的胶片照",
-        cover_img_id: '/2023/01/30/20230130172411715102517436',
-        href: 'https://weibo.com/1910672761/M2FxPqk6t?pagetype=profilefeed',
-        is_loc_url: 0,
-        release_time: 1661356800,
-        children: [
-            { id: 1, img_name: "几张“书不离手”的胶片照", img_desc: null, img_url: "20221228\/0025iZgBly1h5j0c7abv2j62re22s1kz02", is_loc_url: 0, release_time: 1661356800 },
-            { id: 2, img_name: "几张“书不离手”的胶片照", img_desc: null, img_url: "20221228\/0025iZgBly1h5j0c2il59j61zc2n4npg02", is_loc_url: 0, release_time: 1661356800 },
-            { id: 3, img_name: "几张“书不离手”的胶片照", img_desc: null, img_url: "20221228\/0025iZgBly1h5j0c974xnj622s2re4qr02", is_loc_url: 0, release_time: 1661356800 },
-            { id: 4, img_name: "几张“书不离手”的胶片照", img_desc: null, img_url: "20221228\/0025iZgBly1h5j0cbmnldj622s2reu1002", is_loc_url: 0, release_time: 1661356800 },
-            { id: 5, img_name: "几张“书不离手”的胶片照", img_desc: null, img_url: "20221228\/0025iZgBly1h5j0cdybv4j62p2211u1002", is_loc_url: 0, release_time: 1661356800 },
-            { id: 6, img_name: "几张“书不离手”的胶片照", img_desc: null, img_url: "20221228\/0025iZgBly1h5j0c5efaqj622s2renpg02", is_loc_url: 0, release_time: 1661356800 }
-        ]
-    },
+var pictureList = [
+//     {
+//         id: 1,
+//         album_name: "20220825微博更新",
+//         album_desc: "几张“书不离手”的胶片照",
+//         cover_img_id: '/2023/01/30/20230130172411715102517436',
+//         href: 'https://weibo.com/1910672761/M2FxPqk6t?pagetype=profilefeed',
+//         is_loc_url: 0,
+//         release_time: 1661356800,
+//         children: [
+//             { id: 1, img_name: "几张“书不离手”的胶片照", img_desc: null, img_url: "20221228\/0025iZgBly1h5j0c7abv2j62re22s1kz02", is_loc_url: 0, release_time: 1661356800 },
+//             { id: 2, img_name: "几张“书不离手”的胶片照", img_desc: null, img_url: "20221228\/0025iZgBly1h5j0c2il59j61zc2n4npg02", is_loc_url: 0, release_time: 1661356800 },
+//             { id: 3, img_name: "几张“书不离手”的胶片照", img_desc: null, img_url: "20221228\/0025iZgBly1h5j0c974xnj622s2re4qr02", is_loc_url: 0, release_time: 1661356800 },
+//             { id: 4, img_name: "几张“书不离手”的胶片照", img_desc: null, img_url: "20221228\/0025iZgBly1h5j0cbmnldj622s2reu1002", is_loc_url: 0, release_time: 1661356800 },
+//             { id: 5, img_name: "几张“书不离手”的胶片照", img_desc: null, img_url: "20221228\/0025iZgBly1h5j0cdybv4j62p2211u1002", is_loc_url: 0, release_time: 1661356800 },
+//             { id: 6, img_name: "几张“书不离手”的胶片照", img_desc: null, img_url: "20221228\/0025iZgBly1h5j0c5efaqj622s2renpg02", is_loc_url: 0, release_time: 1661356800 }
+//         ]
+// },
+{
+    id: 1,
+    album_name: "20220825微博更新",
+    album_desc: "滑雪照",
+    cover_img_id: '/2023/01/29/202301291654065627224646997',
+    href: '',
+    imgSuffix:'imgSuffixpng',
+    is_loc_url: 0,
+    release_time: 1661356800,
+    children: [
+        { id: 1, img_name: "滑雪照", img_desc: null, img_url: "/2023/01/29/202301291654065627224646997", is_loc_url: 0, release_time: 1661356800,imgSuffix:'imgSuffixpng' },
+        { id: 2, img_name: "滑雪照", img_desc: null, img_url: "/2023/01/29/202301291701064549801064309", is_loc_url: 0, release_time: 1661356800,imgSuffix:'imgSuffixpng' },
+        { id: 3, img_name: "滑雪照", img_desc: null, img_url: "/2023/01/29/202301291701422273822708637", is_loc_url: 0, release_time: 1661356800 ,imgSuffix:'imgSuffixpng'},
+        { id: 4, img_name: "滑雪照", img_desc: null, img_url: "/2023/01/29/202301291702064534517015489", is_loc_url: 0, release_time: 1661356800 ,imgSuffix:'imgSuffixpng'},
+        { id: 5, img_name: "滑雪照", img_desc: null, img_url: "/2023/01/29/202301291708124074405665696", is_loc_url: 0, release_time: 1661356800 ,imgSuffix:'imgSuffixpng'},
+        { id: 6, img_name: "滑雪照", img_desc: null, img_url: "/2023/01/29/202301291709127003136243706", is_loc_url: 0, release_time: 1661356800 ,imgSuffix:'imgSuffixpng'},
+        { id: 7, img_name: "滑雪照", img_desc: null, img_url: "/2023/01/29/202301291709442800825856161", is_loc_url: 0, release_time: 1661356800 ,imgSuffix:'imgSuffixpng'},
+        { id: 8, img_name: "滑雪照", img_desc: null, img_url: "/2023/01/29/202301291710129561712583672", is_loc_url: 0, release_time: 1661356800 ,imgSuffix:'imgSuffixpng'},
+        { id: 9, img_name: "滑雪照", img_desc: null, img_url: "/2023/01/29/202301291710474549124381053", is_loc_url: 0, release_time: 1661356800 ,imgSuffix:'imgSuffixpng'},
+        { id: 10, img_name: "滑雪照", img_desc: null, img_url: "/2023/01/29/202301291711144290885696046", is_loc_url: 0, release_time: 1661356800,imgSuffix:'imgSuffixpng' },
+        { id: 11, img_name: "滑雪照", img_desc: null, img_url: "/2023/01/29/202301291711452634071577250", is_loc_url: 0, release_time: 1661356800,imgSuffix:'imgSuffixpng'},
+        { id: 12, img_name: "滑雪照", img_desc: null, img_url: "/2023/01/29/202301291712122758329118808", is_loc_url: 0, release_time: 1661356800,imgSuffix:'imgSuffixpng' },
+        // { id: 6, img_name: "几张“书不离手”的胶片照", img_desc: null, img_url: "", is_loc_url: 0, release_time: 1661356800 }
+        // { id: 6, img_name: "几张“书不离手”的胶片照", img_desc: null, img_url: "", is_loc_url: 0, release_time: 1661356800 }
+        // { id: 6, img_name: "几张“书不离手”的胶片照", img_desc: null, img_url: "", is_loc_url: 0, release_time: 1661356800 }
+        // { id: 6, img_name: "几张“书不离手”的胶片照", img_desc: null, img_url: "", is_loc_url: 0, release_time: 1661356800 }
+    ]
+},
     {
         id: 2,
         album_name: "20220623微博更新",
@@ -426,42 +491,49 @@ var imgDetails = {
 }
 var pictureLists = []
 pictureList.forEach((item, index) => {
-    item.cover_img = item.is_loc_url == 0 ? imgDetails.imgHead + item.cover_img_id + imgDetails.imgSize580 + imgDetails.imgSuffixjpg : item.cover_img_id;
+    item.cover_img = item.is_loc_url == 0 ? imgDetails.imgHead + item.cover_img_id +imgDetails.imgSize580 +  (item.imgSuffix=='imgSuffixpng'?imgDetails.imgSuffixpng :imgDetails.imgSuffixjpg) : item.cover_img_id;
     item.img_urls = [];
     item.children.forEach((val, ind) => {
-        item.img_urls.push(item.is_loc_url == 0 ? imgDetails.imgHead + val.img_url + imgDetails.imgSuffixjpg : val.img_url)
+        item.img_urls.push(item.is_loc_url == 0 ? imgDetails.imgHead + val.img_url + (val.imgSuffix=='imgSuffixpng'?imgDetails.imgSuffixpng :imgDetails.imgSuffixjpg) : val.img_url)
     })
     pictureLists.push(item.cover_img)
 })
-var erkeStory = [{
-    name: '你的月亮我的珂',
-    content: `记得在2016年8月份，因为我是周杰伦粉丝，去搜告白气球的时候看到了一个周二珂的版本，当时在想这个应该是女的吧，我就点进去了听了，体验。度极高啊，我循环了一天，吗的，当时珂在熊猫，我有个朋友会看直播嘛，lol的经常看，说35723这主播唱的不错啊，叫我去看看，当年我还是不怎么看直播，第一次认识熊猫，我就搜这个进去了，那时候啊，我一点进去，刚好也就唱告白气球，直接恋爱惹，妈耶，我能说我是声线粉吗，感觉我也是颜狗，直接关注，那时候id就直接告白气球j了，就是那时候播就跟过年一样，真的我那时候比。现在还佛系，那时候播了丢后台就进cf了，其实听着她唱歌，我都没心思玩了，太好听了，到现在3月份来到现在78622，她一来我就办卡了，珂珂伴伴，永远不散呀!`
-}, {
-    name: '周二珂周三鸽',
-    content: `
-        那年初夏，我遇见了那个她，她说她叫可可，年芳一十八！
-        她让我教她抽烟，我让她陪我赏花，那个晚霞，我想和她有一个家！
-        好了，以上都是胡扯，主要是那个小叶子，光让我给她编故事，我哪会编故事，我只会讲故事，讲自己的故事，故事平平淡淡，没啥特别的，不用往下看了，浪费你们时间。
-        唉，记不清什么时候了，好像是2015年？（二珂那个视频发布时间是15年）
-        印象中我第一次见到二珂，是在优酷的首页推荐上，无意的刷到了二珂《走在冷风中》的翻唱视频，视频封面的可爱妹妹吸引了，虽然我比她小两岁，但出于礼貌还是叫二珂妹妹吧。
-        不确定是歌声，但一定是美貌吸引了我，普通的五官披着短发，高冷的表情加上有故事的眼神，有种惊艳但又很平淡的感觉，看着安安静静，感觉很乖，让人有种保护欲......
-        好了，不扯了，就是看中她的脸了，颜值即正义，我就是渣男！
-        当时不懂什么直播，也不太清楚在哪了解她，之后印象中看到她的直播是在熊猫，斗鱼可能也看过吧，记不太清了！  因为那时沉迷英雄联盟，所以不经常看直播。去喜欢她的话，也没有刻意去，当时在学校我已经有个喜欢的女孩子了，也一直再追她便没有特别去喜欢二珂。
-        之后是在熊猫直播时给我的印象毕竟深刻，那时我正值高考冲刺阶段，每天周一到周五早读前要求提前半小时到校，先上个小早读，下午放学后半个小时又要上晚自习，每个晚自习和小早读都安排了各科老师，下晚自习后已经是晚上十点左右，回到家还要写作业，做卷子，每天都重复这枯燥的生活，持续了半年。
-        而每天晚上让我觉得幸福的一件事就是，把手机放在课本边立着，边做功课，边听二珂直播唱歌，让我每天辛苦回到家，都会有所期待。那段时间，二珂给我带来了很多欢乐和温暖！
-        之后高考结束，虽然我依然沉迷游戏，但也没有忘记她，现在想起了，有一种想《回到过去》的感觉，那时我不懂，现在想来，沉迷游戏冲分上段后，如今却没什么感觉，也多少有些后悔，没多陪二珂一些时间，现在想把她装满我的青春也已悔之不及。
-        上大学后，依然沉迷游戏，但二珂在我的生活中已经占了一大半，大学生活中也会常常看二珂的直播，后来在社交软件看到二珂的新专辑在发售，而又不知道在哪购买。之后我那个喜欢的女孩子，在我生日的时候，作为礼物送给我一张二珂的专辑，可能不值多少钱，但在我心中确实最最珍贵的礼物。这张专辑一直保存到现在，依然还是新的。如今再想买，却不知何处寻。
-        二珂的每一次线下，我都想去，可身为大学生太穷，只能卧在宿舍打游戏。一直有一个在变的愿望，就是想要二珂的一张专辑，一张签名照，一次演唱会门票，一次有趣的合影......
-        如今二珂的每场直播我都会看，只是不想让我的青春留有遗憾，或许再过几年我会嘲笑我自己，花那么多时间在她身上干嘛？但至少我现在是开心的！每个人的青春都不一样，它可能是演员，歌手，或者是运动选手，但它给我们带来的回忆感确实相同的，因为它真实存在过。
-        17.18年的斗鱼F4，如今也只剩二珂一人还在默默的直播，现在只想好好珍惜，哪怕它只有一瞬间！
-        哈哈哈，不知不觉又开始扯了，没办法，周二珂今天又鸽了，斗鱼公务员光休息，三天打鱼两天晒网，烦死了！ 因为弃游了，又没其他喜欢的主播，要不是二珂在，我就把斗鱼卸了。
-        罢了，不说了，敲那么多字休息一下！（主要是文化有限编不下去了，拜拜）`
-}, {
-    name: '录播侠',
-    content: `知道二珂是在2018年一部叫《超越吧英雄》的综艺，当时二珂刚出现的时候没有太多的感觉，因为那里面的人都不知道，所以第一眼也没有什么特别的，但是后来在节目里唱歌的画面深深地吸引了我，“这个女孩唱歌真好听啊”，所以在19年开始看二珂的直播，人生的第一张办卡也是交给了二珂。在那段时间里每天晚上都在看直播，感觉真的很好，但是还是有些不好意思和身边的人说喜欢二珂。接下来二珂就停播了，在那停播得两年间，每天都在直播间送荧光棒以保持粉丝的身份，为了一个女主播而每天都来直播间签到是我之前想都没想过的，但是就是那么做了，并且那段时间发行的歌也是一首不差的全都听了。
-    本以为当时只是一时冲动才喜欢了二珂，但是经过她停播两年的沉淀，对她的喜欢也是越来越深，且那是也可以告诉别人我就是喜欢“周二珂”，没有丝毫的不好意思。时间来到2021年6月6号，她回归了，我真的好激动，并且做了一个打算——在B站投稿她的直播录像，最初的想法是为了以后自己可以随时看到，但是随着稿件越来越多，渐渐的有了一点点粉丝，因此也认识了很多喜欢二珂的人。
-    在回归的这段时间里直播效果也是越来越好，有的时候还邀请了自己的闺蜜一同来直播，因此令我认识了七七、初寒，所以我想对二珂说一声“谢谢你，带给了我快乐”，现在我终于敢大声地说<span style='color:red'>“对不起，二珂，我现在喜欢林初寒比你多一点点，哈哈哈哈”</span>`
-}]
+var erkeStory = [
+    {
+        show:false,
+        name: '你的月亮我的珂',
+        content: `记得在2016年8月份，因为我是周杰伦粉丝，去搜告白气球的时候看到了一个周二珂的版本，当时在想这个应该是女的吧，我就点进去了听了，体验。度极高啊，我循环了一天，吗的，当时珂在熊猫，我有个朋友会看直播嘛，lol的经常看，说35723这主播唱的不错啊，叫我去看看，当年我还是不怎么看直播，第一次认识熊猫，我就搜这个进去了，那时候啊，我一点进去，刚好也就唱告白气球，直接恋爱惹，妈耶，我能说我是声线粉吗，感觉我也是颜狗，直接关注，那时候id就直接告白气球j了，就是那时候播就跟过年一样，真的我那时候比。现在还佛系，那时候播了丢后台就进cf了，其实听着她唱歌，我都没心思玩了，太好听了，直到如今来到现在78622。她一来我就办卡了，<span style='color:red;font-weight:700;'>“珂珂伴伴，永远不散呀!”</span>`
+    },
+    {
+        show:false,
+        name: '录播侠',
+        content: `知道二珂是在2018年一部叫《超越吧英雄》的综艺，当时二珂刚出现的时候没有太多的感觉，因为那里面的人都不知道，所以第一眼也没有什么特别的，但是后来在节目里唱歌的画面深深地吸引了我，“这个女孩唱歌真好听啊”，所以在19年开始看二珂的直播，人生的第一张办卡也是交给了二珂。在那段时间里每天晚上都在看直播，感觉真的很好，但是还是有些不好意思和身边的人说喜欢二珂。接下来二珂就停播了，在那停播得两年间，每天都在直播间送荧光棒以保持粉丝的身份，为了一个女主播而每天都来直播间签到是我之前想都没想过的，但是就是那么做了，并且那段时间发行的歌也是一首不差的全都听了。
+        本以为当时只是一时冲动才喜欢了二珂，但是经过她停播两年的沉淀，对她的喜欢也是越来越深，且那是也可以告诉别人我就是喜欢“周二珂”，没有丝毫的不好意思。时间来到2021年6月6号，她回归了，我真的好激动，并且做了一个打算——在B站投稿她的直播录像，最初的想法是为了以后自己可以随时看到，但是随着稿件越来越多，渐渐的有了一点点粉丝，因此也认识了很多喜欢二珂的人。
+        在回归的这段时间里直播效果也是越来越好，有的时候还邀请了自己的闺蜜一同来直播，因此令我认识了七七、初寒，所以我想对二珂说一声“谢谢你，带给了我快乐”，现在我终于敢大声地说<span style='color:red;font-weight:700;'>“对不起，二珂，我现在喜欢林初寒比你多一点点，哈哈哈哈”</span>`
+    },
+    {
+        show:false,
+        name: '周二珂周三鸽',
+        content: `
+            那年初夏，我遇见了那个她，她说她叫可可，年芳一十八！
+            她让我教她抽烟，我让她陪我赏花，那个晚霞，我想和她有一个家！
+            好了，以上都是胡扯，主要是那个小叶子，光让我给她编故事，我哪会编故事，我只会讲故事，讲自己的故事，故事平平淡淡，没啥特别的，不用往下看了，浪费你们时间。
+            唉，记不清什么时候了，好像是2015年？（二珂那个视频发布时间是15年）
+            印象中我第一次见到二珂，是在优酷的首页推荐上，无意的刷到了二珂《走在冷风中》的翻唱视频，视频封面的可爱妹妹吸引了，虽然我比她小两岁，但出于礼貌还是叫二珂妹妹吧。
+            不确定是歌声，但一定是美貌吸引了我，普通的五官披着短发，高冷的表情加上有故事的眼神，有种惊艳但又很平淡的感觉，看着安安静静，感觉很乖，让人有种保护欲......
+            好了，不扯了，就是看中她的脸了，颜值即正义，我就是渣男！
+            当时不懂什么直播，也不太清楚在哪了解她，之后印象中看到她的直播是在熊猫，斗鱼可能也看过吧，记不太清了！  因为那时沉迷英雄联盟，所以不经常看直播。去喜欢她的话，也没有刻意去，当时在学校我已经有个喜欢的女孩子了，也一直再追她便没有特别去喜欢二珂。
+            之后是在熊猫直播时给我的印象毕竟深刻，那时我正值高考冲刺阶段，每天周一到周五早读前要求提前半小时到校，先上个小早读，下午放学后半个小时又要上晚自习，每个晚自习和小早读都安排了各科老师，下晚自习后已经是晚上十点左右，回到家还要写作业，做卷子，每天都重复这枯燥的生活，持续了半年。
+            而每天晚上让我觉得幸福的一件事就是，把手机放在课本边立着，边做功课，边听二珂直播唱歌，让我每天辛苦回到家，都会有所期待。那段时间，二珂给我带来了很多欢乐和温暖！
+            之后高考结束，虽然我依然沉迷游戏，但也没有忘记她，现在想起了，有一种想《回到过去》的感觉，那时我不懂，现在想来，沉迷游戏冲分上段后，如今却没什么感觉，也多少有些后悔，没多陪二珂一些时间，现在想把她装满我的青春也已悔之不及。
+            上大学后，依然沉迷游戏，但二珂在我的生活中已经占了一大半，大学生活中也会常常看二珂的直播，后来在社交软件看到二珂的新专辑在发售，而又不知道在哪购买。之后我那个喜欢的女孩子，在我生日的时候，作为礼物送给我一张二珂的专辑，可能不值多少钱，但在我心中确实最最珍贵的礼物。这张专辑一直保存到现在，依然还是新的。如今再想买，却不知何处寻。
+            二珂的每一次线下，我都想去，可身为大学生太穷，只能卧在宿舍打游戏。一直有一个在变的愿望，就是想要二珂的一张专辑，一张签名照，一次演唱会门票，一次有趣的合影......
+            如今二珂的每场直播我都会看，只是不想让我的青春留有遗憾，或许再过几年我会嘲笑我自己，花那么多时间在她身上干嘛？但至少我现在是开心的！每个人的青春都不一样，它可能是演员，歌手，或者是运动选手，但它给我们带来的回忆感确实相同的，因为它真实存在过。
+            17.18年的斗鱼F4，如今也只剩二珂一人还在默默的直播，现在只想好好珍惜，哪怕它只有一瞬间！
+            哈哈哈，不知不觉又开始扯了，没办法，周二珂今天又鸽了，斗鱼公务员光休息，三天打鱼两天晒网，烦死了！ 因为弃游了，又没其他喜欢的主播，要不是二珂在，我就把斗鱼卸了。
+            罢了，不说了，敲那么多字休息一下！（主要是文化有限编不下去了，拜拜）`
+    },
+]
 
 
 for (let i in erkeStory) {

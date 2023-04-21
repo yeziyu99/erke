@@ -117,7 +117,7 @@
                 <el-link type="info">{{ item.song_type == 'fc' ? '翻唱' : '原唱' }}</el-link>
               </div>
               <div class="bottom clearfix">
-                <el-button type="primary" class="button" @click="jumpFun('song',item.id)" style="background:#f4c8c7; font-weight:400; border-color:#f4c8c7;">播放</el-button>
+                <el-button type="primary" class="button" @click="jumpFun('song',index)" style="background:#f4c8c7; font-weight:400; border-color:#f4c8c7;">播放</el-button>
               </div>
             </div>
           </el-card>
@@ -211,9 +211,9 @@ export default {
 
     },
     //项目内部跳转
-    jumpFun(name,id) {
+    jumpFun(name, curIndex) {
       if (this.$route.name != name) {
-        this.$router.push({name: name, params: {id: id}});
+        this.$router.push({name: name, query: {'curIndex': curIndex}});
       }
     },
   },

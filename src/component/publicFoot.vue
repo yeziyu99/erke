@@ -36,7 +36,7 @@
             非官方网站<br />
             前端：叶子宇<br />
             后端：黄小珂<br />
-            UI：叶子宇&&周三鸽<br />
+            UI：叶子宇<br />
             资料：周三鸽&&叶子宇<br />
           </li>
           <li class="con_right_bottom">346989693@qq.com </li>
