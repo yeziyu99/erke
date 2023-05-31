@@ -9,6 +9,8 @@ UP主各平台链接名称
             *   img  图片
             *   herf 地址
             *   remarks 备注简写
+            *   show 展开与否（前端控制后期加就可以）
+            *   children 具体数据
         *  },
     *}
 */
