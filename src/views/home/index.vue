@@ -1,74 +1,44 @@
 <template>
   <div class="big_wrap" ref="page">
-    <div class="homepage_banner">
-      <div class="home_header">
-        <div class="head_con">
-          <div class="banner_left">
-            <h2 class="font_Bold logo_title">
-              <img src="@/assets/images/logo.png" style="" @click="jumpFun('home')" alt="" />
-              <span class="">
-                周二珂
-              </span>
-            </h2>
-            <h4 style="margin-bottom: 90px; font-size: 20px;text-indent:20px" class="">
-              人美、气质好、唱歌又好听，为人低调和善，但却挡不住她急剧上升的人气。在一个歌荒的寂寞时间，周二珂简直是甜歌小公主，那一刻，让你的心暖暖的。
-            </h4>
-            <div class="banner_btn">
-              <div @click="externalJumpFn('https://www.douyu.com/78622')" class="btn_one" v-if="erkeLive != 200">未开播～
-              </div>
-              <a @click="externalJumpFn('https://www.douyu.com/78622')" v-if="erkeLive == 200">
-                <img src="@/assets/images/douyu.png" alt="" />
-                开播中...</a>
-            </div>
-            <p>显示的图像仅用于展示作用</p>
-          </div>
-        </div>
-        <div class="home_bg">
-          <div style=" max-width: 230px; flex: 1;margin: 0 auto;position: relative;">
-            <div>
-              <div class="inset_bg">
-                <div class="bg-semicircle"></div>
-                <div class="bg_ball"></div>
-                <div class="bg_ball_solid"></div>
-              </div>
-              <div class="video_wrap" @click="externalJumpFn('https://www.douyu.com/78622')">
-                <div class="animate-wave">
-                  <img class="logo"
-                    src="https://img.douyucdn.cn/data/yuba/weibo/2023/01/29/202301291721386043550652722.png" alt="">
-                  <div class="w2"></div>
-                  <div class="w3"></div>
-                  <div class="w4"></div>
-                  <div class="w5"></div>
-                  <div class="w6"></div>
-                  <div class="w7"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <live />
     <div class="home_content">
       <div class="content_img">
         <h2 class="font_Bold">二珂个人社交平台</h2>
         <div class="three_img">
-          <div class="content_item" @click="externalJumpFn('https://www.douyu.com/78622')">
+          <div
+            class="content_item"
+            @click="externalJumpFn('https://www.douyu.com/78622')"
+          >
             <div>
-              <img :src="dyhead" alt="https://www.douyu.com/78622">
+              <img :src="dyhead" alt="https://www.douyu.com/78622" />
             </div>
             <p>二珂78622@斗鱼</p>
           </div>
-          <div class="content_item" @click="externalJumpFn('https://weibo.com/u/1910672761')">
+          <div
+            class="content_item"
+            @click="externalJumpFn('https://weibo.com/u/1910672761')"
+          >
             <div>
-              <img :src="wbhead" alt="https://weibo.com/u/1910672761?topnav=1&wvr=6&topsug=1">
+              <img
+                :src="wbhead"
+                alt="https://weibo.com/u/1910672761?topnav=1&wvr=6&topsug=1"
+              />
             </div>
             <p>二珂Chloe@微博</p>
           </div>
-          <div class="content_item"
-            @click="externalJumpFn('https://www.xiaohongshu.com/user/profile/5ad78361e8ac2b1fca15ff66')">
+          <div
+            class="content_item"
+            @click="
+              externalJumpFn(
+                'https://www.xiaohongshu.com/user/profile/5ad78361e8ac2b1fca15ff66'
+              )
+            "
+          >
             <div>
-              <img :src="wbhead"
-                alt="https://www.xiaohongshu.com/user/profile/5ad78361e8ac2b1fca15ff66?xhsshare=CopyLink&appuid=609b9c340000000001004f33&apptime=1667552951">
+              <img
+                :src="wbhead"
+                alt="https://www.xiaohongshu.com/user/profile/5ad78361e8ac2b1fca15ff66?xhsshare=CopyLink&appuid=609b9c340000000001004f33&apptime=1667552951"
+              />
             </div>
             <p>二珂@小红书</p>
           </div>
@@ -77,80 +47,173 @@
       <div class="invest_title">
         <!-- <div> -->
         <p class="title_wrapper">部分图片展示</p>
-        <h2 class="font_Bold">
-          二珂微博发布的个别图片展示
-        </h2>
+        <h2 class="font_Bold">二珂微博发布的个别图片展示</h2>
         <!-- </div> -->
       </div>
       <!-- invest_bg -->
-      <div class=" customize-container">
+      <div class="customize-container">
         <!-- invest_bg_con -->
-        <div class=" customize" :class="{ isFixed: barFixed, invest: true }" :style="myStyle">
+        <div
+          class="customize"
+          :class="{ isFixed: barFixed, invest: true }"
+          :style="myStyle"
+        >
           <div class="container">
             <!-- invest_bg_title font_Bold -->
-            <div class=" customize-bg-container" :style="{ backgroundSize: containerBack + '%' }">
+            <div
+              class="customize-bg-container"
+              :style="{ backgroundSize: containerBack + '%' }"
+            >
               <div class="customize-wrapper" style="position: relative">
                 <p class="font-size-24 font-weight-700 mg-lt-30">
                   {{ bgImgList.title }}
                 </p>
                 <div class="invest_img">
                   <div class="img_left">
-                    <el-image class="left1 img_border" lazy
-                      :src="imgDetails.imgHead + bgImgList.left1 + imgDetails.imgSize580 + imgDetails.imgSuffixpng"
-                      :preview-src-list="[imgDetails.imgHead + bgImgList.left1 + imgDetails.imgSuffixpng]" fit="cover"
-                      alt="" />
-                    <el-image class="left2 img_border" lazy
-                      :src="imgDetails.imgHead + bgImgList.left2 + imgDetails.imgSize580 + imgDetails.imgSuffixpng"
-                      :preview-src-list="[imgDetails.imgHead + bgImgList.left2 + imgDetails.imgSuffixpng]" fit="cover"
-                      alt="" />
-                    <el-image class="left3 img_border" lazy
-                      :src="imgDetails.imgHead + bgImgList.left3 + imgDetails.imgSize580 + imgDetails.imgSuffixpng"
-                      :preview-src-list="[imgDetails.imgHead + bgImgList.left3 + imgDetails.imgSuffixpng]" fit="cover"
-                      alt="" />
+                    <el-image
+                      class="left1 img_border"
+                      lazy
+                      :src="
+                        imgDetails.imgHead +
+                        bgImgList.left1 +
+                        imgDetails.imgSize580 +
+                        imgDetails.imgSuffixpng
+                      "
+                      :preview-src-list="[
+                        imgDetails.imgHead + bgImgList.left1 + imgDetails.imgSuffixpng,
+                      ]"
+                      fit="cover"
+                      alt=""
+                    />
+                    <el-image
+                      class="left2 img_border"
+                      lazy
+                      :src="
+                        imgDetails.imgHead +
+                        bgImgList.left2 +
+                        imgDetails.imgSize580 +
+                        imgDetails.imgSuffixpng
+                      "
+                      :preview-src-list="[
+                        imgDetails.imgHead + bgImgList.left2 + imgDetails.imgSuffixpng,
+                      ]"
+                      fit="cover"
+                      alt=""
+                    />
+                    <el-image
+                      class="left3 img_border"
+                      lazy
+                      :src="
+                        imgDetails.imgHead +
+                        bgImgList.left3 +
+                        imgDetails.imgSize580 +
+                        imgDetails.imgSuffixpng
+                      "
+                      :preview-src-list="[
+                        imgDetails.imgHead + bgImgList.left3 + imgDetails.imgSuffixpng,
+                      ]"
+                      fit="cover"
+                      alt=""
+                    />
                   </div>
                   <div class="img_phone">
-                    <el-image class="img_border img_borders" lazy
-                      :src="imgDetails.imgHead + bgImgList.center + imgDetails.imgSize580 + imgDetails.imgSuffixpng"
-                      :preview-src-list="[imgDetails.imgHead + bgImgList.center + imgDetails.imgSuffixpng]" fit="cover"
-                      alt="" />
+                    <el-image
+                      class="img_border img_borders"
+                      lazy
+                      :src="
+                        imgDetails.imgHead +
+                        bgImgList.center +
+                        imgDetails.imgSize580 +
+                        imgDetails.imgSuffixpng
+                      "
+                      :preview-src-list="[
+                        imgDetails.imgHead + bgImgList.center + imgDetails.imgSuffixpng,
+                      ]"
+                      fit="cover"
+                      alt=""
+                    />
                   </div>
                   <div class="img_right">
-                    <el-image class="right1 img_border" lazy
-                      :src="imgDetails.imgHead + bgImgList.right1 + imgDetails.imgSize580 + imgDetails.imgSuffixpng"
-                      :preview-src-list="[imgDetails.imgHead + bgImgList.right1 + imgDetails.imgSuffixpng]" fit="cover"
-                      alt="" />
-                    <el-image class="right2 img_border" lazy
-                      :src="imgDetails.imgHead + bgImgList.right2 + imgDetails.imgSize580 + imgDetails.imgSuffixpng"
-                      :preview-src-list="[imgDetails.imgHead + bgImgList.right2 + imgDetails.imgSuffixpng]" fit="cover"
-                      alt="" />
-                    <el-image class="right3 img_border" lazy
-                      :src="imgDetails.imgHead + bgImgList.right3 + imgDetails.imgSize580 + imgDetails.imgSuffixpng"
-                      :preview-src-list="[imgDetails.imgHead + bgImgList.right1 + imgDetails.imgSuffixpng]" fit="cover"
-                      alt="" />
+                    <el-image
+                      class="right1 img_border"
+                      lazy
+                      :src="
+                        imgDetails.imgHead +
+                        bgImgList.right1 +
+                        imgDetails.imgSize580 +
+                        imgDetails.imgSuffixpng
+                      "
+                      :preview-src-list="[
+                        imgDetails.imgHead + bgImgList.right1 + imgDetails.imgSuffixpng,
+                      ]"
+                      fit="cover"
+                      alt=""
+                    />
+                    <el-image
+                      class="right2 img_border"
+                      lazy
+                      :src="
+                        imgDetails.imgHead +
+                        bgImgList.right2 +
+                        imgDetails.imgSize580 +
+                        imgDetails.imgSuffixpng
+                      "
+                      :preview-src-list="[
+                        imgDetails.imgHead + bgImgList.right2 + imgDetails.imgSuffixpng,
+                      ]"
+                      fit="cover"
+                      alt=""
+                    />
+                    <el-image
+                      class="right3 img_border"
+                      lazy
+                      :src="
+                        imgDetails.imgHead +
+                        bgImgList.right3 +
+                        imgDetails.imgSize580 +
+                        imgDetails.imgSuffixpng
+                      "
+                      :preview-src-list="[
+                        imgDetails.imgHead + bgImgList.right1 + imgDetails.imgSuffixpng,
+                      ]"
+                      fit="cover"
+                      alt=""
+                    />
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div ref="placeholder" class="customize-placeholder" :style="{ height: clientHeight + 'px' }"></div>
+        <div
+          ref="placeholder"
+          class="customize-placeholder"
+          :style="{ height: clientHeight + 'px' }"
+        ></div>
       </div>
       <div class="mobile_intro_swiper">
         <div class="swiper_left">
           <div class="swiper-left-text">
             <div class="swiper-wrapper">
               <h3 class="swiper-slide font_Bold">二珂&三岛</h3>
-              <h3 class="swiper-slide font_Bold">
-                滑雪装
-              </h3>
+              <h3 class="swiper-slide font_Bold">滑雪装</h3>
             </div>
           </div>
 
           <div class="swiper-container linear">
             <div class="swiper-wrapper">
               <div class="swiper-slide" :key="index" v-for="(item, index) in ekLeftList">
-                <el-image :src="imgDetails.imgHead + item + imgDetails.imgSize580 + imgDetails.imgSuffixpng" lazy
-                  fit="cover" alt="" />
+                <el-image
+                  :src="
+                    imgDetails.imgHead +
+                    item +
+                    imgDetails.imgSize580 +
+                    imgDetails.imgSuffixpng
+                  "
+                  lazy
+                  fit="cover"
+                  alt=""
+                />
               </div>
             </div>
           </div>
@@ -177,24 +240,30 @@
       <p>显示的图像仅用于展示作用</p>
       <div class="home_pounce">
         <div class="pounce_title">
-          <p class="title_wrapper">
-            写真 && 生活照部分展示
-          </p>
-          <h2 class="font_Bold">
-            取图 微博 二珂&&三岛
-          </h2>
+          <p class="title_wrapper">写真 && 生活照部分展示</p>
+          <h2 class="font_Bold">取图 微博 二珂&&三岛</h2>
         </div>
         <div class="pounce_content">
           <div class="pounce_left">
             <div>
               <ul>
-                <li v-for="(item, index) in pictureList" :key="index" :class="{ active: index == activeIndex }"
-                  @click="changeActiveSwiper(index)">
+                <li
+                  v-for="(item, index) in pictureList"
+                  :key="index"
+                  :class="{ active: index == activeIndex }"
+                  @click="changeActiveSwiper(index)"
+                >
                   {{ item.album_desc }}
                   <a class="img_ico" title="点击查看详情" @click="jumpFun('photo')">
-                    <img src="~@/assets/images/faviconx.png" alt="站内查看">
+                    <img src="~@/assets/images/faviconx.png" alt="站内查看" />
                   </a>
-                  <a v-if="item.href" @click="externalJumpFn(item.href)" class="img_ico" title="微博查看原文">🛫️</a>
+                  <a
+                    v-if="item.href"
+                    @click="externalJumpFn(item.href)"
+                    class="img_ico"
+                    title="微博查看原文"
+                    >🛫️</a
+                  >
                 </li>
               </ul>
             </div>
@@ -202,46 +271,30 @@
           <div class="pounce_right">
             <div class="swiper-containerfour">
               <div class="swiper-wrapper">
-                <div class="swiper-slide" v-for="(item, index) in pictureLists" :key="index" ref="abcd">
+                <div
+                  class="swiper-slide"
+                  v-for="(item, index) in pictureLists"
+                  :key="index"
+                  ref="abcd"
+                >
                   <!-- <el-image class="swiper-img" :src="item.cover_img" :preview-src-list="item.img_urls" :index="index"
                     fit="cover"></el-image> -->
-                  <img class="swiper-img" :src="item" alt="">
+                  <img class="swiper-img" :src="item" alt="" />
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="foot_btn" @click="externalJumpFn('https://weibo.com/u/1910672761')">查看更多</div>
+        <div class="foot_btn" @click="externalJumpFn('https://weibo.com/u/1910672761')">
+          查看更多
+        </div>
       </div>
     </div>
     <!-- 优质UP主推荐 -->
-    <div class="home_foot">
-      <div class="foot_con">
-        <div class="foot_title font_Bold">优质UP主推荐</div>
-        <ul class="foot_list">
-          <li class="list_item" v-for="(item, index) in supportLinks" :key="index">
-            <img :src="item.imgUrl" :alt="item.title" />
-            <h2> {{ item.title }} </h2>
-
-            <ul class="foot_list_item" v-for="(val, i) in item.children" :key="i">
-              <li @click="externalJumpFn(val.herf)">
-                <el-tag size="small" class="tag pointer mg-bt-10">
-                  <span v-if="val.type == 'bili'" style="color:palevioletred">哔哩哔哩</span>
-                  <span v-if="val.type == 'dy'" style="color:#000">抖音</span>
-                  <span v-if="val.type == 'sing'" style="color:#00BBB3">5Sing</span>
-                  <span v-if="val.type == 'wyy'" style="color:red">网易云</span>
-                  -- {{ val.name }}
-                </el-tag>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <div class="foot_btn" @click="jumpFun('support')">查看更多</div>
-      </div>
-    </div>
+    <upMain :supportLink="support.supportLink" />
   </div>
 </template>
-   
+
 <script>
 import "swiper/css/swiper.min.css";
 import support from "@/utils/support.js";
@@ -249,6 +302,8 @@ import erkeI from "@/assets/images/erkeI.png";
 import erkeV from "@/assets/images/erkeV.png";
 import dyhead from "@/assets/images/dyhead.png";
 import wbhead from "@/assets/images/wbhead.png";
+import live from "./live.vue";
+import upMain from "./upMain.vue";
 import http from "@/http/service";
 import Swiper from "swiper";
 export default {
@@ -257,31 +312,31 @@ export default {
       imgDetails: support.imgDetails,
       //中间一片
       bgImgList: {
-        left1: '/2023/01/29/202301291738328674805332466',
-        left2: '/2023/01/29/202301291739587934172479369',
-        left3: '/2023/01/29/202301291740441564456501936',
-        right1: '/2023/01/29/202301291741099980187137568',
-        right2: '/2023/01/29/202301291741466346082477334',
-        right3: '/2023/01/29/202301291742187461269183839',
-        center: '/2023/01/29/202301291742475589446201300',
-        title: '无意间遇见，就确定了永远~'
+        left1: "/2023/01/29/202301291738328674805332466",
+        left2: "/2023/01/29/202301291739587934172479369",
+        left3: "/2023/01/29/202301291740441564456501936",
+        right1: "/2023/01/29/202301291741099980187137568",
+        right2: "/2023/01/29/202301291741466346082477334",
+        right3: "/2023/01/29/202301291742187461269183839",
+        center: "/2023/01/29/202301291742475589446201300",
+        title: "无意间遇见，就确定了永远~",
       },
       //滑雪装 单独整套写真
       ekLeftList: [
-        '/2023/01/29/202301291654065627224646997',
-        '/2023/01/29/202301291701064549801064309',
-        '/2023/01/29/202301291701422273822708637',
-        '/2023/01/29/202301291702064534517015489',
-        '/2023/01/29/202301291708124074405665696',
-        '/2023/01/29/202301291709127003136243706',
-        '/2023/01/29/202301291709442800825856161',
-        '/2023/01/29/202301291710129561712583672',
-        '/2023/01/29/202301291710474549124381053',
-        '/2023/01/29/202301291711144290885696046',
-        '/2023/01/29/202301291711452634071577250',
-        '/2023/01/29/202301291712122758329118808'
+        "/2023/01/29/202301291654065627224646997",
+        "/2023/01/29/202301291701064549801064309",
+        "/2023/01/29/202301291701422273822708637",
+        "/2023/01/29/202301291702064534517015489",
+        "/2023/01/29/202301291708124074405665696",
+        "/2023/01/29/202301291709127003136243706",
+        "/2023/01/29/202301291709442800825856161",
+        "/2023/01/29/202301291710129561712583672",
+        "/2023/01/29/202301291710474549124381053",
+        "/2023/01/29/202301291711144290885696046",
+        "/2023/01/29/202301291711452634071577250",
+        "/2023/01/29/202301291712122758329118808",
       ],
-      erkeLive: false,
+      // erkeLive: false,
       pictureLists: support.pictureLists,
       dyhead: dyhead,
       wbhead: wbhead,
@@ -296,35 +351,34 @@ export default {
       imageScrollHeight: 0,
       imageHeight: 0,
       imageScrollWrapperHeight: 0,
-      supportLink: support.supportLink,
-      supportLinks: [],
       pictureList: support.pictureList,
       rightIndex: 0,
       activeIndex: 1,
       imageSrcs: [erkeV, erkeI],
-      img_url: 'https://api.erkechloe.com/upload/'
+      img_url: "https://api.erkechloe.com/upload/",
     };
   },
-  components: {},
+  components: { live, upMain },
   methods: {
     handleScroll(e) {
-      let publicHeaderLeft = document.getElementsByClassName("publicHeader")[0]
+      let clientHeight = document.documentElement.clientHeight || 0;
+      let publicHeaderLeft = document.getElementsByClassName("publicHeader")[0];
       if (!publicHeaderLeft) {
-        return
+        return;
       }
-      let placeholderDome=this.$refs.placeholder;
-      this.headNavHeight =
-        document.getElementsByClassName("publicHeader")[0].offsetHeight; //导航的高度
-      this.scrollStartPosition =placeholderDome? placeholderDome.getBoundingClientRect().top:'0' - this.headNavHeight; //距离顶部的高度
+      let placeholderDome = this.$refs.placeholder;
+      this.headNavHeight = document.getElementsByClassName(
+        "publicHeader"
+      )[0].offsetHeight; //导航的高度
+      this.scrollStartPosition = placeholderDome
+        ? placeholderDome.getBoundingClientRect().top
+        : "0" - this.headNavHeight; //距离顶部的高度
       this.scrollTop = window.pageYOffset;
       this.scrollEndPosition =
-        this.scrollStartPosition +
-        this.clientHeight -
-        document.documentElement.clientHeight +
-        this.headNavHeight;
+        this.scrollStartPosition + this.clientHeight - clientHeight + this.headNavHeight;
       if (this.scrollStartPosition <= 0 && this.scrollEndPosition >= 0) {
         this.oldScrollTop = document.documentElement.scrollTop;
-        this.clientHeight = document.documentElement.clientHeight + 2200;
+        this.clientHeight = clientHeight + 2200;
         const imageScrollOffset = this.scrollTop - this.scrollStartPosition;
         this.barFixed = true;
         this.myStyle = {
@@ -332,16 +386,14 @@ export default {
           top: 0 + "px",
           bottom: "0px",
         };
-        this.containerBack = `${(imageScrollOffset /
-          (this.clientHeight + document.documentElement.clientHeight + 1700)) *
-          100 +
-          70
-          }`;
+        this.containerBack = `${
+          (imageScrollOffset / (this.clientHeight + clientHeight + 1700)) * 100 + 70
+        }`;
       } else {
         this.barFixed = false;
         this.myStyle = {
           position: "absolute",
-          top: '0',
+          top: "0",
           bottom: "0",
         };
       }
@@ -353,7 +405,7 @@ export default {
         };
         this.containerBack = 70;
       }
-      if (this.scrollTop > (this.scrollEndPosition + this.clientHeight + 170)) {
+      if (this.scrollTop > this.scrollEndPosition + this.clientHeight + 170) {
         this.myStyle = {
           position: "absolute",
           top: "auto",
@@ -362,7 +414,7 @@ export default {
       }
     },
     externalJumpFn(value) {
-      window.open(value)
+      window.open(value);
     },
     jumpFun(route) {
       if (this.$route.name != route) {
@@ -377,51 +429,36 @@ export default {
       this.mySwiper.slideTo(this.activeIndex + 1);
     },
   },
-  created() { },
+  created() {},
   mounted() {
-    // let thes = this;
-    // // thes.pictureLists = []
-    // thes.pictureList.forEach((item, index) => {
-    //   item.cover_img = item.is_loc_url == 0 ? imgDetails.imgHead + item.cover_img_id + imgDetails.imgSize580 + imgDetails.imgSuffixjpg : item.cover_img_id;
-    //   item.img_urls = [];
-    //   item.children.forEach((val, ind) => {
-    //     item.img_urls.push(item.is_loc_url == 0 ? imgDetails.imgHead + val.img_url + imgDetails.imgSuffixjpg : val.img_url)
-    //   })
-    //   // thes.pictureLists.push(
-    //   //   item.cover_img
-    //   // )
-    //   console.log(thes.pictureLists)
-    // })
-    http.getLive().then(rs => {
-      this.loading = false
-      if (rs.code == 200) {
-        this.erkeLive = rs.datas.status
-      } else {
-      }
-    })
-
-    const headNavHeight =
-      document.getElementsByClassName("publicHeader")[0].offsetHeight; // 导航高度
+    // http.getLive().then((rs) => {
+    //   this.loading = false;
+    //   if (rs.code == 200) {
+    //     console.log(rs);
+    //     this.erkeLive = rs.datas.status;
+    //   } else {
+    //   }
+    // });
+    let clientHeight = document.documentElement.clientHeight || 0;
+    const headNavHeight = document.getElementsByClassName("publicHeader")[0].offsetHeight; // 导航高度
     let placeholderElementTop = document.getElementsByClassName(
       "customize-placeholder"
     )[0].offsetTop; // 占位元素顶部距离
     const scrollStartPosition = placeholderElementTop - headNavHeight; // 滚动开始位置
     const scrollEndPosition = scrollStartPosition + 100;
     // 占位元素高度: 图片高度 + 固定容器高度 - 滚动区域高度
-    const pageHeight = document.documentElement.clientHeight - headNavHeight;
+    const pageHeight = clientHeight - headNavHeight;
     this.placeholderHeight = 100 + pageHeight;
-    this.clientHeight = document.documentElement.clientHeight + 1200;
+    this.clientHeight = clientHeight + 1200;
     let that = this;
     window.onresize = function () {
-      that.clientHeight = document.documentElement.clientHeight;
+      that.clientHeight = clientHeight || 0;
       if (that.$refs.page) {
         that.$refs.page.style.minHeight = clientHeight - 1000 + "px";
       }
     };
     window.addEventListener("scroll", this.handleScroll, true);
-    this.supportLinks.push(this.supportLink[1])
-    this.supportLinks.push(this.supportLink[2])
-    this.supportLinks.push(this.supportLink[3])
+
     let _this = this;
     //  有问题可以看swiper文档/swiper documents
     new Swiper(".swiper-container", {
@@ -438,7 +475,7 @@ export default {
         delay: 0, //每循环一圈，间隔时间，无缝轮询，则为0
         stopOnLastSlide: false,
         disableOnInteraction: false,
-      }
+      },
     });
     new Swiper(".swiper-left-text", {
       direction: "vertical", // 垂直切换选项
@@ -469,9 +506,11 @@ export default {
         slideChangeTransitionStart: function () {
           // 获得下标
           _this.rightIndex = this.activeIndex - 1;
-          let img_right = document.querySelector('.swiper-containerTwo .swiper-slide-prev img')
+          let img_right = document.querySelector(
+            ".swiper-containerTwo .swiper-slide-prev img"
+          );
           if (img_right) {
-            img_right.className = 'active_img'
+            img_right.className = "active_img";
           }
           if (_this.rightIndex === 2) {
             _this.rightIndex = 0;
@@ -479,9 +518,11 @@ export default {
           _this.swiper_right_text.slideTo(_this.rightIndex + 1);
         },
         slideChangeTransitionEnd: function () {
-          let img_right = document.querySelector('.swiper-containerTwo .swiper-slide-prev img')
+          let img_right = document.querySelector(
+            ".swiper-containerTwo .swiper-slide-prev img"
+          );
           if (img_right) {
-            img_right.className = '';
+            img_right.className = "";
           }
         },
       },
@@ -509,8 +550,7 @@ export default {
     });
   },
   watch: {
-    clientHeight(lod, lo) {
-    }
-  }
+    clientHeight(lod, lo) {},
+  },
 };
 </script>

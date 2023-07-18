@@ -106,10 +106,7 @@
             background-position: center top;
             background-attachment: fixed;
             background-size: cover;
-            // position: relative;
             .home_header {
-                //   background: url('../../assets/images/backI.png') no-repeat;
-                // background-size: 100% 100%;
                 padding-top: 100px;
                 width: 60%;
                 min-width: 1170px;
@@ -154,13 +151,11 @@
                         animation: phoneSlide 6s linear infinite forwards;
                         display: block;
                         cursor: pointer;
-                        // height: 100%;
                         left: -72px;
                         position: absolute;
                         top: 72px;
                         -webkit-transform: translateY(-60px);
                         transform: translateY(-60px);
-                        // width: 100%;
                         .animate-wave {
                             width: 500px;
                             height: 500px;
@@ -169,7 +164,6 @@
                             left: 15px;
                             right: 0;
                             margin: 0 auto;
-                            // background: rgba(255,255,255,0.4);
                             border-radius: 50%;
                             .logo {
                                 background: linear-gradient(to right, #f4c8c7 0%, #0c61BB 45%, #0c61BB 55%, #FCC6C6 100%);
@@ -209,10 +203,7 @@
                         .animate-wave .w5,
                         .animate-wave .w6,
                         .animate-wave .w7 {
-                            // background: rgba(255, 255, 255, 0.7);
                             background: linear-gradient(to right, #f4c8c7 0%, #0c61BB 45%, #0c61BB 55%, #FCC6C6 100%);
-                            ;
-                            // background: rgba(252,198,198, 0.7);
                             position: absolute;
                             border-radius: 50%;
                             animation: opac 4s infinite;
@@ -502,7 +493,6 @@
                     -ms-flex-align: center;
                     align-items: center;
                     background: url('~@/assets/image/bg.png') #f4f5f6 no-repeat 50%/49% auto;
-                    // background: url('https://img.douyucdn.cn/data/yuba/weibo/2023/01/29/202301291735302688500667291.png') #f4f5f6 no-repeat 50%/49% auto;
                     border-radius: 20px;
                     display: -ms-flexbox;
                     display: flex;
@@ -625,7 +615,6 @@
                     }
                     .img_border {
                         padding: 3px;
-                        // background: linear-gradient(to right, #f4c8c7 0%, #FCC6C6 50%, #0c61BB 100%);
                         overflow: hidden;
                         border-radius: 16px;
                         img {
@@ -690,7 +679,6 @@
                     width: 55%;
                     min-width: 550px;
                     max-width: 643px;
-                    // height: 100%;
                     background: url("~@/assets/image/right4.png") no-repeat 100%/100%;
                     overflow: hidden;
                     position: relative;
@@ -728,7 +716,6 @@
                                         z-index: 9999;
                                         vertical-align: bottom;
                                         width: 488px;
-                                        // height: 389px;
                                         border-radius: 16px;
                                         &.active_img {
                                             display: none;
@@ -816,7 +803,6 @@
                         }
                     }
                     .pounce_right {
-                        // width: 100%;
                         width: 754px;
                         max-height: 580px;
                         line-height: 580px;

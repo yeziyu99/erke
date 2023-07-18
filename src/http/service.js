@@ -73,7 +73,7 @@ const _http = {
         * isloop	        是否位轮播状态(true or false)	    bool
     */
      getLive() {
-        return http("/index/live", "GET",{rid:'78622'});
+        return http("/live", "GET",{rid:'78622'});
     },
      /** 音乐页面
         * 获取歌曲专辑列表 
