@@ -184,9 +184,18 @@ p {
         border-radius: 26px;
         color: #fff;
         text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         &:hover {
             color: #000;
+        }
+        img {
+            margin-right: 10px;
+            width: 15px;
+            height: 15px;
+            border-radius: 4px;
         }
     }
 

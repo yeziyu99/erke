@@ -465,9 +465,9 @@
     height: 35px;
 }
 
-.big_wrap {
-    min-width: 1170px;
-}
+// .big_wrap {
+//     min-width: 1170px;
+// }
 
 button {
     text-align: center;
@@ -509,4 +509,11 @@ button {
 
 .background_linear {
     background: linear-gradient(to right, #f4c8c7 0%, #0c61BB 45%, #0c61BB 55%, #FCC6C6 100%) !important;
+}
+
+.tip_titlie {
+    font-size: 0.12rem;
+    color: #62657A;
+    margin-top: 24px;
+    font-weight: 700;
 }

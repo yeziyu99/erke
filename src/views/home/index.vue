@@ -1,65 +1,19 @@
 <template>
   <div class="big_wrap" ref="page">
     <live />
-    <div class="home_content">
-      <div class="content_img">
-        <h2 class="font_Bold">二珂个人社交平台</h2>
-        <div class="three_img">
-          <div
-            class="content_item"
-            @click="externalJumpFn('https://www.douyu.com/78622')"
-          >
-            <div>
-              <img :src="dyhead" alt="https://www.douyu.com/78622" />
-            </div>
-            <p>二珂78622@斗鱼</p>
-          </div>
-          <div
-            class="content_item"
-            @click="externalJumpFn('https://weibo.com/u/1910672761')"
-          >
-            <div>
-              <img
-                :src="wbhead"
-                alt="https://weibo.com/u/1910672761?topnav=1&wvr=6&topsug=1"
-              />
-            </div>
-            <p>二珂Chloe@微博</p>
-          </div>
-          <div
-            class="content_item"
-            @click="
-              externalJumpFn(
-                'https://www.xiaohongshu.com/user/profile/5ad78361e8ac2b1fca15ff66'
-              )
-            "
-          >
-            <div>
-              <img
-                :src="wbhead"
-                alt="https://www.xiaohongshu.com/user/profile/5ad78361e8ac2b1fca15ff66?xhsshare=CopyLink&appuid=609b9c340000000001004f33&apptime=1667552951"
-              />
-            </div>
-            <p>二珂@小红书</p>
-          </div>
-        </div>
-      </div>
+    <!-- <div class="home_content">
+      <thatPerson />
       <div class="invest_title">
-        <!-- <div> -->
         <p class="title_wrapper">部分图片展示</p>
         <h2 class="font_Bold">二珂微博发布的个别图片展示</h2>
-        <!-- </div> -->
       </div>
-      <!-- invest_bg -->
       <div class="customize-container">
-        <!-- invest_bg_con -->
         <div
           class="customize"
           :class="{ isFixed: barFixed, invest: true }"
           :style="myStyle"
         >
           <div class="container">
-            <!-- invest_bg_title font_Bold -->
             <div
               class="customize-bg-container"
               :style="{ backgroundSize: containerBack + '%' }"
@@ -277,8 +231,6 @@
                   :key="index"
                   ref="abcd"
                 >
-                  <!-- <el-image class="swiper-img" :src="item.cover_img" :preview-src-list="item.img_urls" :index="index"
-                    fit="cover"></el-image> -->
                   <img class="swiper-img" :src="item" alt="" />
                 </div>
               </div>
@@ -289,9 +241,9 @@
           查看更多
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- 优质UP主推荐 -->
-    <upMain :supportLink="support.supportLink" />
+    <!-- <upMain :supportLink="support.supportLink" /> -->
   </div>
 </template>
 
@@ -304,11 +256,14 @@ import dyhead from "@/assets/images/dyhead.png";
 import wbhead from "@/assets/images/wbhead.png";
 import live from "./live.vue";
 import upMain from "./upMain.vue";
+import thatPerson from "./thatPerson.vue";
+
 import http from "@/http/service";
 import Swiper from "swiper";
 export default {
   data() {
     return {
+      support: support,
       imgDetails: support.imgDetails,
       //中间一片
       bgImgList: {
@@ -358,7 +313,7 @@ export default {
       img_url: "https://api.erkechloe.com/upload/",
     };
   },
-  components: { live, upMain },
+  components: { live, upMain, thatPerson },
   methods: {
     handleScroll(e) {
       let clientHeight = document.documentElement.clientHeight || 0;

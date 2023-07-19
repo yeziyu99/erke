@@ -3,19 +3,43 @@
     <div class="header_con">
       <img src="@/assets/images/5.png" @click="jumpFun('home')" alt="" />
       <ul>
-        <li :class="{ 'header_route': true, 'fontW700': className === 'photo' }" @click="jumpFun('photo')">相册视频</li>
-        <li :class="{ 'header_route': true, 'fontW700': className === 'music' }" @click="jumpFun('music')">音乐专辑</li>
-        <li :class="{ 'header_route': true, 'fontW700': className === 'support' }" @click="jumpFun('support')">优质UP主</li>
-        <li :class="{ 'header_route': true, 'fontW700': className === 'erke' }" @click="jumpFun('erke')">二珂简介</li>
-        <li :class="{ 'header_route': true, 'fontW700': className === 'about' }" @click="jumpFun('about')">关于我们</li>
-        <!-- <li class="header_btn" style="background: #fff; margin-right: 8px" @click="jumpFun('invest')">
-          LOGIN
+        <li
+          :class="{ header_route: true, fontW700: className === 'photo' }"
+          @click="jumpFun('photo')"
+        >
+          相册视频
         </li>
-        <li class="header_btn" style="background: #000000; color: #fff" @click="jumpFun('invest')">
-          SIGN UP
-        </li> -->
+        <li
+          :class="{ header_route: true, fontW700: className === 'music' }"
+          @click="jumpFun('music')"
+        >
+          音乐专辑
+        </li>
+        <li
+          :class="{ header_route: true, fontW700: className === 'support' }"
+          @click="jumpFun('support')"
+        >
+          优质UP主
+        </li>
+        <li
+          :class="{ header_route: true, fontW700: className === 'erke' }"
+          @click="jumpFun('erke')"
+        >
+          二珂简介
+        </li>
+        <li
+          :class="{ header_route: true, fontW700: className === 'about' }"
+          @click="jumpFun('about')"
+        >
+          关于我们
+        </li>
         <li>
-          <img src="@/assets/images/logo.png" style="width:88px" @click="jumpFun('home')" alt="" />
+          <img
+            src="@/assets/images/logo.png"
+            style="width: 75px"
+            @click="jumpFun('home')"
+            alt=""
+          />
         </li>
       </ul>
     </div>
@@ -25,17 +49,16 @@
 export default {
   data() {
     return {
-      className: this.$route.name
+      className: this.$route.name,
     };
   },
-  mounted() {
-  },
+  mounted() {},
   watch: {
     $route(to, form) {
       if (to.name != form.name || !form) {
-        this.className = to.name
+        this.className = to.name;
       }
-    }
+    },
   },
   methods: {
     jumpFun(route) {

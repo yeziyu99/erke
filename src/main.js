@@ -17,46 +17,34 @@ import echarts from 'echarts'
 Vue.prototype.$http = axios
 
 Vue.prototype.$echarts = echarts
-Date.prototype.format = function(format) {
-    var o = {
-        "M+": this.getMonth() + 1, //month
-        "d+": this.getDate(), //day
-        "h+": this.getHours(), //hour
-        "m+": this.getMinutes(), //minute
-        "s+": this.getSeconds(), //second
-        "q+": Math.floor((this.getMonth() + 3) / 3), //quarter
-        "S": this.getMilliseconds() //millisecond
-    }
-    if (/(y+)/.test(format)) format = format.replace(RegExp.$1,
-        (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-    for (var k in o)
-        if (new RegExp("(" + k + ")").test(format))
-            format = format.replace(RegExp.$1,
-                RegExp.$1.length == 1 ? o[k] :
-                ("00" + o[k]).substr(("" + o[k]).length));
-    return format;
-}
-Vue.directive('auth', (el, binding) => {
-    let userInfoArry = store.state.userInfoArry
-    let a = binding.value
-    if (userInfoArry.includes(a)) {
-        el.style.display = 'block'
-    } else {
-        el.style.display = 'none'
-    }
-})
-Vue.prototype.isOperation = (columns, str) => {
-    let userInfoArry = new Set(store.state.userInfoArry)
-    let auth = str instanceof Array ? str.join() : str
-    if (userInfoArry.has(auth)) {
-        return columns
-    } else {
-        return columns.filter(col => col.key !== 'operation')
-    }
-}
 Vue.use(VueCookies)
 new Vue({
     router,
     store,
-    render: h => h(App)
+    render: h => h(App),
+    created() {
+        // 实例创建完成后被立即调用rem换算方法,解决内容闪现问题
+        if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+          setRem();
+          window.addEventListener('resize', setRem);//浏览器窗口大小改变时调用rem换算方法
+        }
+        else {
+          setRemPC()
+          window.addEventListener('resize', setRemPC);//浏览器窗口大小改变时调用rem换算方法
+        }
+      },
 }).$mount("#app");
+// 手机端
+function setRem() {
+    var whdef = 100 / 750; // 表示750的设计图,使用100PX的默认值
+    var bodyWidth = document.body.clientWidth; // 当前窗口的宽度
+    var rem = bodyWidth * whdef; // 以默认比例值乘以当前窗口宽度,得到该宽度下的相应FONT-SIZE值
+    document.getElementsByTagName('html')[0].style.fontSize = rem + 'px';
+  }
+  //pc端
+  function setRemPC() {
+    var whdef = 100 / 1920; // 表示1920的设计图,使用100PX的默认值
+    var bodyWidth = document.body.clientWidth; // 当前窗口的宽度
+    var rem = bodyWidth * whdef; // 以默认比例值乘以当前窗口宽度,得到该宽度下的相应FONT-SIZE值
+    document.getElementsByTagName('html')[0].style.fontSize = rem + 'px';
+  }
