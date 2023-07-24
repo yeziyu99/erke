@@ -1066,6 +1066,9 @@
                 animation: phoneSlide 6s linear infinite forwards;
                 display: block;
                 cursor: pointer;
+                width: 6rem;
+                height: 6rem;
+                margin: 0 auto;
                 -webkit-transform: translateY(-0.6rem);
                 transform: translateY(0.6rem);
 
@@ -1156,6 +1159,7 @@
                 }
 
             }
+
             .head_con {
                 .logo_title {
                     font-size: 0.7rem;
@@ -1178,11 +1182,52 @@
                     text-indent: 0.3rem
                 }
             }
-            .banner_btn{
+
+            .banner_btn {
                 margin-top: -1rem;
                 width: 100%;
-                .btn_one{
+
+                .btn_one {
                     width: 100%;
+                }
+            }
+        }
+        .home_foot {
+            width: 100%;
+            background: #f8f8fa;
+            padding: 1.2rem 0;
+
+            .foot_con {
+                width: 100%;
+                margin: 0 auto;
+
+                .foot_title {
+                    width: 100%;
+                    font-size: 0.48rem;
+                    font-weight: 700;
+                    text-align: center;
+                }
+
+                .foot_list {
+                    display: flex;
+                    margin-top: 0.6rem;
+                    flex-direction: column;
+
+                    .list_item {
+
+                        img {
+                            border-radius: 50%;
+                            width: 0.5rem;
+                            height: 0.5rem;
+                        }
+
+                        h2 {
+                            font-size: 0.24rem;
+                            font-weight: 700;
+                            margin-top: 0.45rem;
+                            margin-bottom: 0.12rem;
+                        }
+                    }
                 }
             }
         }

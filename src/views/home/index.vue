@@ -1,5 +1,5 @@
 <template>
-  <div class="big_wrap" ref="page">
+  <div class="" ref="page">
     <live />
     <!-- <div class="home_content">
       <thatPerson />
@@ -243,7 +243,7 @@
       </div>
     </div> -->
     <!-- 优质UP主推荐 -->
-    <!-- <upMain :supportLink="support.supportLink" /> -->
+    <upMain :supportLink="support.supportLink" />
   </div>
 </template>
 
@@ -396,9 +396,11 @@ export default {
     // });
     let clientHeight = document.documentElement.clientHeight || 0;
     const headNavHeight = document.getElementsByClassName("publicHeader")[0].offsetHeight; // 导航高度
-    let placeholderElementTop = document.getElementsByClassName(
+
+    let customizeplaceholder = document.getElementsByClassName(
       "customize-placeholder"
-    )[0].offsetTop; // 占位元素顶部距离
+    )[0];
+    let placeholderElementTop = customizeplaceholder ? customizeplaceholder.offsetTop : 0; // 占位元素顶部距离
     const scrollStartPosition = placeholderElementTop - headNavHeight; // 滚动开始位置
     const scrollEndPosition = scrollStartPosition + 100;
     // 占位元素高度: 图片高度 + 固定容器高度 - 滚动区域高度
