@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
 }
+
 html {
     color: #000;
     background: #fff;
@@ -191,6 +192,7 @@ p {
         &:hover {
             color: #000;
         }
+
         img {
             margin-right: 10px;
             width: 15px;
@@ -271,6 +273,62 @@ p {
                 width: 20px;
                 height: 20px;
             }
+        }
+    }
+}
+
+.inline-block800 {
+    display: none !important;
+}
+
+
+@media screen and (max-width: 800px) {
+    .none800 {
+        display: none !important;
+    }
+
+    .inline-block800 {
+        display: inline-block !important;
+    }
+
+    .pagem,
+    .die,
+    #app,
+    html,
+    body {
+        width: 100% !important;
+        min-width: 300px !important;
+    }
+
+    .el-message-box {
+        width: auto;
+        margin: 0 10%;
+    }
+
+    .el-message-box__message {
+        p {
+            max-height: 200px;
+            overflow: auto
+        }
+
+        ;
+    }
+}
+
+@media screen and (min-width: 800px) {
+
+    .pagem,
+    .die,
+    #app,
+    html,
+    body {
+        min-width: 1170px !important;
+    }
+
+    .el-message-box__message {
+        p {
+            max-height: 500px;
+            overflow: auto;
         }
     }
 }

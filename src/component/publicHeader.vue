@@ -2,8 +2,8 @@
   <div class="publicHeader background_linear">
     <div class="header_con">
       <img src="@/assets/images/5.png" @click="jumpFun('home')" alt="" />
-      <i class="el-icon-s-unfold" @click="drawer = !drawer"></i>
-      <!-- <ul>
+      <i class="el-icon-s-unfold inline-block800" @click="drawer = !drawer"></i>
+      <ul class="none800">
         <li
           :class="{ header_route: true, fontW700: className === 'photo' }"
           @click="jumpFun('photo')"
@@ -42,7 +42,7 @@
             alt=""
           />
         </li>
-      </ul> -->
+      </ul>
     </div>
     <el-drawer
       :visible.sync="drawer"
@@ -52,7 +52,11 @@
       :withHeader="false"
       style="width: 100%"
     >
-      <div class="dis-flex justify-content-end">
+      <div
+        class="dis-flex justify-content-end header_drawer background_linear align-items-center"
+      >
+        <img src="@/assets/images/5.png" @click="jumpFun('home')" alt="" />
+
         <i class="el-icon-s-fold" @click="drawer = !drawer"></i>
       </div>
       <el-menu
@@ -84,10 +88,6 @@ export default {
       direction: "rtl",
       className: this.$route.name,
       menuList: [
-        // {
-        //   icon: 'el-icon-school',
-        //   title: '首页'
-        // },
         {
           icon: "el-icon-camera",
           title: "相册视频",
@@ -143,6 +143,9 @@ export default {
     jumpFun(route) {
       if (this.$route.name != route) {
         this.$router.push(route);
+        if (this.drawer) {
+          this.drawer = false;
+        }
       }
     },
   },
@@ -150,7 +153,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@media screen and (min-width: 1170px) {
+@media screen and (min-width: 800px) {
   .publicHeader {
     height: 75px;
     width: 100%;
@@ -211,10 +214,19 @@ export default {
   }
 }
 
-@media screen and (max-width: 1170px) {
+@media screen and (max-width: 800px) {
   ::v-deep {
     .el-drawer {
       width: 100% !important;
+      .header_drawer {
+        height: 1.5rem;
+        justify-content: space-between;
+        img {
+          width: 4rem;
+          cursor: pointer;
+          padding-left: 0.4rem;
+        }
+      }
     }
 
     .el-menu-item {
@@ -222,13 +234,17 @@ export default {
       font-weight: 900;
       height: 0.8rem;
       line-height: 0.8rem;
+      color: #ccc !important;
 
       i {
         font-size: 0.5rem;
-        color: #fff;
+        //color: #fff;
         width: 0.5rem;
         margin-right: 0.2rem;
       }
+    }
+    .el-menu-item.is-active {
+      color: #000 !important;
     }
 
     .el-menu-item.is-active,
@@ -262,39 +278,7 @@ export default {
       img {
         width: 4rem;
         cursor: pointer;
-      }
-
-      ul {
-        display: flex;
-        align-items: center;
-
-        .header_route {
-          font-size: 18px;
-          padding: 5px;
-          margin-right: 30px;
-          cursor: pointer;
-        }
-
-        .header_route:hover {
-          border-bottom: 2px solid;
-          font-weight: 600;
-          transform: scaleX(1);
-          transition: 0.4s cubic-bezie÷r(0.165, 0.84, 0.44, 1);
-        }
-
-        .fontW700 {
-          font-weight: 700;
-          font-family: Gilroy-Bold;
-        }
-
-        .header_btn {
-          width: 110px;
-          height: 36px;
-          text-align: center;
-          line-height: 36px;
-          border-radius: 8px;
-          cursor: pointer;
-        }
+        padding-left: 0.4rem;
       }
     }
   }

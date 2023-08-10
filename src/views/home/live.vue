@@ -1,6 +1,6 @@
 <template>
   <div class="homepage_banner">
-    <!-- <div class="home_header">
+    <div class="home_header none800">
       <div class="head_con">
         <div class="banner_left">
           <h2 class="font_Bold logo_title">
@@ -55,8 +55,8 @@
           </div>
         </div>
       </div>
-    </div> -->
-    <div class="home_header">
+    </div>
+    <div class="home_header inline-block800">
       <div class="head_con">
         <h2 class="font_Bold logo_title">
           <img src="@/assets/images/logo.png" style="" @click="jumpFun('home')" alt="" />

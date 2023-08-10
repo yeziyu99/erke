@@ -16,7 +16,7 @@
         }
     }
 
-    @media screen and (min-width: 1170px) {
+    @media screen and (min-width: 800px) {
 
         .logo_title {
             line-height: 100px !important;
@@ -130,7 +130,7 @@
             }
         }
 
-        .big_wrap {
+        //.big_wrap {
             .homepage_banner {
                 height: 600px;
 
@@ -309,9 +309,9 @@
 
                         .inset_bg {
                             height: 502px;
-                            left: 50%;
+                            left: 85%;
                             position: absolute;
-                            top: 11px;
+                            top: 57px;
                             -webkit-transform: translateX(-50%) translateY(-60px);
                             transform: translateX(-50%) translateY(-60px);
                             width: 502px;
@@ -418,7 +418,7 @@
                     }
 
                     .head_con {
-                        width: 50%;
+                        width: 45%;
 
                         .banner_left {
                             min-width: 600px;
@@ -1007,7 +1007,7 @@
                     }
                 }
             }
-        }
+        //}
 
         .foot_list_item {
             li {
@@ -1023,7 +1023,7 @@
         }
     }
 
-    @media screen and (max-width: 1170px) {
+    @media screen and (max-width: 800px) {
         .homepage_banner {
             padding: 0.96rem 0.4rem;
 

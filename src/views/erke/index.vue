@@ -122,7 +122,7 @@
           </el-timeline>
         </el-collapse-item>
         <!-- 最下面的微信展示 -->
-        <el-descriptions class="margin-top" :column="1" border>
+        <!-- <el-descriptions class="margin-top" :column="1" border>
           <el-descriptions-item>
             <template slot="label">
               <span style="color: red">
@@ -148,7 +148,7 @@
               </el-tooltip>
             </span>
           </el-descriptions-item>
-        </el-descriptions>
+        </el-descriptions> -->
       </el-collapse>
       <!-- 数据整理/编辑备注 -->
       <p class="mg-tp-25 font-size-12 font-weight-700 color62657A text-ag-rg">

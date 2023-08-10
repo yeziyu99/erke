@@ -1,5 +1,5 @@
 <template>
-  <div class="" ref="page">
+  <div class="big_wrap" ref="page">
     <live />
     <!-- <div class="home_content">
       <thatPerson />

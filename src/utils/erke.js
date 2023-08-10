@@ -66,15 +66,15 @@ export var contactUs = [{
             ],
             img: QQ,
         },
-        {
-            title: '二珂个人工作洽谈WeChat',
-            center: [{
-                name: 'Alba_1015 （何女士）',
-                con: 'Alba_1015'
-            }, ],
-            img: VX,
-            tag: 'danger'
-        },
+        // {//因二珂个人微博已去掉
+        //     title: '二珂个人工作洽谈WeChat',
+        //     center: [{
+        //         name: 'Alba_1015 （何女士）',
+        //         con: 'Alba_1015'
+        //     }, ],
+        //     img: VX,
+        //     tag: 'danger'
+        // },
     ]
     /* erkeLink
     各平台链接名称

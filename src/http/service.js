@@ -13,7 +13,7 @@ function http(url, method, params = {}) {
         return axios({
             method,
             url,
-            params:JSON.parse(JSON.stringify(params))
+            params: JSON.parse(JSON.stringify(params))
         });
     }
     return axios({
@@ -72,14 +72,16 @@ const _http = {
         * msg	            提示文字	                        string
         * isloop	        是否位轮播状态(true or false)	    bool
     */
-     getLive() {
-        return http("/live", "GET",{rid:'78622'});
+    getLive() {
+        return http("/live", "GET", { rid: '78622' });
     },
-     /** 音乐页面
+    /** 音乐页面
         * 获取歌曲专辑列表 
-        * getSongAlbumLists
+        * getMusicAlbumLists
         * params
         *  //Token	string	no	Token
+        * type  专辑类型，int, 1为原唱歌曲专辑；2为翻唱及直播歌曲专辑；不传入此参数或参数为0则获取所有专辑
+        * page 分页页码，默认返回 10条数据
         返回参数如下（通用返回参数data中的参数）
             参数	描述	数据类型
             total	数据总条数	int
@@ -91,149 +93,246 @@ const _http = {
                 id	歌曲专辑的id	int
                 album_name	歌曲专辑的名称	string
                 album_desc	歌曲专辑的描述	string
-                cover_img_id	歌曲专辑的封面图id(使用获取图片数据接口可获取该图片的真实url)	int
-                release_time	专辑封面发布时间戳	int
+                album_cover_img_url 专辑的封面图直链url url
+                album_origin_url	专辑的外链地址	url
+                album_release_time	专辑封面发布时间戳	int
         */
-     getSongAlbumLists(params) {
-        return http("/song/albumLists", "GET",params);
-    },
-     /** 音乐页面
-        * 获取歌曲数据 
-        * getSongDatasMthMethod
-        * params
-        *  //Token	string	no	Token
-       （{method} 为请求方法，共有两个请求方法 aid 和 sid 。aid--歌曲专辑的id，sid--歌曲的id。{value}为相应请求数值。用 aid(专辑id)获取数据的话，会有分页page参数，分页默认50条数据）
-        请求方式：Get
-        返回参数如下（通用返回参数data中的参数）
-            参数	描述	数据类型
-            total	数据总条数	int
-            current_page	当前分页页码	int
-            lists	返回数据	array
-            lists数组里面的数据参数
-                参数	描述	数据类型
-                id	歌曲在数据库中的id	int
-                song_name	歌曲名称	string
-                author	歌手名称	string
-                song_id	5sing的音乐id	int
-                song_type	5sing的音乐类型(yc--原唱，fc--翻唱)	string
-                release_time	歌曲的发布日期的时间戳	int
-
-     */
-    getSongDatasMthMethod(params) {
-        let obj={
-            page:params.page,
-        }
-        if(params.methods=='aid'){
-            obj.aid=params.method
-        }
-        if(params.methods=='aid'){
-            obj.sid=params.method
-        }
-        return http("/song/datas/mth/"+params.methods, "GET",{
-            aid:params.method,
-            page:params.page,
-        });
-    },
-     /** 音乐页面
-        * 获取歌曲播放链接 
-        * getSongUrl
-        * params
-        *  //Token	string	no	Token
-       （{song_id} 和 {song_type} 为上文获取歌曲列表中lists数组里面的数据参数）
-        请求方式：Get
-        返回参数如下（通用返回参数data中的参数）
-            参数	描述	数据类型
-            song_name	歌曲名	string
-            song_urls	歌曲播放url	array
-
-            song_urls中的参数
-                参数	描述	数据类型
-                url	歌曲播放url	string
-                burl	歌曲备用播放url	string
-                ext	歌曲文件类型	string
-                size	歌曲大小	Int
-
-
-     */
-    getSongUrl(params) {
-        return http("/song/urls", "GET",params);
+    getMusicAlbumLists(params) {
+        return http("/music/lists/album", "GET", params);
     },
     /** 音乐页面
-        * 获取歌曲歌词 
-        * getSongLrc
-        * params
-        *  //Token	string	no	Token
-       （（song_id 和 song_type 为上文获取歌曲列表中lists数组里面的数据参数）
-        请求方式：Get
-        返回参数如下（通用返回参数data中的参数）
-            参数	描述	数据类型
-            song_name	歌曲名	string
-            song_urls	歌曲播放url	array
-                datas中的参数
-                参数	描述	数据类型
-                isSuccess	表示是否获取成功（true--成功，false--不成功）	bool
-                love	具体用途不明，5sing返回的数据	bool
-                collect	具体用途不明，5sing返回的数据	bool
-                lrc	歌词数据	object
-                lrc.type	具体用途不明，5sing返回的数据	int
-                lrc.data	歌词数据	string
-
-
-
-     */
-    getSongLrc(params) {
-        return http("/song/lrc", "GET",params);
+       * 通过专辑id获取歌曲信息
+       * getMusicInfosAlbum
+       * params
+       *  //Token	string	no	Token
+           1.{page} ==> 分页页码，默认返回 100条数据
+           2.{id} ==> 专辑的id，默认是专辑id为1的数据
+       请求方式：Get
+       返回参数如下（通用返回参数data中的参数）
+           参数	描述	数据类型
+           total	数据总条数	int
+           current_page	当前分页页码	int
+           lists	返回数据	array
+           lists数组里面的数据参数
+               参数	描述	数据类型
+               id	歌曲的id	int
+               song_name	歌曲的名称	string
+               song_singer	歌手的名称	string
+               song_url	歌曲的直链url	url
+               song_lrc	歌词的直链url	url
+               album_id	歌曲所属专辑的id	int
+               song_release_time	歌曲的发布日期的时间戳	int
+               album_cover_img_url	专辑的封面图直链url	url
+    */
+    getMusicInfosAlbum(params) {
+        return http("/music/infos/album", "GET", params);
     },
-    /** 图片页面
-        * 获取相册列表 
-        * getPictureAlbumLists
+    /** 音乐页面
+        * 通过歌曲id获取歌曲信息
+        * getMusicInfosSong
         * params
         *  //Token	string	no	Token
-       （({page}为分页页码，默认返回 5 条数据)
+            1.{id} ==> 歌曲的id，默认是歌曲id为1的数据
         请求方式：Get
         返回参数如下（通用返回参数data中的参数）
             参数	描述	数据类型
             total	数据总条数	int
             current_page	当前分页页码	int
             lists	返回数据	array
-
             lists数组里面的数据参数
                 参数	描述	数据类型
-                id	相集的id	int
-                album_name	相集的名称	string
-                album_desc	相集的描述	string
-                cover_img_id	相集的封面图id(使用获取图片数据接口可获取该图片的真实url)	int
-                release_time	专辑封面发布时间戳	int
-    */
-    getPictureAlbumLists(params) {
-        return http("/picture/albumLists", "GET",params);
+                id	歌曲的id	int
+                song_name	歌曲的名称	string
+                song_singer	歌手的名称	string
+                song_url	歌曲的直链url	url
+                song_lrc	歌词的直链url	url
+                album_id	歌曲所属专辑的id	int
+                song_release_time	歌曲的发布日期的时间戳	int
+                album_cover_img_url	专辑的封面图直链url	url
+     */
+    getMusicInfosSong(params) {
+        return http("/music/infos/song", "GET", params);
     },
-    /** 图片页面
-        * 获取图片数据 
-        * getPictureDatasMthMmethod
+
+    /** 弹幕部分
+        * 弹幕
+        * getDamakuLists
         * params
         *  //Token	string	no	Token
-        {method} 为请求方法，共有两个请求方法 aid 和 sid 。aid--相集的id，pid--图片的id。{value}为相应请求数值。用 aid(相集id)获取数据的话，会有分页page参数，分页默认50条数据）
+        接口url：
+        1.https://api.erkechloe.com/damaku
+        2.https://api.erkechloe.com/damaku/lists
         请求方式：Get
-        返回参数如下（通用返回参数data中的参数）
-            参数	描述	数据类型
-            total	数据总条数	int
-            current_page	当前分页页码	int
-            lists	返回数据	array
-                lists数组里面的数据参数
-                参数	描述	数据类型
-                id	图片在数据库中的id	int
-                img_name	图片名称	string
-                img_desc	图片描述	string
-                img_url	图片的url	string
-                is_loc_url	图片的url是否为本地链接
-                (0--非本地链接，即第三方图片储存；1--为本地链接，使用时需要拼。即:
-                http://api.erkechloe.com/upload/{img_url})	int
-                release_time	图片的发布日期的时间戳	int
-     */
-    getPictureDatasMthMmethod(params) {
-        return http("/picture/datas/mth/"+params.method, "GET",params);
+    */
+    getDamakuLists(params) {
+        return http("/damaku/lists", "GET");
     },
+
+
+
+
+
+
+
+    //  /** 音乐页面
+    //     * 获取歌曲专辑列表 
+    //     * getSongAlbumLists
+    //     * params
+    //     *  //Token	string	no	Token
+    //     返回参数如下（通用返回参数data中的参数）
+    //         参数	描述	数据类型
+    //         total	数据总条数	int
+    //         current_page	当前分页页码	int
+    //         lists	返回数据	array
+
+    //         lists数组里面的数据参数
+    //             参数	描述	数据类型
+    //             id	歌曲专辑的id	int
+    //             album_name	歌曲专辑的名称	string
+    //             album_desc	歌曲专辑的描述	string
+    //             cover_img_id	歌曲专辑的封面图id(使用获取图片数据接口可获取该图片的真实url)	int
+    //             release_time	专辑封面发布时间戳	int
+    //     */
+    //  getSongAlbumLists(params) {
+    //     return http("/song/albumLists", "GET",params);
+    // },
+    //  /** 音乐页面
+    //     * 获取歌曲数据 
+    //     * getSongDatasMthMethod
+    //     * params
+    //     *  //Token	string	no	Token
+    //    （{method} 为请求方法，共有两个请求方法 aid 和 sid 。aid--歌曲专辑的id，sid--歌曲的id。{value}为相应请求数值。用 aid(专辑id)获取数据的话，会有分页page参数，分页默认50条数据）
+    //     请求方式：Get
+    //     返回参数如下（通用返回参数data中的参数）
+    //         参数	描述	数据类型
+    //         total	数据总条数	int
+    //         current_page	当前分页页码	int
+    //         lists	返回数据	array
+    //         lists数组里面的数据参数
+    //             参数	描述	数据类型
+    //             id	歌曲在数据库中的id	int
+    //             song_name	歌曲名称	string
+    //             author	歌手名称	string
+    //             song_id	5sing的音乐id	int
+    //             song_type	5sing的音乐类型(yc--原唱，fc--翻唱)	string
+    //             release_time	歌曲的发布日期的时间戳	int
+
+    //  */
+    // getSongDatasMthMethod(params) {
+    //     let obj={
+    //         page:params.page,
+    //     }
+    //     if(params.methods=='aid'){
+    //         obj.aid=params.method
+    //     }
+    //     if(params.methods=='aid'){
+    //         obj.sid=params.method
+    //     }
+    //     return http("/song/datas/mth/"+params.methods, "GET",{
+    //         aid:params.method,
+    //         page:params.page,
+    //     });
+    // },
+    //  /** 音乐页面
+    //     * 获取歌曲播放链接 
+    //     * getSongUrl
+    //     * params
+    //     *  //Token	string	no	Token
+    //    （{song_id} 和 {song_type} 为上文获取歌曲列表中lists数组里面的数据参数）
+    //     请求方式：Get
+    //     返回参数如下（通用返回参数data中的参数）
+    //         参数	描述	数据类型
+    //         song_name	歌曲名	string
+    //         song_urls	歌曲播放url	array
+
+    //         song_urls中的参数
+    //             参数	描述	数据类型
+    //             url	歌曲播放url	string
+    //             burl	歌曲备用播放url	string
+    //             ext	歌曲文件类型	string
+    //             size	歌曲大小	Int
+
+
+    //  */
+    // getSongUrl(params) {
+    //     return http("/song/urls", "GET",params);
+    // },
+    // /** 音乐页面
+    //     * 获取歌曲歌词 
+    //     * getSongLrc
+    //     * params
+    //     *  //Token	string	no	Token
+    //    （（song_id 和 song_type 为上文获取歌曲列表中lists数组里面的数据参数）
+    //     请求方式：Get
+    //     返回参数如下（通用返回参数data中的参数）
+    //         参数	描述	数据类型
+    //         song_name	歌曲名	string
+    //         song_urls	歌曲播放url	array
+    //             datas中的参数
+    //             参数	描述	数据类型
+    //             isSuccess	表示是否获取成功（true--成功，false--不成功）	bool
+    //             love	具体用途不明，5sing返回的数据	bool
+    //             collect	具体用途不明，5sing返回的数据	bool
+    //             lrc	歌词数据	object
+    //             lrc.type	具体用途不明，5sing返回的数据	int
+    //             lrc.data	歌词数据	string
+
+
+
+    //  */
+    // getSongLrc(params) {
+    //     return http("/song/lrc", "GET",params);
+    // },
+    // /** 图片页面
+    //     * 获取相册列表 
+    //     * getPictureAlbumLists
+    //     * params
+    //     *  //Token	string	no	Token
+    //    （({page}为分页页码，默认返回 5 条数据)
+    //     请求方式：Get
+    //     返回参数如下（通用返回参数data中的参数）
+    //         参数	描述	数据类型
+    //         total	数据总条数	int
+    //         current_page	当前分页页码	int
+    //         lists	返回数据	array
+
+    //         lists数组里面的数据参数
+    //             参数	描述	数据类型
+    //             id	相集的id	int
+    //             album_name	相集的名称	string
+    //             album_desc	相集的描述	string
+    //             cover_img_id	相集的封面图id(使用获取图片数据接口可获取该图片的真实url)	int
+    //             release_time	专辑封面发布时间戳	int
+    // */
+    // getPictureAlbumLists(params) {
+    //     return http("/picture/albumLists", "GET",params);
+    // },
+    // /** 图片页面
+    //     * 获取图片数据 
+    //     * getPictureDatasMthMmethod
+    //     * params
+    //     *  //Token	string	no	Token
+    //     {method} 为请求方法，共有两个请求方法 aid 和 sid 。aid--相集的id，pid--图片的id。{value}为相应请求数值。用 aid(相集id)获取数据的话，会有分页page参数，分页默认50条数据）
+    //     请求方式：Get
+    //     返回参数如下（通用返回参数data中的参数）
+    //         参数	描述	数据类型
+    //         total	数据总条数	int
+    //         current_page	当前分页页码	int
+    //         lists	返回数据	array
+    //             lists数组里面的数据参数
+    //             参数	描述	数据类型
+    //             id	图片在数据库中的id	int
+    //             img_name	图片名称	string
+    //             img_desc	图片描述	string
+    //             img_url	图片的url	string
+    //             is_loc_url	图片的url是否为本地链接
+    //             (0--非本地链接，即第三方图片储存；1--为本地链接，使用时需要拼。即:
+    //             http://api.erkechloe.com/upload/{img_url})	int
+    //             release_time	图片的发布日期的时间戳	int
+    //  */
+    // getPictureDatasMthMmethod(params) {
+    //     return http("/picture/datas/mth/"+params.method, "GET",params);
+    // },
 
 
 
@@ -292,7 +391,7 @@ const _http = {
     //  getLyric(params) {
     //     return http("/lyric", "GET",params);
     // },
-    
+
 };
 
 

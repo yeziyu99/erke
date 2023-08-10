@@ -98,19 +98,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.die {
-  width: 100%;
-}
 #toTop {
   position: sticky;
   top: 0;
   z-index: 99;
 }
-@media screen and (min-width: 1170px) {
-  .page {
-    min-width: 1170px;
-  }
-}
+
 .site-scrolltop {
   display: bl;
   position: fixed;
@@ -123,6 +116,7 @@ export default {
   width: 48px;
   z-index: 99;
 }
+
 .toTop {
   background: url("../assets/font/totop.svg") no-repeat 50%/25px;
   filter: none;
@@ -133,19 +127,7 @@ export default {
   border-radius: 50%;
   width: 100%;
 }
-@media screen and (max-width: 1169px) {
-  .page {
-    min-width: 100%;
-  }
-  .publicFoot,
-  .publicFooter {
-    display: none;
-  }
-  .site-scrolltop,
-  .toTop {
-    display: none !important;
-  }
-}
+
 .topNav {
   box-shadow: 0 10px 10px rgb(0 0 0 / 10%);
 }

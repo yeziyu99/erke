@@ -289,8 +289,8 @@ export default {
   },
   created() {
     this.getHot();
-    document.getElementsByClassName('el-message-box')[0].style = 'width:auto;margin: 0 10%;'//为了让弹窗在中间显示
-    this.curIndex = this.$route.query.curIndex||0;
+    // document.getElementsByClassName('el-message-box')[0].style = 'width:auto;margin: 0 10%;'//为了让弹窗在中间显示
+    this.curIndex = this.$route.query.curIndex || 0;
   },
 
   methods: {
@@ -861,7 +861,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .yinyue_top {
   display: flex;
   justify-content: center;

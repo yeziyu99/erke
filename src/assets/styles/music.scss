@@ -1,6 +1,7 @@
 ::v-deep {
     .el-card.is-hover-shadow>.el-card__body {
         display: flex;
+
         .invest_list_r {
             flex: 1;
             position: relative;
@@ -10,6 +11,10 @@
             justify-content: flex-end;
         }
     }
+
+}
+
+@media screen and (min-width: 800px) {
     .big_wrap {
         .invest_banner {
             padding: 110px 0 50px;
@@ -17,10 +22,12 @@
             background-color: $back-primary1;
             color: #000;
             overflow: hidden;
+
             .container {
                 align-items: center;
                 display: flex;
                 height: 376px;
+
                 .banner_bg_wrap {
                     height: 100%;
                     pointer-events: none;
@@ -28,16 +35,19 @@
                     right: 0;
                     top: 0;
                     width: 100%;
+
                     @keyframes bgTranslationX {
                         0% {
                             -webkit-transform: translateX(-200%);
                             transform: translateX(-200%);
                         }
+
                         to {
                             -webkit-transform: translateX(-100%);
                             transform: translateX(-100%);
                         }
                     }
+
                     .bg_container {
                         display: flex;
                         flex-wrap: nowrap;
@@ -46,6 +56,7 @@
                         transform: translateX(-100%);
                         -webkit-animation: bgTranslationX 60s linear infinite;
                         animation: bgTranslationX 60s linear infinite;
+
                         .bg_img {
                             background: url("~@/assets/image/enter-play.png") no-repeat 100%;
                             flex-shrink: 0;
@@ -57,6 +68,7 @@
                     }
                 }
             }
+
             .head_con {
                 width: 60%;
                 min-width: 1170px;
@@ -65,16 +77,19 @@
                 justify-content: space-between;
                 align-items: center;
                 margin: 0 auto;
+
                 .banner_left {
                     position: absolute;
                     top: 100px;
                     width: 35%;
                     max-width: 814px;
                     min-width: 600px;
+
                     p {
                         font-size: 12px;
                         color: #62657A;
                     }
+
                     h2 {
                         font-size: 48px;
                         font-weight: 700;
@@ -82,15 +97,18 @@
                         font-family: Gilroy-Bold;
                         margin-bottom: 60px;
                     }
+
                     p {
                         margin-top: 24px;
                         font-weight: 700;
                     }
                 }
+
                 .banner_img {
                     position: absolute;
                     top: 30px;
                     left: 60%;
+
                     .inset_video {
                         width: 208px;
                         position: absolute;
@@ -100,22 +118,17 @@
                         height: 100%;
                         background: #000;
                     }
+
                     img {
                         width: 220px;
                     }
-                    // video {
-                    //   width: 208px;
-                    //   position: absolute;
-                    //   top: 13px;
-                    //   left: 7px;
-                    //   border-radius: 20px;
-                    // }
                 }
             }
         }
+
         .invest_big {
             width: 100%;
-            background: #fafafa;
+
             .invest_tab {
                 width: 60%;
                 margin: 0 auto;
@@ -124,6 +137,7 @@
                 margin-top: 120px;
                 display: flex;
                 justify-content: space-between;
+
                 .trade_left {
                     margin-top: 30px;
                     margin-bottom: 120px;
@@ -132,13 +146,16 @@
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
+
                     .trade_title {
                         font-size: 36px;
                         font-weight: 700;
                         text-align: left;
                     }
+
                     .trade_list {
                         margin-top: 40px;
+
                         li:first-child {
                             p::first-letter {
                                 color: #c69c6d;
@@ -147,9 +164,11 @@
                                 margin: -0.4em .2em 0 0;
                             }
                         }
+
                         li {
                             margin-bottom: 24px;
                             display: flex;
+
                             div {
                                 width: 20px;
                                 height: 20px;
@@ -158,6 +177,7 @@
                                 display: flex;
                                 align-items: center;
                                 justify-content: center;
+
                                 span {
                                     content: " ";
                                     display: inline-block;
@@ -171,12 +191,14 @@
                                     margin: 0 auto;
                                 }
                             }
+
                             p {
                                 font-size: 18px;
                                 margin-left: 10px;
                             }
                         }
                     }
+
                     .trade_btn {
                         width: 135px;
                         padding: 14px 30px;
@@ -186,6 +208,7 @@
                         margin-bottom: 10px;
                     }
                 }
+
                 .trade_rightO {
                     .table_foot {
                         width: 100%;
@@ -193,20 +216,24 @@
                         font-weight: 700;
                         text-align: right;
                         text-decoration: underline;
+
                         a {
                             color: #000;
                         }
                     }
                 }
+
                 .trade_right {
                     width: 40%;
                     display: flex;
+
                     .trade_tab {
                         ul {
                             width: 88px;
                             display: flex;
                             flex-direction: column;
                             align-items: flex-end;
+
                             li {
                                 width: 70px;
                                 height: 70px;
@@ -216,11 +243,13 @@
                                 align-items: center;
                                 border-radius: 8px 0px 0px 8px;
                                 box-shadow: -7px 6px 14px 14px rgba(233, 236, 253, 0.5);
+
                                 img {
                                     width: 46px;
                                     height: 46px;
                                     border-radius: 8px;
                                 }
+
                                 &.active {
                                     width: 88px;
                                     height: 70px;
@@ -231,6 +260,7 @@
                             }
                         }
                     }
+
                     .trade_table {
                         width: 455px;
                         height: 279.5 * 2px;
@@ -239,16 +269,20 @@
                         box-shadow: 4px 5px 15px 0px rgba(233, 236, 253, 0.5);
                         padding: 30px;
                         box-sizing: border-box;
+
                         .el-table td.el-table__cell,
                         .el-table th.el-table__cell.is-leaf {
                             border-bottom: none;
                         }
+
                         .el-table th.el-table__cell.is-leaf {
                             border-bottom: none;
                         }
+
                         .el-table::before {
                             height: 0px;
                         }
+
                         .table_title {
                             font-size: 24px;
                             margin-bottom: 12px;
@@ -257,49 +291,61 @@
                 }
             }
         }
+
         .invest_list {
             width: 60%;
             min-width: 1170px;
             max-width: 1170px;
             margin: 0 auto;
             margin-top: 80px;
+
             .list_title {
                 font-size: 36px;
                 font-weight: 700;
                 margin-bottom: 60px;
             }
+
             .tab {
                 .el-tabs__item.is-active {
                     color: #000000;
                     font-weight: bold;
                 }
+
                 .el-tabs__active-bar {
                     background-color: #000000;
                 }
+
                 .el-tabs__nav-wrap::after {
                     height: 1px;
                 }
+
                 .el-tabs__active-bar {
                     height: 3px;
                     border-radius: 3px;
                 }
+
                 .el-table td.el-table__cell,
                 .el-table th.el-table__cell.is-leaf {
                     border-bottom: none;
                 }
+
                 .el-table th.el-table__cell.is-leaf {
                     border-bottom: none;
                 }
+
                 .el-table::before {
                     height: 0px;
                 }
+
                 .el-tabs__item:hover {
                     color: #000000;
                     cursor: pointer;
                 }
+
                 .el-table__header thead tr .el-table__cell {
                     background: #f2f3f5;
                 }
+
                 .tab_btn {
                     width: 89 * 2px;
                     height: 44px;
@@ -312,5 +358,273 @@
                 }
             }
         }
+        
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .big_wrap {
+        .invest_banner {
+            padding: 1rem 0 0.5rem;
+            position: relative;
+            background-color: $back-primary1;
+            color: #000;
+            overflow: hidden;
+
+            .container,.banner_left {
+                display: none;
+            }
+
+            .head_con {
+                .banner_img {
+
+                    .inset_video {
+                        width: 208px;
+                        position: absolute;
+                        // top: 13px;
+                        left: 7px;
+                        border-radius: 30px;
+                        height: 100%;
+                        background: #000;
+                    }
+
+                    img {
+                        width: 220px;
+                    }
+                }
+            }
+        }
+
+        .invest_big {
+            width: 100%;
+
+            .invest_tab {
+                width: 60%;
+                margin: 0 auto;
+                min-width: 1170px;
+                max-width: 1170px;
+                margin-top: 120px;
+                display: flex;
+                justify-content: space-between;
+
+                .trade_left {
+                    margin-top: 30px;
+                    margin-bottom: 120px;
+                    width: 45%;
+                    height: 279.5 * 2px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+
+                    .trade_title {
+                        font-size: 36px;
+                        font-weight: 700;
+                        text-align: left;
+                    }
+
+                    .trade_list {
+                        margin-top: 40px;
+
+                        li:first-child {
+                            p::first-letter {
+                                color: #c69c6d;
+                                font-size: 2em;
+                                float: left;
+                                margin: -0.4em .2em 0 0;
+                            }
+                        }
+
+                        li {
+                            margin-bottom: 24px;
+                            display: flex;
+
+                            div {
+                                width: 20px;
+                                height: 20px;
+                                background: $back-primary1;
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+
+                                span {
+                                    content: " ";
+                                    display: inline-block;
+                                    height: 8px;
+                                    width: 8px;
+                                    border-width: 2px 2px 0 0;
+                                    border-color: #000;
+                                    border-style: solid;
+                                    -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+                                    transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+                                    margin: 0 auto;
+                                }
+                            }
+
+                            p {
+                                font-size: 18px;
+                                margin-left: 10px;
+                            }
+                        }
+                    }
+
+                    .trade_btn {
+                        width: 135px;
+                        padding: 14px 30px;
+                        background: $back-primary1;
+                        border-radius: 26px;
+                        display: inline-block;
+                        margin-bottom: 10px;
+                    }
+                }
+
+                .trade_rightO {
+                    .table_foot {
+                        width: 100%;
+                        margin-top: 30px;
+                        font-weight: 700;
+                        text-align: right;
+                        text-decoration: underline;
+
+                        a {
+                            color: #000;
+                        }
+                    }
+                }
+
+                .trade_right {
+                    width: 40%;
+                    display: flex;
+
+                    .trade_tab {
+                        ul {
+                            width: 88px;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: flex-end;
+
+                            li {
+                                width: 70px;
+                                height: 70px;
+                                background: #fff;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                border-radius: 8px 0px 0px 8px;
+                                box-shadow: -7px 6px 14px 14px rgba(233, 236, 253, 0.5);
+
+                                img {
+                                    width: 46px;
+                                    height: 46px;
+                                    border-radius: 8px;
+                                }
+
+                                &.active {
+                                    width: 88px;
+                                    height: 70px;
+                                    background: $back-primary1;
+                                    box-shadow: -7px 6px 14px 14px rgba(233, 236, 253, 0.5);
+                                    z-index: 9 !important;
+                                }
+                            }
+                        }
+                    }
+
+                    .trade_table {
+                        width: 455px;
+                        height: 279.5 * 2px;
+                        background: #fff;
+                        border-radius: 0px 9px 9px 9px;
+                        box-shadow: 4px 5px 15px 0px rgba(233, 236, 253, 0.5);
+                        padding: 30px;
+                        box-sizing: border-box;
+
+                        .el-table td.el-table__cell,
+                        .el-table th.el-table__cell.is-leaf {
+                            border-bottom: none;
+                        }
+
+                        .el-table th.el-table__cell.is-leaf {
+                            border-bottom: none;
+                        }
+
+                        .el-table::before {
+                            height: 0px;
+                        }
+
+                        .table_title {
+                            font-size: 24px;
+                            margin-bottom: 12px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .invest_list {
+            width: 100%;
+            margin: 0 auto;
+            margin-top: 80px;
+
+            .list_title {
+                font-size: 0.36rem;
+                font-weight: 700;
+                margin-bottom: 0.6rem;
+            }
+
+            .tab {
+                .el-tabs__item.is-active {
+                    color: #000000;
+                    font-weight: bold;
+                }
+
+                .el-tabs__active-bar {
+                    background-color: #000000;
+                }
+
+                .el-tabs__nav-wrap::after {
+                    height: 1px;
+                }
+
+                .el-tabs__active-bar {
+                    height: 3px;
+                    border-radius: 3px;
+                }
+
+                .el-table td.el-table__cell,
+                .el-table th.el-table__cell.is-leaf {
+                    border-bottom: none;
+                }
+
+                .el-table th.el-table__cell.is-leaf {
+                    border-bottom: none;
+                }
+
+                .el-table::before {
+                    height: 0px;
+                }
+
+                .el-tabs__item:hover {
+                    color: #000000;
+                    cursor: pointer;
+                }
+
+                .el-table__header thead tr .el-table__cell {
+                    background: #f2f3f5;
+                }
+
+                .tab_btn {
+                    width: 1.78rem;
+                    height: 0.44rem;
+                    background: $back-primary1;
+                    text-align: center;
+                    line-height: 0.44rem;
+                    margin: 0 auto;
+                    padding: 0;
+                    border-radius: 0.26rem;
+                }
+            }
+        }
+       
     }
 }

@@ -34,12 +34,12 @@
         <ul class="publicFoot_con_right">
           <li class="con_right_title">
             非官方网站<br />
+            UI：叶子宇<br />
             前端：叶子宇<br />
             后端：黄小珂<br />
-            UI：叶子宇<br />
             资料：周三鸽&&叶子宇<br />
           </li>
-          <li class="con_right_bottom">346989693@qq.com </li>
+          <li class="con_right_bottom">346989693@qq.com</li>
         </ul>
       </div>
       <!-- <p style="margin-top: 10px;text-align: center;">
@@ -60,7 +60,7 @@ export default {
       }
     },
     externalJumpFn(lianjie) {
-      window.open(lianjie)
+      window.open(lianjie);
     },
   },
 };
@@ -70,110 +70,209 @@ export default {
 ul li {
   list-style: none;
 }
-
-.publicFoot {
-  width: 100%;
-  min-width: 1170px;
-  overflow-x: auto;
-  //background: #000;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-
-  .publicFoot_back {
-    height: 354px;
-    // background: url('../assets/images/erkexihaun.png') no-repeat;
-    // background-size: 100% 100%;
-    width: 60%;
+@media screen and (min-width: 800px) {
+  .publicFoot {
+    width: 100%;
     min-width: 1170px;
-    max-width: 1170px;
-  }
-
-  .publicFoot_head {
-    height: 89px;
+    overflow-x: auto;
+    //background: #000;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    flex-direction: column;
 
-    .logo {
-      width: 150px;
-    }
-    .logos{
-      width: 88px;
+    .publicFoot_back {
+      height: 354px;
+      // background: url('../assets/images/erkexihaun.png') no-repeat;
+      // background-size: 100% 100%;
+      width: 60%;
+      min-width: 1170px;
+      max-width: 1170px;
     }
 
-    ul {
+    .publicFoot_head {
+      height: 89px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 
-      .publicFoot_tip {
-        font-size: 10px;
-        color: rgba(255, 255, 255, 0.4);
-        margin-right: 10px;
+      .logo {
+        width: 150px;
+      }
+      .logos {
+        width: 88px;
       }
 
-      .publicFoot_btn {
-        padding: 9px 10px;
-        box-sizing: border-box;
-        border: 1px solid rgba(255, 255, 255, 0.4);
-        border-radius: 5px;
+      ul {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
-        font-size: 10px;
-        color: #fff;
 
-        img {
-          margin-right: 5px;
-          width: 15px;
-          height: 15px;
+        .publicFoot_tip {
+          font-size: 10px;
+          color: rgba(255, 255, 255, 0.4);
+          margin-right: 10px;
+        }
+
+        .publicFoot_btn {
+          padding: 9px 10px;
+          box-sizing: border-box;
+          border: 1px solid rgba(255, 255, 255, 0.4);
           border-radius: 5px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 10px;
+          color: #fff;
+
+          img {
+            margin-right: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+
+    .publicFoot_con {
+      // padding: 0 10px;
+      margin-top: 26.5 * 2px;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+
+      .publicFoot_con_left {
+        .list_router {
+          margin-bottom: 17 * 2px;
+          cursor: pointer;
+
+          &:hover {
+            opacity: 0.5;
+          }
+        }
+
+        .list_routerLi {
+          margin-bottom: 7 * 2px;
+          cursor: pointer;
+
+          &:hover {
+            opacity: 0.5;
+          }
+        }
+      }
+
+      .publicFoot_con_right {
+        .con_right_title {
+          text-align: right;
+        }
+
+        .con_right_con {
+          font-size: 16 * 2px;
+          margin: 20px 0;
+        }
+
+        .con_right_bottom {
+          text-align: right;
         }
       }
     }
   }
-
-  .publicFoot_con {
-    // padding: 0 10px;
-    margin-top: 26.5 * 2px;
-    color: #fff;
+}
+@media screen and (max-width: 800px) {
+  .publicFoot {
+    width: 100%;
+    overflow-x: auto;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
 
-    .publicFoot_con_left {
-      .list_router {
-        margin-bottom: 17 * 2px;
-        cursor: pointer;
+    .publicFoot_back {
+      width: 100%;
+      padding-left: 0.4rem;
+    }
 
-        &:hover {
-          opacity: .5;
-        }
+    .publicFoot_head {
+      height: 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+
+      .logo {
+        width: 3rem;
+      }
+      .logos {
+        width: 1.6rem;
       }
 
-      .list_routerLi {
-        margin-bottom: 7 * 2px;
-        cursor: pointer;
+      ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
-        &:hover {
-          opacity: .5;
+        .publicFoot_tip {
+          font-size: 0.2rem;
+          color: rgba(255, 255, 255, 0.4);
+          margin-right: 0.2rem;
+        }
+
+        .publicFoot_btn {
+          padding: 0.2rem;
+          box-sizing: border-box;
+          border: 1px solid rgba(255, 255, 255, 0.4);
+          border-radius: 0.1rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 0.2rem;
+          color: #fff;
+
+          img {
+            margin-right: 0.1rem;
+            width: 0.3rem;
+            height: 0.3rem;
+            border-radius: 0.1rem;
+          }
         }
       }
     }
 
-    .publicFoot_con_right {
-      .con_right_title {
-        text-align: right;
+    .publicFoot_con {
+      // padding: 0 10px;
+      margin-top: 1.4;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+
+      .publicFoot_con_left {
+        display: flex;
+        justify-content: space-evenly;
+        margin-bottom: 0.3rem;
+        li {
+          width: 33%;
+          cursor: pointer;
+
+          &:hover {
+            opacity: 0.5;
+          }
+        }
       }
 
-      .con_right_con {
-        font-size: 16 * 2px;
-        margin: 20px 0;
-      }
+      .publicFoot_con_right {
+        .con_right_title {
+          text-align: right;
+        }
 
-      .con_right_bottom {
-        text-align: right;
+        .con_right_con {
+          font-size: 0.64rem;
+          margin: 20px 0;
+        }
+
+        .con_right_bottom {
+          text-align: right;
+        }
       }
     }
   }

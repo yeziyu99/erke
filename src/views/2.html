@@ -1,106 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="css/base.css?v=1.5">
-    <script type="text/javascript" src="js/config.js?v=1.4"></script>
-
+    <title>周二珂歌单</title>
     <style>
-        /* button {
-            width: 2rem;
-            height: 0.8rem;
-            text-align: center;
-            line-height: .8rem;
-            border: 1px solid #999;
-        } */
+        #canvas {
+            border: 1px solid #000;
+        }
     </style>
-
-
 </head>
-
 <body>
-    <button class="btn">点击请求</button>
-    <div id="footer">
-        <button>
-            <i>+</i>
-            全案送达信息查询
-        </button>
-    </div>
+    <canvas id="canvas" width="400" height="400"></canvas>
 
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-    <!-- <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
-    <script type="text/javascript" src="js/juicer.min.js"></script> -->
     <script>
-        var isJump = false;
-        var btnState;
-        var statusBool = '1' //起名随意
+        // 获取canvas元素
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
 
-        $(function() {
-            statusFn()
-                // 发送请求 并且返回数据了
-            function statusFn() {
-                // http....then(data)
-                // statusBool = data.status;
-                statusBool = 3;
-                btnFn()
-            }
-            // 第一个地方赋值
-            function btnFn() {
-                let btnHtml = '';
-                //样式完了自己写嗷
-                if (statusBool == 1) {
-                    btnHtml += `<button id="footer_button"><i>+</i>全案送达信息查询</button>`
-                } else if (statusBool == 2) {
-                    btnHtml += `<button id="footer_button" style="color:gray"><i>+</i>全案送达信息查询(查询中)</button>`
-                } else {
-                    btnHtml += `<button id="footer_button"><i>+</i>全案送达信息查询<span style="color:red">(已完成出，点击查看)</span></button>`
-                }
-                $('#footer').html(btnHtml)
-                $('#footer_button').on('click', function() {
-                    if (statusBool == 1) {
-                        console.log(1)
-                            // window.open(1)//跳转对应页面即可
-                    } else if (statusBool == 2) {
-                        console.log(2)
-                            // window.open(2)
-                    } else {
-                        console.log(3)
-                            // window.open(3)
-                    }
-                })
+        // 绘制背景
+        ctx.fillStyle = '#f4f4f4';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            }
+        // 设置字体样式
+        ctx.font = '20px Arial';
+        ctx.fillStyle = '#000';
+        ctx.textAlign = 'center';
 
-            btnState = sessionStorage.getItem('btnState');
-            // 
-            if (btnState != 'pending' || btnState != 'finish') {
-                $('.btn').html('点击请求')
-            } else if (btnState == 'pending') {
-                $('.btn').html('查询中，请稍后')
+        // 绘制歌单标题
+        ctx.fillText('周二珂歌单', canvas.width / 2, 50);
 
-            } else if (btnState == 'finish') {
-                $('.btn').html('查看')
+        // 绘制歌曲列表
+        const songs = ['歌曲1', '歌曲2', '歌曲3', '歌曲4', '歌曲5', '歌曲6', '歌曲7', '歌曲8', '歌曲9', '歌曲10'];
+        const startY = 100;
+        const lineHeight = 30;
 
-            }
-
-
-        })
-        $('.btn').click(function() {
-
-
-
-            window.location.href = "dsrList.html";
-
-
-
-
-
-        });
+        for (let i = 0; i < songs.length; i++) {
+            const y = startY + i * lineHeight;
+            ctx.fillText(songs[i], canvas.width / 2, y);
+        }
     </script>
 </body>
-
 </html>
