@@ -181,7 +181,7 @@ export default {
         this.$router.push({ name: name, query: { curIndex: curIndex } });
       }
     },
-    screenWidthFn() {
+    screenWidthFns() {
       this.screenWidth = document.body.clientWidth;
       console.log(this.screenWidth, this.spanNum);
       if (this.screenWidth < 700) {
@@ -207,11 +207,11 @@ export default {
   },
   mounted() {
     this.screenWidth = document.body.clientWidth;
-    this.screenWidthFn();
+    this.screenWidthFns();
     console.log(this.screenWidth, this.spanNum);
     window.onresize = () => {
       return (() => {
-        this.screenWidthFn();
+        this.screenWidthFns();
       })();
     };
   },
